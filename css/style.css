@@ -383,6 +383,9 @@ body [data-aos='zoom-in'] {
 .icon-github:before {
   content: '\e619';
 }
+.icon-bilibili:before {
+  content: '\e603';
+}
 .sidebar-toc-btn:before {
   font-family: 'iconfont';
   content: '\e633';
@@ -2722,6 +2725,15 @@ pre .javascript .function {
 }
 .sidebar-social-icon:hover {
   transform: scale(1.2);
+}
+.icon-github {
+  color: #191717;
+}
+[data-theme='dark'] .icon-github {
+  color: #bc88ff;
+}
+.icon-bilibili {
+  color: #00a1d6;
 }
 .sidebar-menu-icon,
 .sidebar-menu-link {
