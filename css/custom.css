@@ -1,0 +1,385 @@
+/* 自定义样式：夜间模式彩色发光动画（适配你的 HTML 结构） */
+/* 关键修正：选择器与页面实际元素匹配 */
+
+/* ==============================================
+   1. 日间模式：取消动画（避免冲突）
+   ============================================== */
+[data-theme="light"] #header-title #logo h1,  /* 站点名称（实际元素：h1 在 #logo 内） */
+[data-theme="light"] #subtitle-wrap,          /* 副标题（实际元素：#subtitle-wrap） */
+[data-theme="light"] .post-meta,              /* 文章信息（实际元素：.post-meta，替代 #post-info） */
+[data-theme="light"] .post-title {             /* 文章标题（新增：可选，按需求保留） */
+  animation: none !important;
+  text-shadow: none !important;
+}
+
+/* ==============================================
+   2. 夜间模式：彩色循环发光动画
+   ============================================== */
+/* 站点名称（最醒目，15px 发光） */
+[data-theme="dark"] #header-title #logo h1 {
+  animation: light_15px 10s linear infinite !important;
+  transition: text-shadow 0.3s ease;
+}
+
+/* 副标题（10px 发光，若后续添加副标题会生效） */
+[data-theme="dark"] #subtitle-wrap {
+  animation: light_10px 10s linear infinite !important;
+  transition: text-shadow 0.3s ease;
+}
+
+/* 文章信息（日期/字数/阅读时间，5px 柔和发光） */
+[data-theme="dark"] .post-meta {
+  animation: light_5px 10s linear infinite !important;
+  transition: text-shadow 0.3s ease;
+}
+
+/* 文章标题（可选：给文章标题加发光，按需保留） */
+[data-theme="dark"] .post-title {
+  animation: light_12px 10s linear infinite !important;
+  transition: text-shadow 0.3s ease;
+}
+
+/* ==============================================
+   3. 关键帧：彩色发光效果（适配主题红色系）
+   ============================================== */
+/* 15px 发光（站点名称） */
+@keyframes light_15px {
+  0% { text-shadow: #ff5252 0 0 15px; }
+  12.5% { text-shadow: #ff7c7c 0 0 15px; }
+  25% { text-shadow: #ffafaf 0 0 15px; }
+  37.5% { text-shadow: #f1a247 0 0 15px; }
+  50% { text-shadow: #f1ee47 0 0 15px; }
+  62.5% { text-shadow: #11ee5e 0 0 15px; }
+  75% { text-shadow: #39c5bb 0 0 15px; }
+  87.5% { text-shadow: #5636ed 0 0 15px; }
+  100% { text-shadow: #ff5252 0 0 15px; }
+}
+
+/* 12px 发光（文章标题） */
+@keyframes light_12px {
+  0% { text-shadow: #ff5252 0 0 12px; }
+  12.5% { text-shadow: #ff7c7c 0 0 12px; }
+  25% { text-shadow: #ffafaf 0 0 12px; }
+  37.5% { text-shadow: #f1a247 0 0 12px; }
+  50% { text-shadow: #f1ee47 0 0 12px; }
+  62.5% { text-shadow: #11ee5e 0 0 12px; }
+  75% { text-shadow: #39c5bb 0 0 12px; }
+  87.5% { text-shadow: #5636ed 0 0 12px; }
+  100% { text-shadow: #ff5252 0 0 12px; }
+}
+
+/* 10px 发光（副标题） */
+@keyframes light_10px {
+  0% { text-shadow: #ff5252 0 0 10px; }
+  12.5% { text-shadow: #ff7c7c 0 0 10px; }
+  25% { text-shadow: #ffafaf 0 0 10px; }
+  37.5% { text-shadow: #f1a247 0 0 10px; }
+  50% { text-shadow: #f1ee47 0 0 10px; }
+  62.5% { text-shadow: #11ee5e 0 0 10px; }
+  75% { text-shadow: #39c5bb 0 0 10px; }
+  87.5% { text-shadow: #5636ed 0 0 10px; }
+  100% { text-shadow: #ff5252 0 0 10px; }
+}
+
+/* 5px 发光（文章信息） */
+@keyframes light_5px {
+  0% { text-shadow: #ff5252 0 0 5px; }
+  12.5% { text-shadow: #ff7c7c 0 0 5px; }
+  25% { text-shadow: #ffafaf 0 0 5px; }
+  37.5% { text-shadow: #f1a247 0 0 5px; }
+  50% { text-shadow: #f1ee47 0 0 5px; }
+  62.5% { text-shadow: #11ee5e 0 0 5px; }
+  75% { text-shadow: #39c5bb 0 0 5px; }
+  87.5% { text-shadow: #5636ed 0 0 5px; }
+  100% { text-shadow: #ff5252 0 0 5px; }
+}
+
+/* ==============================================
+   额外优化：确保样式不覆盖主题默认样式
+   ============================================== */
+#header-title #logo h1,
+#subtitle-wrap,
+.post-meta,
+.post-title {
+  color: inherit !important;
+  font-weight: inherit !important;
+}
+
+/* ==============================================
+   个人卡片渐变色效果
+   ============================================== */
+
+/* 个人卡片容器渐变背景 */
+.sidebar-author {
+  position: relative;
+  background: linear-gradient(135deg, 
+    rgba(255, 82, 82, 0.1) 0%,    /* 红色 */
+    rgba(255, 124, 124, 0.1) 12.5%, /* 浅红 */
+    rgba(255, 175, 175, 0.1) 25%,   /* 更浅红 */
+    rgba(241, 162, 71, 0.1) 37.5%,  /* 橙色 */
+    rgba(241, 238, 71, 0.1) 50%,    /* 黄色 */
+    rgba(17, 238, 94, 0.1) 62.5%,   /* 绿色 */
+    rgba(57, 197, 187, 0.1) 75%,    /* 青色 */
+    rgba(86, 54, 237, 0.1) 87.5%,   /* 蓝色 */
+    rgba(255, 82, 82, 0.1) 100%     /* 回到红色 */
+  );
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px;
+  overflow: hidden;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
+/* 渐变动画 */
+@keyframes gradient-shift {
+  0%, 100% {
+    background: linear-gradient(135deg, 
+      rgba(255, 82, 82, 0.1) 0%,
+      rgba(255, 124, 124, 0.1) 12.5%,
+      rgba(255, 175, 175, 0.1) 25%,
+      rgba(241, 162, 71, 0.1) 37.5%,
+      rgba(241, 238, 71, 0.1) 50%,
+      rgba(17, 238, 94, 0.1) 62.5%,
+      rgba(57, 197, 187, 0.1) 75%,
+      rgba(86, 54, 237, 0.1) 87.5%,
+      rgba(255, 82, 82, 0.1) 100%
+    );
+  }
+  50% {
+    background: linear-gradient(135deg, 
+      rgba(86, 54, 237, 0.1) 0%,
+      rgba(255, 82, 82, 0.1) 12.5%,
+      rgba(255, 124, 124, 0.1) 25%,
+      rgba(255, 175, 175, 0.1) 37.5%,
+      rgba(241, 162, 71, 0.1) 50%,
+      rgba(241, 238, 71, 0.1) 62.5%,
+      rgba(17, 238, 94, 0.1) 75%,
+      rgba(57, 197, 187, 0.1) 87.5%,
+      rgba(86, 54, 237, 0.1) 100%
+    );
+  }
+}
+
+/* 头像边框渐变效果 */
+.sidebar-author img {
+  border: 3px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, #ff5252, #ff7c7c, #ffafaf, #f1a247, #f1ee47, #11ee5e, #39c5bb, #5636ed, #ff5252) border-box;
+  background-size: 200% 200%;
+  animation: border-gradient 3s ease-in-out infinite;
+}
+
+/* 边框渐变动画 */
+@keyframes border-gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 作者名称渐变文字效果 */
+.sidebar-author-name {
+  background: linear-gradient(135deg, #ff5252, #ff7c7c, #ffafaf, #f1a247, #f1ee47, #11ee5e, #39c5bb, #5636ed);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-gradient 3s ease-in-out infinite;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+/* 文字渐变动画 */
+@keyframes text-gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 个人描述渐变效果 */
+.sidebar-description {
+  background: linear-gradient(90deg, 
+    rgba(255, 82, 82, 0.8),
+    rgba(255, 124, 124, 0.8),
+    rgba(255, 175, 175, 0.8),
+    rgba(241, 162, 71, 0.8),
+    rgba(241, 238, 71, 0.8),
+    rgba(17, 238, 94, 0.8),
+    rgba(57, 197, 187, 0.8),
+    rgba(86, 54, 237, 0.8),
+    rgba(255, 82, 82, 0.8)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: description-gradient 4s linear infinite;
+  font-style: italic;
+}
+
+/* 描述文字动画 */
+@keyframes description-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* 悬停效果增强 */
+.sidebar-author:hover img {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 20px rgba(255, 82, 82, 0.5);
+}
+
+.sidebar-author:hover .sidebar-author-name {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(255, 82, 82, 0.3);
+}
+
+/* 夜间模式适配 */
+[data-theme='dark'] .sidebar-author {
+  background: linear-gradient(135deg, 
+    rgba(255, 82, 82, 0.2) 0%,
+    rgba(255, 124, 124, 0.2) 12.5%,
+    rgba(255, 175, 175, 0.2) 25%,
+    rgba(241, 162, 71, 0.2) 37.5%,
+    rgba(241, 238, 71, 0.2) 50%,
+    rgba(17, 238, 94, 0.2) 62.5%,
+    rgba(57, 197, 187, 0.2) 75%,
+    rgba(86, 54, 237, 0.2) 87.5%,
+    rgba(255, 82, 82, 0.2) 100%
+  );
+  box-shadow: 0 0 15px rgba(255, 82, 82, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .sidebar-author {
+    margin: 5px;
+    padding: 15px;
+  }
+  
+  .sidebar-author img {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    min-height: 80px;
+  }
+  
+  .sidebar-author-name {
+    font-size: 18px;
+  }
+}
+
+/* ==============================================
+   背景流星特效
+   ============================================== */
+
+/* 流星容器 */
+.meteor-shower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: visible; /* 改为visible确保流星不被裁剪 */
+}
+
+/* 流星基础样式 */
+.meteor {
+  position: absolute;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.8) 30%, 
+    rgba(255, 255, 255, 1) 50%, 
+    rgba(255, 255, 255, 0.8) 70%, 
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0;
+}
+
+/* 流星动画 */
+@keyframes meteor-fall {
+  0% {
+    opacity: 0;
+    transform: translate(-200px, -200px) rotate(45deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(100vw + 400px), calc(100vh + 400px)) rotate(45deg);
+  }
+}
+
+/* 流星尾迹效果 */
+.meteor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(2px);
+  transform: scaleX(6) scaleY(1.2);
+}
+
+/* 夜间模式流星效果 */
+[data-theme='dark'] .meteor {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(135, 206, 235, 0.8) 30%, 
+    rgba(135, 206, 235, 1) 50%, 
+    rgba(135, 206, 235, 0.8) 70%, 
+    transparent 100%
+  );
+}
+
+[data-theme='dark'] .meteor::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(135, 206, 235, 0.3) 50%, 
+    transparent 100%
+  );
+  transform: scaleX(6) scaleY(1.2);
+}
+
+/* 性能优化：减少动画对性能的影响 */
+.meteor {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* 响应式流星大小调整 */
+@media (max-width: 768px) {
+  .meteor {
+    width: 2px;
+    height: 2px;
+  }
+}
+
+@media (min-width: 769px) {
+  .meteor {
+    width: 3px;
+    height: 3px;
+  }
+}

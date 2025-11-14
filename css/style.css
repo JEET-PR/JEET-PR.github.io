@@ -949,6 +949,32 @@ button {
   background: var(--red-1);
   color: #fff;
 }
+.triangle-badge {
+  position: absolute;
+  top: -6px;
+  right: -26px;
+  transform: rotate(45deg);
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 40px solid var(--red-2);
+  display: inline-block;
+  transition: 0.3s;
+}
+@media screen and (max-width: 959px) {
+  .triangle-badge {
+    display: none;
+  }
+}
+.triangle-badge-icon {
+  position: absolute;
+  top: 12px;
+  left: -13px;
+  color: var(--color-header-background) !important;
+  font-size: 28px;
+  transition: 0.3s;
+}
 .hr-line {
   margin: 12px 36px;
   opacity: 0.3;
@@ -1614,6 +1640,100 @@ button {
 }
 .post-sticky:before {
   margin-right: 6px;
+}
+.post-categories-wrapper {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 767px) {
+  .post-categories-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+}
+.post-categories-wrapper.aos-animate {
+  transition-property: initial !important;
+}
+.post-categories-wrap {
+  width: calc(50% - 20px);
+  flex-grow: 1;
+  height: 230px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 1s;
+}
+@media screen and (max-width: 767px) {
+  .post-categories-wrap {
+    width: 100%;
+    height: 180px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .post-categories-wrap:hover {
+    transform: scale(1.01);
+  }
+  .post-categories-wrap:hover img {
+    opacity: 0.6 !important;
+    transform: scale(1.05);
+  }
+}
+.post-categories-cover {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 95px;
+  flex-shrink: 0;
+  pointer-events: none;
+  transition: 0.6s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+}
+@media screen and (max-width: 767px) {
+  .post-categories-cover {
+    width: 100%;
+  }
+}
+.post-categories-cover img {
+  display: block;
+  opacity: 0;
+  transition: 0.6s;
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.post-categories-cover img.lazyloaded {
+  opacity: 0.7;
+  animation: blur 0.8s forwards;
+}
+.post-categories-cover h2,
+.post-categories-cover h3 {
+  z-index: 1;
+  color: #fff;
+  text-shadow: 0 0 0.5rem rgba(0,0,0,0.7);
+  margin: 0 8px;
+}
+.post-categories-cover h2 {
+  font-size: 36px;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+.post-categories-cover h3 {
+  font-size: 20px;
+  margin-top: 28px;
 }
 #comments {
   background: var(--color-wrap);
