@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-11-14T15:50:07.050Z</updated>
+  <updated>2025-11-14T15:54:25.090Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,28 +17,28 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>歌曲排版</title>
     <link href="http://example.com/2025/11/14/%E6%AD%8C%E6%9B%B2%E6%8E%92%E7%89%88/"/>
     <id>http://example.com/2025/11/14/%E6%AD%8C%E6%9B%B2%E6%8E%92%E7%89%88/</id>
-    <published>2025-11-14T15:31:19.253Z</published>
-    <updated>2025-11-14T15:50:07.050Z</updated>
+    <published>2025-11-14T15:50:00.000Z</published>
+    <updated>2025-11-14T15:54:25.090Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;title: 歌曲排版&lt;br /&gt;
-date: 2025-11-14 23:50:00&lt;br /&gt;
-tags: [HEXO]&lt;br /&gt;
-sticky: 100&lt;br /&gt;
-category: [扩展]&lt;br /&gt;
-comments: false&lt;br</summary>
+    <summary type="html">&lt;h1 id=&quot;歌曲&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#歌曲&quot;&gt;&lt;/a&gt; 歌曲&lt;/h1&gt;
+&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
         
       
     
     
     
+    <category term="扩展" scheme="http://example.com/categories/%E6%89%A9%E5%B1%95/"/>
+    
+    
+    <category term="HEXO" scheme="http://example.com/tags/HEXO/"/>
     
   </entry>
   
