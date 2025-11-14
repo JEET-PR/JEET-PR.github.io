@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-11-14T12:53:18.977Z</updated>
+  <updated>2025-11-14T15:32:37.849Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://example.com/2025/11/14/%E6%AD%8C%E6%9B%B2%E6%8E%92%E7%89%88/"/>
+    <id>http://example.com/2025/11/14/%E6%AD%8C%E6%9B%B2%E6%8E%92%E7%89%88/</id>
+    <published>2025-11-14T15:31:19.253Z</published>
+    <updated>2025-11-14T15:32:37.849Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>hexo-文本填加扩展说明(自用)</title>
