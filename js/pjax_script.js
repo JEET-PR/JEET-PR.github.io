@@ -440,4 +440,3 @@ if (imgElement.src || imgElement.style.background) {
   window.bannerElement = _$("#header > picture img");
 }
 
-window.generateSchemeHandler?.();

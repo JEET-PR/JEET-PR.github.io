@@ -40,6 +40,7 @@
     
 <link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
 
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj+vDDLIL+xBGQU&#x2F;voDBY5XE2lVh" crossorigin="anonymous">
 <meta name="generator" content="Hexo 8.1.1"></head>
 
   <body>
@@ -144,6 +145,7 @@
         <div id="content" aria-label="Page content"  class="sidebar-right" >
           <aside id="sidebar" aria-label="Sidebar">
   <div class="sidebar-wrapper-container ">
+      <div id="aplayer" theme="var(--color-link)" data-aos="fade-up"></div>
   <div class="sidebar-wrapper">
     <div class="sidebar-wrap" data-aos="fade-up">
         <div class="sidebar-author">
@@ -504,6 +506,42 @@
 <script src="https://npm.webcache.cn/katex@0.16.24/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" defer onload="renderMathInElement(_$(&#39;article&#39;), {delimiters: [{left: &#39;$$&#39;, right: &#39;$$&#39;, display: true},{left: &#39;$&#39;, right: &#39;$&#39;, display: false}]});" data-pjax></script>
 
   
+  
+<script src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js" integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr+h5UfruuRL&#x2F;aORyw+5+HZoU6e" crossorigin="anonymous"></script>
+
+    <script>
+      if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+        if (window.matchMedia('(max-width: 959px)').matches) {
+          const aplayer = _$('#aplayer');
+          if (aplayer) {
+            const aside = aplayer.parentNode?.parentNode;
+            if (aside?.tagName === 'ASIDE') {
+              aplayer.removeAttribute('data-aos');
+              aplayer.parentNode.removeChild(aplayer);
+              document.body.appendChild(aplayer);
+            }
+          }
+        }
+        // 先定义 isMobile（设备检测）
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+// 初始化 APlayer，修正 Hexo 模板渲染和逻辑错误
+const ap = new APlayer({
+  theme: "var(--color-link)",
+  container: document.getElementById('aplayer'),
+  audio: [{"name":"最初的记忆 DJ阿智Remix","artist":"DJ阿智","url":"/music/最初的记忆(DJ阿智Remix) - DJ阿智.mp3","cover":null},{"name":"Sacred Play Secret Place + 罗生门0.9x","artist":"我无记忆","url":"/music/Sacred Play Secret Place + 罗生门 (0.9x) - 我无记忆.mp3","cover":null}], // 直接渲染配置的音乐列表（需确保配置非空）
+  fixed: isMobile ? true : false || false, // 直接取配置布尔值，避免 JSON 转字符串
+  autoplay: false || false, // 配置布尔值直接渲染
+  loop: 'all' || 'all', // 字符串直接渲染
+  order: 'list' || 'list',
+  preload: 'auto' || 'auto',
+  volume: 0.7 || 0.7, // 数值直接渲染
+  mutex: true || true, // 布尔值直接渲染
+  listFolded: true || false,
+  lrcType: 0 || 0,
+});
+      }
+    </script>
 
 
 
