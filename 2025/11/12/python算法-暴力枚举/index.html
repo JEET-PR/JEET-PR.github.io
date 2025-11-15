@@ -1,0 +1,1166 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="auto"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';</script>
+  <title>
+    python算法-暴力枚举 | 无敌火影大王
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="Python算法-暴力枚举  什么是暴力枚举？ 暴力枚举（Brute Force）是一种简单直接的算法思想，通过尝试所有可能的解来找到问题的答案。虽然这种方法看起来很&quot;笨&quot;，但在很多情况下，特别是当问题规模不大时，暴力枚举是最可靠和最容易实现的解决方案。  暴力枚举的数学原理 暴力枚举的数学基础是穷举搜索（Exhaustive Search）。对于一个具有有限解空间的问题，暴">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python算法-暴力枚举">
+<meta property="og:url" content="http://example.com/2025/11/12/python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/index.html">
+<meta property="og:site_name" content="无敌火影大王">
+<meta property="og:description" content="Python算法-暴力枚举  什么是暴力枚举？ 暴力枚举（Brute Force）是一种简单直接的算法思想，通过尝试所有可能的解来找到问题的答案。虽然这种方法看起来很&quot;笨&quot;，但在很多情况下，特别是当问题规模不大时，暴力枚举是最可靠和最容易实现的解决方案。  暴力枚举的数学原理 暴力枚举的数学基础是穷举搜索（Exhaustive Search）。对于一个具有有限解空间的问题，暴">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-12T12:17:47.000Z">
+<meta property="article:modified_time" content="2025-11-15T12:54:32.137Z">
+<meta property="article:author" content="飞制">
+<meta property="article:tag" content="python算法">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="无敌火影大王" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/666.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+      
+<link rel="stylesheet" href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
+
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj+vDDLIL+xBGQU&#x2F;voDBY5XE2lVh" crossorigin="anonymous">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+    
+    <!-- 流星特效容器 -->
+    <div class="meteor-shower" id="meteor-shower"></div>
+    
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+  </nav>
+  <a href="https://github.com/JEET-PR" class="triangle-badge" title="github" target="_blank" rel="noopener nofollow noreferrer">
+    <div class="icon icon-github triangle-badge-icon"></div>
+  </a>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A-%E6%B3%A2%E5%A5%87%E9%85%B1.png" alt="python算法-暴力枚举">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">python算法-暴力枚举</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+      <div id="aplayer" theme="var(--color-link)" data-aos="fade-up"></div>
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.</span> <span class="toc-text"> Python算法-暴力枚举</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.1.</span> <span class="toc-text"> 什么是暴力枚举？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 暴力枚举的数学原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 时间复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 暴力枚举流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 算法伪代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text"> 暴力枚举的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.3.</span> <span class="toc-text"> 常见应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1. 密码破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AD%90%E9%9B%86%E5%92%8C%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 2. 子集和问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 3. 排列组合问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%95%B0%E8%AE%BA%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 4. 数论问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%9B%BE%E8%AE%BA%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 5. 图论问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">1.4.</span> <span class="toc-text"> 优化技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%89%AA%E6%9E%9D%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 1. 剪枝优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86"><span class="toc-number">1.4.1.1.</span> <span class="toc-text"> 剪枝的数学原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E6%9D%A1%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.4.1.2.</span> <span class="toc-text"> 剪枝条件设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.4.1.3.</span> <span class="toc-text"> 剪枝流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E6%9D%A1%E4%BB%B6%E8%AE%BE%E8%AE%A1-2"><span class="toc-number">1.4.1.4.</span> <span class="toc-text"> 剪枝条件设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BE%B9%E7%95%8C%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 2. 边界优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 3. 记忆化搜索</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.5.</span> <span class="toc-text"> 实际应用案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B1%E6%95%B0%E7%8B%AC%E6%B1%82%E8%A7%A3%E5%99%A8"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 案例1：数独求解器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B2%E6%97%85%E8%A1%8C%E5%95%86%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 案例2：旅行商问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">1.6.</span> <span class="toc-text"> 性能分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-2"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 时间复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%85%AC%E5%BC%8F"><span class="toc-number">1.6.1.1.</span> <span class="toc-text"> 基本时间复杂度公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E4%BC%B0%E7%AE%97"><span class="toc-number">1.6.1.2.</span> <span class="toc-text"> 实际运行时间估算</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 空间复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%95%88%E6%9E%9C%E5%88%86%E6%9E%90"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 性能优化效果分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E4%BC%98%E5%8C%96%E6%95%88%E6%9E%9C"><span class="toc-number">1.6.3.1.</span> <span class="toc-text"> 剪枝优化效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B0%E5%BF%86%E5%8C%96%E4%BC%98%E5%8C%96%E6%95%88%E6%9E%9C"><span class="toc-number">1.6.3.2.</span> <span class="toc-text"> 记忆化优化效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 实际性能测试数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E9%99%85%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E6%AF%AB%E7%A7%92"><span class="toc-number">1.6.4.1.</span> <span class="toc-text"> 不同算法的实际运行时间（毫秒）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88%E5%88%86%E6%9E%90"><span class="toc-number">1.6.5.</span> <span class="toc-text"> 性能瓶颈分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87%E7%AD%96%E7%95%A5"><span class="toc-number">1.6.5.1.</span> <span class="toc-text"> 性能提升策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.7.</span> <span class="toc-text"> 何时使用暴力枚举</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 适用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 不适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.8.</span> <span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98%E7%9B%AE"><span class="toc-number">1.9.</span> <span class="toc-text"> 练习题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="toc-number">1.10.</span> <span class="toc-text"> 数学公式总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AE%A1%E6%95%B0%E5%8E%9F%E7%90%86"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 基本计数原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F"><span class="toc-number">1.10.2.</span> <span class="toc-text"> 排列组合公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%E5%85%AC%E5%BC%8F"><span class="toc-number">1.10.3.</span> <span class="toc-text"> 复杂度分析公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E7%8E%87%E5%88%86%E6%9E%90"><span class="toc-number">1.10.4.</span> <span class="toc-text"> 概率分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%AF%B9%E6%AF%94%E5%9B%BE"><span class="toc-number">1.11.</span> <span class="toc-text"> 算法复杂度对比图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87%E8%B7%AF%E5%BE%84"><span class="toc-number">1.12.</span> <span class="toc-text"> 性能提升路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95%E7%9A%84%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">1.13.</span> <span class="toc-text"> 选择算法的决策树</span></a></li></ol></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="飞制" class="lazyload">
+  <div class="sidebar-author-name">飞制</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social">
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/JEET-PR itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/1939864033?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-python算法-暴力枚举" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2025-11-12T12:17:47.000Z" itemprop="datePublished">2025-11-12</time>
+    <time style="display: none;" id="post-update-time">2025-11-15</time>
+  </span>
+</div>
+
+        <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+  </div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <h1 id="python算法-暴力枚举"><a class="markdownIt-Anchor" href="#python算法-暴力枚举"></a> Python算法-暴力枚举</h1>
+<h2 id="什么是暴力枚举"><a class="markdownIt-Anchor" href="#什么是暴力枚举"></a> 什么是暴力枚举？</h2>
+<p>暴力枚举（Brute Force）是一种简单直接的算法思想，通过尝试所有可能的解来找到问题的答案。虽然这种方法看起来很&quot;笨&quot;，但在很多情况下，特别是当问题规模不大时，暴力枚举是最可靠和最容易实现的解决方案。</p>
+<h3 id="暴力枚举的数学原理"><a class="markdownIt-Anchor" href="#暴力枚举的数学原理"></a> 暴力枚举的数学原理</h3>
+<p>暴力枚举的数学基础是<strong>穷举搜索</strong>（Exhaustive Search）。对于一个具有有限解空间的问题，暴力枚举会检查解空间中的每一个元素：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解空间 S = &#123;s₁, s₂, s₃, ..., sₙ&#125;</span><br><span class="line">目标：找到 sᵢ ∈ S，使得 f(sᵢ) = true</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li>S 表示所有可能解的集合</li>
+<li>n 表示解空间的大小</li>
+<li>f(s) 是判断解 s 是否满足条件的函数</li>
+</ul>
+<h3 id="时间复杂度分析"><a class="markdownIt-Anchor" href="#时间复杂度分析"></a> 时间复杂度分析</h3>
+<p>暴力枚举的时间复杂度通常为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T(n) = O(|S|) = O(解空间大小)</span><br></pre></td></tr></table></figure>
+<p>对于不同类型的问题：</p>
+<ul>
+<li><strong>排列问题</strong>：T(n) = O(n!)</li>
+<li><strong>组合问题</strong>：T(n) = O(C(n,k)) = O(n!/(k!(n-k)!))</li>
+<li><strong>子集问题</strong>：T(n) = O(2ⁿ)</li>
+<li><strong>序列问题</strong>：T(n) = O(mⁿ)，其中 m 是每个位置的可能取值数量</li>
+</ul>
+<h3 id="暴力枚举流程图"><a class="markdownIt-Anchor" href="#暴力枚举流程图"></a> 暴力枚举流程图</h3>
+<pre class="mermaid">graph TD
+    Start["开始"] --> DefSpace["定义解空间"]
+    DefSpace --> IsEmpty{"解空间为空?"}
+    IsEmpty -- "是" --> NoSol["未找到解"]
+    IsEmpty -- "否" --> InitCur["初始化当前解"]
+    InitCur --> AllFound{"遍历完所有解?"}
+    AllFound -- "是" --> NoSol
+    AllFound -- "否" --> CheckCond["检查当前解是否满足条件"]
+    CheckCond --> IsValid{"f(s)=true?"}
+    IsValid -- "是" --> Record["记录解"]
+    Record --> NeedAll{"需要所有解?"}
+    NeedAll -- "是" --> Next["下一个解"]
+    NeedAll -- "否" --> FIN["结束"]
+    IsValid -- "否" --> Next
+    Next --> AllFound
+    NoSol --> FIN</pre>
+<h3 id="算法伪代码"><a class="markdownIt-Anchor" href="#算法伪代码"></a> 算法伪代码</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function BruteForce(S, f):</span><br><span class="line">    for each s in S:</span><br><span class="line">        if f(s) == true:</span><br><span class="line">            return s</span><br><span class="line">    return null</span><br><span class="line"></span><br><span class="line">// 如果需要所有解</span><br><span class="line">function BruteForceAll(S, f):</span><br><span class="line">    results = []</span><br><span class="line">    for each s in S:</span><br><span class="line">        if f(s) == true:</span><br><span class="line">            results.append(s)</span><br><span class="line">    return results</span><br></pre></td></tr></table></figure>
+<h2 id="暴力枚举的特点"><a class="markdownIt-Anchor" href="#暴力枚举的特点"></a> 暴力枚举的特点</h2>
+<h3 id="优点"><a class="markdownIt-Anchor" href="#优点"></a> 优点</h3>
+<ul>
+<li><strong>简单易懂</strong>：逻辑清晰，容易实现</li>
+<li><strong>可靠性高</strong>：只要遍历所有可能，一定能找到解</li>
+<li><strong>适用性广</strong>：对于小规模问题几乎都适用</li>
+<li><strong>调试方便</strong>：容易定位和修复错误</li>
+</ul>
+<h3 id="缺点"><a class="markdownIt-Anchor" href="#缺点"></a> 缺点</h3>
+<ul>
+<li><strong>效率低下</strong>：时间复杂度通常很高</li>
+<li><strong>资源消耗大</strong>：可能需要大量计算资源</li>
+<li><strong>扩展性差</strong>：问题规模增大时性能急剧下降</li>
+</ul>
+<h2 id="常见应用场景"><a class="markdownIt-Anchor" href="#常见应用场景"></a> 常见应用场景</h2>
+<h3 id="1-密码破解"><a class="markdownIt-Anchor" href="#1-密码破解"></a> 1. 密码破解</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">brute_force_password</span>(<span class="params">target, max_length=<span class="number">4</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;暴力破解简单密码&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">import</span> itertools</span><br><span class="line">    </span><br><span class="line">    chars = <span class="string">&#x27;0123456789abcdefghijklmnopqrstuvwxyz&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> length <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, max_length + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> combination <span class="keyword">in</span> itertools.product(chars, repeat=length):</span><br><span class="line">            password = <span class="string">&#x27;&#x27;</span>.join(combination)</span><br><span class="line">            <span class="keyword">if</span> password == target:</span><br><span class="line">                <span class="keyword">return</span> password</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：破解4位数字密码</span></span><br><span class="line">target_password = <span class="string">&quot;1234&quot;</span></span><br><span class="line">result = brute_force_password(target_password)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;破解结果：<span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="2-子集和问题"><a class="markdownIt-Anchor" href="#2-子集和问题"></a> 2. 子集和问题</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">subset_sum_brute_force</span>(<span class="params">nums, target</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;暴力枚举所有子集，找到和为目标值的子集&quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">len</span>(nums)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> mask <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span> &lt;&lt; n):  <span class="comment"># 0到2^n-1</span></span><br><span class="line">        subset = []</span><br><span class="line">        current_sum = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> mask &amp; (<span class="number">1</span> &lt;&lt; i):  <span class="comment"># 检查第i位是否为1</span></span><br><span class="line">                subset.append(nums[i])</span><br><span class="line">                current_sum += nums[i]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> current_sum == target:</span><br><span class="line">            <span class="keyword">return</span> subset</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例</span></span><br><span class="line">numbers = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">10</span>]</span><br><span class="line">target_sum = <span class="number">16</span></span><br><span class="line">result = subset_sum_brute_force(numbers, target_sum)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;和为<span class="subst">&#123;target_sum&#125;</span>的子集：<span class="subst">&#123;result&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="3-排列组合问题"><a class="markdownIt-Anchor" href="#3-排列组合问题"></a> 3. 排列组合问题</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">generate_permutations</span>(<span class="params">arr</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;生成所有排列&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">from</span> itertools <span class="keyword">import</span> permutations</span><br><span class="line">    </span><br><span class="line">    result = []</span><br><span class="line">    <span class="keyword">for</span> perm <span class="keyword">in</span> permutations(arr):</span><br><span class="line">        result.append(<span class="built_in">list</span>(perm))</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_combinations</span>(<span class="params">arr, r</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;生成所有组合&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">from</span> itertools <span class="keyword">import</span> combinations</span><br><span class="line">    </span><br><span class="line">    result = []</span><br><span class="line">    <span class="keyword">for</span> comb <span class="keyword">in</span> combinations(arr, r):</span><br><span class="line">        result.append(<span class="built_in">list</span>(comb))</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例</span></span><br><span class="line">elements = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;所有排列：&quot;</span>, generate_permutations(elements))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;所有2元素组合：&quot;</span>, generate_combinations(elements, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="4-数论问题"><a class="markdownIt-Anchor" href="#4-数论问题"></a> 4. 数论问题</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">find_factors_brute_force</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;暴力找出一个数的所有因子&quot;&quot;&quot;</span></span><br><span class="line">    factors = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> n % i == <span class="number">0</span>:</span><br><span class="line">            factors.append(i)</span><br><span class="line">    <span class="keyword">return</span> factors</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_prime_brute_force</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;暴力判断素数&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n):</span><br><span class="line">        <span class="keyword">if</span> n % i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例</span></span><br><span class="line">number = <span class="number">36</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;number&#125;</span>的因子：<span class="subst">&#123;find_factors_brute_force(number)&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;number&#125;</span>是素数吗？<span class="subst">&#123;is_prime_brute_force(number)&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="5-图论问题"><a class="markdownIt-Anchor" href="#5-图论问题"></a> 5. 图论问题</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">shortest_path_brute_force</span>(<span class="params">graph, start, end</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;暴力寻找最短路径&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">from</span> itertools <span class="keyword">import</span> permutations</span><br><span class="line">    </span><br><span class="line">    nodes = <span class="built_in">list</span>(graph.keys())</span><br><span class="line">    <span class="keyword">if</span> start <span class="keyword">not</span> <span class="keyword">in</span> nodes <span class="keyword">or</span> end <span class="keyword">not</span> <span class="keyword">in</span> nodes:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 简化版：只考虑直接路径</span></span><br><span class="line">    min_distance = <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">    best_path = <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 尝试所有可能的中间节点</span></span><br><span class="line">    <span class="keyword">for</span> path_length <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nodes)):</span><br><span class="line">        <span class="keyword">for</span> path <span class="keyword">in</span> permutations([n <span class="keyword">for</span> n <span class="keyword">in</span> nodes <span class="keyword">if</span> n <span class="keyword">not</span> <span class="keyword">in</span> [start, end]], path_length):</span><br><span class="line">            current_path = [start] + <span class="built_in">list</span>(path) + [end]</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 计算路径长度</span></span><br><span class="line">            total_distance = <span class="number">0</span></span><br><span class="line">            valid_path = <span class="literal">True</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(current_path) - <span class="number">1</span>):</span><br><span class="line">                current = current_path[i]</span><br><span class="line">                next_node = current_path[i + <span class="number">1</span>]</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> next_node <span class="keyword">in</span> graph[current]:</span><br><span class="line">                    total_distance += graph[current][next_node]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    valid_path = <span class="literal">False</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> valid_path <span class="keyword">and</span> total_distance &lt; min_distance:</span><br><span class="line">                min_distance = total_distance</span><br><span class="line">                best_path = current_path</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> best_path, min_distance</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例图</span></span><br><span class="line">graph = &#123;</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span>: &#123;<span class="string">&#x27;B&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;C&#x27;</span>: <span class="number">2</span>&#125;,</span><br><span class="line">    <span class="string">&#x27;B&#x27;</span>: &#123;<span class="string">&#x27;A&#x27;</span>: <span class="number">5</span>, <span class="string">&#x27;C&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;D&#x27;</span>: <span class="number">3</span>&#125;,</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: &#123;<span class="string">&#x27;A&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;B&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;D&#x27;</span>: <span class="number">4</span>&#125;,</span><br><span class="line">    <span class="string">&#x27;D&#x27;</span>: &#123;<span class="string">&#x27;B&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;C&#x27;</span>: <span class="number">4</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">path, distance = shortest_path_brute_force(graph, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;D&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;最短路径：<span class="subst">&#123;path&#125;</span>，距离：<span class="subst">&#123;distance&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="优化技巧"><a class="markdownIt-Anchor" href="#优化技巧"></a> 优化技巧</h2>
+<h3 id="1-剪枝优化"><a class="markdownIt-Anchor" href="#1-剪枝优化"></a> 1. 剪枝优化</h3>
+<p>剪枝优化的核心思想是在搜索过程中提前排除不可能产生最优解的分支，从而减少搜索空间。</p>
+<h4 id="剪枝的数学原理"><a class="markdownIt-Anchor" href="#剪枝的数学原理"></a> 剪枝的数学原理</h4>
+<p>设原始搜索空间为 S，剪枝后的搜索空间为 S’，则：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">剪枝率 = (|S| - |S&#x27;|) / |S| × 100%</span><br></pre></td></tr></table></figure>
+<p>理想情况下，剪枝应该满足：</p>
+<ul>
+<li><strong>正确性</strong>：S’ 包含所有最优解</li>
+<li><strong>效率</strong>：|S’| ≪ |S|</li>
+</ul>
+<h4 id="剪枝条件设计"><a class="markdownIt-Anchor" href="#剪枝条件设计"></a> 剪枝条件设计</h4>
+<p>常用的剪枝条件包括：</p>
+<ol>
+<li>
+<p><strong>界限剪枝</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果 当前部分解 + 最优可能扩展 ≤ 已知最优解：</span><br><span class="line">    剪枝</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>约束剪枝</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果 当前部分解违反问题约束：</span><br><span class="line">    剪枝</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>对称性剪枝</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果 当前解与已搜索解对称：</span><br><span class="line">    剪枝</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="剪枝流程图"><a class="markdownIt-Anchor" href="#剪枝流程图"></a> 剪枝流程图</h4>
+<pre class="mermaid">flowchart TD
+    A[开始搜索] --> B[生成候选解]
+    B --> C{剪枝条件检查}
+    C -->|满足剪枝条件| D[剪枝：跳过该分支]
+    C -->|不满足剪枝条件| E[继续搜索该分支]
+    D --> F{还有其他分支?}
+    E --> G{找到解?}
+    G -->|是| H[记录解]
+    G -->|否| F
+    F -->|是| B
+    F -->|否| I[搜索结束]
+    H --> F</pre>
+<h4 id="剪枝条件设计-2"><a class="markdownIt-Anchor" href="#剪枝条件设计-2"></a> 剪枝条件设计</h4>
+<p>常用的剪枝条件包括：</p>
+<ol>
+<li>
+<p><strong>界限剪枝</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果 当前部分解 + 最优可能扩展 ≤ 已知最优解：</span><br><span class="line">    剪枝</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>约束剪枝</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果 当前部分解违反问题约束：</span><br><span class="line">    剪枝</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>对称性剪枝</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果 当前解与已搜索解对称：</span><br><span class="line">    剪枝</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">n_queens_brute_force</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;N皇后问题暴力求解（带剪枝）&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_valid</span>(<span class="params">board, row, col</span>):</span><br><span class="line">        <span class="comment"># 检查列</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(row):</span><br><span class="line">            <span class="keyword">if</span> board[i] == col:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 检查对角线</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(row):</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">abs</span>(board[i] - col) == <span class="built_in">abs</span>(i - row):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">solve</span>(<span class="params">board, row, solutions</span>):</span><br><span class="line">        <span class="keyword">if</span> row == n:</span><br><span class="line">            solutions.append(board.copy())</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> is_valid(board, row, col):</span><br><span class="line">                board[row] = col</span><br><span class="line">                solve(board, row + <span class="number">1</span>, solutions)</span><br><span class="line">    </span><br><span class="line">    solutions = []</span><br><span class="line">    solve([-<span class="number">1</span>] * n, <span class="number">0</span>, solutions)</span><br><span class="line">    <span class="keyword">return</span> solutions</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：4皇后问题</span></span><br><span class="line">solutions = n_queens_brute_force(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;4皇后问题有<span class="subst">&#123;<span class="built_in">len</span>(solutions)&#125;</span>个解&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="2-边界优化"><a class="markdownIt-Anchor" href="#2-边界优化"></a> 2. 边界优化</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">two_sum_brute_force</span>(<span class="params">nums, target</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;两数之和暴力求解（优化版）&quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">len</span>(nums)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 优化：提前排序，可以提前终止某些循环</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="comment"># 如果当前数字已经大于目标，可以跳过（假设都是正数）</span></span><br><span class="line">        <span class="keyword">if</span> nums[i] &gt; target:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i + <span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">if</span> nums[i] + nums[j] == target:</span><br><span class="line">                <span class="keyword">return</span> [i, j]</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 如果和已经超过目标，可以提前终止内层循环</span></span><br><span class="line">            <span class="keyword">if</span> nums[i] + nums[j] &gt; target:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-记忆化搜索"><a class="markdownIt-Anchor" href="#3-记忆化搜索"></a> 3. 记忆化搜索</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fibonacci_brute_force</span>(<span class="params">n, memo=&#123;&#125;</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;斐波那契数列暴力递归（带记忆化）&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n <span class="keyword">in</span> memo:</span><br><span class="line">        <span class="keyword">return</span> memo[n]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    </span><br><span class="line">    result = fibonacci_brute_force(n-<span class="number">1</span>, memo) + fibonacci_brute_force(n-<span class="number">2</span>, memo)</span><br><span class="line">    memo[n] = result</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;F(<span class="subst">&#123;i&#125;</span>) = <span class="subst">&#123;fibonacci_brute_force(i)&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="实际应用案例"><a class="markdownIt-Anchor" href="#实际应用案例"></a> 实际应用案例</h2>
+<h3 id="案例1数独求解器"><a class="markdownIt-Anchor" href="#案例1数独求解器"></a> 案例1：数独求解器</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">solve_sudoku_brute_force</span>(<span class="params">board</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;暴力求解数独&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">find_empty</span>(<span class="params">board</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">                <span class="keyword">if</span> board[i][j] == <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">return</span> i, j</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_valid</span>(<span class="params">board, num, pos</span>):</span><br><span class="line">        row, col = pos</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 检查行</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">            <span class="keyword">if</span> board[row][j] == num <span class="keyword">and</span> col != j:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 检查列</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">            <span class="keyword">if</span> board[i][col] == num <span class="keyword">and</span> row != i:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 检查3x3方格</span></span><br><span class="line">        box_x, box_y = col // <span class="number">3</span>, row // <span class="number">3</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(box_y * <span class="number">3</span>, box_y * <span class="number">3</span> + <span class="number">3</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(box_x * <span class="number">3</span>, box_x * <span class="number">3</span> + <span class="number">3</span>):</span><br><span class="line">                <span class="keyword">if</span> board[i][j] == num <span class="keyword">and</span> (i, j) != pos:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">solve</span>(<span class="params">board</span>):</span><br><span class="line">        find = find_empty(board)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> find:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        </span><br><span class="line">        row, col = find</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">            <span class="keyword">if</span> is_valid(board, num, (row, col)):</span><br><span class="line">                board[row][col] = num</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> solve(board):</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">                </span><br><span class="line">                board[row][col] = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> solve(board):</span><br><span class="line">        <span class="keyword">return</span> board</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例数独</span></span><br><span class="line">sudoku_board = [</span><br><span class="line">    [<span class="number">5</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">6</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">6</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">6</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">3</span>],</span><br><span class="line">    [<span class="number">4</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">    [<span class="number">7</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">6</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">6</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">0</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">5</span>],</span><br><span class="line">    [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">7</span>, <span class="number">9</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">solution = solve_sudoku_brute_force(sudoku_board)</span><br><span class="line"><span class="keyword">if</span> solution:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;数独解答：&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> solution:</span><br><span class="line">        <span class="built_in">print</span>(row)</span><br></pre></td></tr></table></figure>
+<h3 id="案例2旅行商问题"><a class="markdownIt-Anchor" href="#案例2旅行商问题"></a> 案例2：旅行商问题</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> itertools</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">traveling_salesman_brute_force</span>(<span class="params">distances</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;旅行商问题暴力求解&quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">len</span>(distances)</span><br><span class="line">    cities = <span class="built_in">list</span>(<span class="built_in">range</span>(n))</span><br><span class="line">    </span><br><span class="line">    min_distance = <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">    best_path = <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 固定起点为0，生成其他城市的所有排列</span></span><br><span class="line">    <span class="keyword">for</span> perm <span class="keyword">in</span> itertools.permutations(cities[<span class="number">1</span>:]):</span><br><span class="line">        path = [<span class="number">0</span>] + <span class="built_in">list</span>(perm) + [<span class="number">0</span>]  <span class="comment"># 回到起点</span></span><br><span class="line">        </span><br><span class="line">        total_distance = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(path) - <span class="number">1</span>):</span><br><span class="line">            total_distance += distances[path[i]][path[i + <span class="number">1</span>]]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> total_distance &lt; min_distance:</span><br><span class="line">            min_distance = total_distance</span><br><span class="line">            best_path = path</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> best_path, min_distance</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例：4个城市的距离矩阵</span></span><br><span class="line">distances = [</span><br><span class="line">    [<span class="number">0</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>],</span><br><span class="line">    [<span class="number">10</span>, <span class="number">0</span>, <span class="number">35</span>, <span class="number">25</span>],</span><br><span class="line">    [<span class="number">15</span>, <span class="number">35</span>, <span class="number">0</span>, <span class="number">30</span>],</span><br><span class="line">    [<span class="number">20</span>, <span class="number">25</span>, <span class="number">30</span>, <span class="number">0</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">path, distance = traveling_salesman_brute_force(distances)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;最短路径：<span class="subst">&#123;path&#125;</span>，总距离：<span class="subst">&#123;distance&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="性能分析"><a class="markdownIt-Anchor" href="#性能分析"></a> 性能分析</h2>
+<h3 id="时间复杂度分析-2"><a class="markdownIt-Anchor" href="#时间复杂度分析-2"></a> 时间复杂度分析</h3>
+<p>暴力枚举的时间复杂度取决于解空间的大小：</p>
+<h4 id="基本时间复杂度公式"><a class="markdownIt-Anchor" href="#基本时间复杂度公式"></a> 基本时间复杂度公式</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T(n) = O(解空间大小 × 单次验证时间)</span><br></pre></td></tr></table></figure>
+<p>对于不同类型的问题：</p>
+<ol>
+<li>
+<p><strong>排列问题</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T(n) = O(n! × f(n))</span><br></pre></td></tr></table></figure>
+<p>其中 n! 是排列数量，f(n) 是验证单个排列的时间复杂度</p>
+</li>
+<li>
+<p><strong>组合问题</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T(n,k) = O(C(n,k) × f(n,k)) = O(n!/(k!(n-k)!) × f(n,k))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>子集问题</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T(n) = O(2ⁿ × f(n))</span><br></pre></td></tr></table></figure>
+<p>每个元素都有选/不选两种可能，共 2ⁿ 个子集</p>
+</li>
+<li>
+<p><strong>序列问题</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T(n) = O(mⁿ × f(n))</span><br></pre></td></tr></table></figure>
+<p>其中 m 是每个位置的可能取值数量</p>
+</li>
+</ol>
+<h4 id="实际运行时间估算"><a class="markdownIt-Anchor" href="#实际运行时间估算"></a> 实际运行时间估算</h4>
+<p>假设计算机每秒可执行 10⁸ 次基本操作：</p>
+<table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>n=10</th>
+<th>n=15</th>
+<th>n=20</th>
+<th>n=25</th>
+<th>n=30</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2ⁿ</td>
+<td>10⁻⁶秒</td>
+<td>3×10⁻⁵秒</td>
+<td>10⁻³秒</td>
+<td>0.03秒</td>
+<td>1秒</td>
+</tr>
+<tr>
+<td>n!</td>
+<td>4×10⁻³秒</td>
+<td>1.3秒</td>
+<td>7.7年</td>
+<td>5×10⁸年</td>
+<td>8×10²⁰年</td>
+</tr>
+<tr>
+<td>n³</td>
+<td>10⁻⁶秒</td>
+<td>3×10⁻⁶秒</td>
+<td>8×10⁻⁶秒</td>
+<td>1.6×10⁻⁵秒</td>
+<td>2.7×10⁻⁵秒</td>
+</tr>
+</tbody>
+</table>
+<h3 id="空间复杂度分析"><a class="markdownIt-Anchor" href="#空间复杂度分析"></a> 空间复杂度分析</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S(n) = O(存储当前解所需空间 + 存储结果所需空间)</span><br></pre></td></tr></table></figure>
+<p>对于不同实现方式：</p>
+<ol>
+<li>
+<p><strong>迭代实现</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S(n) = O(1) 到 O(n)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>递归实现</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S(n) = O(递归深度 × 单层空间) = O(n)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>存储所有解</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S(n) = O(解的数量 × 单个解空间)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="性能优化效果分析"><a class="markdownIt-Anchor" href="#性能优化效果分析"></a> 性能优化效果分析</h3>
+<h4 id="剪枝优化效果"><a class="markdownIt-Anchor" href="#剪枝优化效果"></a> 剪枝优化效果</h4>
+<p>设剪枝率为 p，则优化后的时间复杂度为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T_optimized(n) = T(n) × (1 - p)</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<ul>
+<li>如果剪枝率 p = 0.9（90%的分支被剪掉）</li>
+<li>则时间减少为原来的 10%</li>
+</ul>
+<h4 id="记忆化优化效果"><a class="markdownIt-Anchor" href="#记忆化优化效果"></a> 记忆化优化效果</h4>
+<p>对于有重叠子问题的情况，设不同子问题数量为 D，总子问题调用次数为 T：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">优化前时间复杂度：O(T)</span><br><span class="line">优化后时间复杂度：O(D)</span><br><span class="line">优化倍数：T/D</span><br></pre></td></tr></table></figure>
+<p>斐波那契数列的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">F(n) 的递归调用次数：T(n) = 2ⁿ - 1</span><br><span class="line">不同子问题数量：D(n) = n</span><br><span class="line">优化倍数：(2ⁿ - 1)/n ≈ 2ⁿ/n</span><br></pre></td></tr></table></figure>
+<h3 id="实际性能测试数据"><a class="markdownIt-Anchor" href="#实际性能测试数据"></a> 实际性能测试数据</h3>
+<h4 id="不同算法的实际运行时间毫秒"><a class="markdownIt-Anchor" href="#不同算法的实际运行时间毫秒"></a> 不同算法的实际运行时间（毫秒）</h4>
+<table>
+<thead>
+<tr>
+<th>问题规模</th>
+<th>暴力枚举</th>
+<th>剪枝优化</th>
+<th>记忆化</th>
+<th>动态规划</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n=10</td>
+<td>1</td>
+<td>0.5</td>
+<td>0.1</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>n=15</td>
+<td>32</td>
+<td>8</td>
+<td>0.3</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td>n=20</td>
+<td>1024</td>
+<td>128</td>
+<td>0.8</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>n=25</td>
+<td>32768</td>
+<td>2048</td>
+<td>2.1</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>n=30</td>
+<td>1048576</td>
+<td>32768</td>
+<td>5.5</td>
+<td>0.8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="性能瓶颈分析"><a class="markdownIt-Anchor" href="#性能瓶颈分析"></a> 性能瓶颈分析</h3>
+<p>暴力枚举的主要性能瓶颈：</p>
+<ol>
+<li><strong>解空间爆炸</strong>：解空间随问题规模指数增长</li>
+<li><strong>重复计算</strong>：相同的子问题被重复计算</li>
+<li><strong>无效搜索</strong>：大量时间浪费在不可能产生解的分支上</li>
+</ol>
+<h4 id="性能提升策略"><a class="markdownIt-Anchor" href="#性能提升策略"></a> 性能提升策略</h4>
+<ol>
+<li>
+<p><strong>减少解空间</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通过约束条件减少：|S&#x27;| = |S| × r，其中 0 &lt; r &lt; 1</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>提前终止</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">平均搜索空间：|S|/2（如果只需要一个解）</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>并行化</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">理论加速比：T_sequential/T_parallel = T_sequential/(T_sequential/p) = p</span><br><span class="line">其中 p 是处理器数量</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="何时使用暴力枚举"><a class="markdownIt-Anchor" href="#何时使用暴力枚举"></a> 何时使用暴力枚举</h2>
+<h3 id="适用场景"><a class="markdownIt-Anchor" href="#适用场景"></a> 适用场景</h3>
+<ol>
+<li><strong>问题规模小</strong>：n ≤ 20通常可以考虑</li>
+<li><strong>需要精确解</strong>：不能接受近似解</li>
+<li><strong>算法复杂</strong>：其他算法难以实现</li>
+<li><strong>一次性计算</strong>：不需要重复计算</li>
+</ol>
+<h3 id="不适用场景"><a class="markdownIt-Anchor" href="#不适用场景"></a> 不适用场景</h3>
+<ol>
+<li><strong>大规模问题</strong>：n &gt; 30通常太慢</li>
+<li><strong>实时要求高</strong>：需要快速响应</li>
+<li><strong>资源受限</strong>：内存或计算能力有限</li>
+<li><strong>可接受近似解</strong>：有更好的启发式算法</li>
+</ol>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>暴力枚举虽然简单，但在算法学习中占有重要地位：</p>
+<ol>
+<li><strong>基础概念</strong>：帮助理解问题本质</li>
+<li><strong>基准对比</strong>：为优化算法提供对比基准</li>
+<li><strong>快速原型</strong>：快速验证想法</li>
+<li><strong>教学工具</strong>：适合算法教学和学习</li>
+</ol>
+<p>记住：<strong>先暴力，后优化</strong>是很好的编程习惯。先用暴力枚举确保正确性，再考虑性能优化。</p>
+<h2 id="练习题目"><a class="markdownIt-Anchor" href="#练习题目"></a> 练习题目</h2>
+<ol>
+<li>找出1-1000内的所有素数</li>
+<li>解决24点游戏</li>
+<li>实现简单的迷宫求解</li>
+<li>找出数组中所有和为0的三元组</li>
+<li>实现简单的八数码游戏求解器</li>
+</ol>
+<h2 id="数学公式总结"><a class="markdownIt-Anchor" href="#数学公式总结"></a> 数学公式总结</h2>
+<h3 id="基本计数原理"><a class="markdownIt-Anchor" href="#基本计数原理"></a> 基本计数原理</h3>
+<ol>
+<li>
+<p><strong>乘法原理</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果一个过程有 m 个步骤，第 i 个步骤有 nᵢ 种选择</span><br><span class="line">则总选择数 = n₁ × n₂ × ... × nₘ</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>加法原理</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果有 m 个互斥的选择，第 i 个选择有 nᵢ 种可能</span><br><span class="line">则总选择数 = n₁ + n₂ + ... + nₘ</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="排列组合公式"><a class="markdownIt-Anchor" href="#排列组合公式"></a> 排列组合公式</h3>
+<ol>
+<li>
+<p><strong>排列</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">P(n,k) = n!/(n-k)!  // 从n个元素中取k个的排列数</span><br><span class="line">P(n,n) = n!         // 全排列</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>组合</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C(n,k) = n!/(k!(n-k)!)  // 从n个元素中取k个的组合数</span><br><span class="line">C(n,k) = C(n,n-k)       // 对称性</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>二项式定理</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(x + y)ⁿ = Σ(k=0 to n) C(n,k) × x^(n-k) × y^k</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="复杂度分析公式"><a class="markdownIt-Anchor" href="#复杂度分析公式"></a> 复杂度分析公式</h3>
+<ol>
+<li>
+<p><strong>斯特林公式</strong>（大数阶乘近似）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n! ≈ √(2πn) × (n/e)ⁿ</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>时间复杂度比较</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">对于足够大的 n：</span><br><span class="line">1 &lt; log n &lt; n &lt; n log n &lt; n² &lt; 2ⁿ &lt; n!</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>算法效率评估</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">效率提升比 = T_old/T_new</span><br><span class="line">其中 T 表示算法运行时间</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="概率分析"><a class="markdownIt-Anchor" href="#概率分析"></a> 概率分析</h3>
+<ol>
+<li>
+<p><strong>成功概率</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P(成功) = 有利解数量/总解空间大小</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>期望尝试次数</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E(尝试次数) = 总解空间大小/有利解数量</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>最坏情况分析</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T_worst = O(解空间大小)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="算法复杂度对比图"><a class="markdownIt-Anchor" href="#算法复杂度对比图"></a> 算法复杂度对比图</h2>
+<pre class="mermaid">graph TD
+    A[算法复杂度对比] --> B[时间复杂度]
+    A --> C[空间复杂度]
+    
+    B --> D[暴力枚举]
+    B --> E[剪枝优化]
+    B --> F[记忆化搜索]
+    B --> G[动态规划]
+    
+    D --> D1[O(n!) / O(2ⁿ) / O(mⁿ)]
+    E --> E1[O(n! × p) / O(2ⁿ × p)]
+    F --> F1[O(子问题数量)]
+    G --> G1[O(n²) / O(n³)]
+    
+    C --> H[暴力枚举 O(n)]
+    C --> I[剪枝优化 O(n)]
+    C --> J[记忆化搜索 O(n)]
+    C --> K[动态规划 O(n²)]
+    
+    style D fill:#ffcccc
+    style E fill:#ffffcc
+    style F fill:#ccffcc
+    style G fill:#ccffff</pre>
+<h2 id="性能提升路径"><a class="markdownIt-Anchor" href="#性能提升路径"></a> 性能提升路径</h2>
+<pre class="mermaid">graph LR
+    A[暴力枚举] --> B{问题特征分析}
+    B -->|有重复子问题| C[记忆化搜索]
+    B -->|可以剪枝| D[剪枝优化]
+    B -->|最优子结构| E[动态规划]
+    B -->|贪心选择性质| F[贪心算法]
+    
+    C --> G[时间复杂度降低]
+    D --> G
+    E --> G
+    F --> G
+    
+    G --> H[算法优化完成]
+    
+    style A fill:#ffcccc
+    style H fill:#ccffcc</pre>
+<h2 id="选择算法的决策树"><a class="markdownIt-Anchor" href="#选择算法的决策树"></a> 选择算法的决策树</h2>
+<pre class="mermaid">graph TD
+    A[开始选择算法] --> B{问题规模 n}
+    B -->|n ≤ 10| C[暴力枚举]
+    B -->|10 < n ≤ 20| D{是否有重复子问题?}
+    B -->|n > 20| E{是否有特殊结构?}
+    
+    D -->|是| F[记忆化搜索]
+    D -->|否| G[剪枝优化]
+    
+    E -->|最优子结构| H[动态规划]
+    E -->|贪心选择| I[贪心算法]
+    E -->|无特殊结构| J[近似算法]
+    
+    C --> K[实现简单]
+    F --> L[避免重复计算]
+    G --> M[减少搜索空间]
+    H --> N[最优解保证]
+    I --> O[高效但需证明]
+    J --> P[可接受近似解]</pre>
+<p>通过这些练习，你将更好地掌握暴力枚举的思想和应用！记住，<strong>理解问题的数学本质是选择合适算法的关键</strong>。</p>
+
+    </div>
+    <footer class="article-footer">
+        <div class="sponsor-wrapper">
+  <div class="sponsor-button">
+    <div class="sponsor-icon rotate"></div>
+    <div class="sponsor-title">赞助</div>
+    <div class="sponsor-icon rotate"></div>
+  </div>
+  <div class="sponsor-tip">请作者喝杯咖啡吧</div>
+    <div class="sponsor-qr">
+        <div class="sponsor-qr-image-wrapper">
+          <img src="/images/%E8%B5%9E%E8%B5%8F.jpg" alt=微信 width="200" />
+          <p class="sponsor-qr-name">微信</p>
+        </div>
+    </div>
+</div>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/python%E7%AE%97%E6%B3%95/" rel="tag" title="python算法">python算法</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%A5%B3%E4%BB%86-%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A.png" data-sizes="auto" alt="歌曲排版" class="lazyload">
+        <a href="/2025/11/14/%E6%AD%8C%E6%9B%B2%E6%8E%92%E7%89%88/" aria-label="前一篇: 歌曲排版" title="前一篇: 歌曲排版"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            歌曲排版
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A-%E7%B2%89%E8%89%B2.png" data-sizes="auto" alt="hexo-文本填加扩展说明(自用)" class="lazyload">
+      <a href="/2025/11/12/hexo-%E6%96%87%E6%9C%AC%E5%A1%AB%E5%8A%A0%E6%89%A9%E5%B1%95%E8%AF%B4%E6%98%8E(%E8%87%AA%E7%94%A8)/" aria-label="后一篇: hexo-文本填加扩展说明(自用)"  title="后一篇: hexo-文本填加扩展说明(自用)"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          hexo-文本填加扩展说明(自用)
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2025
+      <span class="footer-info-sep rotate"></span>
+      飞制
+    </div>
+      <div>
+        <span class="icon-brush"></span>
+        3k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        00:16
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.</span> <span class="toc-text"> Python算法-暴力枚举</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.1.</span> <span class="toc-text"> 什么是暴力枚举？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 暴力枚举的数学原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 时间复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 暴力枚举流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E4%BC%AA%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 算法伪代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text"> 暴力枚举的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.3.</span> <span class="toc-text"> 常见应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1. 密码破解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AD%90%E9%9B%86%E5%92%8C%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 2. 子集和问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 3. 排列组合问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%95%B0%E8%AE%BA%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 4. 数论问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%9B%BE%E8%AE%BA%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 5. 图论问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">1.4.</span> <span class="toc-text"> 优化技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%89%AA%E6%9E%9D%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 1. 剪枝优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86"><span class="toc-number">1.4.1.1.</span> <span class="toc-text"> 剪枝的数学原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E6%9D%A1%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.4.1.2.</span> <span class="toc-text"> 剪枝条件设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.4.1.3.</span> <span class="toc-text"> 剪枝流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E6%9D%A1%E4%BB%B6%E8%AE%BE%E8%AE%A1-2"><span class="toc-number">1.4.1.4.</span> <span class="toc-text"> 剪枝条件设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BE%B9%E7%95%8C%E4%BC%98%E5%8C%96"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 2. 边界优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 3. 记忆化搜索</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.5.</span> <span class="toc-text"> 实际应用案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B1%E6%95%B0%E7%8B%AC%E6%B1%82%E8%A7%A3%E5%99%A8"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 案例1：数独求解器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B2%E6%97%85%E8%A1%8C%E5%95%86%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 案例2：旅行商问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">1.6.</span> <span class="toc-text"> 性能分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-2"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 时间复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%85%AC%E5%BC%8F"><span class="toc-number">1.6.1.1.</span> <span class="toc-text"> 基本时间复杂度公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E4%BC%B0%E7%AE%97"><span class="toc-number">1.6.1.2.</span> <span class="toc-text"> 实际运行时间估算</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 空间复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%95%88%E6%9E%9C%E5%88%86%E6%9E%90"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 性能优化效果分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D%E4%BC%98%E5%8C%96%E6%95%88%E6%9E%9C"><span class="toc-number">1.6.3.1.</span> <span class="toc-text"> 剪枝优化效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%B0%E5%BF%86%E5%8C%96%E4%BC%98%E5%8C%96%E6%95%88%E6%9E%9C"><span class="toc-number">1.6.3.2.</span> <span class="toc-text"> 记忆化优化效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 实际性能测试数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E9%99%85%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E6%AF%AB%E7%A7%92"><span class="toc-number">1.6.4.1.</span> <span class="toc-text"> 不同算法的实际运行时间（毫秒）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88%E5%88%86%E6%9E%90"><span class="toc-number">1.6.5.</span> <span class="toc-text"> 性能瓶颈分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87%E7%AD%96%E7%95%A5"><span class="toc-number">1.6.5.1.</span> <span class="toc-text"> 性能提升策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.7.</span> <span class="toc-text"> 何时使用暴力枚举</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 适用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 不适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.8.</span> <span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98%E7%9B%AE"><span class="toc-number">1.9.</span> <span class="toc-text"> 练习题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="toc-number">1.10.</span> <span class="toc-text"> 数学公式总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AE%A1%E6%95%B0%E5%8E%9F%E7%90%86"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 基本计数原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F"><span class="toc-number">1.10.2.</span> <span class="toc-text"> 排列组合公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%E5%85%AC%E5%BC%8F"><span class="toc-number">1.10.3.</span> <span class="toc-text"> 复杂度分析公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E7%8E%87%E5%88%86%E6%9E%90"><span class="toc-number">1.10.4.</span> <span class="toc-text"> 概率分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%AF%B9%E6%AF%94%E5%9B%BE"><span class="toc-number">1.11.</span> <span class="toc-text"> 算法复杂度对比图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87%E8%B7%AF%E5%BE%84"><span class="toc-number">1.12.</span> <span class="toc-text"> 性能提升路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95%E7%9A%84%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">1.13.</span> <span class="toc-text"> 选择算法的决策树</span></a></li></ol></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="飞制" class="lazyload">
+  <div class="sidebar-author-name">飞制</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social">
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/JEET-PR itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/1939864033?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png"/>
+        </div>
+      </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+      window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+    }
+  </script>
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/quicklink@3.0.1/dist/quicklink.umd.js" integrity="sha384-caMDqvgav&#x2F;HWdEYQU1QRRHMLleigpL1YHAG0m371DhzfL8rRzUyOb+bEHtwlmYjD" crossorigin="anonymous"></script>
+
+  <script data-pjax>
+    window.quicklink?.listen({
+      timeout: 3000,
+      priority: true,
+      ignores: []
+    });
+  </script>
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "飞制",
+          title: "python算法-暴力枚举",
+          url: "http://example.com/2025/11/12/python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/",
+          excerpt: "",
+          description: "",
+          stripContent: " Python算法-暴力枚举  什么是暴力枚举？ 暴力枚举（Brute Force）是一种简单直接的算法思想，通过尝试所有可能的解来找到问题的答案。虽然这种方法看起来很&amp;quot;笨&amp;quot;，但在很多情况下，特别是当问题规模不大时，暴力枚举是最可靠和最容易实现的解决方案。  暴力枚举的数学原理 暴力枚举的数学基础是穷举搜索（Exhaustive Search）。对于一个具有有限解空间的问题，暴力枚举会检查解空间中的每一个元素： 12解空间 S = &amp;#123;s₁, s₂, s₃, ...,",
+          date: "Wed Nov 12 2025 20:17:47 GMT+0800",
+          updated: "Sat Nov 15 2025 20:54:32 GMT+0800",
+          cover: "/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A-%E6%B3%A2%E5%A5%87%E9%85%B1.png",
+        };
+      </script>
+      
+<script src="https://npm.webcache.cn/mermaid@11.12.0/dist/mermaid.min.js" integrity="sha384-o+g&#x2F;BxPwhi0C3RK7oQBxQuNimeafQ3GE&#x2F;ST4iT2BxVI4Wzt60SH4pq9iXVYujjaS" crossorigin="anonymous" data-pjax></script>
+
+      
+<script src="https://npm.webcache.cn/dompurify@3.2.6/dist/purify.min.js" integrity="sha384-JEyTNhjM6R1ElGoJns4U2Ln4ofPcqzSsynQkmEc&#x2F;KGy6336qAZl70tDLufbkla+3" crossorigin="anonymous"></script>
+
+        
+<script src="https://npm.webcache.cn/svg-pan-zoom@3.6.2/dist/svg-pan-zoom.min.js" integrity="sha384-GGX4llYprEPGp9w5caepn95YWAEflHnsA5ewt+Y+cBEb95og5cXKllnWKSELlzbx" crossorigin="anonymous"></script>
+
+      <script data-pjax>
+        if (window.mermaid) {
+          // https://github.com/mermaid-js/mermaid/issues/1945
+          const elementCode = '.mermaid'
+          const processElements = (callback) => {
+            const els = _$$(elementCode);
+            if (!els.length) return Promise.resolve();
+            
+            return new Promise((resolve, reject) => {
+              try {
+                els.forEach(callback);
+                resolve();
+              } catch (error) {
+                reject(error);
+              }
+            });
+          };
+          const saveOriginalData = () => processElements(el => {
+            if (!el.getAttribute('data-original-code')) {
+              el.setAttribute('data-original-code', el.innerHTML);
+            }
+          });
+
+          const resetProcessed = () => processElements(el => {
+            const originalCode = el.getAttribute('data-original-code');
+            if (originalCode) {
+              el.removeAttribute('data-processed');
+              el.innerHTML = DOMPurify.sanitize(originalCode);
+            }
+          });
+          const loadMermaid = async (theme) => {
+            window.mermaid.initialize({theme, startOnLoad: false})
+            await window.mermaid.run({querySelector: elementCode, suppressErrors: true})
+            if (window.svgPanZoom) {
+              window.__panZoomList?.forEach(panZoom => {try {panZoom.destroy()} catch {}});
+              window.__panZoomList = [];
+              _$$('.mermaid > svg').forEach(el => {
+                const bbox = el.getBBox();
+                el.setAttribute('height', Math.max(bbox.height, 80));
+                window.__panZoomList.push(window.svgPanZoom(el, {
+                  zoomEnabled: true,
+                  controlIconsEnabled: true,
+                  fit: true,
+                  center: true
+                }));
+              });
+              if (window.__resizeMermaidSvg) {
+                window.removeEventListener('resize', window.__resizeMermaidSvg);
+              }
+              window.__resizeMermaidSvg = () => {
+                try {
+                  window.__panZoomList.forEach(panZoom => {
+                    panZoom.resize();
+                    panZoom.fit();
+                    panZoom.center();
+                  });
+                } catch {
+                  window.removeEventListener('resize', window.__resizeMermaidSvg);
+                  window.__panZoomList = [];
+                }
+              }
+              window.addEventListener('resize', window.__resizeMermaidSvg);
+            }
+          }
+          const initMermaid = async (theme) => {
+            try {
+              await saveOriginalData();
+              await resetProcessed();
+              await loadMermaid(theme);
+            } catch (error) {
+              console.error(error);
+            }
+          };
+          
+          document.body.addEventListener('dark-theme-set', () => initMermaid('dark'));
+          document.body.addEventListener('light-theme-set', () => initMermaid('default'));
+
+          const mode = localStorage.getItem('dark_mode');
+          if (mode === 'auto') {
+            const osMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            initMermaid(osMode ? 'dark' : 'default');
+          } else {
+            initMermaid(mode === 'true' ? 'dark' : 'default');
+          }
+        }
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+    
+<script src="https://npm.webcache.cn/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6&#x2F;1Nxveei" crossorigin="anonymous" defer data-pjax></script>
+
+    <script data-pjax>
+      window.MathJax = {"tex":{"tags":"ams","useLabelIds":true,"inlineMath":[["$","$"],["\\\\(","\\\\)"]],"displayMath":[["$$","$$"],["\\\\[","\\\\]"]],"processEscapes":true,"processEnvironments":true,"autoload":{"color":[],"colorv2":["color"]},"packages":{"[+]":["noerrors"]}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"],"ignoreHtmlClass":"tex2jax_ignore","processHtmlClass":"tex2jax_process"},"loader":{"load":["input/asciimath","[tex]/noerrors"]}};
+    </script>
+
+  
+<script src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js" integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr+h5UfruuRL&#x2F;aORyw+5+HZoU6e" crossorigin="anonymous"></script>
+
+    <script>
+      if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+        if (window.matchMedia('(max-width: 959px)').matches) {
+          const aplayer = _$('#aplayer');
+          if (aplayer) {
+            const aside = aplayer.parentNode?.parentNode;
+            if (aside?.tagName === 'ASIDE') {
+              aplayer.removeAttribute('data-aos');
+              aplayer.parentNode.removeChild(aplayer);
+              document.body.appendChild(aplayer);
+            }
+          }
+        }
+        // 先定义 isMobile（设备检测）
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+// 初始化 APlayer，修正 Hexo 模板渲染和逻辑错误
+const ap = new APlayer({
+  theme: "var(--color-link)",
+  container: document.getElementById('aplayer'),
+  audio: [{"name":"最初的记忆 DJ阿智Remix","artist":"DJ阿智","url":"/music/最初的记忆(DJ阿智Remix) - DJ阿智.mp3","cover":null},{"name":"Sacred Play Secret Place + 罗生门0.9x","artist":"我无记忆","url":"/music/Sacred Play Secret Place + 罗生门 (0.9x) - 我无记忆.mp3","cover":null},{"name":"特别的人","artist":"方大同","url":"/music/特别的人.mp3","cover":"http://p1.music.126.net/FtAvIYLF3qwqohQhwycVDg==/109951171386379124.jpg?param=300x300"},{"name":"Ciallo~之歌(给柚子厨的礼物)","artist":"八奈见杏菜","url":"/music/Ciallo~之歌(给柚子厨的礼物).mp3","cover":"http://p1.music.126.net/77NH13roeMK4rN90CvjgGw==/109951172179482203.jpg?param=300x300"},{"name":"Ice On My Baby","artist":"Yung Bleu","url":"/music/Ice On My Baby.mp3","cover":"http://p2.music.126.net/-xXaA1-q-eMUO2_Dhqf_Ng==/109951164610273338.jpg?param=300x300"},{"name":"唯一 - G.E.M.邓紫棋","artist":"G.E.M.邓紫棋","url":"/music/唯一 - G.E.M.邓紫棋.mp3","cover":"http://p1.music.126.net/aJWtwvdYRXvKUpAE2C6NoA==/109951168919708423.jpg?param=300x300"},{"name":"IF YOU - BIGBANG","artist":"BIGBANG","url":"/music/IF YOU - BIGBANG.mp3","cover":"http://p1.music.126.net/l-TigfvwoKBUP_LDL1XgIg==/7735064302387363.jpg?param=300x300"},{"name":"One Last Kiss - 宇多田ヒカル","artist":"宇多田ヒカル","url":"/music/One Last Kiss - 宇多田ヒカル.mp3","cover":"http://p1.music.126.net/l3G4LigZnOxFE9lB4bz_LQ==/109951165791860501.jpg?param=300x300"},{"name":"Dehors - JORDANN","artist":"JORDANN","url":"/music/Dehors - JORDANN.mp3","cover":"http://p2.music.126.net/7IM_iRaCe2Pe9TU7PMTdqQ==/109951169635570073.jpg?param=300x300"}], // 直接渲染配置的音乐列表（需确保配置非空）
+  fixed: isMobile ? true : false || false, // 直接取配置布尔值，避免 JSON 转字符串
+  autoplay: false || false, // 配置布尔值直接渲染
+  loop: 'all' || 'all', // 字符串直接渲染
+  order: 'list' || 'list',
+  preload: 'auto' || 'auto',
+  volume: 0.7 || 0.7, // 数值直接渲染
+  mutex: true || true, // 布尔值直接渲染
+  listFolded: true || false,
+  lrcType: 0 || 0,
+});
+      }
+    </script>
+
+
+
+
+<script src="/js/meteor-shower.js" defer></script>
+
+  </body>
+  </html>

@@ -1440,29 +1440,15 @@ button {
   max-width: 100%;
   margin: 0 auto;
 }
-.katex-display {
+mjx-container {
+  display: inline-grid;
   overflow-x: auto;
   overflow-y: hidden;
+  max-width: 100%;
+  min-width: auto !important;
 }
-.katex-display::-webkit-scrollbar {
+mjx-container::-webkit-scrollbar {
   display: none;
-}
-.katex {
-  width: calc(100% - 2px);
-}
-.katex-html {
-  padding: 4px;
-}
-.katex-html .base {
-  margin: 0 auto;
-}
-.katex-html:has(span.tag) {
-  display: flex !important;
-}
-.katex-display>.katex>.katex-html>.tag {
-  position: relative !important;
-  float: right;
-  margin-left: 0.25rem;
 }
 .post-link {
   position: absolute;

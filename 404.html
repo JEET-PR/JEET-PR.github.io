@@ -35,7 +35,6 @@
 <link rel="stylesheet" href="/css/custom.css">
 
   <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
-        <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css" integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz+YI" crossorigin="anonymous">
       <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
     
 <script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
@@ -221,13 +220,14 @@
   }
 </script>
 
-    
-<script src="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.js" integrity="sha384-MWNUH0WmtsYGhn2cbH6ELRCbf9LG3QDqCC+gqPB3IBNO35xjZK3Ejb6oONRpDbPg" crossorigin="anonymous" defer data-pjax></script>
 
     
-<script src="https://npm.webcache.cn/katex@0.16.24/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" defer onload="renderMathInElement(_$(&#39;article&#39;), {delimiters: [{left: &#39;$$&#39;, right: &#39;$$&#39;, display: true},{left: &#39;$&#39;, right: &#39;$&#39;, display: false}]});" data-pjax></script>
+<script src="https://npm.webcache.cn/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6&#x2F;1Nxveei" crossorigin="anonymous" defer data-pjax></script>
 
-  
+    <script data-pjax>
+      window.MathJax = {"tex":{"tags":"ams","useLabelIds":true,"inlineMath":[["$","$"],["\\\\(","\\\\)"]],"displayMath":[["$$","$$"],["\\\\[","\\\\]"]],"processEscapes":true,"processEnvironments":true,"autoload":{"color":[],"colorv2":["color"]},"packages":{"[+]":["noerrors"]}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"],"ignoreHtmlClass":"tex2jax_ignore","processHtmlClass":"tex2jax_process"},"loader":{"load":["input/asciimath","[tex]/noerrors"]}};
+    </script>
+
   
 <script src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js" integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr+h5UfruuRL&#x2F;aORyw+5+HZoU6e" crossorigin="anonymous"></script>
 
@@ -251,7 +251,7 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 const ap = new APlayer({
   theme: "var(--color-link)",
   container: document.getElementById('aplayer'),
-  audio: [{"name":"最初的记忆 DJ阿智Remix","artist":"DJ阿智","url":"/music/最初的记忆(DJ阿智Remix) - DJ阿智.mp3","cover":null},{"name":"Sacred Play Secret Place + 罗生门0.9x","artist":"我无记忆","url":"/music/Sacred Play Secret Place + 罗生门 (0.9x) - 我无记忆.mp3","cover":null},{"name":"特别的人","artist":"方大同","url":"/music/特别的人.mp3","cover":"http://p1.music.126.net/FtAvIYLF3qwqohQhwycVDg==/109951171386379124.jpg?param=300x300"},{"name":"Ciallo~之歌(给柚子厨的礼物)","artist":"八奈见杏菜","url":"/music/Ciallo~之歌(给柚子厨的礼物).mp3","cover":"http://p1.music.126.net/77NH13roeMK4rN90CvjgGw==/109951172179482203.jpg?param=300x300"},{"name":"Ice On My Baby","artist":"Yung Bleu","url":"/music/Ice On My Baby.mp3","cover":"http://p2.music.126.net/-xXaA1-q-eMUO2_Dhqf_Ng==/109951164610273338.jpg?param=300x300"}], // 直接渲染配置的音乐列表（需确保配置非空）
+  audio: [{"name":"最初的记忆 DJ阿智Remix","artist":"DJ阿智","url":"/music/最初的记忆(DJ阿智Remix) - DJ阿智.mp3","cover":null},{"name":"Sacred Play Secret Place + 罗生门0.9x","artist":"我无记忆","url":"/music/Sacred Play Secret Place + 罗生门 (0.9x) - 我无记忆.mp3","cover":null},{"name":"特别的人","artist":"方大同","url":"/music/特别的人.mp3","cover":"http://p1.music.126.net/FtAvIYLF3qwqohQhwycVDg==/109951171386379124.jpg?param=300x300"},{"name":"Ciallo~之歌(给柚子厨的礼物)","artist":"八奈见杏菜","url":"/music/Ciallo~之歌(给柚子厨的礼物).mp3","cover":"http://p1.music.126.net/77NH13roeMK4rN90CvjgGw==/109951172179482203.jpg?param=300x300"},{"name":"Ice On My Baby","artist":"Yung Bleu","url":"/music/Ice On My Baby.mp3","cover":"http://p2.music.126.net/-xXaA1-q-eMUO2_Dhqf_Ng==/109951164610273338.jpg?param=300x300"},{"name":"唯一 - G.E.M.邓紫棋","artist":"G.E.M.邓紫棋","url":"/music/唯一 - G.E.M.邓紫棋.mp3","cover":"http://p1.music.126.net/aJWtwvdYRXvKUpAE2C6NoA==/109951168919708423.jpg?param=300x300"},{"name":"IF YOU - BIGBANG","artist":"BIGBANG","url":"/music/IF YOU - BIGBANG.mp3","cover":"http://p1.music.126.net/l-TigfvwoKBUP_LDL1XgIg==/7735064302387363.jpg?param=300x300"},{"name":"One Last Kiss - 宇多田ヒカル","artist":"宇多田ヒカル","url":"/music/One Last Kiss - 宇多田ヒカル.mp3","cover":"http://p1.music.126.net/l3G4LigZnOxFE9lB4bz_LQ==/109951165791860501.jpg?param=300x300"},{"name":"Dehors - JORDANN","artist":"JORDANN","url":"/music/Dehors - JORDANN.mp3","cover":"http://p2.music.126.net/7IM_iRaCe2Pe9TU7PMTdqQ==/109951169635570073.jpg?param=300x300"}], // 直接渲染配置的音乐列表（需确保配置非空）
   fixed: isMobile ? true : false || false, // 直接取配置布尔值，避免 JSON 转字符串
   autoplay: false || false, // 配置布尔值直接渲染
   loop: 'all' || 'all', // 字符串直接渲染
