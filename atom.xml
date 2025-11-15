@@ -43,31 +43,6 @@
   </entry>
   
   <entry>
-    <title>hexo-文本填加扩展说明(自用)</title>
-    <link href="http://example.com/2025/11/12/hexo-%E6%96%87%E6%9C%AC%E5%A1%AB%E5%8A%A0%E6%89%A9%E5%B1%95%E8%AF%B4%E6%98%8E(%E8%87%AA%E7%94%A8)/"/>
-    <id>http://example.com/2025/11/12/hexo-%E6%96%87%E6%9C%AC%E5%A1%AB%E5%8A%A0%E6%89%A9%E5%B1%95%E8%AF%B4%E6%98%8E(%E8%87%AA%E7%94%A8)/</id>
-    <published>2025-11-12T12:17:47.000Z</published>
-    <updated>2025-11-15T13:12:36.151Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;标题字段&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#标题字段&quot;&gt;&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="扩展" scheme="http://example.com/categories/%E6%89%A9%E5%B1%95/"/>
-    
-    
-    <category term="HEXO" scheme="http://example.com/tags/HEXO/"/>
-    
-  </entry>
-  
-  <entry>
     <title>python算法-暴力枚举</title>
     <link href="http://example.com/2025/11/12/python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/"/>
     <id>http://example.com/2025/11/12/python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/</id>
@@ -90,6 +65,31 @@
     
     
     <category term="python算法" scheme="http://example.com/tags/python%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo-文本填加扩展说明(自用)</title>
+    <link href="http://example.com/2025/11/12/hexo-%E6%96%87%E6%9C%AC%E5%A1%AB%E5%8A%A0%E6%89%A9%E5%B1%95%E8%AF%B4%E6%98%8E(%E8%87%AA%E7%94%A8)/"/>
+    <id>http://example.com/2025/11/12/hexo-%E6%96%87%E6%9C%AC%E5%A1%AB%E5%8A%A0%E6%89%A9%E5%B1%95%E8%AF%B4%E6%98%8E(%E8%87%AA%E7%94%A8)/</id>
+    <published>2025-11-12T12:17:47.000Z</published>
+    <updated>2025-11-15T13:12:36.151Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;标题字段&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#标题字段&quot;&gt;&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="扩展" scheme="http://example.com/categories/%E6%89%A9%E5%B1%95/"/>
+    
+    
+    <category term="HEXO" scheme="http://example.com/tags/HEXO/"/>
     
   </entry>
   
