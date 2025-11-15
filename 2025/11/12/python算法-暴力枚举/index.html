@@ -25,7 +25,7 @@
 <meta property="og:description" content="Python算法-暴力枚举  什么是暴力枚举？ 暴力枚举（Brute Force）是一种简单直接的算法思想，通过尝试所有可能的解来找到问题的答案。虽然这种方法看起来很&quot;笨&quot;，但在很多情况下，特别是当问题规模不大时，暴力枚举是最可靠和最容易实现的解决方案。  暴力枚举的数学原理 暴力枚举的数学基础是穷举搜索（Exhaustive Search）。对于一个具有有限解空间的问题，暴">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-12T12:17:47.000Z">
-<meta property="article:modified_time" content="2025-11-15T12:54:32.137Z">
+<meta property="article:modified_time" content="2025-11-15T15:40:26.802Z">
 <meta property="article:author" content="飞制">
 <meta property="article:tag" content="python算法">
 <meta name="twitter:card" content="summary">
@@ -659,28 +659,18 @@
 </ol>
 <h2 id="算法复杂度对比图"><a class="markdownIt-Anchor" href="#算法复杂度对比图"></a> 算法复杂度对比图</h2>
 <pre class="mermaid">graph TD
-    A[算法复杂度对比] --> B[时间复杂度]
-    A --> C[空间复杂度]
-    
-    B --> D[暴力枚举]
-    B --> E[剪枝优化]
-    B --> F[记忆化搜索]
-    B --> G[动态规划]
-    
-    D --> D1[O(n!) / O(2ⁿ) / O(mⁿ)]
-    E --> E1[O(n! × p) / O(2ⁿ × p)]
-    F --> F1[O(子问题数量)]
-    G --> G1[O(n²) / O(n³)]
-    
-    C --> H[暴力枚举 O(n)]
-    C --> I[剪枝优化 O(n)]
-    C --> J[记忆化搜索 O(n)]
-    C --> K[动态规划 O(n²)]
-    
-    style D fill:#ffcccc
-    style E fill:#ffffcc
-    style F fill:#ccffcc
-    style G fill:#ccffff</pre>
+    A["算法复杂度对比"] --> B["时间复杂度"]
+    A --> C["空间复杂度"]
+
+    B --> D1["暴力枚举<br>O(n!) / O(2^n) / O(m^n)"]
+    B --> D2["剪枝优化<br>O(n! * p) / O(2^n * p)"]
+    B --> D3["记忆化搜索<br>O(子问题数量)"]
+    B --> D4["动态规划<br>O(n^2) / O(n^3)"]
+
+    C --> E1["暴力枚举<br>O(n)"]
+    C --> E2["剪枝优化<br>O(n)"]
+    C --> E3["记忆化搜索<br>O(n)"]
+    C --> E4["动态规划<br>O(n^2)"]</pre>
 <h2 id="性能提升路径"><a class="markdownIt-Anchor" href="#性能提升路径"></a> 性能提升路径</h2>
 <pre class="mermaid">graph LR
     A[暴力枚举] --> B{问题特征分析}
@@ -742,21 +732,13 @@
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
       <div class="article-nav-link-wrap left">
-          <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%A5%B3%E4%BB%86-%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A.png" data-sizes="auto" alt="歌曲排版" class="lazyload">
-        <a href="/2025/11/14/%E6%AD%8C%E6%9B%B2%E6%8E%92%E7%89%88/" aria-label="前一篇: 歌曲排版" title="前一篇: 歌曲排版"></a>
+          <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A-%E7%B2%89%E8%89%B2.png" data-sizes="auto" alt="hexo-文本填加扩展说明(自用)" class="lazyload">
+        <a href="/2025/11/12/hexo-%E6%96%87%E6%9C%AC%E5%A1%AB%E5%8A%A0%E6%89%A9%E5%B1%95%E8%AF%B4%E6%98%8E(%E8%87%AA%E7%94%A8)/" aria-label="前一篇: hexo-文本填加扩展说明(自用)" title="前一篇: hexo-文本填加扩展说明(自用)"></a>
         <div class="article-nav-caption">前一篇</div>
         <h3 class="article-nav-title">
-            歌曲排版
+            hexo-文本填加扩展说明(自用)
         </h3>
       </div>
-    <div class="article-nav-link-wrap right">
-        <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A-%E7%B2%89%E8%89%B2.png" data-sizes="auto" alt="hexo-文本填加扩展说明(自用)" class="lazyload">
-      <a href="/2025/11/12/hexo-%E6%96%87%E6%9C%AC%E5%A1%AB%E5%8A%A0%E6%89%A9%E5%B1%95%E8%AF%B4%E6%98%8E(%E8%87%AA%E7%94%A8)/" aria-label="后一篇: hexo-文本填加扩展说明(自用)"  title="后一篇: hexo-文本填加扩展说明(自用)"></a>
-      <div class="article-nav-caption">后一篇</div>
-      <h3 class="article-nav-title">
-          hexo-文本填加扩展说明(自用)
-      </h3>
-    </div>
   </nav>
 
 </article>
@@ -975,7 +957,7 @@
           description: "",
           stripContent: " Python算法-暴力枚举  什么是暴力枚举？ 暴力枚举（Brute Force）是一种简单直接的算法思想，通过尝试所有可能的解来找到问题的答案。虽然这种方法看起来很&amp;quot;笨&amp;quot;，但在很多情况下，特别是当问题规模不大时，暴力枚举是最可靠和最容易实现的解决方案。  暴力枚举的数学原理 暴力枚举的数学基础是穷举搜索（Exhaustive Search）。对于一个具有有限解空间的问题，暴力枚举会检查解空间中的每一个元素： 12解空间 S = &amp;#123;s₁, s₂, s₃, ...,",
           date: "Wed Nov 12 2025 20:17:47 GMT+0800",
-          updated: "Sat Nov 15 2025 20:54:32 GMT+0800",
+          updated: "Sat Nov 15 2025 23:40:26 GMT+0800",
           cover: "/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A-%E6%B3%A2%E5%A5%87%E9%85%B1.png",
         };
       </script>
