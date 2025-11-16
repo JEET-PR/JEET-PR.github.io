@@ -106,6 +106,245 @@
 }
 
 /* ==============================================
+   浅粉色主题背景优化
+   ============================================== */
+
+/* 日间模式浅粉色背景 */
+[data-theme="light"] {
+  /* 主要背景色 */
+  --color-background: #ffe4e1; /* 浅粉色 */
+  --color-wrap: #fff8ff; /* 稍微更白的粉色 */
+  --color-header-background: rgba(255, 255, 255, 0.95); /* 半透明白色头部 */
+  --color-footer-background: #fff8ff; /* 页脚背景 */
+  --color-mobile-nav-background: #fff8ff; /* 移动端导航背景 */
+  
+  /* 文章卡片背景 */
+  .post-card,
+  .post,
+  .card {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 182, 193, 0.3) !important; /* 浅粉色边框 */
+  }
+  
+  /* 侧边栏背景 */
+  .sidebar {
+    background: rgba(255, 248, 255, 0.9) !important;
+  }
+  
+  /* 按钮和链接的悬停效果 */
+  a:hover {
+    color: #ff69b4 !important; /* 热粉色 */
+  }
+  
+  /* 输入框样式 */
+  input, textarea {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(255, 182, 193, 0.5) !important;
+  }
+  
+  /* 代码块背景 */
+  .highlight,
+  code {
+    background: rgba(255, 240, 245, 0.8) !important; /* 更浅的粉色 */
+  }
+}
+
+/* 夜间模式星空背景 */
+[data-theme="dark"] {
+  /* 星空背景 */
+  --color-background: #0a0e27; /* 深蓝色夜空 */
+  --color-wrap: #0f1433; /* 稍亮的深蓝色 */
+  --color-header-background: rgba(15, 20, 51, 0.95); /* 半透明深蓝色头部 */
+  --color-footer-background: #0f1433; /* 页脚背景 */
+  --color-mobile-nav-background: #0f1433; /* 移动端导航背景 */
+  
+  /* 添加一些粉色元素到夜间模式 */
+  --color-link: #ff69b4; /* 粉色链接 */
+  
+  /* 夜间模式下的粉色强调 */
+  .post-card:hover,
+  .post:hover {
+    border-color: rgba(255, 105, 180, 0.3) !important;
+  }
+  
+  /* 星空背景效果 */
+  body {
+    background: linear-gradient(to bottom, #0a0e27 0%, #1a1f3a 50%, #0f1433 100%) !important;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  /* 星空背景伪元素 */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      /* 大星星 */
+      radial-gradient(2px 2px at 20px 30px, white, transparent),
+      radial-gradient(2px 2px at 40px 70px, white, transparent),
+      radial-gradient(3px 3px at 50px 50px, rgba(255, 255, 255, 0.8), transparent),
+      radial-gradient(2px 2px at 80px 10px, white, transparent),
+      radial-gradient(3px 3px at 130px 80px, rgba(255, 255, 255, 0.9), transparent),
+      radial-gradient(2px 2px at 110px 120px, white, transparent),
+      /* 中等星星 */
+      radial-gradient(1.5px 1.5px at 25px 15px, rgba(255, 255, 255, 0.7), transparent),
+      radial-gradient(1.5px 1.5px at 65px 45px, rgba(255, 255, 255, 0.8), transparent),
+      radial-gradient(1.5px 1.5px at 95px 25px, rgba(255, 255, 255, 0.6), transparent),
+      radial-gradient(1.5px 1.5px at 145px 95px, rgba(255, 255, 255, 0.9), transparent),
+      /* 小星星 */
+      radial-gradient(1px 1px at 35px 85px, rgba(255, 255, 255, 0.6), transparent),
+      radial-gradient(1px 1px at 75px 35px, rgba(255, 255, 255, 0.7), transparent),
+      radial-gradient(1px 1px at 125px 65px, rgba(255, 255, 255, 0.8), transparent),
+      radial-gradient(1px 1px at 165px 115px, rgba(255, 255, 255, 0.4), transparent),
+      /* 微小星星 */
+      radial-gradient(0.5px 0.5px at 15px 95px, rgba(255, 255, 255, 0.4), transparent),
+      radial-gradient(0.5px 0.5px at 55px 55px, rgba(255, 255, 255, 0.5), transparent),
+      radial-gradient(0.5px 0.5px at 85px 75px, rgba(255, 255, 255, 0.6), transparent),
+      radial-gradient(0.5px 0.5px at 115px 25px, rgba(255, 255, 255, 0.4), transparent),
+      radial-gradient(0.5px 0.5px at 155px 105px, rgba(255, 255, 255, 0.5), transparent),
+      /* 彩色星星 */
+      radial-gradient(2px 2px at 30px 60px, rgba(255, 182, 193, 0.8), transparent),
+      radial-gradient(2px 2px at 70px 90px, rgba(173, 216, 230, 0.8), transparent),
+      radial-gradient(1.5px 1.5px at 100px 40px, rgba(255, 255, 224, 0.8), transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: stars 120s linear infinite, twinkle 3s ease-in-out infinite;
+    z-index: -1;
+    opacity: 0.8;
+  }
+  
+  /* 星座连线效果 */
+  .constellation-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  
+  .constellation-lines::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.1) 49%, rgba(255, 255, 255, 0.1) 51%, transparent 52%),
+      linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.1) 49%, rgba(255, 255, 255, 0.1) 51%, transparent 52%);
+    background-size: 300px 300px;
+    animation: constellation 60s linear infinite;
+  }
+  
+  /* 星座动画 */
+  @keyframes constellation {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+  
+  /* 星星闪烁动画 */
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.4; }
+  }
+  
+  /* 流星效果 */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    background-size: 300px 300px;
+    animation: meteor 15s linear infinite;
+    z-index: -1;
+    opacity: 0;
+  }
+  
+  /* 星星闪烁动画 */
+  @keyframes stars {
+    0% { 
+      background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+      transform: translateX(0);
+    }
+    100% { 
+      background-position: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px;
+      transform: translateX(-200px);
+    }
+  }
+  
+  /* 流星动画 */
+  @keyframes meteor {
+    0% {
+      transform: translateX(-300px) translateY(-300px) rotate(45deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(calc(100vw + 300px)) translateY(calc(100vh + 300px)) rotate(45deg);
+      opacity: 0;
+    }
+  }
+  
+  /* 随机流星效果 */
+  body::after {
+    animation: meteor 15s linear infinite;
+    animation-delay: 0s, 5s, 10s;
+  }
+  
+  /* 文章卡片半透明效果 */
+  .post-card,
+  .post,
+  .card {
+    background: rgba(15, 20, 51, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 105, 180, 0.2) !important; /* 粉色边框 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* 侧边栏半透明效果 */
+  .sidebar {
+    background: rgba(15, 20, 51, 0.9) !important;
+    backdrop-filter: blur(10px);
+  }
+  
+  /* 时钟容器星空适配 */
+  .digital-clock-container {
+    background: rgba(15, 20, 51, 0.6) !important;
+    border: 1px solid rgba(255, 105, 180, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(255, 105, 180, 0.1) !important;
+  }
+  
+  /* 代码块星空适配 */
+  .highlight,
+  code {
+    background: rgba(20, 25, 60, 0.8) !important;
+    border: 1px solid rgba(255, 105, 180, 0.2) !important;
+  }
+  
+  /* 输入框星空适配 */
+  input, textarea {
+    background: rgba(15, 20, 51, 0.8) !important;
+    border-color: rgba(255, 105, 180, 0.3) !important;
+    color: #ffffff !important;
+  }
+}
+
+/* ==============================================
    个人卡片渐变色效果
    ============================================== */
 
@@ -199,6 +438,663 @@
   50% {
     background-position: 100% 50%;
   }
+}
+
+/* ==============================================
+   数字时钟样式 - 侧边栏版本
+   ============================================== */
+
+/* 侧边栏时钟容器 */
+.sidebar-clock-container {
+  margin: 15px 10px;
+  padding: 0;
+}
+
+/* 时钟容器 - 侧边栏适配 */
+.digital-clock-container {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: auto;
+  margin: 0;
+  padding: 12px 15px;
+  border-radius: 12px;
+  background: rgba(10, 14, 39, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(138, 43, 226, 0.1);
+  transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 浅色主题下的时钟容器背景 */
+[data-theme="light"] .digital-clock-container {
+  background: linear-gradient(135deg, 
+    rgba(255, 248, 255, 0.95) 0%, 
+    rgba(255, 240, 245, 0.9) 100%) !important;
+  border: 1px solid rgba(255, 182, 193, 0.4) !important;
+  box-shadow: 
+    0 4px 16px rgba(255, 182, 193, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 深色主题下的时钟容器背景 */
+[data-theme="dark"] .digital-clock-container {
+  background: rgba(10, 14, 39, 0.8) !important;
+  border: 1px solid rgba(255, 182, 193, 0.3) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(138, 43, 226, 0.1) !important;
+}
+
+.digital-clock-container:hover {
+  transform: translateY(-1px);
+}
+
+/* 浅色主题下的悬停效果 */
+[data-theme="light"] .digital-clock-container:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 248, 255, 1) 0%, 
+    rgba(255, 240, 245, 0.95) 100%) !important;
+  box-shadow: 
+    0 6px 20px rgba(255, 182, 193, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 深色主题下的悬停效果 */
+[data-theme="dark"] .digital-clock-container:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 25px rgba(255, 182, 193, 0.2) !important;
+}
+
+/* 时钟主体 */
+.digital-clock {
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  user-select: none;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+/* 重置默认颜色，让主题样式生效 */
+.sidebar-clock-container .digital-clock {
+  color: inherit !important;
+}
+
+.sidebar-clock-container .digital-clock__time {
+  color: inherit !important;
+}
+
+.sidebar-clock-container .digital-clock__date {
+  color: inherit !important;
+}
+
+.sidebar-clock-container .digital-clock__week {
+  color: inherit !important;
+}
+
+.digital-clock__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 时间显示 - 侧边栏适配 */
+.digital-clock__time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.digital-clock__hours,
+.digital-clock__minutes,
+.digital-clock__seconds {
+  display: inline-block;
+  min-width: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.digital-clock__separator {
+  margin: 0 1px;
+  font-weight: normal;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  animation: separator-blink 1s ease-in-out infinite;
+}
+
+@keyframes separator-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.digital-clock__period {
+  margin-left: 4px;
+  font-size: 12px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 日期显示 - 侧边栏适配 */
+.digital-clock__date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  opacity: 0.8;
+  gap: 1px;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.digital-clock__year,
+.digital-clock__month,
+.digital-clock__day {
+  display: inline-block;
+  min-width: 18px;
+  text-align: center;
+}
+
+.digital-clock__date-separator {
+  margin: 0 1px;
+  opacity: 0.6;
+}
+
+/* 星期显示 - 侧边栏适配 */
+.digital-clock__week {
+  font-size: 10px;
+  opacity: 0.7;
+  margin-top: 2px;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.digital-clock__week-text {
+  padding: 1px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* 深色主题 */
+.digital-clock--dark {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.digital-clock--dark .digital-clock__period {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff !important;
+}
+
+.digital-clock--dark .digital-clock__week-text {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff !important;
+}
+
+/* 深色主题下的侧边栏时钟文字颜色 */
+[data-theme="dark"] .sidebar-clock-container .digital-clock-container {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .sidebar-clock-container .digital-clock__time {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .sidebar-clock-container .digital-clock__date {
+  color: #dddddd !important;
+}
+
+[data-theme="dark"] .sidebar-clock-container .digital-clock__week {
+  color: #cccccc !important;
+}
+
+[data-theme="dark"] .sidebar-clock-container .digital-clock__period {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .sidebar-clock-container .digital-clock__week-text {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff !important;
+}
+
+/* 浅色主题 */
+.digital-clock--light {
+  color: #333333 !important;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.digital-clock--light .digital-clock__time {
+  color: #333333 !important;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.digital-clock--light .digital-clock__date {
+  color: #555555 !important;
+}
+
+.digital-clock--light .digital-clock__week {
+  color: #666666 !important;
+}
+
+.digital-clock--light .digital-clock__period {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333333 !important;
+}
+
+.digital-clock--light .digital-clock__week-text {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333333 !important;
+}
+
+/* 浅色主题下的侧边栏时钟文字颜色 */
+[data-theme="light"] .sidebar-clock-container .digital-clock-container {
+  color: #333333 !important;
+}
+
+[data-theme="light"] .sidebar-clock-container .digital-clock__time {
+  color: #333333 !important;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .sidebar-clock-container .digital-clock__date {
+  color: #555555 !important;
+}
+
+[data-theme="light"] .sidebar-clock-container .digital-clock__week {
+  color: #666666 !important;
+}
+
+[data-theme="light"] .sidebar-clock-container .digital-clock__period {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333333 !important;
+}
+
+[data-theme="light"] .sidebar-clock-container .digital-clock__week-text {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333333 !important;
+}
+
+/* 数字变化动画 */
+.digital-clock__hours,
+.digital-clock__minutes,
+.digital-clock__seconds {
+  transition: transform 0.2s ease;
+}
+
+.digital-clock__hours:hover,
+.digital-clock__minutes:hover,
+.digital-clock__seconds:hover {
+  transform: scale(1.1);
+}
+
+/* 主题切换按钮 */
+.digital-clock-theme-toggle {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.digital-clock-theme-toggle:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 主题切换按钮在侧边栏中的位置调整 */
+.sidebar-clock-container .digital-clock-theme-toggle {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.sidebar-clock-container .digital-clock-theme-toggle:hover {
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 响应式设计 - 侧边栏版本 */
+@media (max-width: 768px) {
+  .digital-clock__time {
+    font-size: 20px;
+  }
+  
+  .digital-clock__date {
+    font-size: 12px;
+  }
+  
+  .digital-clock__week {
+    font-size: 10px;
+  }
+  
+  .digital-clock__hours,
+  .digital-clock__minutes,
+  .digital-clock__seconds {
+    min-width: 25px;
+  }
+  
+  .sidebar-clock-container {
+    margin: 10px 5px;
+  }
+  
+  .digital-clock-container {
+    padding: 10px 12px;
+  }
+}
+
+/* 侧边栏时钟特殊效果 */
+.sidebar-clock-container .digital-clock-container {
+  /* 与侧边栏其他元素保持一致的圆角 */
+  border-radius: 8px;
+  
+  /* 默认深色背景（会被主题样式覆盖） */
+  background: linear-gradient(135deg, 
+    rgba(10, 14, 39, 0.9) 0%, 
+    rgba(15, 20, 51, 0.8) 100%);
+  
+  /* 匹配侧边栏的间距 */
+  margin: 0;
+}
+
+/* 浅色主题下的侧边栏时钟 */
+[data-theme="light"] .sidebar-clock-container .digital-clock-container {
+  background: linear-gradient(135deg, 
+    rgba(255, 248, 255, 0.95) 0%, 
+    rgba(255, 240, 245, 0.9) 100%) !important;
+  border: 1px solid rgba(255, 182, 193, 0.4) !important;
+  box-shadow: 
+    0 4px 16px rgba(255, 182, 193, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 强制设置浅色主题下所有时钟元素的文字颜色 */
+[data-theme="light"] .sidebar-clock-container .digital-clock,
+[data-theme="light"] .sidebar-clock-container .digital-clock *,
+[data-theme="light"] .sidebar-clock-container .digital-clock__time,
+[data-theme="light"] .sidebar-clock-container .digital-clock__date,
+[data-theme="light"] .sidebar-clock-container .digital-clock__week,
+[data-theme="light"] .sidebar-clock-container .digital-clock__hours,
+[data-theme="light"] .sidebar-clock-container .digital-clock__minutes,
+[data-theme="light"] .sidebar-clock-container .digital-clock__seconds,
+[data-theme="light"] .sidebar-clock-container .digital-clock__year,
+[data-theme="light"] .sidebar-clock-container .digital-clock__month,
+[data-theme="light"] .sidebar-clock-container .digital-clock__day,
+[data-theme="light"] .sidebar-clock-container .digital-clock__period,
+[data-theme="light"] .sidebar-clock-container .digital-clock__week-text {
+  color: #333333 !important;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 超高优先级强制设置浅色主题背景 */
+html[data-theme="light"] body .sidebar-clock-container .digital-clock-container,
+html[data-theme="light"] .sidebar-clock-container .digital-clock-container,
+[data-theme="light"] .sidebar-clock-container .digital-clock-container {
+  background: linear-gradient(135deg, 
+    rgba(255, 248, 255, 0.95) 0%, 
+    rgba(255, 240, 245, 0.9) 100%) !important;
+  background-color: rgba(255, 248, 255, 0.95) !important;
+  border: 1px solid rgba(255, 182, 193, 0.4) !important;
+}
+
+/* 深色主题下的侧边栏时钟 */
+[data-theme="dark"] .sidebar-clock-container .digital-clock-container {
+  background: linear-gradient(135deg, 
+    rgba(10, 14, 39, 0.95) 0%, 
+    rgba(15, 20, 51, 0.9) 100%) !important;
+  border: 1px solid rgba(255, 182, 193, 0.3) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(138, 43, 226, 0.15) !important;
+}
+
+/* 强制设置深色主题下所有时钟元素的文字颜色 */
+[data-theme="dark"] .sidebar-clock-container .digital-clock,
+[data-theme="dark"] .sidebar-clock-container .digital-clock *,
+[data-theme="dark"] .sidebar-clock-container .digital-clock__time,
+[data-theme="dark"] .sidebar-clock-container .digital-clock__date,
+[data-theme="dark"] .sidebar-clock-container .digital-clock__week,
+[data-theme="dark"] .sidebar-clock-container .digital-clock__hours,
+[data-theme="dark"] .sidebar-clock-container .digital-clock__minutes,
+[data-theme="dark"] .sidebar-clock-container .digital-clock__seconds,
+[data-theme="dark"] .sidebar-clock-container .digital-clock__year,
+[data-theme="dark"] .sidebar-clock-container .digital-clock__month,
+[data-theme="dark"] .sidebar-clock-container .digital-clock__day,
+[data-theme="dark"] .sidebar-clock-container .digital-clock__period,
+[data-theme="dark"] .sidebar-clock-container .digital-clock__week-text {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 重置默认颜色，让主题样式生效 */
+.sidebar-clock-container .digital-clock {
+  color: inherit !important;
+}
+
+.sidebar-clock-container .digital-clock__time {
+  color: inherit !important;
+}
+
+.sidebar-clock-container .digital-clock__date {
+  color: inherit !important;
+}
+
+.sidebar-clock-container .digital-clock__week {
+  color: inherit !important;
+}
+
+/* 强制白间模式时钟背景样式 - 最高优先级 */
+html[data-theme="light"] #sidebar-clock,
+html[data-theme="light"] body #sidebar-clock,
+html[data-theme="light"] .sidebar #sidebar-clock,
+[data-theme="light"] #sidebar-clock,
+[data-theme="light"] body #sidebar-clock,
+[data-theme="light"] .sidebar #sidebar-clock {
+  background: linear-gradient(135deg, rgba(255, 248, 255, 0.95) 0%, rgba(255, 240, 245, 0.9) 100%) !important;
+  background-color: rgba(255, 248, 255, 0.95) !important;
+  border: 1px solid rgba(255, 182, 193, 0.4) !important;
+  color: #333333 !important;
+}
+
+/* 强制白间模式时钟文字颜色 */
+html[data-theme="light"] #sidebar-clock *,
+html[data-theme="light"] body #sidebar-clock *,
+html[data-theme="light"] .sidebar #sidebar-clock *,
+[data-theme="light"] #sidebar-clock *,
+[data-theme="light"] body #sidebar-clock *,
+[data-theme="light"] .sidebar #sidebar-clock * {
+  color: #333333 !important;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 强制夜间模式时钟背景样式 */
+html[data-theme="dark"] #sidebar-clock,
+html[data-theme="dark"] body #sidebar-clock,
+html[data-theme="dark"] .sidebar #sidebar-clock,
+[data-theme="dark"] #sidebar-clock,
+[data-theme="dark"] body #sidebar-clock,
+[data-theme="dark"] .sidebar #sidebar-clock {
+  background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 20, 51, 0.9) 100%) !important;
+  background-color: rgba(10, 14, 39, 0.95) !important;
+  border: 1px solid rgba(255, 182, 193, 0.3) !important;
+  color: #ffffff !important;
+}
+
+/* 强制夜间模式时钟文字颜色 */
+html[data-theme="dark"] #sidebar-clock *,
+html[data-theme="dark"] body #sidebar-clock *,
+html[data-theme="dark"] .sidebar #sidebar-clock *,
+[data-theme="dark"] #sidebar-clock *,
+[data-theme="dark"] body #sidebar-clock *,
+[data-theme="dark"] .sidebar #sidebar-clock * {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3) !important;
+}
+  border: 1px solid rgba(255, 182, 193, 0.4);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(138, 43, 226, 0.15);
+}
+
+/* 时钟在侧边栏中的悬停效果 */
+.sidebar-clock-container .digital-clock-container:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* 浅色主题下的悬停效果 */
+[data-theme="light"] .sidebar-clock-container .digital-clock-container:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 248, 255, 1) 0%, 
+    rgba(255, 240, 245, 0.95) 100%) !important;
+  box-shadow: 
+    0 6px 20px rgba(255, 182, 193, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 深色主题下的悬停效果 */
+[data-theme="dark"] .sidebar-clock-container .digital-clock-container:hover {
+  background: linear-gradient(135deg, 
+    rgba(10, 14, 39, 1) 0%, 
+    rgba(15, 20, 51, 0.95) 100%) !important;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 25px rgba(138, 43, 226, 0.2) !important;
+}
+
+/* 确保时钟文字颜色正确应用 */
+.sidebar-clock-container .digital-clock__time,
+.sidebar-clock-container .digital-clock__date,
+.sidebar-clock-container .digital-clock__week {
+  transition: color 0.3s ease;
+}
+
+/* 主题切换时的文字颜色过渡 */
+[data-theme="light"] .sidebar-clock-container .digital-clock * {
+  color: inherit !important;
+}
+
+[data-theme="dark"] .sidebar-clock-container .digital-clock * {
+  color: inherit !important;
+}
+
+/* 主题切换按钮在侧边栏中的位置调整 */
+.sidebar-clock-container .digital-clock-theme-toggle {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.sidebar-clock-container .digital-clock-theme-toggle:hover {
+  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 480px) {
+  .digital-clock__time {
+    font-size: 14px;
+  }
+  
+  .digital-clock__date {
+    font-size: 10px;
+  }
+  
+  .digital-clock__week {
+    font-size: 8px;
+  }
+  
+  .digital-clock__hours,
+  .digital-clock__minutes,
+  .digital-clock__seconds {
+    min-width: 16px;
+  }
+  
+  .digital-clock-container {
+    padding: 8px 10px;
+  }
+}
+
+/* 特殊效果：霓虹灯效果 */
+.digital-clock--neon .digital-clock__time {
+  animation: neon-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes neon-glow {
+  from {
+    text-shadow: 
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #e60073,
+      0 0 40px #e60073,
+      0 0 50px #e60073,
+      0 0 60px #e60073,
+      0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 15px #e60073,
+      0 0 20px #e60073,
+      0 0 25px #e60073,
+      0 0 30px #e60073,
+      0 0 35px #e60073;
+  }
+}
+
+/* 加载动画 */
+.digital-clock.loading {
+  opacity: 0;
+  animation: fade-in 0.5s ease-in forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+/* 错误状态 */
+.digital-clock.error {
+  color: #ff5252;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
 }
 
 /* 个人描述渐变效果 */
@@ -324,6 +1220,35 @@
   }
 }
 
+/* 随机流星效果 */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  animation: meteor 15s linear infinite;
+  animation-delay: 0s, 5s, 10s;
+}
+
+/* 简化版流星动画用于 body::after */
+@keyframes meteor {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(45deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(100vw, 100vh) rotate(45deg);
+  }
+}
+
 /* 流星尾迹效果 */
 .meteor::before {
   content: '';
@@ -382,4 +1307,204 @@
     width: 3px;
     height: 3px;
   }
+}
+
+/* ==============================================
+   银河效果增强
+   ============================================== */
+
+/* 添加银河效果 */
+.galaxy-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, 
+    rgba(138, 43, 226, 0.1) 0%, 
+    rgba(75, 0, 130, 0.05) 40%, 
+    transparent 70%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* 星星闪烁动画 */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+}
+
+/* 为body添加银河效果 */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* 银河 */
+    radial-gradient(ellipse at center, 
+      rgba(138, 43, 226, 0.1) 0%, 
+      rgba(75, 0, 130, 0.05) 40%, 
+      transparent 70%),
+    /* 流星 */
+    linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  background-size: cover, 300px 300px;
+  animation: meteor 15s linear infinite;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* ==============================================
+   额外星空效果
+   ============================================== */
+
+/* 星空背景层 */
+.starry-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -2;
+  background-image: 
+    /* 大星星 */
+    radial-gradient(2px 2px at 20px 30px, white, transparent),
+    radial-gradient(2px 2px at 40px 70px, white, transparent),
+    radial-gradient(3px 3px at 50px 50px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 80px 10px, white, transparent),
+    radial-gradient(3px 3px at 130px 80px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 110px 120px, white, transparent),
+    /* 小星星 */
+    radial-gradient(1px 1px at 25px 15px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 65px 45px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 95px 25px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 145px 95px, rgba(255, 255, 255, 0.8), transparent),
+    /* 微小星星 */
+    radial-gradient(0.5px 0.5px at 35px 85px, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(0.5px 0.5px at 75px 35px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(0.5px 0.5px at 125px 65px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(0.5px 0.5px at 165px 115px, rgba(255, 255, 255, 0.4), transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: stars-move 120s linear infinite, twinkle 3s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+/* 星星移动动画 */
+@keyframes stars-move {
+  from { transform: translateX(0); }
+  to { transform: translateX(-200px); }
+}
+
+/* 星星闪烁动画 */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+}
+
+/* 银河效果 */
+.galaxy-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, 
+    rgba(138, 43, 226, 0.1) 0%, 
+    rgba(75, 0, 130, 0.05) 40%, 
+    transparent 70%);
+  z-index: -3;
+  pointer-events: none;
+  animation: galaxy-rotate 60s linear infinite;
+}
+
+/* 银河旋转动画 */
+@keyframes galaxy-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 夜间模式下的星空效果 */
+[data-theme='dark'] .starry-background {
+  opacity: 1;
+}
+
+[data-theme='dark'] .galaxy-effect {
+  background: radial-gradient(ellipse at center, 
+    rgba(138, 43, 226, 0.15) 0%, 
+    rgba(75, 0, 130, 0.08) 40%, 
+    transparent 70%);
+}
+
+/* ==============================================
+   时钟背景强制修复 - 最高优先级
+   ============================================== */
+
+/* 强制白间模式时钟背景样式 - 最高优先级 */
+html[data-theme="light"] #sidebar-clock,
+html[data-theme="light"] body #sidebar-clock,
+html[data-theme="light"] .sidebar #sidebar-clock,
+html[data-theme="light"] main #sidebar-clock,
+html[data-theme="light"] .container #sidebar-clock,
+[data-theme="light"] #sidebar-clock,
+[data-theme="light"] body #sidebar-clock,
+[data-theme="light"] .sidebar #sidebar-clock,
+[data-theme="light"] main #sidebar-clock,
+[data-theme="light"] .container #sidebar-clock {
+  background: linear-gradient(135deg, rgba(255, 248, 255, 0.95) 0%, rgba(255, 240, 245, 0.9) 100%) !important;
+  background-color: rgba(255, 248, 255, 0.95) !important;
+  border: 1px solid rgba(255, 182, 193, 0.4) !important;
+  color: #333333 !important;
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.2) !important;
+}
+
+/* 强制白间模式时钟文字颜色 */
+html[data-theme="light"] #sidebar-clock *,
+html[data-theme="light"] body #sidebar-clock *,
+html[data-theme="light"] .sidebar #sidebar-clock *,
+html[data-theme="light"] main #sidebar-clock *,
+html[data-theme="light"] .container #sidebar-clock *,
+[data-theme="light"] #sidebar-clock *,
+[data-theme="light"] body #sidebar-clock *,
+[data-theme="light"] .sidebar #sidebar-clock *,
+[data-theme="light"] main #sidebar-clock *,
+[data-theme="light"] .container #sidebar-clock * {
+  color: #333333 !important;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 强制夜间模式时钟背景样式 */
+html[data-theme="dark"] #sidebar-clock,
+html[data-theme="dark"] body #sidebar-clock,
+html[data-theme="dark"] .sidebar #sidebar-clock,
+html[data-theme="dark"] main #sidebar-clock,
+html[data-theme="dark"] .container #sidebar-clock,
+[data-theme="dark"] #sidebar-clock,
+[data-theme="dark"] body #sidebar-clock,
+[data-theme="dark"] .sidebar #sidebar-clock,
+[data-theme="dark"] main #sidebar-clock,
+[data-theme="dark"] .container #sidebar-clock {
+  background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 20, 51, 0.9) 100%) !important;
+  background-color: rgba(10, 14, 39, 0.95) !important;
+  border: 1px solid rgba(255, 182, 193, 0.3) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 强制夜间模式时钟文字颜色 */
+html[data-theme="dark"] #sidebar-clock *,
+html[data-theme="dark"] body #sidebar-clock *,
+html[data-theme="dark"] .sidebar #sidebar-clock *,
+html[data-theme="dark"] main #sidebar-clock *,
+html[data-theme="dark"] .container #sidebar-clock *,
+[data-theme="dark"] #sidebar-clock *,
+[data-theme="dark"] body #sidebar-clock *,
+[data-theme="dark"] .sidebar #sidebar-clock *,
+[data-theme="dark"] main #sidebar-clock *,
+[data-theme="dark"] .container #sidebar-clock * {
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3) !important;
 }

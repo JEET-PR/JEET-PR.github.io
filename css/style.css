@@ -13,7 +13,7 @@
   --color-default: #555;
   --color-border: var(--red-3);
   --color-link: var(--red-1);
-  --color-background: #eee;
+  --color-background: #ffe4e1; /* 浅粉色背景 */
   --color-code-background: #f8f8f8;
   --color-header-background: rgba(255,255,255,0.9);
   --color-footer-background: #fff;
@@ -61,12 +61,12 @@
   --color-archive-year: #999;
   --color-default: #999;
   --color-border: var(--red-5);
-  --color-background: #21252b;
+  --color-background: #0a0e27; /* 深蓝色夜空 */
   --color-code-background: rgba(232,232,232,0.1);
-  --color-header-background: #222;
-  --color-footer-background: #21252b;
-  --color-mobile-nav-background: #21252b;
-  --color-wrap: #272b30;
+  --color-header-background: rgba(15,20,51,0.95); /* 半透明深蓝色头部 */
+  --color-footer-background: #0f1433; /* 页脚背景 */
+  --color-mobile-nav-background: #0f1433; /* 移动端导航背景 */
+  --color-wrap: #0f1433; /* 主要内容区域背景 */
   --color-h2-border: #47474a;
   --color-meta-shadow: rgba(0,0,0,0.2);
   --color-hover-shadow: rgba(0,0,0,0.2);

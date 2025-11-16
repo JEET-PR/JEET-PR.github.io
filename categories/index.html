@@ -51,6 +51,10 @@
 
   <body>
     
+    <!-- 星空效果容器 -->
+    <div class="galaxy-effect"></div>
+    <div class="constellation-lines"></div>
+    
     <!-- 流星特效容器 -->
     <div class="meteor-shower" id="meteor-shower"></div>
     
@@ -165,6 +169,132 @@
   <div class="sidebar-author-name">飞制</div>
   <div class="sidebar-description"></div>
 </div>
+
+<!-- 数字时钟容器 -->
+<div class="sidebar-clock-container">
+  <div class="digital-clock-container" id="sidebar-clock"></div>
+</div>
+
+<script>
+// 强制设置时钟背景颜色
+function updateClockBackground() {
+  const clockElement = document.getElementById('sidebar-clock');
+  if (clockElement) {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const isLightTheme = currentTheme === 'light';
+    
+    console.log('时钟主题更新:', { currentTheme, isLightTheme });
+    
+    // 清除所有可能的样式
+    clockElement.style.removeProperty('background');
+    clockElement.style.removeProperty('background-color');
+    clockElement.style.removeProperty('border');
+    clockElement.style.removeProperty('color');
+    
+    if (isLightTheme) {
+      console.log('设置浅色主题时钟样式');
+      // 强制设置浅色主题样式
+      clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(255, 248, 255, 0.95) 0%, rgba(255, 240, 245, 0.9) 100%)', 'important');
+      clockElement.style.setProperty('background-color', 'rgba(255, 248, 255, 0.95)', 'important');
+      clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.4)', 'important');
+      clockElement.style.setProperty('color', '#333333', 'important');
+      clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(255, 182, 193, 0.2)', 'important');
+      
+      // 设置所有子元素的文字颜色
+      const allTextElements = clockElement.querySelectorAll('*');
+      allTextElements.forEach((el, index) => {
+        el.style.setProperty('color', '#333333', 'important');
+        el.style.setProperty('text-shadow', '0 0 5px rgba(0, 0, 0, 0.1)', 'important');
+        if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+      });
+    } else {
+      console.log('设置深色主题时钟样式');
+      // 强制设置深色主题样式
+      clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 20, 51, 0.9) 100%)', 'important');
+      clockElement.style.setProperty('background-color', 'rgba(10, 14, 39, 0.95)', 'important');
+      clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.3)', 'important');
+      clockElement.style.setProperty('color', '#ffffff', 'important');
+      clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(0, 0, 0, 0.3)', 'important');
+      
+      // 设置所有子元素的文字颜色
+      const allTextElements = clockElement.querySelectorAll('*');
+      allTextElements.forEach((el, index) => {
+        el.style.setProperty('color', '#ffffff', 'important');
+        el.style.setProperty('text-shadow', '0 0 8px rgba(255, 255, 255, 0.3)', 'important');
+        if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+      });
+    }
+    
+    // 验证样式是否应用成功
+    setTimeout(() => {
+      const computedStyle = window.getComputedStyle(clockElement);
+      console.log('时钟最终样式:', {
+        background: computedStyle.background,
+        backgroundColor: computedStyle.backgroundColor,
+        color: computedStyle.color
+      });
+    }, 100);
+  } else {
+    console.error('未找到时钟元素 #sidebar-clock');
+  }
+}
+
+// 页面加载完成后立即执行
+document.addEventListener('DOMContentLoaded', function() {
+  // 延迟执行，确保其他脚本已加载
+  setTimeout(updateClockBackground, 100);
+});
+
+// 监听主题切换
+const observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+      setTimeout(updateClockBackground, 50); // 延迟执行，确保CSS已更新
+    }
+  });
+});
+
+observer.observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ['data-theme']
+});
+
+// 监听自定义主题切换事件
+document.addEventListener('dark-theme-set', function() {
+  setTimeout(updateClockBackground, 50);
+});
+
+document.addEventListener('light-theme-set', function() {
+  setTimeout(updateClockBackground, 50);
+});
+
+// 定期检查（防止其他脚本覆盖）
+setInterval(updateClockBackground, 2000);
+
+// 立即执行一次
+updateClockBackground();
+
+// 强制页面重新渲染时钟样式
+function forceClockStyleRefresh() {
+  const clockElement = document.getElementById('sidebar-clock');
+  if (clockElement) {
+    // 临时移除元素再重新添加，强制重新渲染
+    const parent = clockElement.parentNode;
+    const nextSibling = clockElement.nextSibling;
+    parent.removeChild(clockElement);
+    parent.insertBefore(clockElement, nextSibling);
+    
+    // 重新应用样式
+    setTimeout(updateClockBackground, 10);
+  }
+}
+
+// 页面完全加载后强制刷新
+window.addEventListener('load', function() {
+  setTimeout(forceClockStyleRefresh, 500);
+});
+</script>
+
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
@@ -266,19 +396,19 @@
               <a href="/2025/11/14/%E6%AD%8C%E6%9B%B2%E6%8E%92%E7%89%88/" title="歌曲排版">歌曲排版</a>
             </li>
             <li>
-              <a href="/2025/11/12/hexo-%E6%96%87%E6%9C%AC%E5%A1%AB%E5%8A%A0%E6%89%A9%E5%B1%95%E8%AF%B4%E6%98%8E(%E8%87%AA%E7%94%A8)/" title="hexo-文本填加扩展说明(自用)">hexo-文本填加扩展说明(自用)</a>
+              <a href="/2025/11/12/python%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%80%92%E6%8E%A8/" title="python算法-动态规划递推">python算法-动态规划递推</a>
             </li>
             <li>
-              <a href="/2025/11/12/python%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%80%92%E6%8E%A8/" title="python算法-动态规划递推">python算法-动态规划递推</a>
+              <a href="/2025/11/12/hexo-%E6%96%87%E6%9C%AC%E5%A1%AB%E5%8A%A0%E6%89%A9%E5%B1%95%E8%AF%B4%E6%98%8E(%E8%87%AA%E7%94%A8)/" title="hexo-文本填加扩展说明(自用)">hexo-文本填加扩展说明(自用)</a>
             </li>
             <li>
               <a href="/2025/11/12/python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/" title="python算法-暴力枚举">python算法-暴力枚举</a>
             </li>
             <li>
-              <a href="/2025/11/12/python%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8/" title="python算法-链表">python算法-链表</a>
+              <a href="/2025/11/12/python%E7%AE%97%E6%B3%95-%E9%98%9F%E5%88%97/" title="python算法-队列">python算法-队列</a>
             </li>
             <li>
-              <a href="/2025/11/12/python%E7%AE%97%E6%B3%95-%E9%98%9F%E5%88%97/" title="python算法-队列">python算法-队列</a>
+              <a href="/2025/11/12/python%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8/" title="python算法-链表">python算法-链表</a>
             </li>
         </ul>
       </div>
@@ -398,6 +528,132 @@
   <div class="sidebar-author-name">飞制</div>
   <div class="sidebar-description"></div>
 </div>
+
+<!-- 数字时钟容器 -->
+<div class="sidebar-clock-container">
+  <div class="digital-clock-container" id="sidebar-clock"></div>
+</div>
+
+<script>
+// 强制设置时钟背景颜色
+function updateClockBackground() {
+  const clockElement = document.getElementById('sidebar-clock');
+  if (clockElement) {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const isLightTheme = currentTheme === 'light';
+    
+    console.log('时钟主题更新:', { currentTheme, isLightTheme });
+    
+    // 清除所有可能的样式
+    clockElement.style.removeProperty('background');
+    clockElement.style.removeProperty('background-color');
+    clockElement.style.removeProperty('border');
+    clockElement.style.removeProperty('color');
+    
+    if (isLightTheme) {
+      console.log('设置浅色主题时钟样式');
+      // 强制设置浅色主题样式
+      clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(255, 248, 255, 0.95) 0%, rgba(255, 240, 245, 0.9) 100%)', 'important');
+      clockElement.style.setProperty('background-color', 'rgba(255, 248, 255, 0.95)', 'important');
+      clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.4)', 'important');
+      clockElement.style.setProperty('color', '#333333', 'important');
+      clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(255, 182, 193, 0.2)', 'important');
+      
+      // 设置所有子元素的文字颜色
+      const allTextElements = clockElement.querySelectorAll('*');
+      allTextElements.forEach((el, index) => {
+        el.style.setProperty('color', '#333333', 'important');
+        el.style.setProperty('text-shadow', '0 0 5px rgba(0, 0, 0, 0.1)', 'important');
+        if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+      });
+    } else {
+      console.log('设置深色主题时钟样式');
+      // 强制设置深色主题样式
+      clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 20, 51, 0.9) 100%)', 'important');
+      clockElement.style.setProperty('background-color', 'rgba(10, 14, 39, 0.95)', 'important');
+      clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.3)', 'important');
+      clockElement.style.setProperty('color', '#ffffff', 'important');
+      clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(0, 0, 0, 0.3)', 'important');
+      
+      // 设置所有子元素的文字颜色
+      const allTextElements = clockElement.querySelectorAll('*');
+      allTextElements.forEach((el, index) => {
+        el.style.setProperty('color', '#ffffff', 'important');
+        el.style.setProperty('text-shadow', '0 0 8px rgba(255, 255, 255, 0.3)', 'important');
+        if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+      });
+    }
+    
+    // 验证样式是否应用成功
+    setTimeout(() => {
+      const computedStyle = window.getComputedStyle(clockElement);
+      console.log('时钟最终样式:', {
+        background: computedStyle.background,
+        backgroundColor: computedStyle.backgroundColor,
+        color: computedStyle.color
+      });
+    }, 100);
+  } else {
+    console.error('未找到时钟元素 #sidebar-clock');
+  }
+}
+
+// 页面加载完成后立即执行
+document.addEventListener('DOMContentLoaded', function() {
+  // 延迟执行，确保其他脚本已加载
+  setTimeout(updateClockBackground, 100);
+});
+
+// 监听主题切换
+const observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+      setTimeout(updateClockBackground, 50); // 延迟执行，确保CSS已更新
+    }
+  });
+});
+
+observer.observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ['data-theme']
+});
+
+// 监听自定义主题切换事件
+document.addEventListener('dark-theme-set', function() {
+  setTimeout(updateClockBackground, 50);
+});
+
+document.addEventListener('light-theme-set', function() {
+  setTimeout(updateClockBackground, 50);
+});
+
+// 定期检查（防止其他脚本覆盖）
+setInterval(updateClockBackground, 2000);
+
+// 立即执行一次
+updateClockBackground();
+
+// 强制页面重新渲染时钟样式
+function forceClockStyleRefresh() {
+  const clockElement = document.getElementById('sidebar-clock');
+  if (clockElement) {
+    // 临时移除元素再重新添加，强制重新渲染
+    const parent = clockElement.parentNode;
+    const nextSibling = clockElement.nextSibling;
+    parent.removeChild(clockElement);
+    parent.insertBefore(clockElement, nextSibling);
+    
+    // 重新应用样式
+    setTimeout(updateClockBackground, 10);
+  }
+}
+
+// 页面完全加载后强制刷新
+window.addEventListener('load', function() {
+  setTimeout(forceClockStyleRefresh, 500);
+});
+</script>
+
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
@@ -815,5 +1071,12 @@ const ap = new APlayer({
 
 <script src="/js/meteor-shower.js" defer></script>
 
+    
+    <!-- 主题配置传递给JavaScript -->
+    <script>
+      window.themeConfig = {
+        digital_clock: {"enable":true,"format":"24h","show_date":true,"show_seconds":true,"show_week":true,"theme":"auto","animation":true,"locale":"zh-CN","neon_effect":true}
+      };
+    </script>
   </body>
   </html>
