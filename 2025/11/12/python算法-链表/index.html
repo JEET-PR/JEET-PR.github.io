@@ -1,0 +1,968 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="auto"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';</script>
+  <title>
+    python算法-链表 | 无敌火影大王
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="python算法-链表  链表概述 链表（Linked List）是一种线性数据结构，与数组不同，链表中的元素在内存中不必连续存储。链表由一系列节点组成，每个节点包含数据域和指向下一个节点的指针。  链表的基本结构 classDiagram     class ListNode {         +val: int         +next: ListNode*         +ListN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python算法-链表">
+<meta property="og:url" content="http://example.com/2025/11/12/python%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8/index.html">
+<meta property="og:site_name" content="无敌火影大王">
+<meta property="og:description" content="python算法-链表  链表概述 链表（Linked List）是一种线性数据结构，与数组不同，链表中的元素在内存中不必连续存储。链表由一系列节点组成，每个节点包含数据域和指向下一个节点的指针。  链表的基本结构 classDiagram     class ListNode {         +val: int         +next: ListNode*         +ListN">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-12T12:17:47.000Z">
+<meta property="article:modified_time" content="2025-11-16T10:27:34.778Z">
+<meta property="article:author" content="飞制">
+<meta property="article:tag" content="python算法">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="无敌火影大王" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/666.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+      
+<link rel="stylesheet" href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
+
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj+vDDLIL+xBGQU&#x2F;voDBY5XE2lVh" crossorigin="anonymous">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+    
+    <!-- 流星特效容器 -->
+    <div class="meteor-shower" id="meteor-shower"></div>
+    
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+  </nav>
+  <a href="https://github.com/JEET-PR" class="triangle-badge" title="github" target="_blank" rel="noopener nofollow noreferrer">
+    <div class="icon icon-github triangle-badge-icon"></div>
+  </a>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BA%8C%E4%B8%96%E8%8A%B1%E4%BC%8A%E5%9C%B0%E4%B8%80-%E5%8A%A8%E6%BC%AB%E5%A5%B3%E5%AD%A9.png" alt="python算法-链表">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">python算法-链表</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+      <div id="aplayer" theme="var(--color-link)" data-aos="fade-up"></div>
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text"> python算法-链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 链表概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 链表的基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 链表与数组的对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> 链表类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8singly-linked-list"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1. 单向链表（Singly Linked List）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8doubly-linked-list"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2. 双向链表（Doubly Linked List）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8circular-linked-list"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 3. 循环链表（Circular Linked List）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text"> 链表的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 节点定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 1. 创建链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%81%8D%E5%8E%86%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 2. 遍历链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8F%92%E5%85%A5%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 3. 插入节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%A4%B4%E9%83%A8%E6%8F%92%E5%85%A5"><span class="toc-number">1.3.4.1.</span> <span class="toc-text"> 在头部插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%B0%BE%E9%83%A8%E6%8F%92%E5%85%A5"><span class="toc-number">1.3.4.2.</span> <span class="toc-text"> 在尾部插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%85%A5"><span class="toc-number">1.3.4.3.</span> <span class="toc-text"> 在指定位置插入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 4. 删除节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%A4%B4%E9%83%A8%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.5.1.</span> <span class="toc-text"> 删除头部节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E5%80%BC%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.5.2.</span> <span class="toc-text"> 删除指定值节点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E9%93%BE%E8%A1%A8%E7%AE%97%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text"> 经典链表算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 1. 反转链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-number">1.4.1.1.</span> <span class="toc-text"> 迭代法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E6%B3%95"><span class="toc-number">1.4.1.2.</span> <span class="toc-text"> 递归法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 2. 合并两个有序链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%A3%80%E6%B5%8B%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 3. 检测链表是否有环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95"><span class="toc-number">1.4.3.1.</span> <span class="toc-text"> 快慢指针法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%89%BE%E5%88%B0%E9%93%BE%E8%A1%A8%E7%9A%84%E4%B8%AD%E9%97%B4%E8%8A%82%E7%82%B9"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 4. 找到链表的中间节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95-2"><span class="toc-number">1.4.4.1.</span> <span class="toc-text"> 快慢指针法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACn%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="toc-number">1.4.5.</span> <span class="toc-text"> 5. 删除链表的倒数第N个节点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E9%93%BE%E8%A1%A8%E7%AE%97%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text"> 高级链表算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%93%BE%E8%A1%A8%E6%8E%92%E5%BA%8F"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 1. 链表排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-number">1.5.1.1.</span> <span class="toc-text"> 归并排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8%E5%88%A4%E6%96%AD"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 2. 回文链表判断</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.6.</span> <span class="toc-text"> 链表的数学分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 空间复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%AF%B9%E6%AF%94"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 时间复杂度对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.7.</span> <span class="toc-text"> 链表的应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9E%E7%8E%B0%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 1. 实现栈和队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-lru%E7%BC%93%E5%AD%98"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 2. LRU缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">1.8.</span> <span class="toc-text"> 性能优化技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%93%A8%E5%85%B5%E8%8A%82%E7%82%B9"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 1. 哨兵节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 2. 批量操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="toc-number">1.9.</span> <span class="toc-text"> 调试技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%AF%E8%A7%86%E5%8C%96%E9%93%BE%E8%A1%A8"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 1. 可视化链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%93%BE%E8%A1%A8%E9%AA%8C%E8%AF%81"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 2. 链表验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.10.</span> <span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98%E6%8E%A8%E8%8D%90"><span class="toc-number">1.11.</span> <span class="toc-text"> 练习题推荐</span></a></li></ol></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="飞制" class="lazyload">
+  <div class="sidebar-author-name">飞制</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">5</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social">
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/JEET-PR itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/1939864033?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-python算法-链表" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2025-11-12T12:17:47.000Z" itemprop="datePublished">2025-11-12</time>
+    <time style="display: none;" id="post-update-time">2025-11-16</time>
+  </span>
+</div>
+
+        <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+  </div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <h1 id="python算法-链表"><a class="markdownIt-Anchor" href="#python算法-链表"></a> python算法-链表</h1>
+<h2 id="链表概述"><a class="markdownIt-Anchor" href="#链表概述"></a> 链表概述</h2>
+<p>链表（Linked List）是一种线性数据结构，与数组不同，链表中的元素在内存中不必连续存储。链表由一系列节点组成，每个节点包含数据域和指向下一个节点的指针。</p>
+<h3 id="链表的基本结构"><a class="markdownIt-Anchor" href="#链表的基本结构"></a> 链表的基本结构</h3>
+<pre class="mermaid">classDiagram
+    class ListNode {
+        +val: int
+        +next: ListNode*
+        +ListNode(val)
+        +ListNode(val, next)
+    }
+    
+    class LinkedList {
+        +head: ListNode*
+        +size: int
+        +LinkedList()
+        +addAtHead(val)
+        +addAtTail(val)
+        +addAtIndex(index, val)
+        +deleteAtIndex(index)
+        +get(index)
+    }
+    
+    ListNode "1" --> "*" ListNode : next
+    LinkedList "1" --> "0..1" ListNode : head</pre>
+<h3 id="链表与数组的对比"><a class="markdownIt-Anchor" href="#链表与数组的对比"></a> 链表与数组的对比</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>链表</th>
+<th>数组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内存分配</td>
+<td>动态分配</td>
+<td>连续分配</td>
+</tr>
+<tr>
+<td>插入/删除</td>
+<td>$O(1)$ (已知位置)</td>
+<td>$O(n)$</td>
+</tr>
+<tr>
+<td>随机访问</td>
+<td>$O(n)$</td>
+<td>$O(1)$</td>
+</tr>
+<tr>
+<td>空间复杂度</td>
+<td>$O(n)$</td>
+<td>$O(n)$</td>
+</tr>
+<tr>
+<td>缓存友好性</td>
+<td>差</td>
+<td>好</td>
+</tr>
+</tbody>
+</table>
+<h2 id="链表类型"><a class="markdownIt-Anchor" href="#链表类型"></a> 链表类型</h2>
+<h3 id="1-单向链表singly-linked-list"><a class="markdownIt-Anchor" href="#1-单向链表singly-linked-list"></a> 1. 单向链表（Singly Linked List）</h3>
+<pre class="mermaid">flowchart LR
+    A[Head] --> B[Node1]
+    B --> C[Node2]
+    C --> D[Node3]
+    D --> E[null]
+    
+    B1[Node1<br/>val: 1<br/>next: →] --> B2[Node2<br/>val: 2<br/>next: →]
+    B2 --> B3[Node3<br/>val: 3<br/>next: null]</pre>
+<h3 id="2-双向链表doubly-linked-list"><a class="markdownIt-Anchor" href="#2-双向链表doubly-linked-list"></a> 2. 双向链表（Doubly Linked List）</h3>
+<pre class="mermaid">flowchart LR
+    A[Head] <--> B[Node1]
+    B <--> C[Node2]
+    C <--> D[Node3]
+    D <--> E[Tail]
+    
+    B1[Node1<br/>val: 1<br/>prev: ←<br/>next: →] <--> B2[Node2<br/>val: 2<br/>prev: ←<br/>next: →]
+    B2 <--> B3[Node3<br/>val: 3<br/>prev: ←<br/>next: →]</pre>
+<h3 id="3-循环链表circular-linked-list"><a class="markdownIt-Anchor" href="#3-循环链表circular-linked-list"></a> 3. 循环链表（Circular Linked List）</h3>
+<pre class="mermaid">flowchart TD
+    A[Head] --> B[Node1]
+    B --> C[Node2]
+    C --> D[Node3]
+    D --> A
+    
+    B1[Node1<br/>val: 1<br/>next: →] --> B2[Node2<br/>val: 2<br/>next: →]
+    B2 --> B3[Node3<br/>val: 3<br/>next: →]
+    B3 --> B1</pre>
+<h2 id="链表的基本操作"><a class="markdownIt-Anchor" href="#链表的基本操作"></a> 链表的基本操作</h2>
+<h3 id="节点定义"><a class="markdownIt-Anchor" href="#节点定义"></a> 节点定义</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;链表节点定义&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.val = val</span><br><span class="line">        <span class="variable language_">self</span>.<span class="built_in">next</span> = <span class="built_in">next</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-创建链表"><a class="markdownIt-Anchor" href="#1-创建链表"></a> 1. 创建链表</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">create_linked_list</span>(<span class="params">values</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;根据值列表创建链表&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> values:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    dummy = ListNode(<span class="number">0</span>)</span><br><span class="line">    current = dummy</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> val <span class="keyword">in</span> values:</span><br><span class="line">        current.<span class="built_in">next</span> = ListNode(val)</span><br><span class="line">        current = current.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dummy.<span class="built_in">next</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-遍历链表"><a class="markdownIt-Anchor" href="#2-遍历链表"></a> 2. 遍历链表</h3>
+<pre class="mermaid">flowchart TD
+    A[开始] --> B[current = head]
+    B --> C{current != null?}
+    C -->|是| D[访问current.val]
+    D --> E[current = current.next]
+    E --> C
+    C -->|否| F[结束]</pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">traverse_linked_list</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;遍历链表并返回值列表&quot;&quot;&quot;</span></span><br><span class="line">    result = []</span><br><span class="line">    current = head</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> current:</span><br><span class="line">        result.append(current.val)</span><br><span class="line">        current = current.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<h3 id="3-插入节点"><a class="markdownIt-Anchor" href="#3-插入节点"></a> 3. 插入节点</h3>
+<h4 id="在头部插入"><a class="markdownIt-Anchor" href="#在头部插入"></a> 在头部插入</h4>
+<p>时间复杂度：$O(1)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">insert_at_head</span>(<span class="params">head, val</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;在链表头部插入节点&quot;&quot;&quot;</span></span><br><span class="line">    new_node = ListNode(val, head)</span><br><span class="line">    <span class="keyword">return</span> new_node</span><br></pre></td></tr></table></figure>
+<h4 id="在尾部插入"><a class="markdownIt-Anchor" href="#在尾部插入"></a> 在尾部插入</h4>
+<p>时间复杂度：$O(n)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">insert_at_tail</span>(<span class="params">head, val</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;在链表尾部插入节点&quot;&quot;&quot;</span></span><br><span class="line">    new_node = ListNode(val)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head:</span><br><span class="line">        <span class="keyword">return</span> new_node</span><br><span class="line">    </span><br><span class="line">    current = head</span><br><span class="line">    <span class="keyword">while</span> current.<span class="built_in">next</span>:</span><br><span class="line">        current = current.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    current.<span class="built_in">next</span> = new_node</span><br><span class="line">    <span class="keyword">return</span> head</span><br></pre></td></tr></table></figure>
+<h4 id="在指定位置插入"><a class="markdownIt-Anchor" href="#在指定位置插入"></a> 在指定位置插入</h4>
+<p>时间复杂度：$O(n)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">insert_at_index</span>(<span class="params">head, index, val</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;在指定位置插入节点&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> index == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> insert_at_head(head, val)</span><br><span class="line">    </span><br><span class="line">    dummy = ListNode(<span class="number">0</span>, head)</span><br><span class="line">    current = dummy</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(index):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> current.<span class="built_in">next</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        current = current.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    new_node = ListNode(val, current.<span class="built_in">next</span>)</span><br><span class="line">    current.<span class="built_in">next</span> = new_node</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dummy.<span class="built_in">next</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-删除节点"><a class="markdownIt-Anchor" href="#4-删除节点"></a> 4. 删除节点</h3>
+<h4 id="删除头部节点"><a class="markdownIt-Anchor" href="#删除头部节点"></a> 删除头部节点</h4>
+<p>时间复杂度：$O(1)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">delete_at_head</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;删除链表头部节点&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> head.<span class="built_in">next</span></span><br></pre></td></tr></table></figure>
+<h4 id="删除指定值节点"><a class="markdownIt-Anchor" href="#删除指定值节点"></a> 删除指定值节点</h4>
+<p>时间复杂度：$O(n)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">delete_by_value</span>(<span class="params">head, val</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;删除指定值的节点&quot;&quot;&quot;</span></span><br><span class="line">    dummy = ListNode(<span class="number">0</span>, head)</span><br><span class="line">    current = dummy</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> current.<span class="built_in">next</span>:</span><br><span class="line">        <span class="keyword">if</span> current.<span class="built_in">next</span>.val == val:</span><br><span class="line">            current.<span class="built_in">next</span> = current.<span class="built_in">next</span>.<span class="built_in">next</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            current = current.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dummy.<span class="built_in">next</span></span><br></pre></td></tr></table></figure>
+<h2 id="经典链表算法"><a class="markdownIt-Anchor" href="#经典链表算法"></a> 经典链表算法</h2>
+<h3 id="1-反转链表"><a class="markdownIt-Anchor" href="#1-反转链表"></a> 1. 反转链表</h3>
+<h4 id="迭代法"><a class="markdownIt-Anchor" href="#迭代法"></a> 迭代法</h4>
+<p>时间复杂度：$O(n)$，空间复杂度：$O(1)$</p>
+<pre class="mermaid">flowchart TD
+    A[原链表] --> B[prev = null<br/>current = head]
+    B --> C{current != null?}
+    C -->|是| D[next_temp = current.next]
+    D --> E[current.next = prev]
+    E --> F[prev = current]
+    F --> G[current = next_temp]
+    G --> C
+    C -->|否| H[return prev]</pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">reverse_linked_list</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;反转链表 - 迭代法&quot;&quot;&quot;</span></span><br><span class="line">    prev = <span class="literal">None</span></span><br><span class="line">    current = head</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> current:</span><br><span class="line">        next_temp = current.<span class="built_in">next</span></span><br><span class="line">        current.<span class="built_in">next</span> = prev</span><br><span class="line">        prev = current</span><br><span class="line">        current = next_temp</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> prev</span><br></pre></td></tr></table></figure>
+<h4 id="递归法"><a class="markdownIt-Anchor" href="#递归法"></a> 递归法</h4>
+<p>时间复杂度：$O(n)$，空间复杂度：$O(n)$（递归栈）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">reverse_linked_list_recursive</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;反转链表 - 递归法&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="built_in">next</span>:</span><br><span class="line">        <span class="keyword">return</span> head</span><br><span class="line">    </span><br><span class="line">    new_head = reverse_linked_list_recursive(head.<span class="built_in">next</span>)</span><br><span class="line">    head.<span class="built_in">next</span>.<span class="built_in">next</span> = head</span><br><span class="line">    head.<span class="built_in">next</span> = <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> new_head</span><br></pre></td></tr></table></figure>
+<h3 id="2-合并两个有序链表"><a class="markdownIt-Anchor" href="#2-合并两个有序链表"></a> 2. 合并两个有序链表</h3>
+<p>时间复杂度：$O(m + n)$，空间复杂度：$O(1)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">merge_two_sorted_lists</span>(<span class="params">l1, l2</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;合并两个有序链表&quot;&quot;&quot;</span></span><br><span class="line">    dummy = ListNode(<span class="number">0</span>)</span><br><span class="line">    current = dummy</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> l1 <span class="keyword">and</span> l2:</span><br><span class="line">        <span class="keyword">if</span> l1.val &lt;= l2.val:</span><br><span class="line">            current.<span class="built_in">next</span> = l1</span><br><span class="line">            l1 = l1.<span class="built_in">next</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            current.<span class="built_in">next</span> = l2</span><br><span class="line">            l2 = l2.<span class="built_in">next</span></span><br><span class="line">        current = current.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    current.<span class="built_in">next</span> = l1 <span class="keyword">if</span> l1 <span class="keyword">else</span> l2</span><br><span class="line">    <span class="keyword">return</span> dummy.<span class="built_in">next</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-检测链表是否有环"><a class="markdownIt-Anchor" href="#3-检测链表是否有环"></a> 3. 检测链表是否有环</h3>
+<h4 id="快慢指针法"><a class="markdownIt-Anchor" href="#快慢指针法"></a> 快慢指针法</h4>
+<p>时间复杂度：$O(n)$，空间复杂度：$O(1)$</p>
+<pre class="mermaid">flowchart TD
+    A[slow = head<br/>fast = head] --> B{fast && fast.next?}
+    B -->|是| C[slow = slow.next<br/>fast = fast.next.next]
+    C --> D{slow == fast?}
+    D -->|是| E[有环]
+    D -->|否| B
+    B -->|否| F[无环]</pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">has_cycle</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;检测链表是否有环 - 快慢指针法&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="built_in">next</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    </span><br><span class="line">    slow = head</span><br><span class="line">    fast = head.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> fast <span class="keyword">and</span> fast.<span class="built_in">next</span>:</span><br><span class="line">        <span class="keyword">if</span> slow == fast:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        slow = slow.<span class="built_in">next</span></span><br><span class="line">        fast = fast.<span class="built_in">next</span>.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-找到链表的中间节点"><a class="markdownIt-Anchor" href="#4-找到链表的中间节点"></a> 4. 找到链表的中间节点</h3>
+<h4 id="快慢指针法-2"><a class="markdownIt-Anchor" href="#快慢指针法-2"></a> 快慢指针法</h4>
+<p>时间复杂度：$O(n)$，空间复杂度：$O(1)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">find_middle_node</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;找到链表的中间节点&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    slow = head</span><br><span class="line">    fast = head</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> fast <span class="keyword">and</span> fast.<span class="built_in">next</span>:</span><br><span class="line">        slow = slow.<span class="built_in">next</span></span><br><span class="line">        fast = fast.<span class="built_in">next</span>.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> slow</span><br></pre></td></tr></table></figure>
+<h3 id="5-删除链表的倒数第n个节点"><a class="markdownIt-Anchor" href="#5-删除链表的倒数第n个节点"></a> 5. 删除链表的倒数第N个节点</h3>
+<p>时间复杂度：$O(n)$，空间复杂度：$O(1)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">remove_nth_from_end</span>(<span class="params">head, n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;删除链表的倒数第N个节点&quot;&quot;&quot;</span></span><br><span class="line">    dummy = ListNode(<span class="number">0</span>, head)</span><br><span class="line">    first = dummy</span><br><span class="line">    second = dummy</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 让first指针先走n+1步</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> first:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line">        first = first.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 同时移动first和second</span></span><br><span class="line">    <span class="keyword">while</span> first:</span><br><span class="line">        first = first.<span class="built_in">next</span></span><br><span class="line">        second = second.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 删除节点</span></span><br><span class="line">    second.<span class="built_in">next</span> = second.<span class="built_in">next</span>.<span class="built_in">next</span></span><br><span class="line">    <span class="keyword">return</span> dummy.<span class="built_in">next</span></span><br></pre></td></tr></table></figure>
+<h2 id="高级链表算法"><a class="markdownIt-Anchor" href="#高级链表算法"></a> 高级链表算法</h2>
+<h3 id="1-链表排序"><a class="markdownIt-Anchor" href="#1-链表排序"></a> 1. 链表排序</h3>
+<h4 id="归并排序"><a class="markdownIt-Anchor" href="#归并排序"></a> 归并排序</h4>
+<p>时间复杂度：$O(n \log n)$，空间复杂度：$O(\log n)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sort_linked_list</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;链表归并排序&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="built_in">next</span>:</span><br><span class="line">        <span class="keyword">return</span> head</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 找到中间节点</span></span><br><span class="line">    middle = find_middle_node(head)</span><br><span class="line">    right_half = middle.<span class="built_in">next</span></span><br><span class="line">    middle.<span class="built_in">next</span> = <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 递归排序</span></span><br><span class="line">    left_sorted = sort_linked_list(head)</span><br><span class="line">    right_sorted = sort_linked_list(right_half)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 合并有序链表</span></span><br><span class="line">    <span class="keyword">return</span> merge_two_sorted_lists(left_sorted, right_sorted)</span><br></pre></td></tr></table></figure>
+<h3 id="2-回文链表判断"><a class="markdownIt-Anchor" href="#2-回文链表判断"></a> 2. 回文链表判断</h3>
+<p>时间复杂度：$O(n)$，空间复杂度：$O(1)$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">is_palindrome</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;判断链表是否为回文&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="built_in">next</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 找到中间节点</span></span><br><span class="line">    middle = find_middle_node(head)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 反转后半部分</span></span><br><span class="line">    second_half = reverse_linked_list(middle.<span class="built_in">next</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 比较前后两部分</span></span><br><span class="line">    first = head</span><br><span class="line">    second = second_half</span><br><span class="line">    result = <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> second:</span><br><span class="line">        <span class="keyword">if</span> first.val != second.val:</span><br><span class="line">            result = <span class="literal">False</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        first = first.<span class="built_in">next</span></span><br><span class="line">        second = second.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 恢复链表</span></span><br><span class="line">    middle.<span class="built_in">next</span> = reverse_linked_list(second_half)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<h2 id="链表的数学分析"><a class="markdownIt-Anchor" href="#链表的数学分析"></a> 链表的数学分析</h2>
+<h3 id="空间复杂度分析"><a class="markdownIt-Anchor" href="#空间复杂度分析"></a> 空间复杂度分析</h3>
+<p>对于包含 $n$ 个节点的链表：</p>
+<ul>
+<li><strong>基本空间复杂度</strong>：$O(n)$</li>
+<li><strong>节点大小</strong>：$S_{node} &#x3D; S_{data} + S_{pointer}$</li>
+<li><strong>总空间</strong>：$S_{total} &#x3D; n \times S_{node}$</li>
+</ul>
+<p>其中：</p>
+<ul>
+<li>$S_{data}$：数据域大小</li>
+<li>$S_{pointer}$：指针域大小（通常为4或8字节）</li>
+</ul>
+<h3 id="时间复杂度对比"><a class="markdownIt-Anchor" href="#时间复杂度对比"></a> 时间复杂度对比</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>数组</th>
+<th>链表</th>
+<th>数学表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>访问第i个元素</td>
+<td>$O(1)$</td>
+<td>$O(n)$</td>
+<td>$T_{access}^{array} &#x3D; O(1), T_{access}^{linked} &#x3D; O(i)$</td>
+</tr>
+<tr>
+<td>在头部插入</td>
+<td>$O(n)$</td>
+<td>$O(1)$</td>
+<td>$T_{insert}^{array} &#x3D; O(n), T_{insert}^{linked} &#x3D; O(1)$</td>
+</tr>
+<tr>
+<td>在尾部插入</td>
+<td>$O(1)$</td>
+<td>$O(n)$</td>
+<td>$T_{append}^{array} &#x3D; O(1), T_{append}^{linked} &#x3D; O(n)$</td>
+</tr>
+<tr>
+<td>在中间插入</td>
+<td>$O(n)$</td>
+<td>$O(n)$</td>
+<td>$T_{middle}^{array} &#x3D; O(n), T_{middle}^{linked} &#x3D; O(i)$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="链表的应用场景"><a class="markdownIt-Anchor" href="#链表的应用场景"></a> 链表的应用场景</h2>
+<h3 id="1-实现栈和队列"><a class="markdownIt-Anchor" href="#1-实现栈和队列"></a> 1. 实现栈和队列</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LinkedStack</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;基于链表的栈实现&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.head = <span class="literal">None</span></span><br><span class="line">        <span class="variable language_">self</span>.size = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">push</span>(<span class="params">self, val</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;入栈&quot;&quot;&quot;</span></span><br><span class="line">        <span class="variable language_">self</span>.head = ListNode(val, <span class="variable language_">self</span>.head)</span><br><span class="line">        <span class="variable language_">self</span>.size += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">pop</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;出栈&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="variable language_">self</span>.head:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        </span><br><span class="line">        val = <span class="variable language_">self</span>.head.val</span><br><span class="line">        <span class="variable language_">self</span>.head = <span class="variable language_">self</span>.head.<span class="built_in">next</span></span><br><span class="line">        <span class="variable language_">self</span>.size -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> val</span><br></pre></td></tr></table></figure>
+<h3 id="2-lru缓存"><a class="markdownIt-Anchor" href="#2-lru缓存"></a> 2. LRU缓存</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;LRU缓存实现&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, capacity</span>):</span><br><span class="line">        <span class="variable language_">self</span>.capacity = capacity</span><br><span class="line">        <span class="variable language_">self</span>.cache = &#123;&#125;</span><br><span class="line">        <span class="variable language_">self</span>.head = ListNode(<span class="number">0</span>)  <span class="comment"># 哨兵节点</span></span><br><span class="line">        <span class="variable language_">self</span>.tail = ListNode(<span class="number">0</span>)</span><br><span class="line">        <span class="variable language_">self</span>.head.<span class="built_in">next</span> = <span class="variable language_">self</span>.tail</span><br><span class="line">        <span class="variable language_">self</span>.tail.prev = <span class="variable language_">self</span>.head</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_remove</span>(<span class="params">self, node</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;移除节点&quot;&quot;&quot;</span></span><br><span class="line">        prev, <span class="built_in">next</span> = node.prev, node.<span class="built_in">next</span></span><br><span class="line">        prev.<span class="built_in">next</span> = <span class="built_in">next</span></span><br><span class="line">        <span class="built_in">next</span>.prev = prev</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_add_to_head</span>(<span class="params">self, node</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;添加到头部&quot;&quot;&quot;</span></span><br><span class="line">        node.prev = <span class="variable language_">self</span>.head</span><br><span class="line">        node.<span class="built_in">next</span> = <span class="variable language_">self</span>.head.<span class="built_in">next</span></span><br><span class="line">        <span class="variable language_">self</span>.head.<span class="built_in">next</span>.prev = node</span><br><span class="line">        <span class="variable language_">self</span>.head.<span class="built_in">next</span> = node</span><br></pre></td></tr></table></figure>
+<h2 id="性能优化技巧"><a class="markdownIt-Anchor" href="#性能优化技巧"></a> 性能优化技巧</h2>
+<h3 id="1-哨兵节点"><a class="markdownIt-Anchor" href="#1-哨兵节点"></a> 1. 哨兵节点</h3>
+<p>使用哨兵节点可以简化边界条件处理：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">optimized_delete</span>(<span class="params">head, val</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;使用哨兵节点优化删除操作&quot;&quot;&quot;</span></span><br><span class="line">    dummy = ListNode(<span class="number">0</span>, head)  <span class="comment"># 哨兵节点</span></span><br><span class="line">    current = dummy</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> current.<span class="built_in">next</span>:</span><br><span class="line">        <span class="keyword">if</span> current.<span class="built_in">next</span>.val == val:</span><br><span class="line">            current.<span class="built_in">next</span> = current.<span class="built_in">next</span>.<span class="built_in">next</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        current = current.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dummy.<span class="built_in">next</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-批量操作"><a class="markdownIt-Anchor" href="#2-批量操作"></a> 2. 批量操作</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">batch_insert</span>(<span class="params">head, values, position</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;批量插入节点&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> values:</span><br><span class="line">        <span class="keyword">return</span> head</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 创建新链表</span></span><br><span class="line">    new_head = create_linked_list(values)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 找到插入位置</span></span><br><span class="line">    <span class="keyword">if</span> position == <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 找到新链表的尾部</span></span><br><span class="line">        tail = new_head</span><br><span class="line">        <span class="keyword">while</span> tail.<span class="built_in">next</span>:</span><br><span class="line">            tail = tail.<span class="built_in">next</span></span><br><span class="line">        tail.<span class="built_in">next</span> = head</span><br><span class="line">        <span class="keyword">return</span> new_head</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 在中间插入</span></span><br><span class="line">    dummy = ListNode(<span class="number">0</span>, head)</span><br><span class="line">    current = dummy</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(position):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> current.<span class="built_in">next</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        current = current.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 找到新链表尾部</span></span><br><span class="line">    tail = new_head</span><br><span class="line">    <span class="keyword">while</span> tail.<span class="built_in">next</span>:</span><br><span class="line">        tail = tail.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 插入</span></span><br><span class="line">    tail.<span class="built_in">next</span> = current.<span class="built_in">next</span></span><br><span class="line">    current.<span class="built_in">next</span> = new_head</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> head</span><br></pre></td></tr></table></figure>
+<h2 id="调试技巧"><a class="markdownIt-Anchor" href="#调试技巧"></a> 调试技巧</h2>
+<h3 id="1-可视化链表"><a class="markdownIt-Anchor" href="#1-可视化链表"></a> 1. 可视化链表</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">visualize_linked_list</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;可视化链表结构&quot;&quot;&quot;</span></span><br><span class="line">    result = []</span><br><span class="line">    current = head</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> current:</span><br><span class="line">        result.append(<span class="built_in">str</span>(current.val))</span><br><span class="line">        current = current.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot; -&gt; &quot;</span>.join(result) + <span class="string">&quot; -&gt; None&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-链表验证"><a class="markdownIt-Anchor" href="#2-链表验证"></a> 2. 链表验证</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">validate_linked_list</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;验证链表结构的正确性&quot;&quot;&quot;</span></span><br><span class="line">    visited = <span class="built_in">set</span>()</span><br><span class="line">    current = head</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> current:</span><br><span class="line">        <span class="keyword">if</span> current <span class="keyword">in</span> visited:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span>, <span class="string">&quot;检测到环&quot;</span></span><br><span class="line">        visited.add(current)</span><br><span class="line">        current = current.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span>, <span class="string">&quot;链表结构正确&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>链表是一种基础而重要的数据结构，掌握链表的关键点：</p>
+<ol>
+<li><strong>理解指针操作</strong>：熟练掌握节点的连接和断开</li>
+<li><strong>边界条件处理</strong>：注意空链表、单节点等特殊情况</li>
+<li><strong>空间时间权衡</strong>：根据场景选择合适的数据结构</li>
+<li><strong>递归与迭代</strong>：灵活运用两种方法解决问题</li>
+<li><strong>快慢指针技巧</strong>：掌握双指针思想解决复杂问题</li>
+</ol>
+<p>记住链表的核心优势：<strong>动态内存分配</strong>和<strong>高效的插入删除操作</strong>。</p>
+<hr />
+<h2 id="练习题推荐"><a class="markdownIt-Anchor" href="#练习题推荐"></a> 练习题推荐</h2>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/add-two-numbers/">LeetCode 2. 两数相加</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-two-sorted-lists/">LeetCode 21. 合并两个有序链表</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-k-sorted-lists/">LeetCode 23. 合并K个升序链表</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-nodes-in-k-group/">LeetCode 25. K个一组翻转链表</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/copy-list-with-random-pointer/">LeetCode 138. 复制带随机指针的链表</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/lru-cache/">LeetCode 146. LRU缓存</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/lfu-cache/">LeetCode 460. LFU缓存</a></li>
+</ol>
+
+    </div>
+    <footer class="article-footer">
+        <div class="sponsor-wrapper">
+  <div class="sponsor-button">
+    <div class="sponsor-icon rotate"></div>
+    <div class="sponsor-title">赞助</div>
+    <div class="sponsor-icon rotate"></div>
+  </div>
+  <div class="sponsor-tip">请作者喝杯咖啡吧</div>
+    <div class="sponsor-qr">
+        <div class="sponsor-qr-image-wrapper">
+          <img src="/images/%E8%B5%9E%E8%B5%8F.jpg" alt=微信 width="200" />
+          <p class="sponsor-qr-name">微信</p>
+        </div>
+    </div>
+</div>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/python%E7%AE%97%E6%B3%95/" rel="tag" title="python算法">python算法</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A-%E7%B2%89%E8%89%B2.png" data-sizes="auto" alt="hexo-文本填加扩展说明(自用)" class="lazyload">
+        <a href="/2025/11/12/hexo-%E6%96%87%E6%9C%AC%E5%A1%AB%E5%8A%A0%E6%89%A9%E5%B1%95%E8%AF%B4%E6%98%8E(%E8%87%AA%E7%94%A8)/" aria-label="前一篇: hexo-文本填加扩展说明(自用)" title="前一篇: hexo-文本填加扩展说明(自用)"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            hexo-文本填加扩展说明(自用)
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A-%E6%B3%A2%E5%A5%87%E9%85%B1.png" data-sizes="auto" alt="python算法-暴力枚举" class="lazyload">
+      <a href="/2025/11/12/python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/" aria-label="后一篇: python算法-暴力枚举"  title="后一篇: python算法-暴力枚举"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          python算法-暴力枚举
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2025
+      <span class="footer-info-sep rotate"></span>
+      飞制
+    </div>
+      <div>
+        <span class="icon-brush"></span>
+        6.8k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        00:33
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text"> python算法-链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 链表概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 链表的基本结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 链表与数组的对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> 链表类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8singly-linked-list"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1. 单向链表（Singly Linked List）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8doubly-linked-list"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2. 双向链表（Doubly Linked List）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8circular-linked-list"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 3. 循环链表（Circular Linked List）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text"> 链表的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 节点定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 1. 创建链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%81%8D%E5%8E%86%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 2. 遍历链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8F%92%E5%85%A5%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 3. 插入节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%A4%B4%E9%83%A8%E6%8F%92%E5%85%A5"><span class="toc-number">1.3.4.1.</span> <span class="toc-text"> 在头部插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E5%B0%BE%E9%83%A8%E6%8F%92%E5%85%A5"><span class="toc-number">1.3.4.2.</span> <span class="toc-text"> 在尾部插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%85%A5"><span class="toc-number">1.3.4.3.</span> <span class="toc-text"> 在指定位置插入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 4. 删除节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%A4%B4%E9%83%A8%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.5.1.</span> <span class="toc-text"> 删除头部节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E5%80%BC%E8%8A%82%E7%82%B9"><span class="toc-number">1.3.5.2.</span> <span class="toc-text"> 删除指定值节点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E9%93%BE%E8%A1%A8%E7%AE%97%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text"> 经典链表算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 1. 反转链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="toc-number">1.4.1.1.</span> <span class="toc-text"> 迭代法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E6%B3%95"><span class="toc-number">1.4.1.2.</span> <span class="toc-text"> 递归法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 2. 合并两个有序链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%A3%80%E6%B5%8B%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 3. 检测链表是否有环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95"><span class="toc-number">1.4.3.1.</span> <span class="toc-text"> 快慢指针法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%89%BE%E5%88%B0%E9%93%BE%E8%A1%A8%E7%9A%84%E4%B8%AD%E9%97%B4%E8%8A%82%E7%82%B9"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 4. 找到链表的中间节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95-2"><span class="toc-number">1.4.4.1.</span> <span class="toc-text"> 快慢指针法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACn%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="toc-number">1.4.5.</span> <span class="toc-text"> 5. 删除链表的倒数第N个节点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E9%93%BE%E8%A1%A8%E7%AE%97%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text"> 高级链表算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%93%BE%E8%A1%A8%E6%8E%92%E5%BA%8F"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 1. 链表排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-number">1.5.1.1.</span> <span class="toc-text"> 归并排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8%E5%88%A4%E6%96%AD"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 2. 回文链表判断</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.6.</span> <span class="toc-text"> 链表的数学分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 空间复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%AF%B9%E6%AF%94"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 时间复杂度对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.7.</span> <span class="toc-text"> 链表的应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9E%E7%8E%B0%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 1. 实现栈和队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-lru%E7%BC%93%E5%AD%98"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 2. LRU缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">1.8.</span> <span class="toc-text"> 性能优化技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%93%A8%E5%85%B5%E8%8A%82%E7%82%B9"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 1. 哨兵节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 2. 批量操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="toc-number">1.9.</span> <span class="toc-text"> 调试技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%AF%E8%A7%86%E5%8C%96%E9%93%BE%E8%A1%A8"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 1. 可视化链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%93%BE%E8%A1%A8%E9%AA%8C%E8%AF%81"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 2. 链表验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.10.</span> <span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98%E6%8E%A8%E8%8D%90"><span class="toc-number">1.11.</span> <span class="toc-text"> 练习题推荐</span></a></li></ol></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="飞制" class="lazyload">
+  <div class="sidebar-author-name">飞制</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">5</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social">
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/JEET-PR itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/1939864033?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png"/>
+        </div>
+      </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+      window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+    }
+  </script>
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/quicklink@3.0.1/dist/quicklink.umd.js" integrity="sha384-caMDqvgav&#x2F;HWdEYQU1QRRHMLleigpL1YHAG0m371DhzfL8rRzUyOb+bEHtwlmYjD" crossorigin="anonymous"></script>
+
+  <script data-pjax>
+    window.quicklink?.listen({
+      timeout: 3000,
+      priority: true,
+      ignores: []
+    });
+  </script>
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "飞制",
+          title: "python算法-链表",
+          url: "http://example.com/2025/11/12/python%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8/",
+          excerpt: "",
+          description: "",
+          stripContent: " python算法-链表  链表概述 链表（Linked List）是一种线性数据结构，与数组不同，链表中的元素在内存中不必连续存储。链表由一系列节点组成，每个节点包含数据域和指向下一个节点的指针。  链表的基本结构 classDiagram     class ListNode {         +val: int         +next: ListNode*         +ListNode(val)         +ListNode(val, next)     }       ",
+          date: "Wed Nov 12 2025 20:17:47 GMT+0800",
+          updated: "Sun Nov 16 2025 18:27:34 GMT+0800",
+          cover: "/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BA%8C%E4%B8%96%E8%8A%B1%E4%BC%8A%E5%9C%B0%E4%B8%80-%E5%8A%A8%E6%BC%AB%E5%A5%B3%E5%AD%A9.png",
+        };
+      </script>
+      
+<script src="https://npm.webcache.cn/mermaid@11.12.0/dist/mermaid.min.js" integrity="sha384-o+g&#x2F;BxPwhi0C3RK7oQBxQuNimeafQ3GE&#x2F;ST4iT2BxVI4Wzt60SH4pq9iXVYujjaS" crossorigin="anonymous" data-pjax></script>
+
+      
+<script src="https://npm.webcache.cn/dompurify@3.2.6/dist/purify.min.js" integrity="sha384-JEyTNhjM6R1ElGoJns4U2Ln4ofPcqzSsynQkmEc&#x2F;KGy6336qAZl70tDLufbkla+3" crossorigin="anonymous"></script>
+
+        
+<script src="https://npm.webcache.cn/svg-pan-zoom@3.6.2/dist/svg-pan-zoom.min.js" integrity="sha384-GGX4llYprEPGp9w5caepn95YWAEflHnsA5ewt+Y+cBEb95og5cXKllnWKSELlzbx" crossorigin="anonymous"></script>
+
+      <script data-pjax>
+        if (window.mermaid) {
+          // https://github.com/mermaid-js/mermaid/issues/1945
+          const elementCode = '.mermaid'
+          const processElements = (callback) => {
+            const els = _$$(elementCode);
+            if (!els.length) return Promise.resolve();
+            
+            return new Promise((resolve, reject) => {
+              try {
+                els.forEach(callback);
+                resolve();
+              } catch (error) {
+                reject(error);
+              }
+            });
+          };
+          const saveOriginalData = () => processElements(el => {
+            if (!el.getAttribute('data-original-code')) {
+              el.setAttribute('data-original-code', el.innerHTML);
+            }
+          });
+
+          const resetProcessed = () => processElements(el => {
+            const originalCode = el.getAttribute('data-original-code');
+            if (originalCode) {
+              el.removeAttribute('data-processed');
+              el.innerHTML = DOMPurify.sanitize(originalCode);
+            }
+          });
+          const loadMermaid = async (theme) => {
+            window.mermaid.initialize({theme, startOnLoad: false})
+            await window.mermaid.run({querySelector: elementCode, suppressErrors: true})
+            if (window.svgPanZoom) {
+              window.__panZoomList?.forEach(panZoom => {try {panZoom.destroy()} catch {}});
+              window.__panZoomList = [];
+              _$$('.mermaid > svg').forEach(el => {
+                const bbox = el.getBBox();
+                el.setAttribute('height', Math.max(bbox.height, 80));
+                window.__panZoomList.push(window.svgPanZoom(el, {
+                  zoomEnabled: true,
+                  controlIconsEnabled: true,
+                  fit: true,
+                  center: true
+                }));
+              });
+              if (window.__resizeMermaidSvg) {
+                window.removeEventListener('resize', window.__resizeMermaidSvg);
+              }
+              window.__resizeMermaidSvg = () => {
+                try {
+                  window.__panZoomList.forEach(panZoom => {
+                    panZoom.resize();
+                    panZoom.fit();
+                    panZoom.center();
+                  });
+                } catch {
+                  window.removeEventListener('resize', window.__resizeMermaidSvg);
+                  window.__panZoomList = [];
+                }
+              }
+              window.addEventListener('resize', window.__resizeMermaidSvg);
+            }
+          }
+          const initMermaid = async (theme) => {
+            try {
+              await saveOriginalData();
+              await resetProcessed();
+              await loadMermaid(theme);
+            } catch (error) {
+              console.error(error);
+            }
+          };
+          
+          document.body.addEventListener('dark-theme-set', () => initMermaid('dark'));
+          document.body.addEventListener('light-theme-set', () => initMermaid('default'));
+
+          const mode = localStorage.getItem('dark_mode');
+          if (mode === 'auto') {
+            const osMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            initMermaid(osMode ? 'dark' : 'default');
+          } else {
+            initMermaid(mode === 'true' ? 'dark' : 'default');
+          }
+        }
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+    
+<script src="https://npm.webcache.cn/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6&#x2F;1Nxveei" crossorigin="anonymous" defer data-pjax></script>
+
+    <script data-pjax>
+      window.MathJax = {"tex":{"tags":"ams","useLabelIds":true,"inlineMath":[["$","$"],["\\\\(","\\\\)"]],"displayMath":[["$$","$$"],["\\\\[","\\\\]"]],"processEscapes":true,"processEnvironments":true,"autoload":{"color":[],"colorv2":["color"]},"packages":{"[+]":["noerrors"]}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"],"ignoreHtmlClass":"tex2jax_ignore","processHtmlClass":"tex2jax_process"},"loader":{"load":["input/asciimath","[tex]/noerrors"]}};
+    </script>
+
+  
+<script src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js" integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr+h5UfruuRL&#x2F;aORyw+5+HZoU6e" crossorigin="anonymous"></script>
+
+    <script>
+      if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+        if (window.matchMedia('(max-width: 959px)').matches) {
+          const aplayer = _$('#aplayer');
+          if (aplayer) {
+            const aside = aplayer.parentNode?.parentNode;
+            if (aside?.tagName === 'ASIDE') {
+              aplayer.removeAttribute('data-aos');
+              aplayer.parentNode.removeChild(aplayer);
+              document.body.appendChild(aplayer);
+            }
+          }
+        }
+        // 先定义 isMobile（设备检测）
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+// 初始化 APlayer，修正 Hexo 模板渲染和逻辑错误
+const ap = new APlayer({
+  theme: "var(--color-link)",
+  container: document.getElementById('aplayer'),
+  audio: [{"name":"最初的记忆 DJ阿智Remix","artist":"DJ阿智","url":"/music/最初的记忆(DJ阿智Remix) - DJ阿智.mp3","cover":null},{"name":"Sacred Play Secret Place + 罗生门0.9x","artist":"我无记忆","url":"/music/Sacred Play Secret Place + 罗生门 (0.9x) - 我无记忆.mp3","cover":null},{"name":"特别的人","artist":"方大同","url":"/music/特别的人.mp3","cover":"http://p1.music.126.net/FtAvIYLF3qwqohQhwycVDg==/109951171386379124.jpg?param=300x300"},{"name":"Ciallo~之歌(给柚子厨的礼物)","artist":"八奈见杏菜","url":"/music/Ciallo~之歌(给柚子厨的礼物).mp3","cover":"http://p1.music.126.net/77NH13roeMK4rN90CvjgGw==/109951172179482203.jpg?param=300x300"},{"name":"Ice On My Baby","artist":"Yung Bleu","url":"/music/Ice On My Baby.mp3","cover":"http://p2.music.126.net/-xXaA1-q-eMUO2_Dhqf_Ng==/109951164610273338.jpg?param=300x300"},{"name":"唯一 - G.E.M.邓紫棋","artist":"G.E.M.邓紫棋","url":"/music/唯一 - G.E.M.邓紫棋.mp3","cover":"http://p1.music.126.net/aJWtwvdYRXvKUpAE2C6NoA==/109951168919708423.jpg?param=300x300"},{"name":"IF YOU - BIGBANG","artist":"BIGBANG","url":"/music/IF YOU - BIGBANG.mp3","cover":"http://p1.music.126.net/l-TigfvwoKBUP_LDL1XgIg==/7735064302387363.jpg?param=300x300"},{"name":"One Last Kiss - 宇多田ヒカル","artist":"宇多田ヒカル","url":"/music/One Last Kiss - 宇多田ヒカル.mp3","cover":"http://p1.music.126.net/l3G4LigZnOxFE9lB4bz_LQ==/109951165791860501.jpg?param=300x300"},{"name":"Dehors - JORDANN","artist":"JORDANN","url":"/music/Dehors - JORDANN.mp3","cover":"http://p2.music.126.net/7IM_iRaCe2Pe9TU7PMTdqQ==/109951169635570073.jpg?param=300x300"}], // 直接渲染配置的音乐列表（需确保配置非空）
+  fixed: isMobile ? true : false || false, // 直接取配置布尔值，避免 JSON 转字符串
+  autoplay: false || false, // 配置布尔值直接渲染
+  loop: 'all' || 'all', // 字符串直接渲染
+  order: 'list' || 'list',
+  preload: 'auto' || 'auto',
+  volume: 0.7 || 0.7, // 数值直接渲染
+  mutex: true || true, // 布尔值直接渲染
+  listFolded: true || false,
+  lrcType: 0 || 0,
+});
+      }
+    </script>
+
+
+
+
+<script src="/js/meteor-shower.js" defer></script>
+
+  </body>
+  </html>
