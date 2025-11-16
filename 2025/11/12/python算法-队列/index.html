@@ -1,0 +1,967 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="auto"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';</script>
+  <title>
+    python算法-队列 | 无敌火影大王
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="python算法-队列  队列概述 队列（Queue）是一种特殊的线性表，它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作。队列是一种先进先出（First In First Out，FIFO）的数据结构。  队列的基本特性 flowchart TD     A[新元素入队] --&gt; B[队尾 rear]     B --&gt; C[队列内部]     C --&gt; D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python算法-队列">
+<meta property="og:url" content="http://example.com/2025/11/12/python%E7%AE%97%E6%B3%95-%E9%98%9F%E5%88%97/index.html">
+<meta property="og:site_name" content="无敌火影大王">
+<meta property="og:description" content="python算法-队列  队列概述 队列（Queue）是一种特殊的线性表，它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作。队列是一种先进先出（First In First Out，FIFO）的数据结构。  队列的基本特性 flowchart TD     A[新元素入队] --&gt; B[队尾 rear]     B --&gt; C[队列内部]     C --&gt; D">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-12T12:17:47.000Z">
+<meta property="article:modified_time" content="2025-11-16T11:42:26.083Z">
+<meta property="article:author" content="飞制">
+<meta property="article:tag" content="python算法">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="无敌火影大王" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/666.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+      
+<link rel="stylesheet" href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
+
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj+vDDLIL+xBGQU&#x2F;voDBY5XE2lVh" crossorigin="anonymous">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+    
+    <!-- 流星特效容器 -->
+    <div class="meteor-shower" id="meteor-shower"></div>
+    
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+  </nav>
+  <a href="https://github.com/JEET-PR" class="triangle-badge" title="github" target="_blank" rel="noopener nofollow noreferrer">
+    <div class="icon icon-github triangle-badge-icon"></div>
+  </a>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8A%A8%E6%BC%AB%E5%A5%B3%E5%AD%A9-%E5%8F%AF%E5%8F%A3%E5%8F%AF%E4%B9%90.png" alt="python算法-队列">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">python算法-队列</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+      <div id="aplayer" theme="var(--color-link)" data-aos="fade-up"></div>
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E7%AE%97%E6%B3%95-%E9%98%9F%E5%88%97"><span class="toc-number">1.</span> <span class="toc-text"> python算法-队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 队列概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 队列的基本特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 队列与栈的对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> 队列的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%99%AE%E9%80%9A%E9%98%9F%E5%88%97"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1. 普通队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2. 循环队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 3. 优先队列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text"> 队列的基本实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E4%BA%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1. 基于数组的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E4%BA%8E%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 2. 基于链表的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E6%93%8D%E4%BD%9C%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text"> 队列操作的时间复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 基本操作复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 空间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E9%98%9F%E5%88%97%E7%AE%97%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text"> 高级队列算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 1. 循环队列的数学模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 2. 优先队列的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E7%BB%8F%E5%85%B8%E5%BA%94%E7%94%A8"><span class="toc-number">1.6.</span> <span class="toc-text"> 队列的经典应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-bfs"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 1. 广度优先搜索 (BFS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 2. 任务调度器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 3. 生产者-消费者模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E6%95%B0%E5%AD%A6%E6%80%A7%E8%B4%A8"><span class="toc-number">1.7.</span> <span class="toc-text"> 队列的数学性质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%98%9F%E5%88%97%E7%9A%84%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%80%A7%E8%B4%A8"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 1. 队列的马尔可夫性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-littles-law"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 2. Little’s Law</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mm1-%E9%98%9F%E5%88%97%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 3. M&#x2F;M&#x2F;1 队列模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">1.8.</span> <span class="toc-text"> 队列的性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%85%E5%AD%98%E6%B1%A0%E6%8A%80%E6%9C%AF"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 1. 内存池技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%97%A0%E9%94%81%E9%98%9F%E5%88%97"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 2. 无锁队列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="toc-number">1.9.</span> <span class="toc-text"> 队列的调试技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%98%9F%E5%88%97%E7%8A%B6%E6%80%81%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 1. 队列状态可视化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%98%9F%E5%88%97%E6%93%8D%E4%BD%9C%E6%97%A5%E5%BF%97"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 2. 队列操作日志</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.10.</span> <span class="toc-text"> 实际应用案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%89%93%E5%8D%B0%E6%9C%BA%E9%98%9F%E5%88%97%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 1. 打印机队列模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.10.2.</span> <span class="toc-text"> 2. 消息队列系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.11.</span> <span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98%E6%8E%A8%E8%8D%90"><span class="toc-number">1.12.</span> <span class="toc-text"> 练习题推荐</span></a></li></ol></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="飞制" class="lazyload">
+  <div class="sidebar-author-name">飞制</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">6</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social">
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/JEET-PR itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/1939864033?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-python算法-队列" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2025-11-12T12:17:47.000Z" itemprop="datePublished">2025-11-12</time>
+    <time style="display: none;" id="post-update-time">2025-11-16</time>
+  </span>
+</div>
+
+        <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+  </div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <h1 id="python算法-队列"><a class="markdownIt-Anchor" href="#python算法-队列"></a> python算法-队列</h1>
+<h2 id="队列概述"><a class="markdownIt-Anchor" href="#队列概述"></a> 队列概述</h2>
+<p>队列（Queue）是一种特殊的线性表，它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作。队列是一种先进先出（First In First Out，FIFO）的数据结构。</p>
+<h3 id="队列的基本特性"><a class="markdownIt-Anchor" href="#队列的基本特性"></a> 队列的基本特性</h3>
+<pre class="mermaid">flowchart TD
+    A[新元素入队] --> B[队尾 rear]
+    B --> C[队列内部]
+    C --> D[队头 front]
+    D --> E[元素出队]
+    
+    F[元素1<br/>最早入队] --> G[元素2<br/>第二入队]
+    G --> H[元素3<br/>最新入队]
+    
+    I[入队操作<br/>enqueue] --> J[队尾添加]
+    K[出队操作<br/>dequeue] --> L[队头移除]</pre>
+<h3 id="队列与栈的对比"><a class="markdownIt-Anchor" href="#队列与栈的对比"></a> 队列与栈的对比</h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>队列 (Queue)</th>
+<th>栈 (Stack)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据结构</td>
+<td>FIFO</td>
+<td>LIFO</td>
+</tr>
+<tr>
+<td>插入端</td>
+<td>队尾 (rear)</td>
+<td>栈顶 (top)</td>
+</tr>
+<tr>
+<td>删除端</td>
+<td>队头 (front)</td>
+<td>栈顶 (top)</td>
+</tr>
+<tr>
+<td>应用场景</td>
+<td>任务调度、广度优先搜索</td>
+<td>函数调用、深度优先搜索</td>
+</tr>
+</tbody>
+</table>
+<h2 id="队列的类型"><a class="markdownIt-Anchor" href="#队列的类型"></a> 队列的类型</h2>
+<h3 id="1-普通队列"><a class="markdownIt-Anchor" href="#1-普通队列"></a> 1. 普通队列</h3>
+<pre class="mermaid">sequenceDiagram
+    participant User as 用户
+    participant Queue as 队列
+    participant Element as 元素
+    
+    User->>Queue: enqueue(1)
+    Element->>Queue: 元素1入队
+    User->>Queue: enqueue(2)
+    Element->>Queue: 元素2入队
+    User->>Queue: enqueue(3)
+    Element->>Queue: 元素3入队
+    
+    User->>Queue: dequeue()
+    Queue->>User: 返回元素1
+    User->>Queue: dequeue()
+    Queue->>User: 返回元素2</pre>
+<h3 id="2-循环队列"><a class="markdownIt-Anchor" href="#2-循环队列"></a> 2. 循环队列</h3>
+<pre class="mermaid">stateDiagram-v2
+    [*] --> Empty: 初始化
+    Empty --> Partial: 入队
+    Partial --> Full: 队列满
+    Full --> Partial: 出队
+    Partial --> Empty: 队列空
+    
+    note right of Empty
+        front == rear
+    end note
+    
+    note right of Full
+        (rear + 1) % capacity == front
+    end note</pre>
+<h3 id="3-优先队列"><a class="markdownIt-Anchor" href="#3-优先队列"></a> 3. 优先队列</h3>
+<pre class="mermaid">flowchart TD
+    A[优先队列] --> B[高优先级元素]
+    A --> C[中优先级元素]
+    A --> D[低优先级元素]
+    
+    B --> E[优先出队]
+    C --> F[其次出队]
+    D --> G[最后出队]
+    
+    H[元素: 5<br/>优先级: 高] --> I[元素: 3<br/>优先级: 中]
+    I --> J[元素: 1<br/>优先级: 低]</pre>
+<h2 id="队列的基本实现"><a class="markdownIt-Anchor" href="#队列的基本实现"></a> 队列的基本实现</h2>
+<h3 id="1-基于数组的实现"><a class="markdownIt-Anchor" href="#1-基于数组的实现"></a> 1. 基于数组的实现</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ArrayQueue</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;基于数组的队列实现&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, capacity=<span class="number">10</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.capacity = capacity</span><br><span class="line">        <span class="variable language_">self</span>.array = [<span class="literal">None</span>] * capacity</span><br><span class="line">        <span class="variable language_">self</span>.front = <span class="number">0</span>  <span class="comment"># 队头指针</span></span><br><span class="line">        <span class="variable language_">self</span>.rear = <span class="number">0</span>   <span class="comment"># 队尾指针</span></span><br><span class="line">        <span class="variable language_">self</span>.size = <span class="number">0</span>   <span class="comment"># 当前大小</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enqueue</span>(<span class="params">self, item</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;入队操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.is_full():</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;队列已满&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">self</span>.array[<span class="variable language_">self</span>.rear] = item</span><br><span class="line">        <span class="variable language_">self</span>.rear = (<span class="variable language_">self</span>.rear + <span class="number">1</span>) % <span class="variable language_">self</span>.capacity</span><br><span class="line">        <span class="variable language_">self</span>.size += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dequeue</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;出队操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.is_empty():</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;队列为空&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        item = <span class="variable language_">self</span>.array[<span class="variable language_">self</span>.front]</span><br><span class="line">        <span class="variable language_">self</span>.array[<span class="variable language_">self</span>.front] = <span class="literal">None</span></span><br><span class="line">        <span class="variable language_">self</span>.front = (<span class="variable language_">self</span>.front + <span class="number">1</span>) % <span class="variable language_">self</span>.capacity</span><br><span class="line">        <span class="variable language_">self</span>.size -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> item</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_empty</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;判断队列是否为空&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.size == <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_full</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;判断队列是否已满&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.size == <span class="variable language_">self</span>.capacity</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_size</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;获取队列大小&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.size</span><br></pre></td></tr></table></figure>
+<h3 id="2-基于链表的实现"><a class="markdownIt-Anchor" href="#2-基于链表的实现"></a> 2. 基于链表的实现</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;链表节点&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.val = val</span><br><span class="line">        <span class="variable language_">self</span>.<span class="built_in">next</span> = <span class="built_in">next</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LinkedQueue</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;基于链表的队列实现&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.front = <span class="literal">None</span>  <span class="comment"># 队头</span></span><br><span class="line">        <span class="variable language_">self</span>.rear = <span class="literal">None</span>   <span class="comment"># 队尾</span></span><br><span class="line">        <span class="variable language_">self</span>.size = <span class="number">0</span>      <span class="comment"># 队列大小</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enqueue</span>(<span class="params">self, item</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;入队操作&quot;&quot;&quot;</span></span><br><span class="line">        new_node = ListNode(item)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.is_empty():</span><br><span class="line">            <span class="variable language_">self</span>.front = <span class="variable language_">self</span>.rear = new_node</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="variable language_">self</span>.rear.<span class="built_in">next</span> = new_node</span><br><span class="line">            <span class="variable language_">self</span>.rear = new_node</span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">self</span>.size += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dequeue</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;出队操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.is_empty():</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;队列为空&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        item = <span class="variable language_">self</span>.front.val</span><br><span class="line">        <span class="variable language_">self</span>.front = <span class="variable language_">self</span>.front.<span class="built_in">next</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.front <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="variable language_">self</span>.rear = <span class="literal">None</span></span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">self</span>.size -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> item</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_empty</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;判断队列是否为空&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.size == <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_size</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;获取队列大小&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.size</span><br></pre></td></tr></table></figure>
+<h2 id="队列操作的时间复杂度分析"><a class="markdownIt-Anchor" href="#队列操作的时间复杂度分析"></a> 队列操作的时间复杂度分析</h2>
+<h3 id="基本操作复杂度"><a class="markdownIt-Anchor" href="#基本操作复杂度"></a> 基本操作复杂度</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>数组实现</th>
+<th>链表实现</th>
+<th>数学表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入队 (enqueue)</td>
+<td>$O(1)$</td>
+<td>$O(1)$</td>
+<td>$T_{enqueue} &#x3D; O(1)$</td>
+</tr>
+<tr>
+<td>出队 (dequeue)</td>
+<td>$O(1)$</td>
+<td>$O(1)$</td>
+<td>$T_{dequeue} &#x3D; O(1)$</td>
+</tr>
+<tr>
+<td>查看队头 (peek)</td>
+<td>$O(1)$</td>
+<td>$O(1)$</td>
+<td>$T_{peek} &#x3D; O(1)$</td>
+</tr>
+<tr>
+<td>判空 (is_empty)</td>
+<td>$O(1)$</td>
+<td>$O(1)$</td>
+<td>$T_{empty} &#x3D; O(1)$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="空间复杂度"><a class="markdownIt-Anchor" href="#空间复杂度"></a> 空间复杂度</h3>
+<p>对于包含 $n$ 个元素的队列：</p>
+<ul>
+<li><strong>数组实现空间复杂度</strong>：$O(n)$</li>
+<li><strong>链表实现空间复杂度</strong>：$O(n)$</li>
+<li><strong>总空间计算</strong>：$S_{total} &#x3D; n \times S_{element} + S_{overhead}$</li>
+</ul>
+<p>其中：</p>
+<ul>
+<li>$S_{element}$：单个元素的大小</li>
+<li>$S_{overhead}$：指针或其他开销</li>
+</ul>
+<h2 id="高级队列算法"><a class="markdownIt-Anchor" href="#高级队列算法"></a> 高级队列算法</h2>
+<h3 id="1-循环队列的数学模型"><a class="markdownIt-Anchor" href="#1-循环队列的数学模型"></a> 1. 循环队列的数学模型</h3>
+<p>循环队列的关键是模运算：</p>
+<p>$\text{next\_index} &#x3D; (\text{current\_index} + 1) \bmod \text{capacity}$</p>
+<p><strong>队满条件</strong>：<br />
+$\text{is\_full} &#x3D; (\text{rear} + 1) \bmod \text{capacity} &#x3D; \text{front}$</p>
+<p><strong>队空条件</strong>：<br />
+$\text{is\_empty} &#x3D; \text{front} &#x3D; \text{rear}$</p>
+<p><strong>队列大小</strong>：<br />
+$\text{size} &#x3D; (\text{rear} - \text{front} + \text{capacity}) \bmod \text{capacity}$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CircularQueue</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;循环队列实现&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, capacity</span>):</span><br><span class="line">        <span class="variable language_">self</span>.capacity = capacity</span><br><span class="line">        <span class="variable language_">self</span>.array = [<span class="literal">None</span>] * capacity</span><br><span class="line">        <span class="variable language_">self</span>.front = <span class="number">0</span></span><br><span class="line">        <span class="variable language_">self</span>.rear = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enqueue</span>(<span class="params">self, item</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;入队操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.is_full():</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;队列已满&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="variable language_">self</span>.array[<span class="variable language_">self</span>.rear] = item</span><br><span class="line">        <span class="variable language_">self</span>.rear = (<span class="variable language_">self</span>.rear + <span class="number">1</span>) % <span class="variable language_">self</span>.capacity</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dequeue</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;出队操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.is_empty():</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;队列为空&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        item = <span class="variable language_">self</span>.array[<span class="variable language_">self</span>.front]</span><br><span class="line">        <span class="variable language_">self</span>.array[<span class="variable language_">self</span>.front] = <span class="literal">None</span></span><br><span class="line">        <span class="variable language_">self</span>.front = (<span class="variable language_">self</span>.front + <span class="number">1</span>) % <span class="variable language_">self</span>.capacity</span><br><span class="line">        <span class="keyword">return</span> item</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_full</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;判断队列是否已满&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="variable language_">self</span>.rear + <span class="number">1</span>) % <span class="variable language_">self</span>.capacity == <span class="variable language_">self</span>.front</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_empty</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;判断队列是否为空&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.front == <span class="variable language_">self</span>.rear</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_size</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;获取队列大小&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="variable language_">self</span>.rear - <span class="variable language_">self</span>.front + <span class="variable language_">self</span>.capacity) % <span class="variable language_">self</span>.capacity</span><br></pre></td></tr></table></figure>
+<h3 id="2-优先队列的实现"><a class="markdownIt-Anchor" href="#2-优先队列的实现"></a> 2. 优先队列的实现</h3>
+<p>优先队列使用堆数据结构实现，时间复杂度：</p>
+<ul>
+<li>插入：$O(\log n)$</li>
+<li>删除最大/最小值：$O(\log n)$</li>
+<li>查看最大/最小值：$O(1)$</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PriorityQueue</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;优先队列实现&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.heap = []</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enqueue</span>(<span class="params">self, item, priority</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;入队操作，带优先级&quot;&quot;&quot;</span></span><br><span class="line">        heapq.heappush(<span class="variable language_">self</span>.heap, (priority, item))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dequeue</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;出队操作，返回优先级最高的元素&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.is_empty():</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;队列为空&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> heapq.heappop(<span class="variable language_">self</span>.heap)[<span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">peek</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;查看队头元素&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.is_empty():</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;队列为空&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.heap[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_empty</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;判断队列是否为空&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(<span class="variable language_">self</span>.heap) == <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_size</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;获取队列大小&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(<span class="variable language_">self</span>.heap)</span><br></pre></td></tr></table></figure>
+<h2 id="队列的经典应用"><a class="markdownIt-Anchor" href="#队列的经典应用"></a> 队列的经典应用</h2>
+<h3 id="1-广度优先搜索-bfs"><a class="markdownIt-Anchor" href="#1-广度优先搜索-bfs"></a> 1. 广度优先搜索 (BFS)</h3>
+<pre class="mermaid">flowchart TD
+    A[开始 BFS] --> B[创建队列]
+    B --> C[起始节点入队]
+    C --> D{队列是否为空?}
+    D -->|否| E[出队节点]
+    E --> F[访问该节点]
+    F --> G[将未访问邻居入队]
+    G --> H[标记为已访问]
+    H --> D
+    D -->|是| I[结束]</pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">graph, start</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;广度优先搜索&quot;&quot;&quot;</span></span><br><span class="line">    visited = <span class="built_in">set</span>()</span><br><span class="line">    queue = deque([start])</span><br><span class="line">    visited.add(start)</span><br><span class="line">    result = []</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        result.append(node)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> neighbor <span class="keyword">in</span> graph[node]:</span><br><span class="line">            <span class="keyword">if</span> neighbor <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                visited.add(neighbor)</span><br><span class="line">                queue.append(neighbor)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例使用</span></span><br><span class="line">graph = &#123;</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;D&#x27;</span>: [],</span><br><span class="line">    <span class="string">&#x27;E&#x27;</span>: [<span class="string">&#x27;F&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;F&#x27;</span>: []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(bfs(graph, <span class="string">&#x27;A&#x27;</span>))  <span class="comment"># 输出: [&#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;D&#x27;, &#x27;E&#x27;, &#x27;F&#x27;]</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-任务调度器"><a class="markdownIt-Anchor" href="#2-任务调度器"></a> 2. 任务调度器</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TaskScheduler</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;任务调度器&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.task_queue = deque()</span><br><span class="line">        <span class="variable language_">self</span>.completed_tasks = []</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add_task</span>(<span class="params">self, task_name, duration</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;添加任务&quot;&quot;&quot;</span></span><br><span class="line">        task = &#123;</span><br><span class="line">            <span class="string">&#x27;name&#x27;</span>: task_name,</span><br><span class="line">            <span class="string">&#x27;duration&#x27;</span>: duration,</span><br><span class="line">            <span class="string">&#x27;start_time&#x27;</span>: <span class="literal">None</span>,</span><br><span class="line">            <span class="string">&#x27;end_time&#x27;</span>: <span class="literal">None</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">self</span>.task_queue.append(task)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;任务 &#x27;<span class="subst">&#123;task_name&#125;</span>&#x27; 已添加到队列&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">run_tasks</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;执行所有任务&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">while</span> <span class="variable language_">self</span>.task_queue:</span><br><span class="line">            task = <span class="variable language_">self</span>.task_queue.popleft()</span><br><span class="line">            task[<span class="string">&#x27;start_time&#x27;</span>] = time.time()</span><br><span class="line">            </span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;正在执行任务: <span class="subst">&#123;task[<span class="string">&#x27;name&#x27;</span>]&#125;</span>&quot;</span>)</span><br><span class="line">            time.sleep(task[<span class="string">&#x27;duration&#x27;</span>])</span><br><span class="line">            </span><br><span class="line">            task[<span class="string">&#x27;end_time&#x27;</span>] = time.time()</span><br><span class="line">            <span class="variable language_">self</span>.completed_tasks.append(task)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;任务 &#x27;<span class="subst">&#123;task[<span class="string">&#x27;name&#x27;</span>]&#125;</span>&#x27; 完成&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_task_statistics</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;获取任务统计信息&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="variable language_">self</span>.completed_tasks:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;没有已完成的任务&quot;</span></span><br><span class="line">        </span><br><span class="line">        total_time = <span class="built_in">sum</span>(task[<span class="string">&#x27;end_time&#x27;</span>] - task[<span class="string">&#x27;start_time&#x27;</span>] </span><br><span class="line">                        <span class="keyword">for</span> task <span class="keyword">in</span> <span class="variable language_">self</span>.completed_tasks)</span><br><span class="line">        avg_time = total_time / <span class="built_in">len</span>(<span class="variable language_">self</span>.completed_tasks)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;total_tasks&#x27;</span>: <span class="built_in">len</span>(<span class="variable language_">self</span>.completed_tasks),</span><br><span class="line">            <span class="string">&#x27;total_time&#x27;</span>: total_time,</span><br><span class="line">            <span class="string">&#x27;average_time&#x27;</span>: avg_time</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-生产者-消费者模式"><a class="markdownIt-Anchor" href="#3-生产者-消费者模式"></a> 3. 生产者-消费者模式</h3>
+<pre class="mermaid">sequenceDiagram
+    participant P as 生产者
+    participant Q as 队列
+    participant C as 消费者
+    
+    P->>Q: 生产数据
+    Q->>Q: 数据入队
+    
+    loop 持续监听
+        C->>Q: 检查队列
+        alt 队列非空
+            Q->>C: 返回数据
+            C->>C: 处理数据
+        else 队列为空
+            C->>C: 等待
+        end
+    end</pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ProducerConsumerQueue</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;生产者-消费者队列&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, max_size=<span class="number">10</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.queue = deque(maxlen=max_size)</span><br><span class="line">        <span class="variable language_">self</span>.lock = threading.Lock()</span><br><span class="line">        <span class="variable language_">self</span>.not_empty = threading.Condition(<span class="variable language_">self</span>.lock)</span><br><span class="line">        <span class="variable language_">self</span>.not_full = threading.Condition(<span class="variable language_">self</span>.lock)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">produce</span>(<span class="params">self, item</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;生产数据&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="variable language_">self</span>.not_full:</span><br><span class="line">            <span class="keyword">while</span> <span class="built_in">len</span>(<span class="variable language_">self</span>.queue) &gt;= <span class="variable language_">self</span>.queue.maxlen:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;队列已满，生产者等待...&quot;</span>)</span><br><span class="line">                <span class="variable language_">self</span>.not_full.wait()</span><br><span class="line">            </span><br><span class="line">            <span class="variable language_">self</span>.queue.append(item)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;生产了: <span class="subst">&#123;item&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="variable language_">self</span>.not_empty.notify()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">consume</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;消费数据&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="variable language_">self</span>.not_empty:</span><br><span class="line">            <span class="keyword">while</span> <span class="built_in">len</span>(<span class="variable language_">self</span>.queue) == <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;队列为空，消费者等待...&quot;</span>)</span><br><span class="line">                <span class="variable language_">self</span>.not_empty.wait()</span><br><span class="line">            </span><br><span class="line">            item = <span class="variable language_">self</span>.queue.popleft()</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;消费了: <span class="subst">&#123;item&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="variable language_">self</span>.not_full.notify()</span><br><span class="line">            <span class="keyword">return</span> item</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">producer</span>(<span class="params">queue, items</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;生产者线程&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        queue.produce(item)</span><br><span class="line">        time.sleep(random.uniform(<span class="number">0.1</span>, <span class="number">0.5</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">consumer</span>(<span class="params">queue, count</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;消费者线程&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(count):</span><br><span class="line">        item = queue.consume()</span><br><span class="line">        time.sleep(random.uniform(<span class="number">0.2</span>, <span class="number">0.6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例使用</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    queue = ProducerConsumerQueue(max_size=<span class="number">5</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 创建生产者和消费者线程</span></span><br><span class="line">    producer_thread = threading.Thread(</span><br><span class="line">        target=producer, args=(queue, <span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line">    )</span><br><span class="line">    consumer_thread = threading.Thread(</span><br><span class="line">        target=consumer, args=(queue, <span class="number">10</span>)</span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line">    producer_thread.start()</span><br><span class="line">    consumer_thread.start()</span><br><span class="line">    </span><br><span class="line">    producer_thread.join()</span><br><span class="line">    consumer_thread.join()</span><br></pre></td></tr></table></figure>
+<h2 id="队列的数学性质"><a class="markdownIt-Anchor" href="#队列的数学性质"></a> 队列的数学性质</h2>
+<h3 id="1-队列的马尔可夫性质"><a class="markdownIt-Anchor" href="#1-队列的马尔可夫性质"></a> 1. 队列的马尔可夫性质</h3>
+<p>队列系统可以用马尔可夫链来描述：</p>
+<ul>
+<li><strong>到达率</strong>：$\lambda$ (单位时间内到达的顾客数)</li>
+<li><strong>服务率</strong>：$\mu$ (单位时间内服务的顾客数)</li>
+<li><strong>利用率</strong>：$\rho &#x3D; \frac{\lambda}{\mu}$</li>
+</ul>
+<h3 id="2-littles-law"><a class="markdownIt-Anchor" href="#2-littles-law"></a> 2. Little’s Law</h3>
+<p>李特尔定律描述了队列系统中三个基本参数的关系：</p>
+<p>$L &#x3D; \lambda \times W$</p>
+<p>其中：</p>
+<ul>
+<li>$L$：系统中的平均顾客数</li>
+<li>$\lambda$：平均到达率</li>
+<li>$W$：顾客在系统中的平均等待时间</li>
+</ul>
+<h3 id="3-mm1-队列模型"><a class="markdownIt-Anchor" href="#3-mm1-队列模型"></a> 3. M/M/1 队列模型</h3>
+<p>对于 M/M/1 队列（到达和服务都服从指数分布，单个服务器）：</p>
+<ul>
+<li><strong>系统中的平均顾客数</strong>：$L &#x3D; \frac{\rho}{1 - \rho}$</li>
+<li><strong>队列中的平均顾客数</strong>：$L_q &#x3D; \frac{\rho^2}{1 - \rho}$</li>
+<li><strong>系统中的平均时间</strong>：$W &#x3D; \frac{1}{\mu - \lambda}$</li>
+<li><strong>队列中的平均等待时间</strong>：$W_q &#x3D; \frac{\lambda}{\mu(\mu - \lambda)}$</li>
+</ul>
+<h2 id="队列的性能优化"><a class="markdownIt-Anchor" href="#队列的性能优化"></a> 队列的性能优化</h2>
+<h3 id="1-内存池技术"><a class="markdownIt-Anchor" href="#1-内存池技术"></a> 1. 内存池技术</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MemoryPoolQueue</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;使用内存池的队列&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, pool_size=<span class="number">100</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.pool_size = pool_size</span><br><span class="line">        <span class="variable language_">self</span>.free_nodes = []</span><br><span class="line">        <span class="variable language_">self</span>.allocated_nodes = []</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 预分配节点</span></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(pool_size):</span><br><span class="line">            node = &#123;<span class="string">&#x27;value&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;next&#x27;</span>: <span class="literal">None</span>&#125;</span><br><span class="line">            <span class="variable language_">self</span>.free_nodes.append(node)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">allocate_node</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;分配节点&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.free_nodes:</span><br><span class="line">            node = <span class="variable language_">self</span>.free_nodes.pop()</span><br><span class="line">            <span class="variable language_">self</span>.allocated_nodes.append(node)</span><br><span class="line">            <span class="keyword">return</span> node</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 池已满，动态分配</span></span><br><span class="line">            <span class="keyword">return</span> &#123;<span class="string">&#x27;value&#x27;</span>: <span class="literal">None</span>, <span class="string">&#x27;next&#x27;</span>: <span class="literal">None</span>&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">free_node</span>(<span class="params">self, node</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;释放节点&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> node <span class="keyword">in</span> <span class="variable language_">self</span>.allocated_nodes:</span><br><span class="line">            <span class="variable language_">self</span>.allocated_nodes.remove(node)</span><br><span class="line">            node[<span class="string">&#x27;value&#x27;</span>] = <span class="literal">None</span></span><br><span class="line">            node[<span class="string">&#x27;next&#x27;</span>] = <span class="literal">None</span></span><br><span class="line">            <span class="variable language_">self</span>.free_nodes.append(node)</span><br></pre></td></tr></table></figure>
+<h3 id="2-无锁队列"><a class="markdownIt-Anchor" href="#2-无锁队列"></a> 2. 无锁队列</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LockFreeQueue</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;简化的无锁队列实现&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.head = <span class="literal">None</span></span><br><span class="line">        <span class="variable language_">self</span>.tail = <span class="literal">None</span></span><br><span class="line">        <span class="variable language_">self</span>._lock = threading.Lock()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enqueue</span>(<span class="params">self, item</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;入队操作&quot;&quot;&quot;</span></span><br><span class="line">        new_node = &#123;<span class="string">&#x27;value&#x27;</span>: item, <span class="string">&#x27;next&#x27;</span>: <span class="literal">None</span>&#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">with</span> <span class="variable language_">self</span>._lock:</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.tail <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="variable language_">self</span>.head = <span class="variable language_">self</span>.tail = new_node</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="variable language_">self</span>.tail[<span class="string">&#x27;next&#x27;</span>] = new_node</span><br><span class="line">                <span class="variable language_">self</span>.tail = new_node</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dequeue</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;出队操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="variable language_">self</span>._lock:</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.head <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">raise</span> Exception(<span class="string">&quot;队列为空&quot;</span>)</span><br><span class="line">            </span><br><span class="line">            item = <span class="variable language_">self</span>.head[<span class="string">&#x27;value&#x27;</span>]</span><br><span class="line">            <span class="variable language_">self</span>.head = <span class="variable language_">self</span>.head[<span class="string">&#x27;next&#x27;</span>]</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.head <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="variable language_">self</span>.tail = <span class="literal">None</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">return</span> item</span><br></pre></td></tr></table></figure>
+<h2 id="队列的调试技巧"><a class="markdownIt-Anchor" href="#队列的调试技巧"></a> 队列的调试技巧</h2>
+<h3 id="1-队列状态可视化"><a class="markdownIt-Anchor" href="#1-队列状态可视化"></a> 1. 队列状态可视化</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">visualize_queue</span>(<span class="params">queue</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;可视化队列状态&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(queue, ArrayQueue):</span><br><span class="line">        elements = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(queue.size):</span><br><span class="line">            index = (queue.front + i) % queue.capacity</span><br><span class="line">            elements.append(<span class="built_in">str</span>(queue.array[index]))</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;ArrayQueue: [<span class="subst">&#123;<span class="string">&#x27; -&gt; &#x27;</span>.join(elements)&#125;</span>]&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">isinstance</span>(queue, LinkedQueue):</span><br><span class="line">        elements = []</span><br><span class="line">        current = queue.front</span><br><span class="line">        <span class="keyword">while</span> current:</span><br><span class="line">            elements.append(<span class="built_in">str</span>(current.val))</span><br><span class="line">            current = current.<span class="built_in">next</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;LinkedQueue: [<span class="subst">&#123;<span class="string">&#x27; -&gt; &#x27;</span>.join(elements)&#125;</span>]&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;Queue: <span class="subst">&#123;<span class="built_in">str</span>(queue)&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-队列操作日志"><a class="markdownIt-Anchor" href="#2-队列操作日志"></a> 2. 队列操作日志</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LoggingQueue</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;带日志功能的队列装饰器&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, queue</span>):</span><br><span class="line">        <span class="variable language_">self</span>.queue = queue</span><br><span class="line">        <span class="variable language_">self</span>.operations = []</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">enqueue</span>(<span class="params">self, item</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;带日志的入队操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="variable language_">self</span>.queue.enqueue(item)</span><br><span class="line">        <span class="variable language_">self</span>.operations.append(<span class="string">f&quot;enqueue(<span class="subst">&#123;item&#125;</span>)&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;入队: <span class="subst">&#123;item&#125;</span>&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dequeue</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;带日志的出队操作&quot;&quot;&quot;</span></span><br><span class="line">        item = <span class="variable language_">self</span>.queue.dequeue()</span><br><span class="line">        <span class="variable language_">self</span>.operations.append(<span class="string">f&quot;dequeue() -&gt; <span class="subst">&#123;item&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;出队: <span class="subst">&#123;item&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> item</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_operation_history</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;获取操作历史&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.operations</span><br></pre></td></tr></table></figure>
+<h2 id="实际应用案例"><a class="markdownIt-Anchor" href="#实际应用案例"></a> 实际应用案例</h2>
+<h3 id="1-打印机队列模拟"><a class="markdownIt-Anchor" href="#1-打印机队列模拟"></a> 1. 打印机队列模拟</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PrintJob</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;打印任务&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, pages</span>):</span><br><span class="line">        <span class="variable language_">self</span>.name = name</span><br><span class="line">        <span class="variable language_">self</span>.pages = pages</span><br><span class="line">        <span class="variable language_">self</span>.arrival_time = time.time()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;PrintJob(<span class="subst">&#123;self.name&#125;</span>, <span class="subst">&#123;self.pages&#125;</span>页)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PrinterQueue</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;打印机队列&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, pages_per_minute=<span class="number">10</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.queue = deque()</span><br><span class="line">        <span class="variable language_">self</span>.pages_per_minute = pages_per_minute</span><br><span class="line">        <span class="variable language_">self</span>.total_wait_time = <span class="number">0</span></span><br><span class="line">        <span class="variable language_">self</span>.total_jobs = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add_job</span>(<span class="params">self, job</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;添加打印任务&quot;&quot;&quot;</span></span><br><span class="line">        <span class="variable language_">self</span>.queue.append(job)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;任务 <span class="subst">&#123;job.name&#125;</span> 已加入队列&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">process_jobs</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;处理所有任务&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">while</span> <span class="variable language_">self</span>.queue:</span><br><span class="line">            job = <span class="variable language_">self</span>.queue.popleft()</span><br><span class="line">            wait_time = time.time() - job.arrival_time</span><br><span class="line">            </span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;开始打印: <span class="subst">&#123;job&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;等待时间: <span class="subst">&#123;wait_time:<span class="number">.2</span>f&#125;</span>秒&quot;</span>)</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 模拟打印过程</span></span><br><span class="line">            print_time = job.pages / <span class="variable language_">self</span>.pages_per_minute * <span class="number">60</span>  <span class="comment"># 转换为秒</span></span><br><span class="line">            time.sleep(<span class="built_in">min</span>(print_time, <span class="number">1</span>))  <span class="comment"># 最多等待1秒用于演示</span></span><br><span class="line">            </span><br><span class="line">            <span class="variable language_">self</span>.total_wait_time += wait_time</span><br><span class="line">            <span class="variable language_">self</span>.total_jobs += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;打印完成: <span class="subst">&#123;job&#125;</span>&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_statistics</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;获取统计信息&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.total_jobs == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;没有处理的任务&quot;</span></span><br><span class="line">        </span><br><span class="line">        avg_wait = <span class="variable language_">self</span>.total_wait_time / <span class="variable language_">self</span>.total_jobs</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;total_jobs&#x27;</span>: <span class="variable language_">self</span>.total_jobs,</span><br><span class="line">            <span class="string">&#x27;average_wait_time&#x27;</span>: avg_wait,</span><br><span class="line">            <span class="string">&#x27;total_wait_time&#x27;</span>: <span class="variable language_">self</span>.total_wait_time</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-消息队列系统"><a class="markdownIt-Anchor" href="#2-消息队列系统"></a> 2. 消息队列系统</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Message</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;消息对象&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, content, message_type=<span class="string">&quot;info&quot;</span>, priority=<span class="number">0</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.content = content</span><br><span class="line">        <span class="variable language_">self</span>.message_type = message_type</span><br><span class="line">        <span class="variable language_">self</span>.priority = priority</span><br><span class="line">        <span class="variable language_">self</span>.timestamp = datetime.now()</span><br><span class="line">        <span class="variable language_">self</span>.<span class="built_in">id</span> = <span class="built_in">id</span>(<span class="variable language_">self</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">to_dict</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;转换为字典&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;id&#x27;</span>: <span class="variable language_">self</span>.<span class="built_in">id</span>,</span><br><span class="line">            <span class="string">&#x27;content&#x27;</span>: <span class="variable language_">self</span>.content,</span><br><span class="line">            <span class="string">&#x27;type&#x27;</span>: <span class="variable language_">self</span>.message_type,</span><br><span class="line">            <span class="string">&#x27;priority&#x27;</span>: <span class="variable language_">self</span>.priority,</span><br><span class="line">            <span class="string">&#x27;timestamp&#x27;</span>: <span class="variable language_">self</span>.timestamp.isoformat()</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MessageQueue</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot;消息队列系统&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.queues = &#123;</span><br><span class="line">            <span class="string">&#x27;high&#x27;</span>: deque(),</span><br><span class="line">            <span class="string">&#x27;medium&#x27;</span>: deque(),</span><br><span class="line">            <span class="string">&#x27;low&#x27;</span>: deque()</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">self</span>.message_history = []</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">publish</span>(<span class="params">self, message</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;发布消息&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> message.priority &gt;= <span class="number">8</span>:</span><br><span class="line">            <span class="variable language_">self</span>.queues[<span class="string">&#x27;high&#x27;</span>].append(message)</span><br><span class="line">        <span class="keyword">elif</span> message.priority &gt;= <span class="number">4</span>:</span><br><span class="line">            <span class="variable language_">self</span>.queues[<span class="string">&#x27;medium&#x27;</span>].append(message)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="variable language_">self</span>.queues[<span class="string">&#x27;low&#x27;</span>].append(message)</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;消息已发布: <span class="subst">&#123;message.content&#125;</span> (优先级: <span class="subst">&#123;message.priority&#125;</span>)&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">consume</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;消费消息&quot;&quot;&quot;</span></span><br><span class="line">        <span class="comment"># 按优先级顺序消费</span></span><br><span class="line">        <span class="keyword">for</span> priority <span class="keyword">in</span> [<span class="string">&#x27;high&#x27;</span>, <span class="string">&#x27;medium&#x27;</span>, <span class="string">&#x27;low&#x27;</span>]:</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.queues[priority]:</span><br><span class="line">                message = <span class="variable language_">self</span>.queues[priority].popleft()</span><br><span class="line">                <span class="variable language_">self</span>.message_history.append(message)</span><br><span class="line">                <span class="keyword">return</span> message</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_queue_status</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;获取队列状态&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="string">&#x27;high_priority&#x27;</span>: <span class="built_in">len</span>(<span class="variable language_">self</span>.queues[<span class="string">&#x27;high&#x27;</span>]),</span><br><span class="line">            <span class="string">&#x27;medium_priority&#x27;</span>: <span class="built_in">len</span>(<span class="variable language_">self</span>.queues[<span class="string">&#x27;medium&#x27;</span>]),</span><br><span class="line">            <span class="string">&#x27;low_priority&#x27;</span>: <span class="built_in">len</span>(<span class="variable language_">self</span>.queues[<span class="string">&#x27;low&#x27;</span>]),</span><br><span class="line">            <span class="string">&#x27;total_messages&#x27;</span>: <span class="built_in">sum</span>(<span class="built_in">len</span>(q) <span class="keyword">for</span> q <span class="keyword">in</span> <span class="variable language_">self</span>.queues.values())</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>队列是一种基础而重要的数据结构，掌握队列的关键点：</p>
+<ol>
+<li><strong>FIFO特性</strong>：理解先进先出的核心概念</li>
+<li><strong>多种实现</strong>：掌握数组、链表、循环等实现方式</li>
+<li><strong>时间复杂度</strong>：了解各种操作的时间复杂度</li>
+<li><strong>应用场景</strong>：熟悉BFS、任务调度、生产者-消费者等应用</li>
+<li><strong>性能优化</strong>：了解内存池、无锁队列等优化技术</li>
+<li><strong>数学模型</strong>：理解队列的数学性质和分析方法</li>
+</ol>
+<p>记住队列的核心价值：<strong>公平性</strong>和<strong>有序性</strong>。</p>
+<hr />
+<h2 id="练习题推荐"><a class="markdownIt-Anchor" href="#练习题推荐"></a> 练习题推荐</h2>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/implement-stack-using-queues/">LeetCode 225. 用队列实现栈</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/implement-queue-using-stacks/">LeetCode 232. 用栈实现队列</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/design-circular-queue/">LeetCode 622. 设计循环队列</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/design-circular-deque/">LeetCode 641. 设计循环双端队列</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-recent-calls/">LeetCode 933. 最近的请求次数</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/">LeetCode 239. 滑动窗口最大值</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/">LeetCode 862. 和至少为 K 的最短子数组</a></li>
+</ol>
+
+    </div>
+    <footer class="article-footer">
+        <div class="sponsor-wrapper">
+  <div class="sponsor-button">
+    <div class="sponsor-icon rotate"></div>
+    <div class="sponsor-title">赞助</div>
+    <div class="sponsor-icon rotate"></div>
+  </div>
+  <div class="sponsor-tip">请作者喝杯咖啡吧</div>
+    <div class="sponsor-qr">
+        <div class="sponsor-qr-image-wrapper">
+          <img src="/images/%E8%B5%9E%E8%B5%8F.jpg" alt=微信 width="200" />
+          <p class="sponsor-qr-name">微信</p>
+        </div>
+    </div>
+</div>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/python%E7%AE%97%E6%B3%95/" rel="tag" title="python算法">python算法</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BA%8C%E4%B8%96%E8%8A%B1%E4%BC%8A%E5%9C%B0%E4%B8%80-%E5%8A%A8%E6%BC%AB%E5%A5%B3%E5%AD%A9.png" data-sizes="auto" alt="python算法-链表" class="lazyload">
+        <a href="/2025/11/12/python%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8/" aria-label="前一篇: python算法-链表" title="前一篇: python算法-链表"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            python算法-链表
+        </h3>
+      </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2025
+      <span class="footer-info-sep rotate"></span>
+      飞制
+    </div>
+      <div>
+        <span class="icon-brush"></span>
+        10.1k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        00:49
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E7%AE%97%E6%B3%95-%E9%98%9F%E5%88%97"><span class="toc-number">1.</span> <span class="toc-text"> python算法-队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 队列概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 队列的基本特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E4%B8%8E%E6%A0%88%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 队列与栈的对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> 队列的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%99%AE%E9%80%9A%E9%98%9F%E5%88%97"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1. 普通队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2. 循环队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 3. 优先队列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text"> 队列的基本实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E4%BA%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 1. 基于数组的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E4%BA%8E%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 2. 基于链表的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E6%93%8D%E4%BD%9C%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text"> 队列操作的时间复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 基本操作复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 空间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E9%98%9F%E5%88%97%E7%AE%97%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text"> 高级队列算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E7%9A%84%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 1. 循环队列的数学模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 2. 优先队列的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E7%BB%8F%E5%85%B8%E5%BA%94%E7%94%A8"><span class="toc-number">1.6.</span> <span class="toc-text"> 队列的经典应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2-bfs"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 1. 广度优先搜索 (BFS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 2. 任务调度器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 3. 生产者-消费者模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E6%95%B0%E5%AD%A6%E6%80%A7%E8%B4%A8"><span class="toc-number">1.7.</span> <span class="toc-text"> 队列的数学性质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%98%9F%E5%88%97%E7%9A%84%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%80%A7%E8%B4%A8"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 1. 队列的马尔可夫性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-littles-law"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 2. Little’s Law</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-mm1-%E9%98%9F%E5%88%97%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 3. M&#x2F;M&#x2F;1 队列模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">1.8.</span> <span class="toc-text"> 队列的性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%86%85%E5%AD%98%E6%B1%A0%E6%8A%80%E6%9C%AF"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 1. 内存池技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%97%A0%E9%94%81%E9%98%9F%E5%88%97"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 2. 无锁队列</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7"><span class="toc-number">1.9.</span> <span class="toc-text"> 队列的调试技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%98%9F%E5%88%97%E7%8A%B6%E6%80%81%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 1. 队列状态可视化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%98%9F%E5%88%97%E6%93%8D%E4%BD%9C%E6%97%A5%E5%BF%97"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 2. 队列操作日志</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.10.</span> <span class="toc-text"> 实际应用案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%89%93%E5%8D%B0%E6%9C%BA%E9%98%9F%E5%88%97%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 1. 打印机队列模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.10.2.</span> <span class="toc-text"> 2. 消息队列系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.11.</span> <span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98%E6%8E%A8%E8%8D%90"><span class="toc-number">1.12.</span> <span class="toc-text"> 练习题推荐</span></a></li></ol></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="飞制" class="lazyload">
+  <div class="sidebar-author-name">飞制</div>
+  <div class="sidebar-description"></div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">6</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">2</div>
+  </div>
+</div>
+<div class="sidebar-social">
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/JEET-PR itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/1939864033?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png"/>
+        </div>
+      </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+      window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+    }
+  </script>
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/quicklink@3.0.1/dist/quicklink.umd.js" integrity="sha384-caMDqvgav&#x2F;HWdEYQU1QRRHMLleigpL1YHAG0m371DhzfL8rRzUyOb+bEHtwlmYjD" crossorigin="anonymous"></script>
+
+  <script data-pjax>
+    window.quicklink?.listen({
+      timeout: 3000,
+      priority: true,
+      ignores: []
+    });
+  </script>
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "飞制",
+          title: "python算法-队列",
+          url: "http://example.com/2025/11/12/python%E7%AE%97%E6%B3%95-%E9%98%9F%E5%88%97/",
+          excerpt: "",
+          description: "",
+          stripContent: " python算法-队列  队列概述 队列（Queue）是一种特殊的线性表，它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作。队列是一种先进先出（First In First Out，FIFO）的数据结构。  队列的基本特性 flowchart TD     A[新元素入队] --&gt; B[队尾 rear]     B --&gt; C[队列内部]     C --&gt; D[队头 front]     D --&gt; E[元素出队]          F[元素1最早入队] -",
+          date: "Wed Nov 12 2025 20:17:47 GMT+0800",
+          updated: "Sun Nov 16 2025 19:42:26 GMT+0800",
+          cover: "/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8A%A8%E6%BC%AB%E5%A5%B3%E5%AD%A9-%E5%8F%AF%E5%8F%A3%E5%8F%AF%E4%B9%90.png",
+        };
+      </script>
+      
+<script src="https://npm.webcache.cn/mermaid@11.12.0/dist/mermaid.min.js" integrity="sha384-o+g&#x2F;BxPwhi0C3RK7oQBxQuNimeafQ3GE&#x2F;ST4iT2BxVI4Wzt60SH4pq9iXVYujjaS" crossorigin="anonymous" data-pjax></script>
+
+      
+<script src="https://npm.webcache.cn/dompurify@3.2.6/dist/purify.min.js" integrity="sha384-JEyTNhjM6R1ElGoJns4U2Ln4ofPcqzSsynQkmEc&#x2F;KGy6336qAZl70tDLufbkla+3" crossorigin="anonymous"></script>
+
+        
+<script src="https://npm.webcache.cn/svg-pan-zoom@3.6.2/dist/svg-pan-zoom.min.js" integrity="sha384-GGX4llYprEPGp9w5caepn95YWAEflHnsA5ewt+Y+cBEb95og5cXKllnWKSELlzbx" crossorigin="anonymous"></script>
+
+      <script data-pjax>
+        if (window.mermaid) {
+          // https://github.com/mermaid-js/mermaid/issues/1945
+          const elementCode = '.mermaid'
+          const processElements = (callback) => {
+            const els = _$$(elementCode);
+            if (!els.length) return Promise.resolve();
+            
+            return new Promise((resolve, reject) => {
+              try {
+                els.forEach(callback);
+                resolve();
+              } catch (error) {
+                reject(error);
+              }
+            });
+          };
+          const saveOriginalData = () => processElements(el => {
+            if (!el.getAttribute('data-original-code')) {
+              el.setAttribute('data-original-code', el.innerHTML);
+            }
+          });
+
+          const resetProcessed = () => processElements(el => {
+            const originalCode = el.getAttribute('data-original-code');
+            if (originalCode) {
+              el.removeAttribute('data-processed');
+              el.innerHTML = DOMPurify.sanitize(originalCode);
+            }
+          });
+          const loadMermaid = async (theme) => {
+            window.mermaid.initialize({theme, startOnLoad: false})
+            await window.mermaid.run({querySelector: elementCode, suppressErrors: true})
+            if (window.svgPanZoom) {
+              window.__panZoomList?.forEach(panZoom => {try {panZoom.destroy()} catch {}});
+              window.__panZoomList = [];
+              _$$('.mermaid > svg').forEach(el => {
+                const bbox = el.getBBox();
+                el.setAttribute('height', Math.max(bbox.height, 80));
+                window.__panZoomList.push(window.svgPanZoom(el, {
+                  zoomEnabled: true,
+                  controlIconsEnabled: true,
+                  fit: true,
+                  center: true
+                }));
+              });
+              if (window.__resizeMermaidSvg) {
+                window.removeEventListener('resize', window.__resizeMermaidSvg);
+              }
+              window.__resizeMermaidSvg = () => {
+                try {
+                  window.__panZoomList.forEach(panZoom => {
+                    panZoom.resize();
+                    panZoom.fit();
+                    panZoom.center();
+                  });
+                } catch {
+                  window.removeEventListener('resize', window.__resizeMermaidSvg);
+                  window.__panZoomList = [];
+                }
+              }
+              window.addEventListener('resize', window.__resizeMermaidSvg);
+            }
+          }
+          const initMermaid = async (theme) => {
+            try {
+              await saveOriginalData();
+              await resetProcessed();
+              await loadMermaid(theme);
+            } catch (error) {
+              console.error(error);
+            }
+          };
+          
+          document.body.addEventListener('dark-theme-set', () => initMermaid('dark'));
+          document.body.addEventListener('light-theme-set', () => initMermaid('default'));
+
+          const mode = localStorage.getItem('dark_mode');
+          if (mode === 'auto') {
+            const osMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            initMermaid(osMode ? 'dark' : 'default');
+          } else {
+            initMermaid(mode === 'true' ? 'dark' : 'default');
+          }
+        }
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+    
+<script src="https://npm.webcache.cn/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6&#x2F;1Nxveei" crossorigin="anonymous" defer data-pjax></script>
+
+    <script data-pjax>
+      window.MathJax = {"tex":{"tags":"ams","useLabelIds":true,"inlineMath":[["$","$"],["\\\\(","\\\\)"]],"displayMath":[["$$","$$"],["\\\\[","\\\\]"]],"processEscapes":true,"processEnvironments":true,"autoload":{"color":[],"colorv2":["color"]},"packages":{"[+]":["noerrors"]}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"],"ignoreHtmlClass":"tex2jax_ignore","processHtmlClass":"tex2jax_process"},"loader":{"load":["input/asciimath","[tex]/noerrors"]}};
+    </script>
+
+  
+<script src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js" integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr+h5UfruuRL&#x2F;aORyw+5+HZoU6e" crossorigin="anonymous"></script>
+
+    <script>
+      if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+        if (window.matchMedia('(max-width: 959px)').matches) {
+          const aplayer = _$('#aplayer');
+          if (aplayer) {
+            const aside = aplayer.parentNode?.parentNode;
+            if (aside?.tagName === 'ASIDE') {
+              aplayer.removeAttribute('data-aos');
+              aplayer.parentNode.removeChild(aplayer);
+              document.body.appendChild(aplayer);
+            }
+          }
+        }
+        // 先定义 isMobile（设备检测）
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+// 初始化 APlayer，修正 Hexo 模板渲染和逻辑错误
+const ap = new APlayer({
+  theme: "var(--color-link)",
+  container: document.getElementById('aplayer'),
+  audio: [{"name":"最初的记忆 DJ阿智Remix","artist":"DJ阿智","url":"/music/最初的记忆(DJ阿智Remix) - DJ阿智.mp3","cover":null},{"name":"Sacred Play Secret Place + 罗生门0.9x","artist":"我无记忆","url":"/music/Sacred Play Secret Place + 罗生门 (0.9x) - 我无记忆.mp3","cover":null},{"name":"特别的人","artist":"方大同","url":"/music/特别的人.mp3","cover":"http://p1.music.126.net/FtAvIYLF3qwqohQhwycVDg==/109951171386379124.jpg?param=300x300"},{"name":"Ciallo~之歌(给柚子厨的礼物)","artist":"八奈见杏菜","url":"/music/Ciallo~之歌(给柚子厨的礼物).mp3","cover":"http://p1.music.126.net/77NH13roeMK4rN90CvjgGw==/109951172179482203.jpg?param=300x300"},{"name":"Ice On My Baby","artist":"Yung Bleu","url":"/music/Ice On My Baby.mp3","cover":"http://p2.music.126.net/-xXaA1-q-eMUO2_Dhqf_Ng==/109951164610273338.jpg?param=300x300"},{"name":"唯一 - G.E.M.邓紫棋","artist":"G.E.M.邓紫棋","url":"/music/唯一 - G.E.M.邓紫棋.mp3","cover":"http://p1.music.126.net/aJWtwvdYRXvKUpAE2C6NoA==/109951168919708423.jpg?param=300x300"},{"name":"IF YOU - BIGBANG","artist":"BIGBANG","url":"/music/IF YOU - BIGBANG.mp3","cover":"http://p1.music.126.net/l-TigfvwoKBUP_LDL1XgIg==/7735064302387363.jpg?param=300x300"},{"name":"One Last Kiss - 宇多田ヒカル","artist":"宇多田ヒカル","url":"/music/One Last Kiss - 宇多田ヒカル.mp3","cover":"http://p1.music.126.net/l3G4LigZnOxFE9lB4bz_LQ==/109951165791860501.jpg?param=300x300"},{"name":"Dehors - JORDANN","artist":"JORDANN","url":"/music/Dehors - JORDANN.mp3","cover":"http://p2.music.126.net/7IM_iRaCe2Pe9TU7PMTdqQ==/109951169635570073.jpg?param=300x300"}], // 直接渲染配置的音乐列表（需确保配置非空）
+  fixed: isMobile ? true : false || false, // 直接取配置布尔值，避免 JSON 转字符串
+  autoplay: false || false, // 配置布尔值直接渲染
+  loop: 'all' || 'all', // 字符串直接渲染
+  order: 'list' || 'list',
+  preload: 'auto' || 'auto',
+  volume: 0.7 || 0.7, // 数值直接渲染
+  mutex: true || true, // 布尔值直接渲染
+  listFolded: true || false,
+  lrcType: 0 || 0,
+});
+      }
+    </script>
+
+
+
+
+<script src="/js/meteor-shower.js" defer></script>
+
+  </body>
+  </html>
