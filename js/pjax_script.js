@@ -305,7 +305,7 @@ function tocInit() {
     return sections.indexOf(entry.target);
   };
 
-  const observer = new IntersectionObserver(
+  const navObserver = new IntersectionObserver(
     (entries) => {
       const index = findIndex(entries) + (window.diffY > 0 ? 1 : 0);
       if (activeLock === null) {
@@ -319,7 +319,7 @@ function tocInit() {
   );
 
   sections.forEach((element) => {
-    element && observer.observe(element);
+    element && navObserver.observe(element);
   });
 }
 

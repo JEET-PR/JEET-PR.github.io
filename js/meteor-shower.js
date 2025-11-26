@@ -204,7 +204,7 @@ class MeteorShower {
    */
   observeThemeChanges() {
     // 监听data-theme属性变化
-    const observer = new MutationObserver((mutations) => {
+    const themeObserver = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
           // 主题变化时可以重新调整流星样式
@@ -213,7 +213,7 @@ class MeteorShower {
       });
     });
 
-    observer.observe(document.documentElement, {
+    themeObserver.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['data-theme']
     });
