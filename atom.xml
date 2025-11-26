@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-11-19T13:45:42.913Z</updated>
+  <updated>2025-11-26T11:59:41.286Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>P1047 [NOIP 2005 普及组] 校门外的树</title>
+    <link href="http://example.com/2025/11/26/P1047%20%5BNOIP%202005%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91/"/>
+    <id>http://example.com/2025/11/26/P1047%20%5BNOIP%202005%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91/</id>
+    <published>2025-11-26T09:59:10.000Z</published>
+    <updated>2025-11-26T11:59:41.286Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;p1047-noip-2005-普及组-校门外的树&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#p1047-noip-2005-普及组-校门外的树&quot;&gt;&lt;/a&gt; P1047 [NOIP 2005 普及组] 校门外的树&lt;/h1&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="解题" scheme="http://example.com/categories/%E8%A7%A3%E9%A2%98/"/>
+    
+    
+    <category term="洛谷" scheme="http://example.com/tags/%E6%B4%9B%E8%B0%B7/"/>
+    
+    <category term="Python算法" scheme="http://example.com/tags/Python%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="区间覆盖" scheme="http://example.com/tags/%E5%8C%BA%E9%97%B4%E8%A6%86%E7%9B%96/"/>
+    
+  </entry>
   
   <entry>
     <title>Python编程基础</title>
@@ -69,32 +99,6 @@
   </entry>
   
   <entry>
-    <title>python算法-队列</title>
-    <link href="http://example.com/2025/11/14/python%E7%AE%97%E6%B3%95-%E9%98%9F%E5%88%97/"/>
-    <id>http://example.com/2025/11/14/python%E7%AE%97%E6%B3%95-%E9%98%9F%E5%88%97/</id>
-    <published>2025-11-14T12:17:47.000Z</published>
-    <updated>2025-11-18T13:04:07.416Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;python算法-队列&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#python算法-队列&quot;&gt;&lt;/a&gt; python算法-队列&lt;/h1&gt;
-&lt;h2 id=&quot;队列概述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="学习" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="python算法" scheme="http://example.com/tags/python%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>python算法-链表</title>
     <link href="http://example.com/2025/11/14/python%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8/"/>
     <id>http://example.com/2025/11/14/python%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8/</id>
@@ -121,19 +125,19 @@
   </entry>
   
   <entry>
-    <title>python算法-暴力枚举</title>
-    <link href="http://example.com/2025/11/13/python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/"/>
-    <id>http://example.com/2025/11/13/python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/</id>
-    <published>2025-11-13T12:17:47.000Z</published>
-    <updated>2025-11-18T13:04:04.367Z</updated>
+    <title>python算法-队列</title>
+    <link href="http://example.com/2025/11/14/python%E7%AE%97%E6%B3%95-%E9%98%9F%E5%88%97/"/>
+    <id>http://example.com/2025/11/14/python%E7%AE%97%E6%B3%95-%E9%98%9F%E5%88%97/</id>
+    <published>2025-11-14T12:17:47.000Z</published>
+    <updated>2025-11-18T13:04:07.416Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;python算法-暴力枚举&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#python算法-暴力枚举&quot;&gt;&lt;/a&gt; Python算法-暴力枚举&lt;/h1&gt;
-&lt;h2 id=&quot;什么是暴力枚举&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h1 id=&quot;python算法-队列&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#python算法-队列&quot;&gt;&lt;/a&gt; python算法-队列&lt;/h1&gt;
+&lt;h2 id=&quot;队列概述&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
         
       
     
@@ -160,6 +164,32 @@
         
     <summary type="html">&lt;h1 id=&quot;python算法-动态规划递推&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#python算法-动态规划递推&quot;&gt;&lt;/a&gt; python算法-动态规划递推&lt;/h1&gt;
 &lt;h2 id=&quot;动态规划概述&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="学习" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="python算法" scheme="http://example.com/tags/python%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python算法-暴力枚举</title>
+    <link href="http://example.com/2025/11/13/python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/"/>
+    <id>http://example.com/2025/11/13/python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/</id>
+    <published>2025-11-13T12:17:47.000Z</published>
+    <updated>2025-11-18T13:04:04.367Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;python算法-暴力枚举&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#python算法-暴力枚举&quot;&gt;&lt;/a&gt; Python算法-暴力枚举&lt;/h1&gt;
+&lt;h2 id=&quot;什么是暴力枚举&quot;&gt;&lt;a</summary>
         
       
     

@@ -9,7 +9,7 @@
   
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';</script>
   <title>
-    python算法-动态规划递推 | 无敌火影大王
+    P1047 [NOIP 2005 普及组] 校门外的树 | 无敌火影大王
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
@@ -17,17 +17,19 @@
     
 <link rel="stylesheet" href="/css/loader.css">
 
-    <meta name="description" content="python算法-动态规划递推  动态规划概述 动态规划（Dynamic Programming，DP）是一种通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。动态规划常常适用于有重叠子问题和最优子结构性质的问题。  核心思想 动态规划的核心思想是：  分解子问题：将复杂问题分解为若干个相互重叠的子问题 存储状态：保存子问题的解，避免重复计算 递推求解：通过子问题的解递推得到原问题的解">
+    <meta name="description" content="P1047 [NOIP 2005 普及组] 校门外的树  题目描述 某校大门外长度为 l 的马路上有一排树，每两棵相邻的树之间的间隔都是 1 米。我们可以把马路看成一个数轴，马路的一端在数轴 0 的位置，另一端在 l 的位置；数轴上的每个整数点，即 0,1,2,…,l，都种有一棵树。 由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任一区域的起始点和终止点的坐标">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python算法-动态规划递推">
-<meta property="og:url" content="http://example.com/2025/11/13/python%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%80%92%E6%8E%A8/index.html">
+<meta property="og:title" content="P1047 [NOIP 2005 普及组] 校门外的树">
+<meta property="og:url" content="http://example.com/2025/11/26/P1047%20%5BNOIP%202005%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91/index.html">
 <meta property="og:site_name" content="无敌火影大王">
-<meta property="og:description" content="python算法-动态规划递推  动态规划概述 动态规划（Dynamic Programming，DP）是一种通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。动态规划常常适用于有重叠子问题和最优子结构性质的问题。  核心思想 动态规划的核心思想是：  分解子问题：将复杂问题分解为若干个相互重叠的子问题 存储状态：保存子问题的解，避免重复计算 递推求解：通过子问题的解递推得到原问题的解">
+<meta property="og:description" content="P1047 [NOIP 2005 普及组] 校门外的树  题目描述 某校大门外长度为 l 的马路上有一排树，每两棵相邻的树之间的间隔都是 1 米。我们可以把马路看成一个数轴，马路的一端在数轴 0 的位置，另一端在 l 的位置；数轴上的每个整数点，即 0,1,2,…,l，都种有一棵树。 由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任一区域的起始点和终止点的坐标">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-11-13T12:17:47.000Z">
-<meta property="article:modified_time" content="2025-11-18T13:04:05.656Z">
+<meta property="article:published_time" content="2025-11-26T09:59:10.000Z">
+<meta property="article:modified_time" content="2025-11-26T11:59:41.286Z">
 <meta property="article:author" content="飞制">
-<meta property="article:tag" content="python算法">
+<meta property="article:tag" content="Python算法">
+<meta property="article:tag" content="区间覆盖">
+<meta property="article:tag" content="洛谷">
 <meta name="twitter:card" content="summary">
     <link rel="alternate" href="/atom.xml" title="无敌火影大王" type="application/atom+xml">
     <link rel="shortcut icon" href="/images/666.ico">
@@ -145,12 +147,13 @@
   </a>
 </div>
 <header id="header" aria-label="Site header">
-    <picture></picture>
-    <img  fetchpriority="high" src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A-%E5%B1%B1%E7%94%B0%E5%87%89.png" alt="python算法-动态规划递推">
+        <picture>
+        </picture>
+          <img  fetchpriority="high" src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%85%A8%E5%91%98-%E5%90%8E%E8%97%A4%E4%B8%80%E9%87%8C.png" alt="P1047 [NOIP 2005 普及组] 校门外的树">
   <div id="header-outer">
     <div id="header-title">
           <span id="logo">
-            <h1 data-aos="slide-up">python算法-动态规划递推</h1>
+            <h1 data-aos="slide-up">P1047 [NOIP 2005 普及组] 校门外的树</h1>
           </span>
         <h2 id="subtitle-wrap" data-aos="slide-down">
         </h2>
@@ -166,7 +169,7 @@
     <div class="sidebar-wrap" data-aos="fade-up">
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%80%92%E6%8E%A8"><span class="toc-number">1.</span> <span class="toc-text"> python算法-动态规划递推</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 动态规划概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 核心思想</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E9%80%92%E6%8E%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> 动态规划的递推流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dp%E9%97%AE%E9%A2%98%E7%9A%84%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text"> DP问题的判断条件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-number">1.3.</span> <span class="toc-text"> 数学基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB%E5%BC%8F"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 递推关系式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 边界条件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.4.</span> <span class="toc-text"> 经典问题详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 1. 斐波那契数列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 2. 0-1背包问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97lis"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 3. 最长递增子序列（LIS）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.5.</span> <span class="toc-text"> 动态规划的解题步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 步骤详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">1.6.</span> <span class="toc-text"> 常见优化技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 1. 滚动数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 2. 状态压缩</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.7.</span> <span class="toc-text"> 复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 空间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B"><span class="toc-number">1.8.</span> <span class="toc-text"> 实战案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%E9%97%AE%E9%A2%98"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 编辑距离问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.9.</span> <span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98%E6%8E%A8%E8%8D%90"><span class="toc-number">1.10.</span> <span class="toc-text"> 练习题推荐</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#p1047-noip-2005-%E6%99%AE%E5%8F%8A%E7%BB%84-%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text"> P1047 [NOIP 2005 普及组] 校门外的树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text"> 输入输出样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-1"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 输入 #1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-1"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 输出 #1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E%E6%8F%90%E7%A4%BA"><span class="toc-number">1.5.</span> <span class="toc-text"> 说明&#x2F;提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.6.</span> <span class="toc-text"> 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E4%BC%98%E5%8C%96"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 方法二：区间合并优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.</span> <span class="toc-text"> Python 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-2"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 代码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-3"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-2"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96-2"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.9.</span> <span class="toc-text"> 复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-4"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-3"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 方法三：区间合并法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 优化建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="toc-number">1.11.</span> <span class="toc-text"> 输入输出示例解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 输入样例分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 输出计算过程</span></a></li></ol></li></ol></li></ol>
 </div>
 </div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -364,18 +367,18 @@ window.addEventListener('load', function() {
   </div>
 </aside>
 
-          <section id="main" aria-label="Main content"><article id="post-python算法-动态规划递推" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+          <section id="main" aria-label="Main content"><article id="post-P1047 [NOIP 2005 普及组] 校门外的树" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner" data-aos="fade-up">
     <div class="article-meta">
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
-    <time datetime="2025-11-13T12:17:47.000Z" itemprop="datePublished">2025-11-13</time>
-    <time style="display: none;" id="post-update-time">2025-11-18</time>
+    <time datetime="2025-11-26T09:59:10.000Z" itemprop="datePublished">2025-11-26</time>
+    <time style="display: none;" id="post-update-time">2025-11-26</time>
   </span>
 </div>
 
         <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/" title="学习">学习</a>
+    <a class="article-category-link" href="/categories/%E8%A7%A3%E9%A2%98/" title="解题">解题</a>
   </div>
 
     </div>
@@ -383,147 +386,170 @@ window.addEventListener('load', function() {
     <div class="hr-line"></div>
     
     <div class="e-content article-entry" itemprop="articleBody">
-        <h1 id="python算法-动态规划递推"><a class="markdownIt-Anchor" href="#python算法-动态规划递推"></a> python算法-动态规划递推</h1>
-<h2 id="动态规划概述"><a class="markdownIt-Anchor" href="#动态规划概述"></a> 动态规划概述</h2>
-<p>动态规划（Dynamic Programming，DP）是一种通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。动态规划常常适用于有重叠子问题和最优子结构性质的问题。</p>
-<h3 id="核心思想"><a class="markdownIt-Anchor" href="#核心思想"></a> 核心思想</h3>
-<p>动态规划的核心思想是：</p>
+        <h1 id="p1047-noip-2005-普及组-校门外的树"><a class="markdownIt-Anchor" href="#p1047-noip-2005-普及组-校门外的树"></a> P1047 [NOIP 2005 普及组] 校门外的树</h1>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>某校大门外长度为 l 的马路上有一排树，每两棵相邻的树之间的间隔都是 1 米。我们可以把马路看成一个数轴，马路的一端在数轴 0 的位置，另一端在 l 的位置；数轴上的每个整数点，即 0,1,2,…,l，都种有一棵树。</p>
+<p>由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任一区域的起始点和终止点的坐标都是整数，区域之间可能有重合的部分。现在要把这些区域中的树（包括区域端点处的两棵树）移走。你的任务是计算将这些树都移走后，马路上还有多少棵树。</p>
+<h2 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式</h2>
+<p>第一行有两个整数，分别表示马路的长度 l 和区域的数目 m。</p>
+<p>接下来 m 行，每行两个整数 u,v，表示一个区域的起始点和终止点的坐标。</p>
+<h2 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式</h2>
+<p>输出一行一个整数，表示将这些树都移走后，马路上剩余的树木数量。</p>
+<h2 id="输入输出样例"><a class="markdownIt-Anchor" href="#输入输出样例"></a> 输入输出样例</h2>
+<h3 id="输入-1"><a class="markdownIt-Anchor" href="#输入-1"></a> 输入 #1</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">500 3</span><br><span class="line">150 300</span><br><span class="line">100 200</span><br><span class="line">470 471</span><br></pre></td></tr></table></figure>
+<h3 id="输出-1"><a class="markdownIt-Anchor" href="#输出-1"></a> 输出 #1</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">298</span><br></pre></td></tr></table></figure>
+<h2 id="说明提示"><a class="markdownIt-Anchor" href="#说明提示"></a> 说明/提示</h2>
 <ul>
-<li><strong>分解子问题</strong>：将复杂问题分解为若干个相互重叠的子问题</li>
-<li><strong>存储状态</strong>：保存子问题的解，避免重复计算</li>
-<li><strong>递推求解</strong>：通过子问题的解递推得到原问题的解</li>
+<li>
+<p><strong>数据范围</strong>：</p>
+<ul>
+<li>对于 20% 的数据，保证区域之间没有重合的部分。</li>
+<li>对于 100% 的数据，保证 1 ≤ l ≤ 10000，1 ≤ m ≤ 100，0 ≤ u ≤ v ≤ l。</li>
 </ul>
-<h2 id="动态规划的递推流程"><a class="markdownIt-Anchor" href="#动态规划的递推流程"></a> 动态规划的递推流程</h2>
-<pre class="mermaid">flowchart TD
-    A[开始] --> B[分析问题特征]
-    B --> C{是否满足DP条件?}
-    C -->|否| D[选择其他算法]
-    C -->|是| E[定义状态]
-    E --> F[确定状态转移方程]
-    F --> G[确定边界条件]
-    G --> H[编写递推代码]
-    H --> I[验证结果]
-    I --> J{结果正确?}
-    J -->|否| K[调试优化]
-    K --> H
-    J -->|是| L[结束]</pre>
-<h3 id="dp问题的判断条件"><a class="markdownIt-Anchor" href="#dp问题的判断条件"></a> DP问题的判断条件</h3>
+</li>
+<li>
+<p><strong>题目来源</strong>：NOIP 2005 普及组第二题</p>
+</li>
+</ul>
+<h2 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h2>
+<p>这是一个典型的区间覆盖问题，我们需要计算被各个区域覆盖后，剩余未被覆盖的树的数量。主要有以下几种解题思路：</p>
+<h3 id="方法一模拟法数组标记"><a class="markdownIt-Anchor" href="#方法一模拟法数组标记"></a> 方法一：模拟法（数组标记）</h3>
 <ol>
-<li><strong>最优子结构</strong>：问题的最优解包含子问题的最优解</li>
-<li><strong>重叠子问题</strong>：递归算法反复求解相同的子问题</li>
-<li><strong>无后效性</strong>：某阶段的状态一旦确定，就不受后续决策的影响</li>
+<li>创建一个长度为 l+1 的数组，表示数轴上的每个点是否有树</li>
+<li>初始时，所有位置都有树（标记为 True 或 1）</li>
+<li>对于每个区域 [u, v]，将区间内的所有点标记为无树（标记为 False 或 0）</li>
+<li>最后统计数组中仍然为有树的点的数量</li>
 </ol>
-<h2 id="数学基础"><a class="markdownIt-Anchor" href="#数学基础"></a> 数学基础</h2>
-<h3 id="递推关系式"><a class="markdownIt-Anchor" href="#递推关系式"></a> 递推关系式</h3>
-<p>动态规划的数学基础是递推关系式，一般形式为：</p>
-<p>$dp[i] &#x3D; f(dp[i-1], dp[i-2], ..., dp[i-k])$</p>
-<p>其中：</p>
-<ul>
-<li>$dp[i]$ 表示第 $i$ 个状态的最优解</li>
-<li>$f$ 是状态转移函数</li>
-<li>$k$ 是依赖的前置状态数量</li>
-</ul>
-<h3 id="边界条件"><a class="markdownIt-Anchor" href="#边界条件"></a> 边界条件</h3>
-<p>$dp[0] &#x3D; \text{初始值}$<br />
-$dp[1] &#x3D; \text{初始值}$</p>
-<h2 id="经典问题详解"><a class="markdownIt-Anchor" href="#经典问题详解"></a> 经典问题详解</h2>
-<h3 id="1-斐波那契数列"><a class="markdownIt-Anchor" href="#1-斐波那契数列"></a> 1. 斐波那契数列</h3>
-<p><strong>问题描述</strong>：求第 $n$ 个斐波那契数</p>
-<p><strong>递推关系式</strong>：<br />
-$F(n) &#x3D; F(n-1) + F(n-2)$</p>
-<p><strong>边界条件</strong>：<br />
-$F(0) &#x3D; 0, F(1) &#x3D; 1$</p>
-<p><strong>时间复杂度分析</strong>：</p>
-<ul>
-<li>暴力递归：$O(2^n)$</li>
-<li>动态规划：$O(n)$</li>
-<li>空间优化：$O(1)$</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fibonacci</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;动态规划求解斐波那契数列&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    </span><br><span class="line">    dp = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line">    dp[<span class="number">0</span>], dp[<span class="number">1</span>] = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">        dp[i] = dp[i-<span class="number">1</span>] + dp[i-<span class="number">2</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dp[n]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 空间优化版本</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fibonacci_optimized</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;空间优化的斐波那契数列&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> n &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> n</span><br><span class="line">    </span><br><span class="line">    a, b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">        a, b = b, a + b</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> b</span><br></pre></td></tr></table></figure>
-<h3 id="2-0-1背包问题"><a class="markdownIt-Anchor" href="#2-0-1背包问题"></a> 2. 0-1背包问题</h3>
-<p><strong>问题描述</strong>：给定 $n$ 个物品和容量为 $W$ 的背包，物品 $i$ 的重量为 $w_i$，价值为 $v_i$，求如何选择物品使总价值最大。</p>
-<p><strong>状态定义</strong>：$dp[i][j]$ 表示前 $i$ 个物品在容量为 $j$ 时的最大价值</p>
-<p><strong>递推关系式</strong>：<br />
-$dp[i][j] &#x3D; \max(dp[i-1][j], dp[i-1][j-w_i] + v_i)$</p>
-<p><strong>边界条件</strong>：<br />
-$dp[0][j] &#x3D; 0, \forall j$<br />
-$dp[i][0] &#x3D; 0, \forall i$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">knapsack_01</span>(<span class="params">weights, values, capacity</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;0-1背包问题动态规划解法&quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">len</span>(weights)</span><br><span class="line">    dp = [[<span class="number">0</span>] * (capacity + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>)]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, capacity + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> weights[i-<span class="number">1</span>] &gt; j:</span><br><span class="line">                dp[i][j] = dp[i-<span class="number">1</span>][j]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dp[i][j] = <span class="built_in">max</span>(dp[i-<span class="number">1</span>][j], </span><br><span class="line">                             dp[i-<span class="number">1</span>][j-weights[i-<span class="number">1</span>]] + values[i-<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dp[n][capacity]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 空间优化版本</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">knapsack_01_optimized</span>(<span class="params">weights, values, capacity</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;空间优化的0-1背包问题&quot;&quot;&quot;</span></span><br><span class="line">    n = <span class="built_in">len</span>(weights)</span><br><span class="line">    dp = [<span class="number">0</span>] * (capacity + <span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(capacity, weights[i] - <span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            dp[j] = <span class="built_in">max</span>(dp[j], dp[j - weights[i]] + values[i])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dp[capacity]</span><br></pre></td></tr></table></figure>
-<h3 id="3-最长递增子序列lis"><a class="markdownIt-Anchor" href="#3-最长递增子序列lis"></a> 3. 最长递增子序列（LIS）</h3>
-<p><strong>问题描述</strong>：给定序列，求最长递增子序列的长度</p>
-<p><strong>状态定义</strong>：$dp[i]$ 表示以第 $i$ 个元素结尾的最长递增子序列长度</p>
-<p><strong>递推关系式</strong>：<br />
-$dp[i] &#x3D; \max_{j &lt; i, a[j] &lt; a[i]} (dp[j] + 1)$</p>
-<p><strong>边界条件</strong>：<br />
-$dp[i] &#x3D; 1, \forall i$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">lis_length</span>(<span class="params">nums</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;最长递增子序列长度&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    n = <span class="built_in">len</span>(nums)</span><br><span class="line">    dp = [<span class="number">1</span>] * n</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &lt; nums[i]:</span><br><span class="line">                dp[i] = <span class="built_in">max</span>(dp[i], dp[j] + <span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(dp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 优化的二分查找版本</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lis_length_optimized</span>(<span class="params">nums</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;二分查找优化的LIS&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">import</span> bisect</span><br><span class="line">    </span><br><span class="line">    tails = []</span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        idx = bisect.bisect_left(tails, num)</span><br><span class="line">        <span class="keyword">if</span> idx == <span class="built_in">len</span>(tails):</span><br><span class="line">            tails.append(num)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            tails[idx] = num</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(tails)</span><br></pre></td></tr></table></figure>
-<h2 id="动态规划的解题步骤"><a class="markdownIt-Anchor" href="#动态规划的解题步骤"></a> 动态规划的解题步骤</h2>
-<pre class="mermaid">flowchart TD
-    A[分析问题] --> B[确定状态表示]
-    B --> C[找出状态转移方程]
-    C --> D[确定边界条件]
-    D --> E[计算顺序]
-    E --> F[编写代码]
-    F --> G[优化空间复杂度]</pre>
-<h3 id="步骤详解"><a class="markdownIt-Anchor" href="#步骤详解"></a> 步骤详解</h3>
+<h3 id="方法二区间合并优化"><a class="markdownIt-Anchor" href="#方法二区间合并优化"></a> 方法二：区间合并优化</h3>
 <ol>
-<li><strong>状态表示</strong>：明确 $dp[i]$ 的含义</li>
-<li><strong>状态转移</strong>：找出 $dp[i]$ 与之前状态的关系</li>
-<li><strong>边界初始化</strong>：确定初始状态值</li>
-<li><strong>计算顺序</strong>：确定状态的计算顺序</li>
-<li><strong>空间优化</strong>：考虑是否可以优化空间复杂度</li>
+<li>先将所有区域按照起始点排序</li>
+<li>合并重叠或相邻的区间</li>
+<li>计算所有合并后区间的总长度</li>
+<li>用总树数减去被覆盖的树数得到剩余树数</li>
 </ol>
-<h2 id="常见优化技巧"><a class="markdownIt-Anchor" href="#常见优化技巧"></a> 常见优化技巧</h2>
-<h3 id="1-滚动数组"><a class="markdownIt-Anchor" href="#1-滚动数组"></a> 1. 滚动数组</h3>
-<p>当状态只依赖前几个状态时，可以使用滚动数组优化空间：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原始版本</span></span><br><span class="line">dp = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">    dp[i] = dp[i-<span class="number">1</span>] + dp[i-<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 滚动数组版本</span></span><br><span class="line">dp = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]  <span class="comment"># 只保存前三个状态</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">    dp[<span class="number">2</span>] = dp[<span class="number">1</span>] + dp[<span class="number">0</span>]</span><br><span class="line">    dp[<span class="number">0</span>], dp[<span class="number">1</span>] = dp[<span class="number">1</span>], dp[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="2-状态压缩"><a class="markdownIt-Anchor" href="#2-状态压缩"></a> 2. 状态压缩</h3>
-<p>对于二维DP，如果状态转移只依赖相邻行，可以压缩为一维：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原始二维DP</span></span><br><span class="line">dp = [[<span class="number">0</span>] * (m + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 压缩为一维DP</span></span><br><span class="line">dp = [<span class="number">0</span>] * (m + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="python-代码实现"><a class="markdownIt-Anchor" href="#python-代码实现"></a> Python 代码实现</h2>
+<h3 id="方法一模拟法数组标记-2"><a class="markdownIt-Anchor" href="#方法一模拟法数组标记-2"></a> 方法一：模拟法（数组标记）</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取输入</span></span><br><span class="line">l, m = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数组，初始化为True（有树）</span></span><br><span class="line">trees = [<span class="literal">True</span>] * (l + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理每个区域</span></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    u, v = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line">    <span class="comment"># 将区间[u, v]内的树标记为False（无树）</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(u, v + <span class="number">1</span>):</span><br><span class="line">        trees[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计剩余的树的数量</span></span><br><span class="line">count = <span class="built_in">sum</span>(trees)</span><br><span class="line"><span class="built_in">print</span>(count)</span><br></pre></td></tr></table></figure>
+<h3 id="方法二集合去重法"><a class="markdownIt-Anchor" href="#方法二集合去重法"></a> 方法二：集合去重法</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取输入</span></span><br><span class="line">l, m = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建集合存储需要移走的树的位置</span></span><br><span class="line">to_remove = <span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理每个区域</span></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    u, v = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line">    <span class="comment"># 将区间[u, v]内的所有位置添加到集合中</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(u, v + <span class="number">1</span>):</span><br><span class="line">        to_remove.add(i)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算剩余的树的数量：总树数 - 需要移走的树的数量</span></span><br><span class="line">count = (l + <span class="number">1</span>) - <span class="built_in">len</span>(to_remove)</span><br><span class="line"><span class="built_in">print</span>(count)</span><br></pre></td></tr></table></figure>
+<h3 id="方法三区间合并法优化"><a class="markdownIt-Anchor" href="#方法三区间合并法优化"></a> 方法三：区间合并法（优化）</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取输入</span></span><br><span class="line">l, m = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 存储所有区域</span></span><br><span class="line">regions = []</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    u, v = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line">    regions.append((u, v))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照起始点排序</span></span><br><span class="line">regions.sort()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并区间</span></span><br><span class="line">merged = []</span><br><span class="line"><span class="keyword">for</span> region <span class="keyword">in</span> regions:</span><br><span class="line">    u, v = region</span><br><span class="line">    <span class="comment"># 如果merged为空或当前区间与上一个合并后的区间不重叠，则添加当前区间</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> merged <span class="keyword">or</span> u &gt; merged[-<span class="number">1</span>][<span class="number">1</span>]:</span><br><span class="line">        merged.append([u, v])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 否则合并区间，更新结束点为较大的值</span></span><br><span class="line">        merged[-<span class="number">1</span>][<span class="number">1</span>] = <span class="built_in">max</span>(merged[-<span class="number">1</span>][<span class="number">1</span>], v)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算被覆盖的总长度</span></span><br><span class="line">covered = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> u, v <span class="keyword">in</span> merged:</span><br><span class="line">    covered += v - u + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算剩余的树的数量</span></span><br><span class="line">count = (l + <span class="number">1</span>) - covered</span><br><span class="line"><span class="built_in">print</span>(count)</span><br></pre></td></tr></table></figure>
+<h2 id="代码解析"><a class="markdownIt-Anchor" href="#代码解析"></a> 代码解析</h2>
+<h3 id="方法一模拟法数组标记-3"><a class="markdownIt-Anchor" href="#方法一模拟法数组标记-3"></a> 方法一：模拟法（数组标记）</h3>
+<ul>
+<li><strong>思路</strong>：使用布尔数组直接模拟每棵树的状态</li>
+<li><strong>步骤</strong>：
+<ol>
+<li>输入马路长度 l 和区域数量 m</li>
+<li>创建长度为 l+1 的布尔数组 trees，初始值都为 True（表示有树）</li>
+<li>对于每个区域 [u, v]，将区间内的所有位置标记为 False（表示无树）</li>
+<li>使用 sum() 函数统计数组中 True 的数量，即为剩余的树的数量</li>
+</ol>
+</li>
+<li><strong>优点</strong>：思路简单直观，实现容易</li>
+<li><strong>缺点</strong>：当 l 很大时，数组会占用较大内存；当 m 和区间较大时，时间复杂度较高</li>
+</ul>
+<h3 id="方法二集合去重法-2"><a class="markdownIt-Anchor" href="#方法二集合去重法-2"></a> 方法二：集合去重法</h3>
+<ul>
+<li><strong>思路</strong>：使用集合存储需要移走的树的位置，自动去重</li>
+<li><strong>步骤</strong>：
+<ol>
+<li>输入马路长度 l 和区域数量 m</li>
+<li>创建空集合 to_remove</li>
+<li>对于每个区域 [u, v]，将区间内的所有位置添加到集合中</li>
+<li>计算剩余的树的数量 = 总树数 (l+1) - 集合的大小（即需要移走的树的数量）</li>
+</ol>
+</li>
+<li><strong>优点</strong>：自动处理区域重叠的情况，不需要额外的去重逻辑</li>
+<li><strong>缺点</strong>：当区间很大时，循环添加元素的操作仍然效率不高</li>
+</ul>
+<h3 id="方法三区间合并法优化-2"><a class="markdownIt-Anchor" href="#方法三区间合并法优化-2"></a> 方法三：区间合并法（优化）</h3>
+<ul>
+<li><strong>思路</strong>：先合并重叠或相邻的区间，再计算被覆盖的总长度</li>
+<li><strong>步骤</strong>：
+<ol>
+<li>输入马路长度 l 和区域数量 m</li>
+<li>存储所有区域到列表中</li>
+<li>按照起始点对区域进行排序</li>
+<li>合并重叠或相邻的区间：
+<ul>
+<li>遍历排序后的区域列表</li>
+<li>如果当前区间与上一个合并后的区间不重叠，则添加为新的合并区间</li>
+<li>否则，合并两个区间，更新结束点为较大的值</li>
+</ul>
+</li>
+<li>计算所有合并后区间的总长度</li>
+<li>计算剩余的树的数量 = 总树数 (l+1) - 被覆盖的总长度</li>
+</ol>
+</li>
+<li><strong>优点</strong>：当有大量重叠区间时，效率更高；不依赖于 l 的大小，节省内存</li>
+<li><strong>缺点</strong>：实现稍微复杂一些</li>
+</ul>
 <h2 id="复杂度分析"><a class="markdownIt-Anchor" href="#复杂度分析"></a> 复杂度分析</h2>
-<h3 id="时间复杂度"><a class="markdownIt-Anchor" href="#时间复杂度"></a> 时间复杂度</h3>
-<p>动态规划的时间复杂度一般为：<br />
-$O(n \times m \times k)$</p>
-<p>其中：</p>
+<h3 id="方法一模拟法数组标记-4"><a class="markdownIt-Anchor" href="#方法一模拟法数组标记-4"></a> 方法一：模拟法（数组标记）</h3>
 <ul>
-<li>$n$：状态数量</li>
-<li>$m$：每个状态的可能取值数量</li>
-<li>$k$：状态转移的计算复杂度</li>
-</ul>
-<h3 id="空间复杂度"><a class="markdownIt-Anchor" href="#空间复杂度"></a> 空间复杂度</h3>
+<li><strong>时间复杂度</strong>：O(m × max_length)，其中 max_length 是区间的最大长度
 <ul>
-<li><strong>原始版本</strong>：$O(n \times m)$</li>
-<li><strong>滚动数组优化</strong>：$O(m)$</li>
-<li><strong>状态压缩</strong>：$O(m)$</li>
+<li>读取输入：O(m)</li>
+<li>标记区间：O(m × max_length)</li>
+<li>统计剩余树：O(l)</li>
 </ul>
-<h2 id="实战案例"><a class="markdownIt-Anchor" href="#实战案例"></a> 实战案例</h2>
-<h3 id="编辑距离问题"><a class="markdownIt-Anchor" href="#编辑距离问题"></a> 编辑距离问题</h3>
-<p><strong>问题描述</strong>：求将字符串 $s$ 转换为字符串 $t$ 的最小编辑次数</p>
-<p><strong>状态定义</strong>：$dp[i][j]$ 表示 $s[0:i]$ 转换为 $t[0:j]$ 的最小编辑次数</p>
-<p><strong>递推关系式</strong>：<br />
-$dp[i][j] &#x3D; \begin{cases}
-dp[i-1][j-1] &amp; \text{if } s[i-1] &#x3D; t[j-1] \\
-1 + \min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) &amp; \text{otherwise}
-\end{cases}$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">edit_distance</span>(<span class="params">s, t</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;编辑距离动态规划解法&quot;&quot;&quot;</span></span><br><span class="line">    m, n = <span class="built_in">len</span>(s), <span class="built_in">len</span>(t)</span><br><span class="line">    dp = [[<span class="number">0</span>] * (n + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m + <span class="number">1</span>)]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 初始化边界</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m + <span class="number">1</span>):</span><br><span class="line">        dp[i][<span class="number">0</span>] = i</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>):</span><br><span class="line">        dp[<span class="number">0</span>][j] = j</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 填充DP表</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> s[i-<span class="number">1</span>] == t[j-<span class="number">1</span>]:</span><br><span class="line">                dp[i][j] = dp[i-<span class="number">1</span>][j-<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dp[i][j] = <span class="number">1</span> + <span class="built_in">min</span>(dp[i-<span class="number">1</span>][j],    <span class="comment"># 删除</span></span><br><span class="line">                                   dp[i][j-<span class="number">1</span>],    <span class="comment"># 插入</span></span><br><span class="line">                                   dp[i-<span class="number">1</span>][j-<span class="number">1</span>])  <span class="comment"># 替换</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dp[m][n]</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
-<p>动态规划是一种强大的算法思想，掌握好动态规划需要：</p>
-<ol>
-<li><strong>多练习</strong>：通过大量练习培养DP思维</li>
-<li><strong>掌握模式</strong>：熟悉常见的DP模式和套路</li>
-<li><strong>分析能力</strong>：能够准确分析问题的性质</li>
-<li><strong>优化意识</strong>：时刻考虑时间和空间复杂度的优化</li>
-</ol>
-<p>记住动态规划的精髓：<strong>记住过去，利用现在，规划未来</strong>。</p>
-<hr />
-<h2 id="练习题推荐"><a class="markdownIt-Anchor" href="#练习题推荐"></a> 练习题推荐</h2>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/">LeetCode 70. 爬楼梯</a></li>
-<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/house-robber/">LeetCode 198. 打家劫舍</a></li>
-<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-increasing-subsequence/">LeetCode 300. 最长递增子序列</a></li>
-<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/coin-change/">LeetCode 322. 零钱兑换</a></li>
-<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-common-subsequence/">LeetCode 1143. 最长公共子序列</a></li>
-</ol>
+</li>
+<li><strong>空间复杂度</strong>：O(l)
+<ul>
+<li>需要一个长度为 l+1 的数组</li>
+</ul>
+</li>
+</ul>
+<h3 id="方法二集合去重法-3"><a class="markdownIt-Anchor" href="#方法二集合去重法-3"></a> 方法二：集合去重法</h3>
+<ul>
+<li><strong>时间复杂度</strong>：O(m × max_length)
+<ul>
+<li>读取输入：O(m)</li>
+<li>添加元素到集合：O(m × max_length)</li>
+<li>计算结果：O(1)</li>
+</ul>
+</li>
+<li><strong>空间复杂度</strong>：O(l)
+<ul>
+<li>在最坏情况下，需要存储所有点</li>
+</ul>
+</li>
+</ul>
+<h3 id="方法三区间合并法"><a class="markdownIt-Anchor" href="#方法三区间合并法"></a> 方法三：区间合并法</h3>
+<ul>
+<li><strong>时间复杂度</strong>：O(m × log m)
+<ul>
+<li>读取输入：O(m)</li>
+<li>排序区间：O(m × log m)</li>
+<li>合并区间：O(m)</li>
+<li>计算覆盖长度：O(m)</li>
+</ul>
+</li>
+<li><strong>空间复杂度</strong>：O(m)
+<ul>
+<li>需要存储所有区间</li>
+</ul>
+</li>
+</ul>
+<h2 id="优化建议"><a class="markdownIt-Anchor" href="#优化建议"></a> 优化建议</h2>
+<p>对于本题的数据范围（l ≤ 10000，m ≤ 100），三种方法都能轻松通过。但如果数据范围更大，比如 l 到 10^9 或 m 到 10^5，那么方法三（区间合并法）会是最优的选择。</p>
+<p>在实际编程竞赛中，我们通常会根据数据范围选择合适的算法。对于本题，由于数据范围较小，最简单直观的方法一或方法二可能是首选，因为它们实现简单，不易出错。</p>
+<h2 id="输入输出示例解释"><a class="markdownIt-Anchor" href="#输入输出示例解释"></a> 输入输出示例解释</h2>
+<h3 id="输入样例分析"><a class="markdownIt-Anchor" href="#输入样例分析"></a> 输入样例分析</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">500 3  # 马路长度为500，有3个区域</span><br><span class="line">150 300  # 第一个区域：从150到300</span><br><span class="line">100 200  # 第二个区域：从100到200</span><br><span class="line">470 471  # 第三个区域：从470到471</span><br></pre></td></tr></table></figure>
+<h3 id="输出计算过程"><a class="markdownIt-Anchor" href="#输出计算过程"></a> 输出计算过程</h3>
+<ul>
+<li>总共有 500 + 1 = 501 棵树</li>
+<li>第一个区域覆盖了 300 - 150 + 1 = 151 棵树</li>
+<li>第二个区域覆盖了 200 - 100 + 1 = 101 棵树，但其中与第一个区域重叠的部分是 200 - 150 + 1 = 51 棵树</li>
+<li>第三个区域覆盖了 471 - 470 + 1 = 2 棵树</li>
+<li>总覆盖的树数（去重后）= 151 + (101 - 51) + 2 = 203 棵树</li>
+<li>剩余的树数 = 501 - 203 = 298 棵树</li>
+</ul>
+<p>这与输出样例中的结果一致，验证了我们的算法是正确的。</p>
 
     </div>
     <footer class="article-footer">
@@ -541,25 +567,17 @@ dp[i-1][j-1] &amp; \text{if } s[i-1] &#x3D; t[j-1] \\
         </div>
     </div>
 </div>
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/python%E7%AE%97%E6%B3%95/" rel="tag" title="python算法">python算法</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Python%E7%AE%97%E6%B3%95/" rel="tag" title="Python算法">Python算法</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E5%8C%BA%E9%97%B4%E8%A6%86%E7%9B%96/" rel="tag" title="区间覆盖">区间覆盖</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%B4%9B%E8%B0%B7/" rel="tag" title="洛谷">洛谷</a></li></ul>
 
     </footer>
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
-      <div class="article-nav-link-wrap left">
-          <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8A%A8%E6%BC%AB%E5%A5%B3%E5%AD%A9-%E5%8F%AF%E5%8F%A3%E5%8F%AF%E4%B9%90.png" data-sizes="auto" alt="python算法-队列" class="lazyload">
-        <a href="/2025/11/14/python%E7%AE%97%E6%B3%95-%E9%98%9F%E5%88%97/" aria-label="前一篇: python算法-队列" title="前一篇: python算法-队列"></a>
-        <div class="article-nav-caption">前一篇</div>
-        <h3 class="article-nav-title">
-            python算法-队列
-        </h3>
-      </div>
     <div class="article-nav-link-wrap right">
-        <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A-%E6%B3%A2%E5%A5%87%E9%85%B1.png" data-sizes="auto" alt="python算法-暴力枚举" class="lazyload">
-      <a href="/2025/11/13/python%E7%AE%97%E6%B3%95-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/" aria-label="后一篇: python算法-暴力枚举"  title="后一篇: python算法-暴力枚举"></a>
+        <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8A%A8%E6%BC%AB%E5%A5%B3%E5%AD%A9-%E5%8D%95%E8%89%B2-%E5%93%AD.png" data-sizes="auto" alt="Python编程基础" class="lazyload">
+      <a href="/2025/11/18/Python%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" aria-label="后一篇: Python编程基础"  title="后一篇: Python编程基础"></a>
       <div class="article-nav-caption">后一篇</div>
       <h3 class="article-nav-title">
-          python算法-暴力枚举
+          Python编程基础
       </h3>
     </div>
   </nav>
@@ -607,7 +625,7 @@ dp[i-1][j-1] &amp; \text{if } s[i-1] &#x3D; t[j-1] \\
   <div class="sidebar-wrap">
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%80%92%E6%8E%A8"><span class="toc-number">1.</span> <span class="toc-text"> python算法-动态规划递推</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 动态规划概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 核心思想</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E9%80%92%E6%8E%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> 动态规划的递推流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dp%E9%97%AE%E9%A2%98%E7%9A%84%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text"> DP问题的判断条件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-number">1.3.</span> <span class="toc-text"> 数学基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB%E5%BC%8F"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 递推关系式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 边界条件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.4.</span> <span class="toc-text"> 经典问题详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 1. 斐波那契数列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 2. 0-1背包问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97lis"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 3. 最长递增子序列（LIS）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E8%A7%A3%E9%A2%98%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.5.</span> <span class="toc-text"> 动态规划的解题步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 步骤详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">1.6.</span> <span class="toc-text"> 常见优化技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 1. 滚动数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 2. 状态压缩</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.7.</span> <span class="toc-text"> 复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 空间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B"><span class="toc-number">1.8.</span> <span class="toc-text"> 实战案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%E9%97%AE%E9%A2%98"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 编辑距离问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.9.</span> <span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0%E9%A2%98%E6%8E%A8%E8%8D%90"><span class="toc-number">1.10.</span> <span class="toc-text"> 练习题推荐</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#p1047-noip-2005-%E6%99%AE%E5%8F%8A%E7%BB%84-%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text"> P1047 [NOIP 2005 普及组] 校门外的树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text"> 输入输出样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-1"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 输入 #1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-1"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 输出 #1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E%E6%8F%90%E7%A4%BA"><span class="toc-number">1.5.</span> <span class="toc-text"> 说明&#x2F;提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.6.</span> <span class="toc-text"> 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E4%BC%98%E5%8C%96"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 方法二：区间合并优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.</span> <span class="toc-text"> Python 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-2"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 代码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-3"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-2"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96-2"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.9.</span> <span class="toc-text"> 复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-4"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-3"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 方法三：区间合并法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 优化建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="toc-number">1.11.</span> <span class="toc-text"> 输入输出示例解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 输入样例分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 输出计算过程</span></a></li></ol></li></ol></li></ol>
 </div>
 </div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -893,14 +911,14 @@ window.addEventListener('load', function() {
       <script data-pjax>
         window.REIMU_POST = {
           author: "飞制",
-          title: "python算法-动态规划递推",
-          url: "http://example.com/2025/11/13/python%E7%AE%97%E6%B3%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%80%92%E6%8E%A8/",
+          title: "P1047 [NOIP 2005 普及组] 校门外的树",
+          url: "http://example.com/2025/11/26/P1047%20%5BNOIP%202005%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91/",
           excerpt: "",
           description: "",
-          stripContent: " python算法-动态规划递推  动态规划概述 动态规划（Dynamic Programming，DP）是一种通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。动态规划常常适用于有重叠子问题和最优子结构性质的问题。  核心思想 动态规划的核心思想是：  分解子问题：将复杂问题分解为若干个相互重叠的子问题 存储状态：保存子问题的解，避免重复计算 递推求解：通过子问题的解递推得到原问题的解   动态规划的递推流程 flowchart TD     A[开始] --&gt; B[分析问题特征] ",
-          date: "Thu Nov 13 2025 20:17:47 GMT+0800",
-          updated: "Tue Nov 18 2025 21:04:05 GMT+0800",
-          cover: "/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%AD%A4%E7%8B%AC%E6%91%87%E6%BB%9A-%E5%B1%B1%E7%94%B0%E5%87%89.png",
+          stripContent: " P1047 [NOIP 2005 普及组] 校门外的树  题目描述 某校大门外长度为 l 的马路上有一排树，每两棵相邻的树之间的间隔都是 1 米。我们可以把马路看成一个数轴，马路的一端在数轴 0 的位置，另一端在 l 的位置；数轴上的每个整数点，即 0,1,2,…,l，都种有一棵树。 由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任一区域的起始点和终止点的坐标都是整数，区域之间可能有重合的部分。现在要把这些区域中的树（包括区域端点处的两棵树）移走。你的任务是",
+          date: "Wed Nov 26 2025 17:59:10 GMT+0800",
+          updated: "Wed Nov 26 2025 19:59:41 GMT+0800",
+          cover: "/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%85%A8%E5%91%98-%E5%90%8E%E8%97%A4%E4%B8%80%E9%87%8C.png",
         };
       </script>
       
