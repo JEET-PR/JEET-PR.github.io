@@ -17,15 +17,15 @@
     
 <link rel="stylesheet" href="/css/loader.css">
 
-    <meta name="description" content="P1047 [NOIP 2005 普及组] 校门外的树  题目描述 某校大门外长度为 l 的马路上有一排树，每两棵相邻的树之间的间隔都是 1 米。我们可以把马路看成一个数轴，马路的一端在数轴 0 的位置，另一端在 l 的位置；数轴上的每个整数点，即 0,1,2,…,l，都种有一棵树。 由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任一区域的起始点和终止点的坐标">
+    <meta name="description" content="P1047 [NOIP 2005 普及组] 校门外的树  题目描述 某校大门外长度为 l 的马路上有一排树，每两棵相邻的树之间的间隔都是 1 米。我们可以把马路看成一个数轴，马路的一端在数轴 0 的位置，另一端在 l 的位置；数轴上的每个整数点，即 0,1,2,…,l，都种有一棵树。 总共有 ( l + 1 ) 棵树，因为从 0 到 l 共有 ( l + 1 ) 个整数点。 由于马路上有一些区域">
 <meta property="og:type" content="article">
 <meta property="og:title" content="P1047 [NOIP 2005 普及组] 校门外的树">
 <meta property="og:url" content="http://example.com/2025/11/26/P1047%20%5BNOIP%202005%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91/index.html">
 <meta property="og:site_name" content="无敌火影大王">
-<meta property="og:description" content="P1047 [NOIP 2005 普及组] 校门外的树  题目描述 某校大门外长度为 l 的马路上有一排树，每两棵相邻的树之间的间隔都是 1 米。我们可以把马路看成一个数轴，马路的一端在数轴 0 的位置，另一端在 l 的位置；数轴上的每个整数点，即 0,1,2,…,l，都种有一棵树。 由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任一区域的起始点和终止点的坐标">
+<meta property="og:description" content="P1047 [NOIP 2005 普及组] 校门外的树  题目描述 某校大门外长度为 l 的马路上有一排树，每两棵相邻的树之间的间隔都是 1 米。我们可以把马路看成一个数轴，马路的一端在数轴 0 的位置，另一端在 l 的位置；数轴上的每个整数点，即 0,1,2,…,l，都种有一棵树。 总共有 ( l + 1 ) 棵树，因为从 0 到 l 共有 ( l + 1 ) 个整数点。 由于马路上有一些区域">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-26T09:59:10.000Z">
-<meta property="article:modified_time" content="2025-11-26T12:03:30.693Z">
+<meta property="article:modified_time" content="2025-11-29T03:02:59.642Z">
 <meta property="article:author" content="飞制">
 <meta property="article:tag" content="Python算法">
 <meta property="article:tag" content="区间覆盖">
@@ -168,7 +168,7 @@
     <div class="sidebar-wrap" data-aos="fade-up">
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#p1047-noip-2005-%E6%99%AE%E5%8F%8A%E7%BB%84-%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text"> P1047 [NOIP 2005 普及组] 校门外的树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text"> 输入输出样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-1"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 输入 #1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-1"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 输出 #1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E%E6%8F%90%E7%A4%BA"><span class="toc-number">1.5.</span> <span class="toc-text"> 说明&#x2F;提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.6.</span> <span class="toc-text"> 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E4%BC%98%E5%8C%96"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 方法二：区间合并优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.</span> <span class="toc-text"> Python 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-2"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 代码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-3"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-2"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96-2"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.9.</span> <span class="toc-text"> 复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-4"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-3"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 方法三：区间合并法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 优化建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="toc-number">1.11.</span> <span class="toc-text"> 输入输出示例解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 输入样例分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 输出计算过程</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#p1047-noip-2005-%E6%99%AE%E5%8F%8A%E7%BB%84-%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text"> P1047 [NOIP 2005 普及组] 校门外的树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text"> 输入输出样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-1"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 输入 #1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-1"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 输出 #1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E%E6%8F%90%E7%A4%BA"><span class="toc-number">1.5.</span> <span class="toc-text"> 说明&#x2F;提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.6.</span> <span class="toc-text"> 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 问题可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E6%95%B0%E8%BD%B4%E4%B8%8A%E7%9A%84%E6%A0%91%E5%88%86%E5%B8%83"><span class="toc-number">1.6.1.1.</span> <span class="toc-text"> 原始数轴上的树分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F%E8%A6%86%E7%9B%96%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">1.6.1.2.</span> <span class="toc-text"> 区域覆盖示意图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E4%BC%98%E5%8C%96"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 方法三：区间合并优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">1.6.4.1.</span> <span class="toc-text"> 方法三：区间合并示意图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.</span> <span class="toc-text"> Python 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-2"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-2"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 代码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-3"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-3"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96-2"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.9.</span> <span class="toc-text"> 复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-4"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-4"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 方法三：区间合并法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 优化建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="toc-number">1.11.</span> <span class="toc-text"> 输入输出示例解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 输入样例分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 输出计算过程</span></a></li></ol></li></ol></li></ol>
 </div>
 </div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -308,7 +308,7 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">8</div>
+    <div class="sidebar-state-number">17</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -316,7 +316,7 @@
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">5</div>
+    <div class="sidebar-state-number">14</div>
   </div>
 </div>
 <div class="sidebar-social">
@@ -375,7 +375,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2025-11-26T09:59:10.000Z" itemprop="datePublished">2025-11-26</time>
-    <time style="display: none;" id="post-update-time">2025-11-26</time>
+    <time style="display: none;" id="post-update-time">2025-11-29</time>
   </span>
 </div>
 
@@ -391,6 +391,7 @@
         <h1 id="p1047-noip-2005-普及组-校门外的树"><a class="markdownIt-Anchor" href="#p1047-noip-2005-普及组-校门外的树"></a> P1047 [NOIP 2005 普及组] 校门外的树</h1>
 <h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
 <p>某校大门外长度为 l 的马路上有一排树，每两棵相邻的树之间的间隔都是 1 米。我们可以把马路看成一个数轴，马路的一端在数轴 0 的位置，另一端在 l 的位置；数轴上的每个整数点，即 0,1,2,…,l，都种有一棵树。</p>
+<p>总共有 ( l + 1 ) 棵树，因为从 0 到 l 共有 ( l + 1 ) 个整数点。</p>
 <p>由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任一区域的起始点和终止点的坐标都是整数，区域之间可能有重合的部分。现在要把这些区域中的树（包括区域端点处的两棵树）移走。你的任务是计算将这些树都移走后，马路上还有多少棵树。</p>
 <h2 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式</h2>
 <p>第一行有两个整数，分别表示马路的长度 l 和区域的数目 m。</p>
@@ -416,7 +417,31 @@
 </li>
 </ul>
 <h2 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h2>
-<p>这是一个典型的区间覆盖问题，我们需要计算被各个区域覆盖后，剩余未被覆盖的树的数量。主要有以下几种解题思路：</p>
+<p>这是一个典型的区间覆盖问题，我们需要计算被各个区域覆盖后，剩余未被覆盖的树的数量。以下是问题的可视化表示：</p>
+<h3 id="问题可视化"><a class="markdownIt-Anchor" href="#问题可视化"></a> 问题可视化</h3>
+<h4 id="原始数轴上的树分布"><a class="markdownIt-Anchor" href="#原始数轴上的树分布"></a> 原始数轴上的树分布</h4>
+<pre class="mermaid">gantt
+title 马路数轴示意图
+dateFormat  S
+axisFormat %s
+
+section 原始状态
+所有树    :0, 500</pre>
+<h4 id="区域覆盖示意图"><a class="markdownIt-Anchor" href="#区域覆盖示意图"></a> 区域覆盖示意图</h4>
+<pre class="mermaid">gantt
+title 区域覆盖示意图
+dateFormat  S
+axisFormat %s
+
+section 区域1
+区域1 (150-300)    :150, 300
+
+section 区域2
+区域2 (100-200)    :100, 200
+
+section 区域3
+区域3 (470-471)    :470, 471</pre>
+<p>主要有以下几种解题思路：</p>
 <h3 id="方法一模拟法数组标记"><a class="markdownIt-Anchor" href="#方法一模拟法数组标记"></a> 方法一：模拟法（数组标记）</h3>
 <ol>
 <li>创建一个长度为 l+1 的数组，表示数轴上的每个点是否有树</li>
@@ -424,17 +449,34 @@
 <li>对于每个区域 [u, v]，将区间内的所有点标记为无树（标记为 False 或 0）</li>
 <li>最后统计数组中仍然为有树的点的数量</li>
 </ol>
-<h3 id="方法二区间合并优化"><a class="markdownIt-Anchor" href="#方法二区间合并优化"></a> 方法二：区间合并优化</h3>
+<h3 id="方法二集合去重法"><a class="markdownIt-Anchor" href="#方法二集合去重法"></a> 方法二：集合去重法</h3>
+<ol>
+<li>创建一个集合，用于存储需要移走的树的位置</li>
+<li>对于每个区域 [u, v]，将区间内的所有位置添加到集合中</li>
+<li>由于集合的特性，自动去除重复的位置</li>
+<li>计算剩余的树的数量 = 总树数 - 集合的大小</li>
+</ol>
+<h3 id="方法三区间合并优化"><a class="markdownIt-Anchor" href="#方法三区间合并优化"></a> 方法三：区间合并优化</h3>
 <ol>
 <li>先将所有区域按照起始点排序</li>
 <li>合并重叠或相邻的区间</li>
 <li>计算所有合并后区间的总长度</li>
 <li>用总树数减去被覆盖的树数得到剩余树数</li>
 </ol>
+<h4 id="方法三区间合并示意图"><a class="markdownIt-Anchor" href="#方法三区间合并示意图"></a> 方法三：区间合并示意图</h4>
+<pre class="mermaid">gantt
+title 区间合并后效果
+dateFormat  S
+axisFormat %s
+
+section 合并后区域
+合并区域1 (100-300)    :100, 300
+合并区域2 (470-471)    :470, 471</pre>
+<p>通过区间合并，原本重叠的区域1和区域2被合并为一个连续的区间，减少了重复计算。</p>
 <h2 id="python-代码实现"><a class="markdownIt-Anchor" href="#python-代码实现"></a> Python 代码实现</h2>
 <h3 id="方法一模拟法数组标记-2"><a class="markdownIt-Anchor" href="#方法一模拟法数组标记-2"></a> 方法一：模拟法（数组标记）</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取输入</span></span><br><span class="line">l, m = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数组，初始化为True（有树）</span></span><br><span class="line">trees = [<span class="literal">True</span>] * (l + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理每个区域</span></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    u, v = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line">    <span class="comment"># 将区间[u, v]内的树标记为False（无树）</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(u, v + <span class="number">1</span>):</span><br><span class="line">        trees[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计剩余的树的数量</span></span><br><span class="line">count = <span class="built_in">sum</span>(trees)</span><br><span class="line"><span class="built_in">print</span>(count)</span><br></pre></td></tr></table></figure>
-<h3 id="方法二集合去重法"><a class="markdownIt-Anchor" href="#方法二集合去重法"></a> 方法二：集合去重法</h3>
+<h3 id="方法二集合去重法-2"><a class="markdownIt-Anchor" href="#方法二集合去重法-2"></a> 方法二：集合去重法</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取输入</span></span><br><span class="line">l, m = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建集合存储需要移走的树的位置</span></span><br><span class="line">to_remove = <span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理每个区域</span></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    u, v = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line">    <span class="comment"># 将区间[u, v]内的所有位置添加到集合中</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(u, v + <span class="number">1</span>):</span><br><span class="line">        to_remove.add(i)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算剩余的树的数量：总树数 - 需要移走的树的数量</span></span><br><span class="line">count = (l + <span class="number">1</span>) - <span class="built_in">len</span>(to_remove)</span><br><span class="line"><span class="built_in">print</span>(count)</span><br></pre></td></tr></table></figure>
 <h3 id="方法三区间合并法优化"><a class="markdownIt-Anchor" href="#方法三区间合并法优化"></a> 方法三：区间合并法（优化）</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取输入</span></span><br><span class="line">l, m = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 存储所有区域</span></span><br><span class="line">regions = []</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">    u, v = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line">    regions.append((u, v))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按照起始点排序</span></span><br><span class="line">regions.sort()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并区间</span></span><br><span class="line">merged = []</span><br><span class="line"><span class="keyword">for</span> region <span class="keyword">in</span> regions:</span><br><span class="line">    u, v = region</span><br><span class="line">    <span class="comment"># 如果merged为空或当前区间与上一个合并后的区间不重叠，则添加当前区间</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> merged <span class="keyword">or</span> u &gt; merged[-<span class="number">1</span>][<span class="number">1</span>]:</span><br><span class="line">        merged.append([u, v])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 否则合并区间，更新结束点为较大的值</span></span><br><span class="line">        merged[-<span class="number">1</span>][<span class="number">1</span>] = <span class="built_in">max</span>(merged[-<span class="number">1</span>][<span class="number">1</span>], v)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算被覆盖的总长度</span></span><br><span class="line">covered = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> u, v <span class="keyword">in</span> merged:</span><br><span class="line">    covered += v - u + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算剩余的树的数量</span></span><br><span class="line">count = (l + <span class="number">1</span>) - covered</span><br><span class="line"><span class="built_in">print</span>(count)</span><br></pre></td></tr></table></figure>
@@ -453,7 +495,7 @@
 <li><strong>优点</strong>：思路简单直观，实现容易</li>
 <li><strong>缺点</strong>：当 l 很大时，数组会占用较大内存；当 m 和区间较大时，时间复杂度较高</li>
 </ul>
-<h3 id="方法二集合去重法-2"><a class="markdownIt-Anchor" href="#方法二集合去重法-2"></a> 方法二：集合去重法</h3>
+<h3 id="方法二集合去重法-3"><a class="markdownIt-Anchor" href="#方法二集合去重法-3"></a> 方法二：集合去重法</h3>
 <ul>
 <li><strong>思路</strong>：使用集合存储需要移走的树的位置，自动去重</li>
 <li><strong>步骤</strong>：
@@ -464,6 +506,7 @@
 <li>计算剩余的树的数量 = 总树数 (l+1) - 集合的大小（即需要移走的树的数量）</li>
 </ol>
 </li>
+<li><strong>数学表示</strong>：对于区间 [u, v]，该区间内有 ( v - u + 1 ) 棵树需要移走。通过集合的特性，自动去除了重叠区间中的重复计数。</li>
 <li><strong>优点</strong>：自动处理区域重叠的情况，不需要额外的去重逻辑</li>
 <li><strong>缺点</strong>：当区间很大时，循环添加元素的操作仍然效率不高</li>
 </ul>
@@ -486,35 +529,43 @@
 <li>计算剩余的树的数量 = 总树数 (l+1) - 被覆盖的总长度</li>
 </ol>
 </li>
+<li><strong>数学表示</strong>：
+<ul>
+<li>区间合并条件：对于两个区间 [a, b] 和 [c, d]，当 c ≤ b+1 时，两个区间需要合并</li>
+<li>合并后的区间为 [min(a, c), max(b, d)]</li>
+<li>合并后区间的总覆盖长度为：( \sum_{i=1}^{k} (v_i - u_i + 1) )，其中 k 是合并后的区间数量，(u_i, v_i) 是第 i 个合并后的区间</li>
+<li>最终剩余树数：( (l + 1) - \sum_{i=1}^{k} (v_i - u_i + 1) )</li>
+</ul>
+</li>
 <li><strong>优点</strong>：当有大量重叠区间时，效率更高；不依赖于 l 的大小，节省内存</li>
 <li><strong>缺点</strong>：实现稍微复杂一些</li>
 </ul>
 <h2 id="复杂度分析"><a class="markdownIt-Anchor" href="#复杂度分析"></a> 复杂度分析</h2>
 <h3 id="方法一模拟法数组标记-4"><a class="markdownIt-Anchor" href="#方法一模拟法数组标记-4"></a> 方法一：模拟法（数组标记）</h3>
 <ul>
-<li><strong>时间复杂度</strong>：O(m × max_length)，其中 max_length 是区间的最大长度
+<li><strong>时间复杂度</strong>：( O(m \times \text{max_length}) )，其中 max_length 是区间的最大长度
 <ul>
-<li>读取输入：O(m)</li>
-<li>标记区间：O(m × max_length)</li>
-<li>统计剩余树：O(l)</li>
+<li>读取输入：( O(m) )</li>
+<li>标记区间：( O(m \times \text{max_length}) )</li>
+<li>统计剩余树：( O(l) )</li>
 </ul>
 </li>
-<li><strong>空间复杂度</strong>：O(l)
+<li><strong>空间复杂度</strong>：( O(l) )
 <ul>
 <li>需要一个长度为 l+1 的数组</li>
 </ul>
 </li>
 </ul>
-<h3 id="方法二集合去重法-3"><a class="markdownIt-Anchor" href="#方法二集合去重法-3"></a> 方法二：集合去重法</h3>
+<h3 id="方法二集合去重法-4"><a class="markdownIt-Anchor" href="#方法二集合去重法-4"></a> 方法二：集合去重法</h3>
 <ul>
-<li><strong>时间复杂度</strong>：O(m × max_length)
+<li><strong>时间复杂度</strong>：( O(m \times \text{max_length}) )
 <ul>
-<li>读取输入：O(m)</li>
-<li>添加元素到集合：O(m × max_length)</li>
-<li>计算结果：O(1)</li>
+<li>读取输入：( O(m) )</li>
+<li>添加元素到集合：( O(m \times \text{max_length}) )</li>
+<li>计算结果：( O(1) )</li>
 </ul>
 </li>
-<li><strong>空间复杂度</strong>：O(l)
+<li><strong>空间复杂度</strong>：( O(l) )
 <ul>
 <li>在最坏情况下，需要存储所有点</li>
 </ul>
@@ -522,15 +573,15 @@
 </ul>
 <h3 id="方法三区间合并法"><a class="markdownIt-Anchor" href="#方法三区间合并法"></a> 方法三：区间合并法</h3>
 <ul>
-<li><strong>时间复杂度</strong>：O(m × log m)
+<li><strong>时间复杂度</strong>：( O(m \times \log m) )
 <ul>
-<li>读取输入：O(m)</li>
-<li>排序区间：O(m × log m)</li>
-<li>合并区间：O(m)</li>
-<li>计算覆盖长度：O(m)</li>
+<li>读取输入：( O(m) )</li>
+<li>排序区间：( O(m \times \log m) )</li>
+<li>合并区间：( O(m) )</li>
+<li>计算覆盖长度：( O(m) )</li>
 </ul>
 </li>
-<li><strong>空间复杂度</strong>：O(m)
+<li><strong>空间复杂度</strong>：( O(m) )
 <ul>
 <li>需要存储所有区间</li>
 </ul>
@@ -544,12 +595,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">500 3  # 马路长度为500，有3个区域</span><br><span class="line">150 300  # 第一个区域：从150到300</span><br><span class="line">100 200  # 第二个区域：从100到200</span><br><span class="line">470 471  # 第三个区域：从470到471</span><br></pre></td></tr></table></figure>
 <h3 id="输出计算过程"><a class="markdownIt-Anchor" href="#输出计算过程"></a> 输出计算过程</h3>
 <ul>
-<li>总共有 500 + 1 = 501 棵树</li>
-<li>第一个区域覆盖了 300 - 150 + 1 = 151 棵树</li>
-<li>第二个区域覆盖了 200 - 100 + 1 = 101 棵树，但其中与第一个区域重叠的部分是 200 - 150 + 1 = 51 棵树</li>
-<li>第三个区域覆盖了 471 - 470 + 1 = 2 棵树</li>
-<li>总覆盖的树数（去重后）= 151 + (101 - 51) + 2 = 203 棵树</li>
-<li>剩余的树数 = 501 - 203 = 298 棵树</li>
+<li>总共有 ( 500 + 1 = 501 ) 棵树</li>
+<li>第一个区域覆盖了 ( 300 - 150 + 1 = 151 ) 棵树</li>
+<li>第二个区域覆盖了 ( 200 - 100 + 1 = 101 ) 棵树，但其中与第一个区域重叠的部分是 ( 200 - 150 + 1 = 51 ) 棵树</li>
+<li>第三个区域覆盖了 ( 471 - 470 + 1 = 2 ) 棵树</li>
+<li>总覆盖的树数（去重后）= ( 151 + (101 - 51) + 2 = 203 ) 棵树</li>
+<li>剩余的树数 = ( 501 - 203 = 298 ) 棵树</li>
 </ul>
 <p>这与输出样例中的结果一致，验证了我们的算法是正确的。</p>
 
@@ -574,6 +625,14 @@
     </footer>
   </div>
     <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%BA%8C%E6%AC%A1%E5%85%83-%E4%BC%8A%E9%BB%91%E5%B0%8F%E8%8A%AD%E5%86%85.png" data-sizes="auto" alt="P1035 [NOIP 2002 普及组] 级数求和" class="lazyload">
+        <a href="/2025/11/29/P1035%20%5BNOIP%202002%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/" aria-label="前一篇: P1035 [NOIP 2002 普及组] 级数求和" title="前一篇: P1035 [NOIP 2002 普及组] 级数求和"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            P1035 [NOIP 2002 普及组] 级数求和
+        </h3>
+      </div>
     <div class="article-nav-link-wrap right">
         <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8A%A8%E6%BC%AB%E5%A5%B3%E5%AD%A9-%E5%8D%95%E8%89%B2-%E5%93%AD.png" data-sizes="auto" alt="Python编程基础" class="lazyload">
       <a href="/2025/11/18/Python%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" aria-label="后一篇: Python编程基础"  title="后一篇: Python编程基础"></a>
@@ -602,10 +661,10 @@
     </div>
       <div>
         <span class="icon-brush"></span>
-        22.3k
+        43.5k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        01:43
+        03:12
       </div>
       <div>
         <span class="icon-eye"></span>
@@ -627,7 +686,7 @@
   <div class="sidebar-wrap">
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#p1047-noip-2005-%E6%99%AE%E5%8F%8A%E7%BB%84-%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text"> P1047 [NOIP 2005 普及组] 校门外的树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text"> 输入输出样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-1"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 输入 #1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-1"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 输出 #1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E%E6%8F%90%E7%A4%BA"><span class="toc-number">1.5.</span> <span class="toc-text"> 说明&#x2F;提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.6.</span> <span class="toc-text"> 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E4%BC%98%E5%8C%96"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 方法二：区间合并优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.</span> <span class="toc-text"> Python 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-2"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 代码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-3"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-2"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96-2"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.9.</span> <span class="toc-text"> 复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-4"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-3"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 方法三：区间合并法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 优化建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="toc-number">1.11.</span> <span class="toc-text"> 输入输出示例解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 输入样例分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 输出计算过程</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#p1047-noip-2005-%E6%99%AE%E5%8F%8A%E7%BB%84-%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text"> P1047 [NOIP 2005 普及组] 校门外的树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text"> 输入输出样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-1"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 输入 #1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-1"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 输出 #1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E%E6%8F%90%E7%A4%BA"><span class="toc-number">1.5.</span> <span class="toc-text"> 说明&#x2F;提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.6.</span> <span class="toc-text"> 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 问题可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E6%95%B0%E8%BD%B4%E4%B8%8A%E7%9A%84%E6%A0%91%E5%88%86%E5%B8%83"><span class="toc-number">1.6.1.1.</span> <span class="toc-text"> 原始数轴上的树分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F%E8%A6%86%E7%9B%96%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">1.6.1.2.</span> <span class="toc-text"> 区域覆盖示意图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E4%BC%98%E5%8C%96"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 方法三：区间合并优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">1.6.4.1.</span> <span class="toc-text"> 方法三：区间合并示意图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.</span> <span class="toc-text"> Python 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-2"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-2"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 代码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-3"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-3"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95%E4%BC%98%E5%8C%96-2"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 方法三：区间合并法（优化）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.9.</span> <span class="toc-text"> 复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%A8%A1%E6%8B%9F%E6%B3%95%E6%95%B0%E7%BB%84%E6%A0%87%E8%AE%B0-4"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 方法一：模拟法（数组标记）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E9%9B%86%E5%90%88%E5%8E%BB%E9%87%8D%E6%B3%95-4"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 方法二：集合去重法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%B3%95"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 方法三：区间合并法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.10.</span> <span class="toc-text"> 优化建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="toc-number">1.11.</span> <span class="toc-text"> 输入输出示例解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 输入样例分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 输出计算过程</span></a></li></ol></li></ol></li></ol>
 </div>
 </div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
@@ -767,7 +826,7 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>文章</div>
-    <div class="sidebar-state-number">8</div>
+    <div class="sidebar-state-number">17</div>
   </div>
   <div class="sidebar-state-category">
     <div>分类</div>
@@ -775,7 +834,7 @@
   </div>
   <div class="sidebar-state-tag">
     <div>标签</div>
-    <div class="sidebar-state-number">5</div>
+    <div class="sidebar-state-number">14</div>
   </div>
 </div>
 <div class="sidebar-social">
@@ -920,9 +979,9 @@
           url: "http://example.com/2025/11/26/P1047%20%5BNOIP%202005%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91/",
           excerpt: "",
           description: "",
-          stripContent: " P1047 [NOIP 2005 普及组] 校门外的树  题目描述 某校大门外长度为 l 的马路上有一排树，每两棵相邻的树之间的间隔都是 1 米。我们可以把马路看成一个数轴，马路的一端在数轴 0 的位置，另一端在 l 的位置；数轴上的每个整数点，即 0,1,2,…,l，都种有一棵树。 由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任一区域的起始点和终止点的坐标都是整数，区域之间可能有重合的部分。现在要把这些区域中的树（包括区域端点处的两棵树）移走。你的任务是",
+          stripContent: " P1047 [NOIP 2005 普及组] 校门外的树  题目描述 某校大门外长度为 l 的马路上有一排树，每两棵相邻的树之间的间隔都是 1 米。我们可以把马路看成一个数轴，马路的一端在数轴 0 的位置，另一端在 l 的位置；数轴上的每个整数点，即 0,1,2,…,l，都种有一棵树。 总共有 ( l + 1 ) 棵树，因为从 0 到 l 共有 ( l + 1 ) 个整数点。 由于马路上有一些区域要用来建地铁。这些区域用它们在数轴上的起始点和终止点表示。已知任一区域的起始点和终止点的坐标都是整数",
           date: "Wed Nov 26 2025 17:59:10 GMT+0800",
-          updated: "Wed Nov 26 2025 20:03:30 GMT+0800",
+          updated: "Sat Nov 29 2025 11:02:59 GMT+0800",
           cover: "/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E4%B8%B0%E5%AF%8C%E5%A4%9A%E5%BD%A9%E7%9A%84-%E4%B9%90%E5%99%A8.png",
         };
       </script>

@@ -1,0 +1,1156 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="auto"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';</script>
+  <title>
+    P1089 [NOIP 2004 提高组] 津津的储蓄计划 | 无敌火影大王
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="P1089 [NOIP 2004 提高组] 津津的储蓄计划  题目描述 津津的零花钱一直都是自己管理。每个月的月初妈妈给津津 300 元钱，津津会预算这个月的花销，并且总能做到实际花销和预算的相同。 为了让津津学习如何储蓄，妈妈提出，津津可以随时把整百的钱存在她那里，到了年末她会加上 20% 还给津津。因此津津制定了一个储蓄计划：每个月的月初，在得到妈妈给的零花钱后，如果她预计到这个月的月末手中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P1089 [NOIP 2004 提高组] 津津的储蓄计划">
+<meta property="og:url" content="http://example.com/2023/11/29/P1089%20%5BNOIP%202004%20%E6%8F%90%E9%AB%98%E7%BB%84%5D%20%E6%B4%A5%E6%B4%A5%E7%9A%84%E5%82%A8%E8%93%84%E8%AE%A1%E5%88%92/index.html">
+<meta property="og:site_name" content="无敌火影大王">
+<meta property="og:description" content="P1089 [NOIP 2004 提高组] 津津的储蓄计划  题目描述 津津的零花钱一直都是自己管理。每个月的月初妈妈给津津 300 元钱，津津会预算这个月的花销，并且总能做到实际花销和预算的相同。 为了让津津学习如何储蓄，妈妈提出，津津可以随时把整百的钱存在她那里，到了年末她会加上 20% 还给津津。因此津津制定了一个储蓄计划：每个月的月初，在得到妈妈给的零花钱后，如果她预计到这个月的月末手中">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-29T11:26:10.000Z">
+<meta property="article:modified_time" content="2025-11-29T11:28:48.378Z">
+<meta property="article:author" content="飞制">
+<meta property="article:tag" content="Python算法">
+<meta property="article:tag" content="枚举">
+<meta property="article:tag" content="模拟">
+<meta property="article:tag" content="洛谷">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="无敌火影大王" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/666.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+      
+<link rel="stylesheet" href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
+
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj+vDDLIL+xBGQU&#x2F;voDBY5XE2lVh" crossorigin="anonymous">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+    
+    <!-- 星空效果容器 -->
+    <div class="galaxy-effect"></div>
+    <div class="constellation-lines"></div>
+    
+    <!-- 流星特效容器 -->
+    <div class="meteor-shower" id="meteor-shower"></div>
+    
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+  </nav>
+  <a href="https://github.com/JEET-PR" class="triangle-badge" title="github" target="_blank" rel="noopener nofollow noreferrer">
+    <div class="icon icon-github triangle-badge-icon"></div>
+  </a>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8A%A8%E6%BC%AB-%E7%81%AB%E7%84%B0%E7%89%B9%E6%95%88.png" alt="P1089 [NOIP 2004 提高组] 津津的储蓄计划">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">P1089 [NOIP 2004 提高组] 津津的储蓄计划</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+      <div id="aplayer" theme="var(--color-link)" data-aos="fade-up"></div>
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#p1089-noip-2004-%E6%8F%90%E9%AB%98%E7%BB%84-%E6%B4%A5%E6%B4%A5%E7%9A%84%E5%82%A8%E8%93%84%E8%AE%A1%E5%88%92"><span class="toc-number">1.</span> <span class="toc-text"> P1089 [NOIP 2004 提高组] 津津的储蓄计划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text"> 问题分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 数据流向</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.</span> <span class="toc-text"> 数学模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%88%E5%88%9D%E8%B5%84%E9%87%91"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 月初资金</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E9%87%91%E6%A3%80%E6%9F%A5"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 资金检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%88%E5%BA%95%E5%89%A9%E4%BD%99"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 月底剩余</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E9%92%B1%E8%AE%A1%E7%AE%97"><span class="toc-number">1.5.4.</span> <span class="toc-text"> 存钱计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B4%E6%9C%AB%E7%BB%93%E7%AE%97"><span class="toc-number">1.5.5.</span> <span class="toc-text"> 年末结算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-%E8%A7%A3%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.6.</span> <span class="toc-text"> Python 解法实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%E5%B8%B8%E8%A7%84%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 解法一：常规模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%E4%BC%98%E5%8C%96%E8%BE%93%E5%85%A5%E5%A4%84%E7%90%86"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 解法二：优化输入处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.7.</span> <span class="toc-text"> 代码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%E8%AF%A6%E7%BB%86%E5%88%86%E6%9E%90"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 解法一详细分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%E4%BC%98%E5%8C%96%E8%AF%B4%E6%98%8E"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 解法二优化说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 算法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 空间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">1.9.</span> <span class="toc-text"> 测试用例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B1"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 测试用例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B2"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 测试用例2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%93%E5%B1%95%E6%80%9D%E8%80%83"><span class="toc-number">1.10.</span> <span class="toc-text"> 拓展思考</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E7%AD%96%E7%95%A5%E5%88%86%E6%9E%90"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 贪心策略分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7"><span class="toc-number">1.10.2.</span> <span class="toc-text"> 算法的鲁棒性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E5%90%91"><span class="toc-number">1.10.3.</span> <span class="toc-text"> 可能的优化方向</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.11.</span> <span class="toc-text"> 总结</span></a></li></ol></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="飞制" class="lazyload">
+  <div class="sidebar-author-name">飞制</div>
+  <div class="sidebar-description"></div>
+</div>
+
+<!-- 数字时钟容器 -->
+<div class="sidebar-clock-container">
+  <div class="digital-clock-container" id="sidebar-clock"></div>
+</div>
+
+<script>
+// 使用IIFE隔离作用域
+(function() {
+  // 强制设置时钟背景颜色
+  function updateClockBackground() {
+    const clockElement = document.getElementById('sidebar-clock');
+    if (clockElement) {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const isLightTheme = currentTheme === 'light';
+      
+      console.log('时钟主题更新:', { currentTheme, isLightTheme });
+      
+      // 清除所有可能的样式
+      clockElement.style.removeProperty('background');
+      clockElement.style.removeProperty('background-color');
+      clockElement.style.removeProperty('border');
+      clockElement.style.removeProperty('color');
+      
+      if (isLightTheme) {
+        console.log('设置浅色主题时钟样式');
+        // 强制设置浅色主题样式
+        clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(255, 248, 255, 0.95) 0%, rgba(255, 240, 245, 0.9) 100%)', 'important');
+        clockElement.style.setProperty('background-color', 'rgba(255, 248, 255, 0.95)', 'important');
+        clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.4)', 'important');
+        clockElement.style.setProperty('color', '#333333', 'important');
+        clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(255, 182, 193, 0.2)', 'important');
+        
+        // 设置所有子元素的文字颜色
+        const allTextElements = clockElement.querySelectorAll('*');
+        allTextElements.forEach((el, index) => {
+          el.style.setProperty('color', '#333333', 'important');
+          el.style.setProperty('text-shadow', '0 0 5px rgba(0, 0, 0, 0.1)', 'important');
+          if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+        });
+      } else {
+        console.log('设置深色主题时钟样式');
+        // 强制设置深色主题样式
+        clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 20, 51, 0.9) 100%)', 'important');
+        clockElement.style.setProperty('background-color', 'rgba(10, 14, 39, 0.95)', 'important');
+        clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.3)', 'important');
+        clockElement.style.setProperty('color', '#ffffff', 'important');
+        clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(0, 0, 0, 0.3)', 'important');
+        
+        // 设置所有子元素的文字颜色
+        const allTextElements = clockElement.querySelectorAll('*');
+        allTextElements.forEach((el, index) => {
+          el.style.setProperty('color', '#ffffff', 'important');
+          el.style.setProperty('text-shadow', '0 0 8px rgba(255, 255, 255, 0.3)', 'important');
+          if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+        });
+      }
+      
+      // 验证样式是否应用成功
+      setTimeout(() => {
+        const computedStyle = window.getComputedStyle(clockElement);
+        console.log('时钟最终样式:', {
+          background: computedStyle.background,
+          backgroundColor: computedStyle.backgroundColor,
+          color: computedStyle.color
+        });
+      }, 100);
+    } else {
+      console.error('未找到时钟元素 #sidebar-clock');
+    }
+  }
+
+  // 页面加载完成后立即执行
+  document.addEventListener('DOMContentLoaded', function() {
+    // 延迟执行，确保其他脚本已加载
+    setTimeout(updateClockBackground, 100);
+  });
+
+  // 监听主题切换 - 更改变量名避免冲突
+  const sidebarThemeObserver = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+        setTimeout(updateClockBackground, 50); // 延迟执行，确保CSS已更新
+      }
+    });
+  });
+
+  sidebarThemeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme']
+  });
+
+  // 监听自定义主题切换事件
+  document.addEventListener('dark-theme-set', function() {
+    setTimeout(updateClockBackground, 50);
+  });
+
+  document.addEventListener('light-theme-set', function() {
+    setTimeout(updateClockBackground, 50);
+  });
+
+  // 定期检查（防止其他脚本覆盖）
+  setInterval(updateClockBackground, 2000);
+
+  // 立即执行一次
+  updateClockBackground();
+
+  // 强制页面重新渲染时钟样式
+  function forceClockStyleRefresh() {
+    const clockElement = document.getElementById('sidebar-clock');
+    if (clockElement) {
+      // 临时移除元素再重新添加，强制重新渲染
+      const parent = clockElement.parentNode;
+      const nextSibling = clockElement.nextSibling;
+      parent.removeChild(clockElement);
+      parent.insertBefore(clockElement, nextSibling);
+      
+      // 重新应用样式
+      setTimeout(updateClockBackground, 10);
+    }
+  }
+
+  // 页面完全加载后强制刷新
+  window.addEventListener('load', function() {
+    setTimeout(forceClockStyleRefresh, 500);
+  });
+})();
+</script>
+
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">17</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">14</div>
+  </div>
+</div>
+<div class="sidebar-social">
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/JEET-PR itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/1939864033?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-P1089 [NOIP 2004 提高组] 津津的储蓄计划" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2023-11-29T11:26:10.000Z" itemprop="datePublished">2023-11-29</time>
+    <time style="display: none;" id="post-update-time">2025-11-29</time>
+  </span>
+</div>
+
+        <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%A3%E9%A2%98/" title="解题">解题</a>
+  </div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <h1 id="p1089-noip-2004-提高组-津津的储蓄计划"><a class="markdownIt-Anchor" href="#p1089-noip-2004-提高组-津津的储蓄计划"></a> P1089 [NOIP 2004 提高组] 津津的储蓄计划</h1>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>津津的零花钱一直都是自己管理。每个月的月初妈妈给津津 300 元钱，津津会预算这个月的花销，并且总能做到实际花销和预算的相同。</p>
+<p>为了让津津学习如何储蓄，妈妈提出，津津可以随时把整百的钱存在她那里，到了年末她会加上 20% 还给津津。因此津津制定了一个储蓄计划：每个月的月初，在得到妈妈给的零花钱后，如果她预计到这个月的月末手中还会有多于 100 元或恰好 100 元，她就会把整百的钱存在妈妈那里，剩余的钱留在自己手中。</p>
+<p>例如 11 月初津津手中还有 83 元，妈妈给了津津 300 元。津津预计 11 月的花销是 180 元，那么她就会在妈妈那里存 200 元，自己留下 183 元。到了 11 月月末，津津手中会剩下 3 元钱。</p>
+<p>津津发现这个储蓄计划的主要风险是，存在妈妈那里的钱在年末之前不能取出。有可能在某个月的月初，津津手中的钱加上这个月妈妈给的钱，不够这个月的原定预算。如果出现这种情况，津津将不得不在这个月省吃俭用，压缩预算。</p>
+<p>现在请你根据 2004 年 1 月到 12 月每个月津津的预算，判断会不会出现这种情况。如果不会，计算到 2004 年年末，妈妈将津津平常存的钱加上 20% 还给津津之后，津津手中会有多少钱。</p>
+<h2 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式</h2>
+<p>输入一行数据，每行包含一个小于 350 的非负整数，分别表示 1 月到 12 月津津的预算。</p>
+<h2 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式</h2>
+<p>一个整数。如果储蓄计划实施过程中出现某个月钱不够用的情况，输出 -x，x 表示出现这种情况的第一个月；否则输出到 2004 年年末津津手中会有多少钱。</p>
+<h2 id="问题分析"><a class="markdownIt-Anchor" href="#问题分析"></a> 问题分析</h2>
+<p>这个问题是一个典型的模拟问题，我们需要按照题目描述的规则，模拟津津在一年中每个月的收支情况。整个问题可以分解为以下几个关键点：</p>
+<ol>
+<li>每个月初，津津会收到 300 元零花钱</li>
+<li>月初计算总金额（上月剩余 + 300 元）</li>
+<li>判断是否足够当月预算
+<ul>
+<li>如果不够，返回该月的负数</li>
+<li>如果足够，先计算月底剩余金额</li>
+</ul>
+</li>
+<li>根据月底剩余金额决定存多少钱
+<ul>
+<li>如果月底剩余 ≥ 100 元，存整百的部分</li>
+<li>否则，不存钱</li>
+</ul>
+</li>
+<li>重复上述过程 12 个月</li>
+<li>年末计算妈妈返还的钱（存款 × 1.2）</li>
+</ol>
+<h3 id="数据流向"><a class="markdownIt-Anchor" href="#数据流向"></a> 数据流向</h3>
+<p>让我们通过一个流程图来清晰地表示数据的流向：</p>
+<pre class="mermaid">flowchart TD
+    Start["开始"] --> Init["初始化变量"]
+    Init --> Loop["循环12个月"]
+    Loop --> MonthIn["月初收300元"]
+    MonthIn --> CheckBudget{"本月余额是否够预算?"}
+    CheckBudget -- "不够" --> OutputFail["输出月份，结束"]
+    CheckBudget -- "足够" --> CalcRemain["计算月底剩余"]
+    CalcRemain --> CheckSave{"剩余是否≥100?"}
+    CheckSave -- "是" --> SaveBank["存入整百部分"]
+    CheckSave -- "否" --> NoSave["不存钱"]
+    SaveBank --> NextMonth["下个月?"]
+    NoSave --> NextMonth
+    NextMonth -- "否" --> Loop
+    NextMonth -- "是" --> FinalCalc["计算最终金额"]
+    FinalCalc --> OutputResult["输出结果"]
+    OutputResult --> FIN["结束"]</pre>
+<h2 id="数学模型"><a class="markdownIt-Anchor" href="#数学模型"></a> 数学模型</h2>
+<p>在这个问题中，我们可以用简单的数学表达式来描述每个月的资金变化：</p>
+<h3 id="月初资金"><a class="markdownIt-Anchor" href="#月初资金"></a> 月初资金</h3>
+<p>每个月初，津津的可用资金由上月剩余和本月零花钱组成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">available = monthly_money + 300</span><br></pre></td></tr></table></figure>
+<h3 id="资金检查"><a class="markdownIt-Anchor" href="#资金检查"></a> 资金检查</h3>
+<p>如果可用资金不足以支付当月预算，则失败：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if\ available &lt; budget_i:\ return\ -i</span><br></pre></td></tr></table></figure>
+<h3 id="月底剩余"><a class="markdownIt-Anchor" href="#月底剩余"></a> 月底剩余</h3>
+<p>月底剩余资金的计算：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remaining = available - budget_i</span><br></pre></td></tr></table></figure>
+<h3 id="存钱计算"><a class="markdownIt-Anchor" href="#存钱计算"></a> 存钱计算</h3>
+<p>如果月底剩余 ≥ 100 元，则存入整百部分：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save = (remaining // 100) \times 100</span><br><span class="line">bank_money += save</span><br><span class="line">monthly_money = remaining - save</span><br></pre></td></tr></table></figure>
+<h3 id="年末结算"><a class="markdownIt-Anchor" href="#年末结算"></a> 年末结算</h3>
+<p>年末总资金的计算：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">final_money = monthly_money + bank_money \times 1.2</span><br></pre></td></tr></table></figure>
+<h2 id="python-解法实现"><a class="markdownIt-Anchor" href="#python-解法实现"></a> Python 解法实现</h2>
+<h3 id="解法一常规模拟"><a class="markdownIt-Anchor" href="#解法一常规模拟"></a> 解法一：常规模拟</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化变量</span></span><br><span class="line">monthly_money = <span class="number">0</span>  <span class="comment"># 津津手头的钱</span></span><br><span class="line">bank_money = <span class="number">0</span>     <span class="comment"># 存在妈妈那里的钱</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取12个月的预算</span></span><br><span class="line">budgets = []</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">12</span>):</span><br><span class="line">    budgets.append(<span class="built_in">int</span>(<span class="built_in">input</span>()))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模拟12个月</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">12</span>):</span><br><span class="line">    <span class="comment"># 月初收到300元</span></span><br><span class="line">    monthly_money += <span class="number">300</span></span><br><span class="line">    budget = budgets[i]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 检查是否足够本月预算</span></span><br><span class="line">    <span class="keyword">if</span> monthly_money &lt; budget:</span><br><span class="line">        <span class="built_in">print</span>(-(i + <span class="number">1</span>))  <span class="comment"># 注意月份从1开始</span></span><br><span class="line">        exit()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 月底剩余</span></span><br><span class="line">    monthly_money -= budget</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 决定是否存钱</span></span><br><span class="line">    <span class="keyword">if</span> monthly_money &gt;= <span class="number">100</span>:</span><br><span class="line">        <span class="comment"># 存整百的部分</span></span><br><span class="line">        save = (monthly_money // <span class="number">100</span>) * <span class="number">100</span></span><br><span class="line">        bank_money += save</span><br><span class="line">        monthly_money -= save</span><br><span class="line"></span><br><span class="line"><span class="comment"># 年末计算总金额</span></span><br><span class="line">final_money = monthly_money + <span class="built_in">int</span>(bank_money * <span class="number">1.2</span>)</span><br><span class="line"><span class="built_in">print</span>(final_money)</span><br></pre></td></tr></table></figure>
+<h3 id="解法二优化输入处理"><a class="markdownIt-Anchor" href="#解法二优化输入处理"></a> 解法二：优化输入处理</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化变量</span></span><br><span class="line">monthly_money = <span class="number">0</span></span><br><span class="line">bank_money = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接处理输入并模拟，节省内存</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">for</span> month <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">13</span>):</span><br><span class="line">        <span class="comment"># 月初收到300元</span></span><br><span class="line">        monthly_money += <span class="number">300</span></span><br><span class="line">        budget = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 检查是否足够本月预算</span></span><br><span class="line">        <span class="keyword">if</span> monthly_money &lt; budget:</span><br><span class="line">            <span class="built_in">print</span>(-month)</span><br><span class="line">            exit()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 月底剩余</span></span><br><span class="line">        monthly_money -= budget</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 存钱</span></span><br><span class="line">        <span class="keyword">if</span> monthly_money &gt;= <span class="number">100</span>:</span><br><span class="line">            save = (monthly_money // <span class="number">100</span>) * <span class="number">100</span></span><br><span class="line">            bank_money += save</span><br><span class="line">            monthly_money -= save</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 计算结果</span></span><br><span class="line">    final_money = monthly_money + <span class="built_in">int</span>(bank_money * <span class="number">1.2</span>)</span><br><span class="line">    <span class="built_in">print</span>(final_money)</span><br><span class="line"><span class="keyword">except</span> EOFError:</span><br><span class="line">    <span class="comment"># 处理输入异常</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h2 id="代码解析"><a class="markdownIt-Anchor" href="#代码解析"></a> 代码解析</h2>
+<h3 id="解法一详细分析"><a class="markdownIt-Anchor" href="#解法一详细分析"></a> 解法一详细分析</h3>
+<ol>
+<li>
+<p><strong>变量初始化</strong>：</p>
+<ul>
+<li><code>monthly_money</code> 用于跟踪津津手头剩余的钱</li>
+<li><code>bank_money</code> 用于累计存在妈妈那里的钱</li>
+</ul>
+</li>
+<li>
+<p><strong>输入处理</strong>：</p>
+<ul>
+<li>循环读取12个整数，代表1到12月的预算</li>
+<li>将预算存储在列表 <code>budgets</code> 中，方便后续访问</li>
+</ul>
+</li>
+<li>
+<p><strong>月份模拟</strong>：</p>
+<ul>
+<li>使用 for 循环模拟12个月的过程</li>
+<li>每个月初，津津获得300元零花钱：<code>monthly_money += 300</code></li>
+<li>检查资金是否足够：如果不够，输出 <code>-月份</code> 并结束程序</li>
+<li>计算月底剩余：<code>monthly_money -= budget</code></li>
+<li>处理存款逻辑：将整百的部分存入妈妈那里</li>
+</ul>
+</li>
+<li>
+<p><strong>年末结算</strong>：</p>
+<ul>
+<li>计算最终金额：津津手头的钱 + 妈妈返还的钱（包含20%利息）</li>
+<li>注意使用 <code>int()</code> 函数将浮点数转换为整数，因为题目要求输出整数</li>
+</ul>
+</li>
+</ol>
+<h3 id="解法二优化说明"><a class="markdownIt-Anchor" href="#解法二优化说明"></a> 解法二优化说明</h3>
+<p>解法二主要对输入处理进行了优化：</p>
+<ol>
+<li><strong>边输入边处理</strong>：不需要预先存储所有月份的预算，可以节省内存空间</li>
+<li><strong>月份计数优化</strong>：直接从1开始计数到12，方便输出错误月份</li>
+<li><strong>异常处理</strong>：添加了 <code>try-except</code> 块来处理可能的输入异常</li>
+</ol>
+<h2 id="算法分析"><a class="markdownIt-Anchor" href="#算法分析"></a> 算法分析</h2>
+<h3 id="时间复杂度"><a class="markdownIt-Anchor" href="#时间复杂度"></a> 时间复杂度</h3>
+<p>时间复杂度为 <strong>O(1)</strong>，因为我们只需要固定循环12次，与输入规模无关。虽然通常模拟类问题的时间复杂度为O(n)，但在这个问题中，n是固定的12，因此实际上是常数时间复杂度。</p>
+<h3 id="空间复杂度"><a class="markdownIt-Anchor" href="#空间复杂度"></a> 空间复杂度</h3>
+<p>空间复杂度为 <strong>O(1)</strong>，我们只使用了几个变量来存储状态，空间使用量与输入规模无关。在解法一中，我们使用了一个长度为12的列表，但由于12是固定值，所以空间复杂度仍然是常数级别的。</p>
+<h2 id="测试用例分析"><a class="markdownIt-Anchor" href="#测试用例分析"></a> 测试用例分析</h2>
+<h3 id="测试用例1"><a class="markdownIt-Anchor" href="#测试用例1"></a> 测试用例1</h3>
+<p>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">290</span><br><span class="line">230</span><br><span class="line">280</span><br><span class="line">200</span><br><span class="line">300</span><br><span class="line">170</span><br><span class="line">340</span><br><span class="line">50</span><br><span class="line">90</span><br><span class="line">80</span><br><span class="line">200</span><br><span class="line">60</span><br></pre></td></tr></table></figure>
+<p>输出：<code>-7</code></p>
+<p><strong>分析过程</strong>：</p>
+<ul>
+<li>前6个月都能正常储蓄</li>
+<li>第7个月的预算是340元，但月初津津手中的钱加上300元不够支付这个预算</li>
+<li>因此输出 <code>-7</code>，表示第7个月出现了资金不足的情况</li>
+</ul>
+<h3 id="测试用例2"><a class="markdownIt-Anchor" href="#测试用例2"></a> 测试用例2</h3>
+<p>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">290</span><br><span class="line">230</span><br><span class="line">280</span><br><span class="line">200</span><br><span class="line">300</span><br><span class="line">170</span><br><span class="line">330</span><br><span class="line">50</span><br><span class="line">90</span><br><span class="line">80</span><br><span class="line">200</span><br><span class="line">60</span><br></pre></td></tr></table></figure>
+<p>输出：<code>1580</code></p>
+<p><strong>分析过程</strong>：</p>
+<ul>
+<li>与测试用例1相比，第7个月的预算减少为330元</li>
+<li>所有月份都能正常储蓄</li>
+<li>年末计算最终金额时，津津手头剩余的钱加上妈妈返还的钱（含20%利息）共计1580元</li>
+</ul>
+<h2 id="拓展思考"><a class="markdownIt-Anchor" href="#拓展思考"></a> 拓展思考</h2>
+<h3 id="贪心策略分析"><a class="markdownIt-Anchor" href="#贪心策略分析"></a> 贪心策略分析</h3>
+<p>这个问题体现了一种贪心思想：在保证当月支出的前提下，尽可能多地将整百的钱存入银行以获取利息。这种策略在给定规则下是最优的，因为：</p>
+<ol>
+<li>存入银行的钱可以获得额外的20%利息</li>
+<li>题目规定只能存入整百的部分，并且月底剩余≥100元时才存入</li>
+<li>存入的钱在年内不能取出，所以需要确保每月的预算都能满足</li>
+</ol>
+<h3 id="算法的鲁棒性"><a class="markdownIt-Anchor" href="#算法的鲁棒性"></a> 算法的鲁棒性</h3>
+<p>该算法具有很好的鲁棒性，能够处理各种可能的输入情况：</p>
+<ul>
+<li>当某个月预算特别大，导致资金不足时，能够及时检测并返回相应的月份</li>
+<li>当所有月份都能正常储蓄时，能够正确计算年末的总金额</li>
+<li>能够处理边界情况，如预算为0的情况</li>
+</ul>
+<h3 id="可能的优化方向"><a class="markdownIt-Anchor" href="#可能的优化方向"></a> 可能的优化方向</h3>
+<p>虽然当前解法已经很高效，但我们可以进一步优化：</p>
+<ol>
+<li><strong>输入优化</strong>：在实际编程比赛中，可以使用更快的输入方法，如 <code>sys.stdin.readline</code></li>
+<li><strong>数学计算优化</strong>：可以将银行利息计算保留为整数运算，避免浮点数精度问题</li>
+<li><strong>空间优化</strong>：如解法二所示，不需要预先存储所有预算</li>
+</ol>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>本题是一个典型的模拟问题，主要考察对问题规则的理解和实现能力。通过按照题目的描述，逐步模拟每个月的资金流动情况，我们可以得到正确的结果。</p>
+<p>关键的实现点包括：</p>
+<ol>
+<li>正确处理每个月初的零花钱</li>
+<li>判断资金是否足够当月预算</li>
+<li>计算月底剩余并决定存款金额</li>
+<li>年末正确计算包含利息在内的总金额</li>
+</ol>
+<p>这个问题虽然简单，但体现了解决实际问题的基本思路：理解规则、设计数据结构、制定算法流程、实现并测试。</p>
+
+    </div>
+    <footer class="article-footer">
+        <div class="sponsor-wrapper">
+  <div class="sponsor-button">
+    <div class="sponsor-icon rotate"></div>
+    <div class="sponsor-title">赞助</div>
+    <div class="sponsor-icon rotate"></div>
+  </div>
+  <div class="sponsor-tip">请作者喝杯咖啡吧</div>
+    <div class="sponsor-qr">
+        <div class="sponsor-qr-image-wrapper">
+          <img src="/images/%E8%B5%9E%E8%B5%8F.jpg" alt=微信 width="200" />
+          <p class="sponsor-qr-name">微信</p>
+        </div>
+    </div>
+</div>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Python%E7%AE%97%E6%B3%95/" rel="tag" title="Python算法">Python算法</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag" title="枚举">枚举</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag" title="模拟">模拟</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%B4%9B%E8%B0%B7/" rel="tag" title="洛谷">洛谷</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%92%92%E6%9C%AF%E5%9B%9E%E6%88%98-%E7%BE%82%E7%B4%A2.png" data-sizes="auto" alt="B3701 [语言月赛202301] 避雷针" class="lazyload">
+        <a href="/2023/11/29/B3701%20%5B%E8%AF%AD%E8%A8%80%E6%9C%88%E8%B5%9B202301%5D%20%E9%81%BF%E9%9B%B7%E9%92%88/" aria-label="前一篇: B3701 [语言月赛202301] 避雷针" title="前一篇: B3701 [语言月赛202301] 避雷针"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            B3701 [语言月赛202301] 避雷针
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%98%B4%E5%B9%B3%E4%BC%8A%E4%B9%8B%E5%8A%A9-%E6%88%91%E5%A6%BB%E5%96%84%E9%80%B8.png" data-sizes="auto" alt="P1085 [NOIP 2004 普及组] 不高兴的津津" class="lazyload">
+      <a href="/2023/11/29/P1085%20%5BNOIP%202004%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E4%B8%8D%E9%AB%98%E5%85%B4%E7%9A%84%E6%B4%A5%E6%B4%A5/" aria-label="后一篇: P1085 [NOIP 2004 普及组] 不高兴的津津"  title="后一篇: P1085 [NOIP 2004 普及组] 不高兴的津津"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          P1085 [NOIP 2004 普及组] 不高兴的津津
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2025
+      <span class="footer-info-sep rotate"></span>
+      飞制
+    </div>
+      <div>
+        <span class="icon-brush"></span>
+        43.5k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        03:12
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#p1089-noip-2004-%E6%8F%90%E9%AB%98%E7%BB%84-%E6%B4%A5%E6%B4%A5%E7%9A%84%E5%82%A8%E8%93%84%E8%AE%A1%E5%88%92"><span class="toc-number">1.</span> <span class="toc-text"> P1089 [NOIP 2004 提高组] 津津的储蓄计划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text"> 问题分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 数据流向</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.</span> <span class="toc-text"> 数学模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%88%E5%88%9D%E8%B5%84%E9%87%91"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 月初资金</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E9%87%91%E6%A3%80%E6%9F%A5"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 资金检查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%88%E5%BA%95%E5%89%A9%E4%BD%99"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 月底剩余</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E9%92%B1%E8%AE%A1%E7%AE%97"><span class="toc-number">1.5.4.</span> <span class="toc-text"> 存钱计算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B4%E6%9C%AB%E7%BB%93%E7%AE%97"><span class="toc-number">1.5.5.</span> <span class="toc-text"> 年末结算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python-%E8%A7%A3%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.6.</span> <span class="toc-text"> Python 解法实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%E5%B8%B8%E8%A7%84%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 解法一：常规模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%E4%BC%98%E5%8C%96%E8%BE%93%E5%85%A5%E5%A4%84%E7%90%86"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 解法二：优化输入处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.7.</span> <span class="toc-text"> 代码解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%E8%AF%A6%E7%BB%86%E5%88%86%E6%9E%90"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 解法一详细分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%E4%BC%98%E5%8C%96%E8%AF%B4%E6%98%8E"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 解法二优化说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 算法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 空间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">1.9.</span> <span class="toc-text"> 测试用例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B1"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 测试用例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B2"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 测试用例2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%93%E5%B1%95%E6%80%9D%E8%80%83"><span class="toc-number">1.10.</span> <span class="toc-text"> 拓展思考</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E7%AD%96%E7%95%A5%E5%88%86%E6%9E%90"><span class="toc-number">1.10.1.</span> <span class="toc-text"> 贪心策略分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E7%9A%84%E9%B2%81%E6%A3%92%E6%80%A7"><span class="toc-number">1.10.2.</span> <span class="toc-text"> 算法的鲁棒性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E5%90%91"><span class="toc-number">1.10.3.</span> <span class="toc-text"> 可能的优化方向</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.11.</span> <span class="toc-text"> 总结</span></a></li></ol></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="飞制" class="lazyload">
+  <div class="sidebar-author-name">飞制</div>
+  <div class="sidebar-description"></div>
+</div>
+
+<!-- 数字时钟容器 -->
+<div class="sidebar-clock-container">
+  <div class="digital-clock-container" id="sidebar-clock"></div>
+</div>
+
+<script>
+// 使用IIFE隔离作用域
+(function() {
+  // 强制设置时钟背景颜色
+  function updateClockBackground() {
+    const clockElement = document.getElementById('sidebar-clock');
+    if (clockElement) {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const isLightTheme = currentTheme === 'light';
+      
+      console.log('时钟主题更新:', { currentTheme, isLightTheme });
+      
+      // 清除所有可能的样式
+      clockElement.style.removeProperty('background');
+      clockElement.style.removeProperty('background-color');
+      clockElement.style.removeProperty('border');
+      clockElement.style.removeProperty('color');
+      
+      if (isLightTheme) {
+        console.log('设置浅色主题时钟样式');
+        // 强制设置浅色主题样式
+        clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(255, 248, 255, 0.95) 0%, rgba(255, 240, 245, 0.9) 100%)', 'important');
+        clockElement.style.setProperty('background-color', 'rgba(255, 248, 255, 0.95)', 'important');
+        clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.4)', 'important');
+        clockElement.style.setProperty('color', '#333333', 'important');
+        clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(255, 182, 193, 0.2)', 'important');
+        
+        // 设置所有子元素的文字颜色
+        const allTextElements = clockElement.querySelectorAll('*');
+        allTextElements.forEach((el, index) => {
+          el.style.setProperty('color', '#333333', 'important');
+          el.style.setProperty('text-shadow', '0 0 5px rgba(0, 0, 0, 0.1)', 'important');
+          if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+        });
+      } else {
+        console.log('设置深色主题时钟样式');
+        // 强制设置深色主题样式
+        clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 20, 51, 0.9) 100%)', 'important');
+        clockElement.style.setProperty('background-color', 'rgba(10, 14, 39, 0.95)', 'important');
+        clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.3)', 'important');
+        clockElement.style.setProperty('color', '#ffffff', 'important');
+        clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(0, 0, 0, 0.3)', 'important');
+        
+        // 设置所有子元素的文字颜色
+        const allTextElements = clockElement.querySelectorAll('*');
+        allTextElements.forEach((el, index) => {
+          el.style.setProperty('color', '#ffffff', 'important');
+          el.style.setProperty('text-shadow', '0 0 8px rgba(255, 255, 255, 0.3)', 'important');
+          if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+        });
+      }
+      
+      // 验证样式是否应用成功
+      setTimeout(() => {
+        const computedStyle = window.getComputedStyle(clockElement);
+        console.log('时钟最终样式:', {
+          background: computedStyle.background,
+          backgroundColor: computedStyle.backgroundColor,
+          color: computedStyle.color
+        });
+      }, 100);
+    } else {
+      console.error('未找到时钟元素 #sidebar-clock');
+    }
+  }
+
+  // 页面加载完成后立即执行
+  document.addEventListener('DOMContentLoaded', function() {
+    // 延迟执行，确保其他脚本已加载
+    setTimeout(updateClockBackground, 100);
+  });
+
+  // 监听主题切换 - 更改变量名避免冲突
+  const sidebarThemeObserver = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+        setTimeout(updateClockBackground, 50); // 延迟执行，确保CSS已更新
+      }
+    });
+  });
+
+  sidebarThemeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme']
+  });
+
+  // 监听自定义主题切换事件
+  document.addEventListener('dark-theme-set', function() {
+    setTimeout(updateClockBackground, 50);
+  });
+
+  document.addEventListener('light-theme-set', function() {
+    setTimeout(updateClockBackground, 50);
+  });
+
+  // 定期检查（防止其他脚本覆盖）
+  setInterval(updateClockBackground, 2000);
+
+  // 立即执行一次
+  updateClockBackground();
+
+  // 强制页面重新渲染时钟样式
+  function forceClockStyleRefresh() {
+    const clockElement = document.getElementById('sidebar-clock');
+    if (clockElement) {
+      // 临时移除元素再重新添加，强制重新渲染
+      const parent = clockElement.parentNode;
+      const nextSibling = clockElement.nextSibling;
+      parent.removeChild(clockElement);
+      parent.insertBefore(clockElement, nextSibling);
+      
+      // 重新应用样式
+      setTimeout(updateClockBackground, 10);
+    }
+  }
+
+  // 页面完全加载后强制刷新
+  window.addEventListener('load', function() {
+    setTimeout(forceClockStyleRefresh, 500);
+  });
+})();
+</script>
+
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">17</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">14</div>
+  </div>
+</div>
+<div class="sidebar-social">
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/JEET-PR itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/1939864033?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png"/>
+        </div>
+      </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+      window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+    }
+  </script>
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/quicklink@3.0.1/dist/quicklink.umd.js" integrity="sha384-caMDqvgav&#x2F;HWdEYQU1QRRHMLleigpL1YHAG0m371DhzfL8rRzUyOb+bEHtwlmYjD" crossorigin="anonymous"></script>
+
+  <script data-pjax>
+    window.quicklink?.listen({
+      timeout: 3000,
+      priority: true,
+      ignores: []
+    });
+  </script>
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "飞制",
+          title: "P1089 [NOIP 2004 提高组] 津津的储蓄计划",
+          url: "http://example.com/2023/11/29/P1089%20%5BNOIP%202004%20%E6%8F%90%E9%AB%98%E7%BB%84%5D%20%E6%B4%A5%E6%B4%A5%E7%9A%84%E5%82%A8%E8%93%84%E8%AE%A1%E5%88%92/",
+          excerpt: "",
+          description: "",
+          stripContent: " P1089 [NOIP 2004 提高组] 津津的储蓄计划  题目描述 津津的零花钱一直都是自己管理。每个月的月初妈妈给津津 300 元钱，津津会预算这个月的花销，并且总能做到实际花销和预算的相同。 为了让津津学习如何储蓄，妈妈提出，津津可以随时把整百的钱存在她那里，到了年末她会加上 20% 还给津津。因此津津制定了一个储蓄计划：每个月的月初，在得到妈妈给的零花钱后，如果她预计到这个月的月末手中还会有多于 100 元或恰好 100 元，她就会把整百的钱存在妈妈那里，剩余的钱留在自己手中。 例如",
+          date: "Wed Nov 29 2023 19:26:10 GMT+0800",
+          updated: "Sat Nov 29 2025 19:28:48 GMT+0800",
+          cover: "/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8A%A8%E6%BC%AB-%E7%81%AB%E7%84%B0%E7%89%B9%E6%95%88.png",
+        };
+      </script>
+      
+<script src="https://npm.webcache.cn/mermaid@11.12.0/dist/mermaid.min.js" integrity="sha384-o+g&#x2F;BxPwhi0C3RK7oQBxQuNimeafQ3GE&#x2F;ST4iT2BxVI4Wzt60SH4pq9iXVYujjaS" crossorigin="anonymous" data-pjax></script>
+
+      
+<script src="https://npm.webcache.cn/dompurify@3.2.6/dist/purify.min.js" integrity="sha384-JEyTNhjM6R1ElGoJns4U2Ln4ofPcqzSsynQkmEc&#x2F;KGy6336qAZl70tDLufbkla+3" crossorigin="anonymous"></script>
+
+        
+<script src="https://npm.webcache.cn/svg-pan-zoom@3.6.2/dist/svg-pan-zoom.min.js" integrity="sha384-GGX4llYprEPGp9w5caepn95YWAEflHnsA5ewt+Y+cBEb95og5cXKllnWKSELlzbx" crossorigin="anonymous"></script>
+
+      <script data-pjax>
+        if (window.mermaid) {
+          // https://github.com/mermaid-js/mermaid/issues/1945
+          const elementCode = '.mermaid'
+          const processElements = (callback) => {
+            const els = _$$(elementCode);
+            if (!els.length) return Promise.resolve();
+            
+            return new Promise((resolve, reject) => {
+              try {
+                els.forEach(callback);
+                resolve();
+              } catch (error) {
+                reject(error);
+              }
+            });
+          };
+          const saveOriginalData = () => processElements(el => {
+            if (!el.getAttribute('data-original-code')) {
+              el.setAttribute('data-original-code', el.innerHTML);
+            }
+          });
+
+          const resetProcessed = () => processElements(el => {
+            const originalCode = el.getAttribute('data-original-code');
+            if (originalCode) {
+              el.removeAttribute('data-processed');
+              el.innerHTML = DOMPurify.sanitize(originalCode);
+            }
+          });
+          const loadMermaid = async (theme) => {
+            window.mermaid.initialize({theme, startOnLoad: false})
+            await window.mermaid.run({querySelector: elementCode, suppressErrors: true})
+            if (window.svgPanZoom) {
+              window.__panZoomList?.forEach(panZoom => {try {panZoom.destroy()} catch {}});
+              window.__panZoomList = [];
+              _$$('.mermaid > svg').forEach(el => {
+                const bbox = el.getBBox();
+                el.setAttribute('height', Math.max(bbox.height, 80));
+                window.__panZoomList.push(window.svgPanZoom(el, {
+                  zoomEnabled: true,
+                  controlIconsEnabled: true,
+                  fit: true,
+                  center: true
+                }));
+              });
+              if (window.__resizeMermaidSvg) {
+                window.removeEventListener('resize', window.__resizeMermaidSvg);
+              }
+              window.__resizeMermaidSvg = () => {
+                try {
+                  window.__panZoomList.forEach(panZoom => {
+                    panZoom.resize();
+                    panZoom.fit();
+                    panZoom.center();
+                  });
+                } catch {
+                  window.removeEventListener('resize', window.__resizeMermaidSvg);
+                  window.__panZoomList = [];
+                }
+              }
+              window.addEventListener('resize', window.__resizeMermaidSvg);
+            }
+          }
+          const initMermaid = async (theme) => {
+            try {
+              await saveOriginalData();
+              await resetProcessed();
+              await loadMermaid(theme);
+            } catch (error) {
+              console.error(error);
+            }
+          };
+          
+          document.body.addEventListener('dark-theme-set', () => initMermaid('dark'));
+          document.body.addEventListener('light-theme-set', () => initMermaid('default'));
+
+          const mode = localStorage.getItem('dark_mode');
+          if (mode === 'auto') {
+            const osMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            initMermaid(osMode ? 'dark' : 'default');
+          } else {
+            initMermaid(mode === 'true' ? 'dark' : 'default');
+          }
+        }
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+    
+<script src="https://npm.webcache.cn/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6&#x2F;1Nxveei" crossorigin="anonymous" defer data-pjax></script>
+
+    <script data-pjax>
+      window.MathJax = {"tex":{"tags":"ams","useLabelIds":true,"inlineMath":[["$","$"],["\\\\(","\\\\)"]],"displayMath":[["$$","$$"],["\\\\[","\\\\]"]],"processEscapes":true,"processEnvironments":true,"autoload":{"color":[],"colorv2":["color"]},"packages":{"[+]":["noerrors"]}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"],"ignoreHtmlClass":"tex2jax_ignore","processHtmlClass":"tex2jax_process"},"loader":{"load":["input/asciimath","[tex]/noerrors"]}};
+    </script>
+
+  
+<script src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js" integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr+h5UfruuRL&#x2F;aORyw+5+HZoU6e" crossorigin="anonymous"></script>
+
+    <script>
+      if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+        if (window.matchMedia('(max-width: 959px)').matches) {
+          const aplayer = _$('#aplayer');
+          if (aplayer) {
+            const aside = aplayer.parentNode?.parentNode;
+            if (aside?.tagName === 'ASIDE') {
+              aplayer.removeAttribute('data-aos');
+              aplayer.parentNode.removeChild(aplayer);
+              document.body.appendChild(aplayer);
+            }
+          }
+        }
+        // 先定义 isMobile（设备检测）
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+// 初始化 APlayer，修正 Hexo 模板渲染和逻辑错误
+const ap = new APlayer({
+  theme: "var(--color-link)",
+  container: document.getElementById('aplayer'),
+  audio: [{"name":"最初的记忆(DJ阿智Remix) - DJ阿智","artist":"DJ阿智","url":"/music/最初的记忆(DJ阿智Remix) - DJ阿智.mp3","cover":null},{"name":"Sacred Play Secret Place + 罗生门 (0.9x)","artist":"我无记忆","url":"/music/Sacred Play Secret Place + 罗生门 (0.9x) - 我无记忆.mp3","cover":null},{"name":"特别的人","artist":"方大同","url":"/music/特别的人.mp3","cover":"http://p1.music.126.net/FtAvIYLF3qwqohQhwycVDg==/109951171386379124.jpg?param=300x300"},{"name":"Ciallo~之歌(给柚子厨的礼物)","artist":"八奈见杏菜","url":"/music/Ciallo~之歌(给柚子厨的礼物).mp3","cover":"http://p1.music.126.net/77NH13roeMK4rN90CvjgGw==/109951172179482203.jpg?param=300x300"},{"name":"Ice On My Baby","artist":"Yung Bleu","url":"/music/Ice On My Baby.mp3","cover":"http://p2.music.126.net/-xXaA1-q-eMUO2_Dhqf_Ng==/109951164610273338.jpg?param=300x300"},{"name":"唯一 - G.E.M.邓紫棋","artist":"G.E.M.邓紫棋","url":"/music/唯一 - G.E.M.邓紫棋.mp3","cover":"http://p1.music.126.net/aJWtwvdYRXvKUpAE2C6NoA==/109951168919708423.jpg?param=300x300"},{"name":"IF YOU - BIGBANG","artist":"BIGBANG","url":"/music/IF YOU - BIGBANG.mp3","cover":"http://p1.music.126.net/l-TigfvwoKBUP_LDL1XgIg==/7735064302387363.jpg?param=300x300"},{"name":"One Last Kiss - 宇多田ヒカル","artist":"宇多田ヒカル","url":"/music/One Last Kiss - 宇多田ヒカル.mp3","cover":"http://p1.music.126.net/l3G4LigZnOxFE9lB4bz_LQ==/109951165791860501.jpg?param=300x300"},{"name":"Dehors - JORDANN","artist":"JORDANN","url":"/music/Dehors - JORDANN.mp3","cover":"http://p2.music.126.net/7IM_iRaCe2Pe9TU7PMTdqQ==/109951169635570073.jpg?param=300x300"},{"name":"罗生门（Follow） - 梨冻紧,Wiz_H张子豪","artist":"梨冻紧,Wiz_H张子豪","url":"/music/罗生门（Follow） - 梨冻紧,Wiz_H张子豪.mp3","cover":"http://p2.music.126.net/yN1ke1xYMJ718FiHaDWtYQ==/109951165076380471.jpg?param=300x300"},{"name":"星空叙爱曲 - 法老,阿达娃","artist":"法老,阿达娃","url":"/music/星空叙爱曲 - 法老,阿达娃.mp3","cover":"http://p2.music.126.net/cK3Rm-WaJwNw9pOWg7DX-A==/109951167750223899.jpg?param=300x300"},{"name":"李白 - 李荣浩","artist":"李荣浩","url":"/music/李白 - 李荣浩.mp3","cover":"http://p1.music.126.net/0uZ_bKtm4E188Uk9LFN1qg==/109951163187393370.jpg?param=300x300"},{"name":"可不可以 - 张紫豪","artist":"张紫豪","url":"/music/可不可以 - 张紫豪.mp3","cover":"http://p2.music.126.net/WafK2OQfEtqXitdDXJ772Q==/109951163252847249.jpg?param=300x300"},{"name":"多远都要在一起 - G.E.M.邓紫棋","artist":"G.E.M.邓紫棋","url":"/music/多远都要在一起 - G.E.M.邓紫棋.mp3","cover":"http://p2.music.126.net/kVwk6b8Qdya8oDyGDcyAVA==/1364493930777368.jpg?param=300x300"},{"name":"11 - 队长,黄礼格","artist":"队长,黄礼格","url":"/music/11 - 队长,黄礼格.mp3","cover":"http://p1.music.126.net/DMJkxcW5QbeWg_DZMASfSw==/109951169494228942.jpg?param=300x300"},{"name":"不将就 - 李荣浩","artist":"李荣浩","url":"/music/不将就 - 李荣浩.mp3","cover":"http://p2.music.126.net/e-Uc6W3Kug-HFHJ5nvCUPg==/109951166562828988.jpg?param=300x300"},{"name":"Sunflower - Post Malone,Swae Lee","artist":"Post Malone,Swae Lee","url":"/music/Sunflower.mp3","cover":"http://p2.music.126.net/NPeyzpUmXGAzsI6VUQxvrA==/109951171748635952.jpg?param=300x300"},{"name":"戒烟 - 李荣浩","artist":"李荣浩","url":"/music/戒烟 - 李荣浩.mp3","cover":"http://p2.music.126.net/yoxDYFnoCq_gFmsdwyYkiQ==/109951168205342389.jpg?param=300x300"},{"name":"才二十三 - 方大同","artist":"方大同","url":"/music/才二十三 - 方大同.mp3","cover":"http://p1.music.126.net/dlsDdLopwJrE8JlWgWbaOA==/109951170031584299.jpg?param=300x300"},{"name":"하루하루 - BIGBANG","artist":"BIGBANG","url":"/music/하루하루 - BIGBANG.mp3","cover":"http://p2.music.126.net/NhfGHQAS-f_kkwzOtIMVxg==/942281465029058.jpg?param=300x300"},{"name":"거짓말 - BIGBANG","artist":"BIGBANG","url":"/music/거짓말 - BIGBANG.mp3","cover":"http://p1.music.126.net/qH6pzSPyrmR8bzrXYWvACQ==/109951167720318437.jpg?param=300x300"},{"name":"前前前世 (movie ver.) - RADWIMPS","artist":"RADWIMPS","url":"/music/前前前世 (movie ver.) - RADWIMPS.mp3","cover":"http://p1.music.126.net/UoHin_i29CVJr4gKPEY1kQ==/109951171836647530.jpg?param=300x300"},{"name":"17 - 椎名林檎","artist":"椎名林檎","url":"/music/17 - 椎名林檎.mp3","cover":"http://p2.music.126.net/SinB-3CRcbaZCvKVW08Rew==/109951170517284289.jpg?param=300x300"},{"name":"Mr. Broken Heart - 松下優也","artist":"松下優也","url":"/music/Mr. Broken Heart - 松下優也.mp3","cover":"http://p2.music.126.net/98j3-nElbmPRe8XI0EK2bw==/109951166201753896.jpg?param=300x300"},{"name":"零距离的思念 - TINY7","artist":"TINY7","url":"/music/零距离的思念 - TINY7.mp3","cover":"http://p2.music.126.net/ClYJh1zEl6o6-9hWxhPiJw==/109951170464257454.jpg?param=300x300"},{"name":"我怀念的 - 孙燕姿","artist":"孙燕姿","url":"/music/我怀念的 - 孙燕姿.mp3","cover":"http://p1.music.126.net/hIOFATG-3vNyYHOj31Tyew==/109951169829283327.jpg?param=300x300"},{"name":"如果呢 - 郑润泽","artist":"郑润泽","url":"/music/如果呢 - 郑润泽.mp3","cover":"http://p2.music.126.net/-xMsNLpquZTmMZlIztTgHg==/109951165953469081.jpg?param=300x300"},{"name":"Maybe - mixed matches,Lukrative","artist":"mixed matches,Lukrative","url":"/music/Maybe - mixed matches,Lukrative.mp3","cover":"http://p1.music.126.net/JpPEehyuv2IMtDXGkt6pTQ==/109951168881039794.jpg?param=300x300"},{"name":"Deadman - 蔡徐坤","artist":"蔡徐坤","url":"/music/Deadman - 蔡徐坤.mp3","cover":"http://p2.music.126.net/wqyd40jQQLVTY9nynOwETg==/109951171031632866.jpg?param=300x300"},{"name":"novocaine - GenriX,CORBAL,Shiloh Dynasty","artist":"GenriX,CORBAL,Shiloh Dynasty","url":"/music/novocaine - GenriX,CORBAL,Shiloh Dynasty.mp3","cover":"http://p1.music.126.net/OjEQkRWt_RJU6ltlHNfh4w==/109951168146345169.jpg?param=300x300"},{"name":"I don't wanna see u anymore - NINEONE#乃万","artist":"NINEONE#乃万","url":"/music/I'DONT.mp3","cover":"http://p1.music.126.net/a_gJIqhD4ICAC30UttQIGg==/109951163100083686.jpg?param=300x300"},{"name":"лолита (Radio Edit) - Nuzur Zeli","artist":"Nuzur Zeli","url":"/music/лолита (Radio Edit) - Nuzur Zeli.mp3","cover":"http://p1.music.126.net/GoAVaMoeJ4us2qTQ9tGr6w==/1408474411916514.jpg?param=300x300"},{"name":"I Love You So - The Walters","artist":"The Walters","url":"/music/I Love You So - The Walters.mp3","cover":"http://p1.music.126.net/tdVjGGLeF9dnTPDySyLWXw==/109951167013803499.jpg?param=300x300"},{"name":"打火机 - Penny","artist":"Penny","url":"/music/打火机 - Penny.mp3","cover":"http://p2.music.126.net/5kY1q8Lb713AvwZpIOoI3A==/109951171264155545.jpg?param=300x300"},{"name":"你最近还好吗 - Ghost (王琳凯)","artist":"Ghost (王琳凯)","url":"/music/你最近还好吗 - Ghost (王琳凯).mp3","cover":"http://p2.music.126.net/oxBIGY-ZOZUoaZkR8m6mJQ==/109951164542290755.jpg?param=300x300"},{"name":"我看过-cici_","artist":"cici_","url":"/music/我看过-cici_.mp3","cover":"http://p2.music.126.net/RGzNDi6A2JMaJuIkStHlNQ==/109951171855765265.jpg?param=300x300"}], // 直接渲染配置的音乐列表（需确保配置非空）
+  fixed: isMobile ? true : false || false, // 直接取配置布尔值，避免 JSON 转字符串
+  autoplay: false || false, // 配置布尔值直接渲染
+  loop: 'all' || 'all', // 字符串直接渲染
+  order: 'list' || 'list',
+  preload: 'auto' || 'auto',
+  volume: 0.7 || 0.7, // 数值直接渲染
+  mutex: true || true, // 布尔值直接渲染
+  listFolded: true || false,
+  lrcType: 0 || 0,
+});
+      }
+    </script>
+
+
+
+
+<script src="/js/meteor-shower.js" defer></script>
+
+    
+    <!-- 主题配置传递给JavaScript -->
+    <script>
+      window.themeConfig = {
+        digital_clock: {"enable":true,"format":"24h","show_date":true,"show_seconds":true,"show_week":true,"theme":"auto","animation":true,"locale":"zh-CN","neon_effect":true}
+      };
+    </script>
+  </body>
+  </html>

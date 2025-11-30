@@ -1,0 +1,1207 @@
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+      data-theme-mode="auto"
+  >
+  <head>
+  <meta charset="utf-8">
+  
+  
+  
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';</script>
+  <title>
+    P1009 [NOIP 1998 普及组] 阶乘之和 | 无敌火影大王
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish%3A400%2C400italic%2C700%2C700italic%7CNoto+Serif+SC%3A400%2C400italic%2C700%2C700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+    <meta name="description" content="P1009 [NOIP 1998 普及组] 阶乘之和  题目描述 用高精度计算出 S&#x3D;1!+2!+3!+⋯+n!（n≤50）。 其中 ! 表示阶乘，定义为 n!&#x3D;n×(n−1)×(n−2)×⋯×1。例如，5!&#x3D;5×4×3×2×1&#x3D;120。  输入格式 一个正整数 ( n )。  输出格式 一个正整数 ( S )，表示计算结果。  输入输出样例  输入 13  输出 19  说明&#x2F;提示 数据范围">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P1009 [NOIP 1998 普及组] 阶乘之和">
+<meta property="og:url" content="http://example.com/2025/11/29/P1009%20%5BNOIP%201998%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E9%98%B6%E4%B9%98%E4%B9%8B%E5%92%8C/index.html">
+<meta property="og:site_name" content="无敌火影大王">
+<meta property="og:description" content="P1009 [NOIP 1998 普及组] 阶乘之和  题目描述 用高精度计算出 S&#x3D;1!+2!+3!+⋯+n!（n≤50）。 其中 ! 表示阶乘，定义为 n!&#x3D;n×(n−1)×(n−2)×⋯×1。例如，5!&#x3D;5×4×3×2×1&#x3D;120。  输入格式 一个正整数 ( n )。  输出格式 一个正整数 ( S )，表示计算结果。  输入输出样例  输入 13  输出 19  说明&#x2F;提示 数据范围">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-29T00:59:10.000Z">
+<meta property="article:modified_time" content="2025-11-29T05:24:08.694Z">
+<meta property="article:author" content="飞制">
+<meta property="article:tag" content="Python算法">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="洛谷">
+<meta property="article:tag" content="高精度">
+<meta name="twitter:card" content="summary">
+    <link rel="alternate" href="/atom.xml" title="无敌火影大王" type="application/atom+xml">
+    <link rel="shortcut icon" href="/images/666.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+      
+<link rel="stylesheet" href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
+
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj+vDDLIL+xBGQU&#x2F;voDBY5XE2lVh" crossorigin="anonymous">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+  <body>
+    
+    <!-- 星空效果容器 -->
+    <div class="galaxy-effect"></div>
+    <div class="constellation-lines"></div>
+    
+    <!-- 流星特效容器 -->
+    <div class="meteor-shower" id="meteor-shower"></div>
+    
+      <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+      </div>
+      <div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">首页</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">归档</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">关于</span>
+        </span>
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+              &#xe62b;
+          </div>
+          <span class="main-nav-link">友链</span>
+        </span>
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+  </nav>
+  <a href="https://github.com/JEET-PR" class="triangle-badge" title="github" target="_blank" rel="noopener nofollow noreferrer">
+    <div class="icon icon-github triangle-badge-icon"></div>
+  </a>
+</div>
+<header id="header" aria-label="Site header">
+    <picture></picture>
+    <img  fetchpriority="high" src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91JLT4n-%E5%8A%A8%E6%BC%AB%E5%A5%B3%E5%AD%A9.png" alt="P1009 [NOIP 1998 普及组] 阶乘之和">
+  <div id="header-outer">
+    <div id="header-title">
+          <span id="logo">
+            <h1 data-aos="slide-up">P1009 [NOIP 1998 普及组] 阶乘之和</h1>
+          </span>
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+        </h2>
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content"  class="sidebar-right" >
+          <aside id="sidebar" aria-label="Sidebar">
+  <div class="sidebar-wrapper-container sticky">
+      <div id="aplayer" theme="var(--color-link)" data-aos="fade-up"></div>
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#p1009-noip-1998-%E6%99%AE%E5%8F%8A%E7%BB%84-%E9%98%B6%E4%B9%98%E4%B9%8B%E5%92%8C"><span class="toc-number">1.</span> <span class="toc-text"> P1009 [NOIP 1998 普及组] 阶乘之和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text"> 输入输出样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E%E6%8F%90%E7%A4%BA"><span class="toc-number">1.5.</span> <span class="toc-text"> 说明&#x2F;提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.6.</span> <span class="toc-text"> 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 问题分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 数学公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 高精度计算的必要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E7%AD%96%E7%95%A5"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 解题策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.</span> <span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E5%88%A9%E7%94%A8python%E5%86%85%E7%BD%AE%E5%A4%A7%E6%95%B4%E6%95%B0%E7%89%B9%E6%80%A7"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 方法一：利用Python内置大整数特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%A0%87%E5%87%86%E8%A7%A3%E6%B3%95"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 方法二：手动实现高精度计算（标准解法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 代码解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80python%E5%86%85%E7%BD%AE%E5%A4%A7%E6%95%B4%E6%95%B0"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 方法一：Python内置大整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E6%89%8B%E5%8A%A8%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 方法二：手动高精度实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.9.</span> <span class="toc-text"> 优化建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 1. 算法优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-python%E5%AE%9E%E7%8E%B0%E4%BC%98%E5%8C%96"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 2. Python实现优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%89%B9%E6%AE%8A%E4%BC%98%E5%8C%96"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 3. 特殊优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%E8%A7%A3%E6%9E%90"><span class="toc-number">1.10.</span> <span class="toc-text"> 输入输出示例解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90"><span class="toc-number">1.11.</span> <span class="toc-text"> 可视化分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 算法流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8A%A0%E6%B3%95%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 高精度加法示意图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">1.11.3.</span> <span class="toc-text"> 高精度乘法示意图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E4%B9%98%E5%A2%9E%E9%95%BF%E8%B6%8B%E5%8A%BF%E5%9B%BE"><span class="toc-number">1.11.4.</span> <span class="toc-text"> 阶乘增长趋势图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.12.</span> <span class="toc-text"> 总结</span></a></li></ol></li></ol>
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="飞制" class="lazyload">
+  <div class="sidebar-author-name">飞制</div>
+  <div class="sidebar-description"></div>
+</div>
+
+<!-- 数字时钟容器 -->
+<div class="sidebar-clock-container">
+  <div class="digital-clock-container" id="sidebar-clock"></div>
+</div>
+
+<script>
+// 使用IIFE隔离作用域
+(function() {
+  // 强制设置时钟背景颜色
+  function updateClockBackground() {
+    const clockElement = document.getElementById('sidebar-clock');
+    if (clockElement) {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const isLightTheme = currentTheme === 'light';
+      
+      console.log('时钟主题更新:', { currentTheme, isLightTheme });
+      
+      // 清除所有可能的样式
+      clockElement.style.removeProperty('background');
+      clockElement.style.removeProperty('background-color');
+      clockElement.style.removeProperty('border');
+      clockElement.style.removeProperty('color');
+      
+      if (isLightTheme) {
+        console.log('设置浅色主题时钟样式');
+        // 强制设置浅色主题样式
+        clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(255, 248, 255, 0.95) 0%, rgba(255, 240, 245, 0.9) 100%)', 'important');
+        clockElement.style.setProperty('background-color', 'rgba(255, 248, 255, 0.95)', 'important');
+        clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.4)', 'important');
+        clockElement.style.setProperty('color', '#333333', 'important');
+        clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(255, 182, 193, 0.2)', 'important');
+        
+        // 设置所有子元素的文字颜色
+        const allTextElements = clockElement.querySelectorAll('*');
+        allTextElements.forEach((el, index) => {
+          el.style.setProperty('color', '#333333', 'important');
+          el.style.setProperty('text-shadow', '0 0 5px rgba(0, 0, 0, 0.1)', 'important');
+          if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+        });
+      } else {
+        console.log('设置深色主题时钟样式');
+        // 强制设置深色主题样式
+        clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 20, 51, 0.9) 100%)', 'important');
+        clockElement.style.setProperty('background-color', 'rgba(10, 14, 39, 0.95)', 'important');
+        clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.3)', 'important');
+        clockElement.style.setProperty('color', '#ffffff', 'important');
+        clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(0, 0, 0, 0.3)', 'important');
+        
+        // 设置所有子元素的文字颜色
+        const allTextElements = clockElement.querySelectorAll('*');
+        allTextElements.forEach((el, index) => {
+          el.style.setProperty('color', '#ffffff', 'important');
+          el.style.setProperty('text-shadow', '0 0 8px rgba(255, 255, 255, 0.3)', 'important');
+          if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+        });
+      }
+      
+      // 验证样式是否应用成功
+      setTimeout(() => {
+        const computedStyle = window.getComputedStyle(clockElement);
+        console.log('时钟最终样式:', {
+          background: computedStyle.background,
+          backgroundColor: computedStyle.backgroundColor,
+          color: computedStyle.color
+        });
+      }, 100);
+    } else {
+      console.error('未找到时钟元素 #sidebar-clock');
+    }
+  }
+
+  // 页面加载完成后立即执行
+  document.addEventListener('DOMContentLoaded', function() {
+    // 延迟执行，确保其他脚本已加载
+    setTimeout(updateClockBackground, 100);
+  });
+
+  // 监听主题切换 - 更改变量名避免冲突
+  const sidebarThemeObserver = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+        setTimeout(updateClockBackground, 50); // 延迟执行，确保CSS已更新
+      }
+    });
+  });
+
+  sidebarThemeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme']
+  });
+
+  // 监听自定义主题切换事件
+  document.addEventListener('dark-theme-set', function() {
+    setTimeout(updateClockBackground, 50);
+  });
+
+  document.addEventListener('light-theme-set', function() {
+    setTimeout(updateClockBackground, 50);
+  });
+
+  // 定期检查（防止其他脚本覆盖）
+  setInterval(updateClockBackground, 2000);
+
+  // 立即执行一次
+  updateClockBackground();
+
+  // 强制页面重新渲染时钟样式
+  function forceClockStyleRefresh() {
+    const clockElement = document.getElementById('sidebar-clock');
+    if (clockElement) {
+      // 临时移除元素再重新添加，强制重新渲染
+      const parent = clockElement.parentNode;
+      const nextSibling = clockElement.nextSibling;
+      parent.removeChild(clockElement);
+      parent.insertBefore(clockElement, nextSibling);
+      
+      // 重新应用样式
+      setTimeout(updateClockBackground, 10);
+    }
+  }
+
+  // 页面完全加载后强制刷新
+  window.addEventListener('load', function() {
+    setTimeout(forceClockStyleRefresh, 500);
+  });
+})();
+</script>
+
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">17</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">14</div>
+  </div>
+</div>
+<div class="sidebar-social">
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/JEET-PR itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/1939864033?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+    </div>
+  </div>
+  <div class="sidebar-widget">
+  </div>
+  </div>
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-P1009 [NOIP 1998 普及组] 阶乘之和" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2025-11-29T00:59:10.000Z" itemprop="datePublished">2025-11-29</time>
+    <time style="display: none;" id="post-update-time">2025-11-29</time>
+  </span>
+</div>
+
+        <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%A7%A3%E9%A2%98/" title="解题">解题</a>
+  </div>
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+        <h1 id="p1009-noip-1998-普及组-阶乘之和"><a class="markdownIt-Anchor" href="#p1009-noip-1998-普及组-阶乘之和"></a> P1009 [NOIP 1998 普及组] 阶乘之和</h1>
+<h2 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h2>
+<p>用高精度计算出 S=1!+2!+3!+⋯+n!（n≤50）。<br />
+其中 ! 表示阶乘，定义为 n!=n×(n−1)×(n−2)×⋯×1。例如，5!=5×4×3×2×1=120。</p>
+<h2 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式</h2>
+<p>一个正整数 ( n )。</p>
+<h2 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式</h2>
+<p>一个正整数 ( S )，表示计算结果。</p>
+<h2 id="输入输出样例"><a class="markdownIt-Anchor" href="#输入输出样例"></a> 输入输出样例</h2>
+<h3 id="输入"><a class="markdownIt-Anchor" href="#输入"></a> 输入</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<h3 id="输出"><a class="markdownIt-Anchor" href="#输出"></a> 输出</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9</span><br></pre></td></tr></table></figure>
+<h2 id="说明提示"><a class="markdownIt-Anchor" href="#说明提示"></a> 说明/提示</h2>
+<p><strong>数据范围</strong><br />
+对于所有的测试点，保证 1≤n≤50。</p>
+<p><strong>其他说明</strong><br />
+注，《深入浅出基础篇》中使用本题作为例题，但是其数据范围只有  n≤20，使用书中的代码无法通过本题。<br />
+如果希望通过本题，请继续学习高精度的知识。</p>
+<p>本题为 NOIP1998 普及组 第二题。</p>
+<h2 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h2>
+<h3 id="问题分析"><a class="markdownIt-Anchor" href="#问题分析"></a> 问题分析</h3>
+<p>本题要求计算阶乘之和 S=1!+2!+3!+⋯+n!（n≤50），其中 ( n ) 的范围可以达到 50。由于阶乘的增长速度非常快，当 ( n ) 较大时，普通的数据类型（如整数、浮点数）会导致溢出，因此必须使用高精度计算方法。</p>
+<h3 id="数学公式"><a class="markdownIt-Anchor" href="#数学公式"></a> 数学公式</h3>
+<p>阶乘的数学定义：</p>
+<p>$$n! &#x3D; \prod_{i&#x3D;1}^{n} i &#x3D; n \times (n-1) \times \cdots \times 2 \times 1 
+$$</p><p>特别地，定义 $0! &#x3D; 1$。</p>
+<p>阶乘之和的数学表达式：</p>
+<p>$$S(n) &#x3D; \sum_{k&#x3D;1}^{n} k! &#x3D; 1! + 2! + 3! + \cdots + n! 
+$$</p><h3 id="高精度计算的必要性"><a class="markdownIt-Anchor" href="#高精度计算的必要性"></a> 高精度计算的必要性</h3>
+<p>当 $n$ 增大时，阶乘的值会指数级增长：</p>
+<ul>
+<li>$10! &#x3D; 3,628,800$（约 360 万）</li>
+<li>$20! \approx 2.43 \times 10^{18}$（超过 Python 普通整数范围？不，Python 的整数可以处理任意大的整数）</li>
+<li>$100!$ 是一个非常大的数，包含约 158 位数字</li>
+</ul>
+<p>虽然 Python 的内置整数类型可以处理任意大的整数，但为了演示高精度计算的原理，我们仍将实现基于数组或列表的高精度计算方法，这也是本题考察的重点。</p>
+<h3 id="解题策略"><a class="markdownIt-Anchor" href="#解题策略"></a> 解题策略</h3>
+<ol>
+<li><strong>递推计算阶乘</strong>：利用 $n! &#x3D; n \times (n-1)!$ 的性质，逐步计算每个阶乘值</li>
+<li><strong>高精度加法</strong>：将每个阶乘的结果累加到总和中，使用高精度加法处理大数</li>
+<li><strong>数据存储</strong>：使用数组或列表存储大数的每一位数字，低位在前，高位在后，方便进位处理</li>
+</ol>
+<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现</h2>
+<h3 id="方法一利用python内置大整数特性"><a class="markdownIt-Anchor" href="#方法一利用python内置大整数特性"></a> 方法一：利用Python内置大整数特性</h3>
+<p>Python的整数类型可以自动处理任意大的整数，不会发生溢出。因此，对于本题，我们可以直接使用Python的内置功能计算阶乘之和。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">factorial = <span class="number">1</span>  <span class="comment"># 当前阶乘值</span></span><br><span class="line">result = <span class="number">0</span>     <span class="comment"># 阶乘和</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">    factorial *= i  <span class="comment"># 计算i!</span></span><br><span class="line">    result += factorial  <span class="comment"># 累加到结果中</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+<h3 id="方法二手动实现高精度计算标准解法"><a class="markdownIt-Anchor" href="#方法二手动实现高精度计算标准解法"></a> 方法二：手动实现高精度计算（标准解法）</h3>
+<p>为了演示高精度计算的原理，我们手动实现基于列表的高精度阶乘和计算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">high_precision_sum_factorial</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="comment"># 初始化结果数组（低位在前，高位在后）</span></span><br><span class="line">    result = [<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 初始化当前阶乘数组（1! = 1）</span></span><br><span class="line">    factorial = [<span class="number">1</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        <span class="comment"># 将当前阶乘加入结果</span></span><br><span class="line">        result = high_precision_add(result, factorial)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算下一个阶乘：(i+1)! = i+1 * i!</span></span><br><span class="line">        <span class="keyword">if</span> i &lt; n:  <span class="comment"># 最后一次不需要计算下一个阶乘</span></span><br><span class="line">            factorial = high_precision_multiply(factorial, i + <span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 将结果数组转换为字符串（高位在前）</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>, <span class="built_in">reversed</span>(result)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">high_precision_add</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;高精度加法：a + b&quot;&quot;&quot;</span></span><br><span class="line">    result = []</span><br><span class="line">    carry = <span class="number">0</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 处理每一位相加，包括进位</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(a) <span class="keyword">or</span> i &lt; <span class="built_in">len</span>(b) <span class="keyword">or</span> carry &gt; <span class="number">0</span>:</span><br><span class="line">        digit_a = a[i] <span class="keyword">if</span> i &lt; <span class="built_in">len</span>(a) <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">        digit_b = b[i] <span class="keyword">if</span> i &lt; <span class="built_in">len</span>(b) <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算当前位的和</span></span><br><span class="line">        total = digit_a + digit_b + carry</span><br><span class="line">        result_digit = total % <span class="number">10</span></span><br><span class="line">        carry = total // <span class="number">10</span></span><br><span class="line">        </span><br><span class="line">        result.append(result_digit)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">high_precision_multiply</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;高精度乘法：a（数组） * b（整数）&quot;&quot;&quot;</span></span><br><span class="line">    result = []</span><br><span class="line">    carry = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 每一位与整数b相乘</span></span><br><span class="line">    <span class="keyword">for</span> digit <span class="keyword">in</span> a:</span><br><span class="line">        total = digit * b + carry</span><br><span class="line">        result_digit = total % <span class="number">10</span></span><br><span class="line">        carry = total // <span class="number">10</span></span><br><span class="line">        result.append(result_digit)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 处理剩余的进位</span></span><br><span class="line">    <span class="keyword">while</span> carry &gt; <span class="number">0</span>:</span><br><span class="line">        result_digit = carry % <span class="number">10</span></span><br><span class="line">        carry = carry // <span class="number">10</span></span><br><span class="line">        result.append(result_digit)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主程序</span></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="built_in">print</span>(high_precision_sum_factorial(n))</span><br></pre></td></tr></table></figure>
+<h3 id="代码解析"><a class="markdownIt-Anchor" href="#代码解析"></a> 代码解析</h3>
+<ol>
+<li>
+<p><strong>高精度加法函数 <code>high_precision_add</code></strong>：</p>
+<ul>
+<li>输入：两个表示大数的列表 <code>a</code> 和 <code>b</code>（低位在前）</li>
+<li>输出：表示两数之和的列表（低位在前）</li>
+<li>算法：逐位相加，处理进位，直到所有位处理完毕且无进位</li>
+</ul>
+</li>
+<li>
+<p><strong>高精度乘法函数 <code>high_precision_multiply</code></strong>：</p>
+<ul>
+<li>输入：表示大数的列表 <code>a</code>（低位在前）和整数 <code>b</code></li>
+<li>输出：表示乘积的列表（低位在前）</li>
+<li>算法：将大数的每一位与整数相乘，处理进位</li>
+</ul>
+</li>
+<li>
+<p><strong>主函数 <code>high_precision_sum_factorial</code></strong>：</p>
+<ul>
+<li>初始化结果和当前阶乘</li>
+<li>循环计算每个阶乘并累加到结果中</li>
+<li>使用高精度加法和乘法处理大数运算</li>
+<li>最后将结果数组转换为字符串输出（注意反转顺序）</li>
+</ul>
+</li>
+</ol>
+<h2 id="复杂度分析"><a class="markdownIt-Anchor" href="#复杂度分析"></a> 复杂度分析</h2>
+<h3 id="方法一python内置大整数"><a class="markdownIt-Anchor" href="#方法一python内置大整数"></a> 方法一：Python内置大整数</h3>
+<ul>
+<li>
+<p><strong>时间复杂度</strong>：$O(n^2)$</p>
+<ul>
+<li>计算每个阶乘需要 ( O(n) ) 次乘法操作</li>
+<li>共计算 ( n ) 个阶乘，总时间复杂度为 ( O(n^2) )</li>
+<li>实际上，Python的大整数运算经过高度优化，性能优于朴素实现</li>
+</ul>
+</li>
+<li>
+<p><strong>空间复杂度</strong>：$O(n)$</p>
+<ul>
+<li>存储结果和阶乘值所需的空间与结果的位数成正比</li>
+<li>对于 ( n=100 )，结果约有 158 位</li>
+</ul>
+</li>
+</ul>
+<h3 id="方法二手动高精度实现"><a class="markdownIt-Anchor" href="#方法二手动高精度实现"></a> 方法二：手动高精度实现</h3>
+<ul>
+<li>
+<p><strong>时间复杂度</strong>：$O(n^2 \times d)$，其中 $d$ 是结果的位数（随着 $n$ 增大而增大）</p>
+<ul>
+<li>高精度乘法：每个阶乘需要 $O(d)$ 次操作</li>
+<li>高精度加法：每次累加需要 $O(d)$ 次操作</li>
+<li>总共执行 $n$ 次乘法和 $n$ 次加法</li>
+<li>对于 $n&#x3D;100$，$d$ 约为 158，所以时间复杂度约为 $O(100^2 \times 158) &#x3D; O(1.58 \times 10^6)$</li>
+</ul>
+</li>
+<li>
+<p><strong>空间复杂度</strong>：$O(d)$</p>
+<ul>
+<li>存储大数的数组长度与位数成正比</li>
+</ul>
+</li>
+</ul>
+<h2 id="优化建议"><a class="markdownIt-Anchor" href="#优化建议"></a> 优化建议</h2>
+<h3 id="1-算法优化"><a class="markdownIt-Anchor" href="#1-算法优化"></a> 1. 算法优化</h3>
+<ul>
+<li><strong>预计算阶乘</strong>：如果需要多次计算不同 $n$ 的阶乘和，可以预计算所有可能的阶乘值</li>
+<li><strong>位运算优化</strong>：对于某些特定的乘法，可以使用位运算加速（但阶乘计算中应用有限）</li>
+<li><strong>分段处理</strong>：对于非常大的数，可以考虑分段存储和计算，减少单次处理的数据量</li>
+</ul>
+<h3 id="2-python实现优化"><a class="markdownIt-Anchor" href="#2-python实现优化"></a> 2. Python实现优化</h3>
+<ul>
+<li><strong>使用列表而非字符串</strong>：在高精度计算中，使用列表存储每一位数字比字符串更高效</li>
+<li><strong>减少函数调用开销</strong>：对于频繁调用的高精度函数，可以考虑内联或使用更高效的实现方式</li>
+<li><strong>使用Python内置模块</strong>：对于更复杂的高精度需求，可以考虑使用 <code>decimal</code> 模块</li>
+</ul>
+<h3 id="3-特殊优化"><a class="markdownIt-Anchor" href="#3-特殊优化"></a> 3. 特殊优化</h3>
+<ul>
+<li><strong>注意到阶乘增长非常快</strong>：当 $n$ 很大时，后面的阶乘会迅速主导结果</li>
+<li><strong>对于特定问题</strong>：如果只需判断结果的某些性质（如末尾有多少个零），可以使用数学方法直接计算，无需高精度</li>
+</ul>
+<h2 id="输入输出示例解析"><a class="markdownIt-Anchor" href="#输入输出示例解析"></a> 输入输出示例解析</h2>
+<p>以输入示例 <code>n=3</code> 为例：</p>
+<ol>
+<li>计算 $1! &#x3D; 1$，累加结果：$S &#x3D; 1$</li>
+<li>计算 $2! &#x3D; 2$，累加结果：$S &#x3D; 1 + 2 &#x3D; 3$</li>
+<li>计算 $3! &#x3D; 6$，累加结果：$S &#x3D; 3 + 6 &#x3D; 9$</li>
+<li>输出结果：$9$</li>
+</ol>
+<h2 id="可视化分析"><a class="markdownIt-Anchor" href="#可视化分析"></a> 可视化分析</h2>
+<h3 id="算法流程图"><a class="markdownIt-Anchor" href="#算法流程图"></a> 算法流程图</h3>
+<p>以下是高精度阶乘之和计算的算法流程图：</p>
+<pre class="mermaid">flowchart TD
+    A["开始"] --> B["输入n"]
+    B --> C["初始化结果数组result为0"]
+    C --> D["初始化阶乘数组factorial为1"]
+    D --> E["循环i从1到n"]
+    E --> F["使用高精度加法将factorial加入result"]
+    F --> G{"是否i < n？"}
+    G -- 是 --> H["使用高精度乘法计算下一个阶乘"]
+    G -- 否 --> I["反转result数组并转换为字符串"]
+    H --> E
+    I --> J["输出结果"]
+    J --> K["结束"]</pre>
+<h3 id="高精度加法示意图"><a class="markdownIt-Anchor" href="#高精度加法示意图"></a> 高精度加法示意图</h3>
+<p>以计算 $1! + 2! &#x3D; 1 + 2 &#x3D; 3$ 为例，展示高精度加法的过程：</p>
+<pre class="mermaid">sequenceDiagram
+    participant A as 数a [1]
+    participant B as 数b [2]
+    participant C as 结果
+    
+    Note over A B C: 低位在前存储
+    A->>C: 位0: 1
+    B->>C: 位0: 2
+    C->>C: 计算1+2=3，无进位
+    Note over C: 结果: [3]
+    C->>C: 反转后: 3</pre>
+<h3 id="高精度乘法示意图"><a class="markdownIt-Anchor" href="#高精度乘法示意图"></a> 高精度乘法示意图</h3>
+<p>以计算 $2! \times 3 &#x3D; 2 \times 3 &#x3D; 6$ 为例，展示高精度乘法的过程：</p>
+<pre class="mermaid">sequenceDiagram
+    participant A as 大数[2]
+    participant B as 整数3
+    participant C as 结果
+    
+    Note over A B C: 低位在前存储
+    A->>C: 位0: 2
+    C->>C: 计算2*3=6，无进位
+    Note over C: 结果: [6]
+    C->>C: 反转后: 6</pre>
+<h3 id="阶乘增长趋势图"><a class="markdownIt-Anchor" href="#阶乘增长趋势图"></a> 阶乘增长趋势图</h3>
+<p>以下是阶乘值和阶乘和随n增长的趋势示意图：</p>
+<pre class="mermaid">graph LR
+    subgraph 阶乘值增长趋势
+        A[1! = 1] --> B[5! = 120]
+        B --> C[10! = 3.6*10^6]
+        C --> D[15! = 1.3*10^12]
+        D --> E[20! = 2.4*10^18]
+        E --> F[...]
+        F --> G[100! ≈ 9.3*10^157]
+    end
+    
+    subgraph 阶乘和增长趋势
+        H[1! = 1] --> I[1!+2! = 3]
+        I --> J[...]
+        J --> K[1!+...+10! = 4.0*10^6]
+        K --> L[1!+...+20! ≈ 2.4*10^18]
+        L --> M[...]
+        M --> N[1!+...+100! ≈ 9.3*10^157]
+    end
+    
+    style A fill:#f9f,stroke:#333
+    style B fill:#f9f,stroke:#333
+    style C fill:#f9f,stroke:#333
+    style D fill:#f9f,stroke:#333
+    style E fill:#f9f,stroke:#333
+    style F fill:#f9f,stroke:#333
+    style G fill:#f9f,stroke:#333
+    style H fill:#bbf,stroke:#333
+    style I fill:#bbf,stroke:#333
+    style J fill:#bbf,stroke:#333
+    style K fill:#bbf,stroke:#333
+    style L fill:#bbf,stroke:#333
+    style M fill:#bbf,stroke:#333
+    style N fill:#bbf,stroke:#333</pre>
+<blockquote>
+<p>注意：当n增大到一定程度时，阶乘和与最大的阶乘值几乎相等，因为后面的阶乘值增长太快，前面的值可以忽略不计。</p>
+</blockquote>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>本题主要考察高精度计算的实现，特别是在处理大数时如何避免溢出问题。通过手动实现高精度加法和乘法，我们可以更深入地理解计算机如何处理超出基本数据类型范围的数值计算。虽然Python提供了内置的大整数支持，但掌握高精度计算的基本原理对于理解底层数值计算机制非常重要。</p>
+<p>在实际应用中，除了阶乘计算，高精度计算还广泛应用于密码学、金融计算、科学计算等领域，是计算机科学中的重要基础技术。</p>
+
+    </div>
+    <footer class="article-footer">
+        <div class="sponsor-wrapper">
+  <div class="sponsor-button">
+    <div class="sponsor-icon rotate"></div>
+    <div class="sponsor-title">赞助</div>
+    <div class="sponsor-icon rotate"></div>
+  </div>
+  <div class="sponsor-tip">请作者喝杯咖啡吧</div>
+    <div class="sponsor-qr">
+        <div class="sponsor-qr-image-wrapper">
+          <img src="/images/%E8%B5%9E%E8%B5%8F.jpg" alt=微信 width="200" />
+          <p class="sponsor-qr-name">微信</p>
+        </div>
+    </div>
+</div>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Python%E7%AE%97%E6%B3%95/" rel="tag" title="Python算法">Python算法</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag" title="数学">数学</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%B4%9B%E8%B0%B7/" rel="tag" title="洛谷">洛谷</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" rel="tag" title="高精度">高精度</a></li></ul>
+
+    </footer>
+  </div>
+    <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+      <div class="article-nav-link-wrap left">
+          <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8A%A8%E6%BC%AB-%E5%AF%8C%E5%86%88%E4%B9%89%E5%8B%87.png" data-sizes="auto" alt="P1001 A+B Problem" class="lazyload">
+        <a href="/2025/11/29/P1001%20A+B%20Problem/" aria-label="前一篇: P1001 A+B Problem" title="前一篇: P1001 A+B Problem"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+            P1001 A+B Problem
+        </h3>
+      </div>
+    <div class="article-nav-link-wrap right">
+        <img data-src="/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91%E5%8A%A8%E6%BC%AB-%E8%83%8C%E5%BD%B1-%E8%8D%89%E5%9C%B0.png" data-sizes="auto" alt="P1002 [NOIP 2002 普及组] 过河卒" class="lazyload">
+      <a href="/2025/11/29/P1002%20%5BNOIP%202002%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E8%BF%87%E6%B2%B3%E5%8D%92/" aria-label="后一篇: P1002 [NOIP 2002 普及组] 过河卒"  title="后一篇: P1002 [NOIP 2002 普及组] 过河卒"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+          P1002 [NOIP 2002 普及组] 过河卒
+      </h3>
+    </div>
+  </nav>
+
+</article>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    <div>
+      <span class="icon-copyright"></span>
+        2025
+      <span class="footer-info-sep rotate"></span>
+      飞制
+    </div>
+      <div>
+        <span class="icon-brush"></span>
+        43.5k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        03:12
+      </div>
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+  </div>
+</footer>
+
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#p1009-noip-1998-%E6%99%AE%E5%8F%8A%E7%BB%84-%E9%98%B6%E4%B9%98%E4%B9%8B%E5%92%8C"><span class="toc-number">1.</span> <span class="toc-text"> P1009 [NOIP 1998 普及组] 阶乘之和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> 输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.4.</span> <span class="toc-text"> 输入输出样例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E%E6%8F%90%E7%A4%BA"><span class="toc-number">1.5.</span> <span class="toc-text"> 说明&#x2F;提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.6.</span> <span class="toc-text"> 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 问题分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 数学公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 高精度计算的必要性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E7%AD%96%E7%95%A5"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 解题策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.7.</span> <span class="toc-text"> 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E5%88%A9%E7%94%A8python%E5%86%85%E7%BD%AE%E5%A4%A7%E6%95%B4%E6%95%B0%E7%89%B9%E6%80%A7"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 方法一：利用Python内置大整数特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97%E6%A0%87%E5%87%86%E8%A7%A3%E6%B3%95"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 方法二：手动实现高精度计算（标准解法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 代码解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80python%E5%86%85%E7%BD%AE%E5%A4%A7%E6%95%B4%E6%95%B0"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 方法一：Python内置大整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E6%89%8B%E5%8A%A8%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 方法二：手动高精度实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.9.</span> <span class="toc-text"> 优化建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 1. 算法优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-python%E5%AE%9E%E7%8E%B0%E4%BC%98%E5%8C%96"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 2. Python实现优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%89%B9%E6%AE%8A%E4%BC%98%E5%8C%96"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 3. 特殊优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B%E8%A7%A3%E6%9E%90"><span class="toc-number">1.10.</span> <span class="toc-text"> 输入输出示例解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90"><span class="toc-number">1.11.</span> <span class="toc-text"> 可视化分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.11.1.</span> <span class="toc-text"> 算法流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8A%A0%E6%B3%95%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">1.11.2.</span> <span class="toc-text"> 高精度加法示意图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="toc-number">1.11.3.</span> <span class="toc-text"> 高精度乘法示意图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%B6%E4%B9%98%E5%A2%9E%E9%95%BF%E8%B6%8B%E5%8A%BF%E5%9B%BE"><span class="toc-number">1.11.4.</span> <span class="toc-text"> 阶乘增长趋势图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.12.</span> <span class="toc-text"> 总结</span></a></li></ol></li></ol>
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="飞制" class="lazyload">
+  <div class="sidebar-author-name">飞制</div>
+  <div class="sidebar-description"></div>
+</div>
+
+<!-- 数字时钟容器 -->
+<div class="sidebar-clock-container">
+  <div class="digital-clock-container" id="sidebar-clock"></div>
+</div>
+
+<script>
+// 使用IIFE隔离作用域
+(function() {
+  // 强制设置时钟背景颜色
+  function updateClockBackground() {
+    const clockElement = document.getElementById('sidebar-clock');
+    if (clockElement) {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const isLightTheme = currentTheme === 'light';
+      
+      console.log('时钟主题更新:', { currentTheme, isLightTheme });
+      
+      // 清除所有可能的样式
+      clockElement.style.removeProperty('background');
+      clockElement.style.removeProperty('background-color');
+      clockElement.style.removeProperty('border');
+      clockElement.style.removeProperty('color');
+      
+      if (isLightTheme) {
+        console.log('设置浅色主题时钟样式');
+        // 强制设置浅色主题样式
+        clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(255, 248, 255, 0.95) 0%, rgba(255, 240, 245, 0.9) 100%)', 'important');
+        clockElement.style.setProperty('background-color', 'rgba(255, 248, 255, 0.95)', 'important');
+        clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.4)', 'important');
+        clockElement.style.setProperty('color', '#333333', 'important');
+        clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(255, 182, 193, 0.2)', 'important');
+        
+        // 设置所有子元素的文字颜色
+        const allTextElements = clockElement.querySelectorAll('*');
+        allTextElements.forEach((el, index) => {
+          el.style.setProperty('color', '#333333', 'important');
+          el.style.setProperty('text-shadow', '0 0 5px rgba(0, 0, 0, 0.1)', 'important');
+          if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+        });
+      } else {
+        console.log('设置深色主题时钟样式');
+        // 强制设置深色主题样式
+        clockElement.style.setProperty('background', 'linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 20, 51, 0.9) 100%)', 'important');
+        clockElement.style.setProperty('background-color', 'rgba(10, 14, 39, 0.95)', 'important');
+        clockElement.style.setProperty('border', '1px solid rgba(255, 182, 193, 0.3)', 'important');
+        clockElement.style.setProperty('color', '#ffffff', 'important');
+        clockElement.style.setProperty('box-shadow', '0 4px 12px rgba(0, 0, 0, 0.3)', 'important');
+        
+        // 设置所有子元素的文字颜色
+        const allTextElements = clockElement.querySelectorAll('*');
+        allTextElements.forEach((el, index) => {
+          el.style.setProperty('color', '#ffffff', 'important');
+          el.style.setProperty('text-shadow', '0 0 8px rgba(255, 255, 255, 0.3)', 'important');
+          if (index < 3) console.log('设置子元素颜色:', el.tagName, el.className);
+        });
+      }
+      
+      // 验证样式是否应用成功
+      setTimeout(() => {
+        const computedStyle = window.getComputedStyle(clockElement);
+        console.log('时钟最终样式:', {
+          background: computedStyle.background,
+          backgroundColor: computedStyle.backgroundColor,
+          color: computedStyle.color
+        });
+      }, 100);
+    } else {
+      console.error('未找到时钟元素 #sidebar-clock');
+    }
+  }
+
+  // 页面加载完成后立即执行
+  document.addEventListener('DOMContentLoaded', function() {
+    // 延迟执行，确保其他脚本已加载
+    setTimeout(updateClockBackground, 100);
+  });
+
+  // 监听主题切换 - 更改变量名避免冲突
+  const sidebarThemeObserver = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+        setTimeout(updateClockBackground, 50); // 延迟执行，确保CSS已更新
+      }
+    });
+  });
+
+  sidebarThemeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme']
+  });
+
+  // 监听自定义主题切换事件
+  document.addEventListener('dark-theme-set', function() {
+    setTimeout(updateClockBackground, 50);
+  });
+
+  document.addEventListener('light-theme-set', function() {
+    setTimeout(updateClockBackground, 50);
+  });
+
+  // 定期检查（防止其他脚本覆盖）
+  setInterval(updateClockBackground, 2000);
+
+  // 立即执行一次
+  updateClockBackground();
+
+  // 强制页面重新渲染时钟样式
+  function forceClockStyleRefresh() {
+    const clockElement = document.getElementById('sidebar-clock');
+    if (clockElement) {
+      // 临时移除元素再重新添加，强制重新渲染
+      const parent = clockElement.parentNode;
+      const nextSibling = clockElement.nextSibling;
+      parent.removeChild(clockElement);
+      parent.insertBefore(clockElement, nextSibling);
+      
+      // 重新应用样式
+      setTimeout(updateClockBackground, 10);
+    }
+  }
+
+  // 页面完全加载后强制刷新
+  window.addEventListener('load', function() {
+    setTimeout(forceClockStyleRefresh, 500);
+  });
+})();
+</script>
+
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">17</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">14</div>
+  </div>
+</div>
+<div class="sidebar-social">
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/JEET-PR itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/1939864033?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+</div>
+<div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+            &#xe62b;
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+</div>
+</div>
+  </div>
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+</nav>
+
+    </div>
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png"/>
+        </div>
+      </div>
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+      window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'));
+    }
+  </script>
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+  
+<script src="https://npm.webcache.cn/quicklink@3.0.1/dist/quicklink.umd.js" integrity="sha384-caMDqvgav&#x2F;HWdEYQU1QRRHMLleigpL1YHAG0m371DhzfL8rRzUyOb+bEHtwlmYjD" crossorigin="anonymous"></script>
+
+  <script data-pjax>
+    window.quicklink?.listen({
+      timeout: 3000,
+      priority: true,
+      ignores: []
+    });
+  </script>
+
+<div id="lazy-script">
+  <div>
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "飞制",
+          title: "P1009 [NOIP 1998 普及组] 阶乘之和",
+          url: "http://example.com/2025/11/29/P1009%20%5BNOIP%201998%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E9%98%B6%E4%B9%98%E4%B9%8B%E5%92%8C/",
+          excerpt: "",
+          description: "",
+          stripContent: " P1009 [NOIP 1998 普及组] 阶乘之和  题目描述 用高精度计算出 S=1!+2!+3!+⋯+n!（n≤50）。 其中 ! 表示阶乘，定义为 n!=n×(n−1)×(n−2)×⋯×1。例如，5!=5×4×3×2×1=120。  输入格式 一个正整数 ( n )。  输出格式 一个正整数 ( S )，表示计算结果。  输入输出样例  输入 13  输出 19  说明/提示 数据范围 对于所有的测试点，保证 1≤n≤50。 其他说明 注，《深入浅出基础篇》中使用本题作为例题，但是其数",
+          date: "Sat Nov 29 2025 08:59:10 GMT+0800",
+          updated: "Sat Nov 29 2025 13:24:08 GMT+0800",
+          cover: "/images/%E3%80%90%E5%93%B2%E9%A3%8E%E5%A3%81%E7%BA%B8%E3%80%91JLT4n-%E5%8A%A8%E6%BC%AB%E5%A5%B3%E5%AD%A9.png",
+        };
+      </script>
+      
+<script src="https://npm.webcache.cn/mermaid@11.12.0/dist/mermaid.min.js" integrity="sha384-o+g&#x2F;BxPwhi0C3RK7oQBxQuNimeafQ3GE&#x2F;ST4iT2BxVI4Wzt60SH4pq9iXVYujjaS" crossorigin="anonymous" data-pjax></script>
+
+      
+<script src="https://npm.webcache.cn/dompurify@3.2.6/dist/purify.min.js" integrity="sha384-JEyTNhjM6R1ElGoJns4U2Ln4ofPcqzSsynQkmEc&#x2F;KGy6336qAZl70tDLufbkla+3" crossorigin="anonymous"></script>
+
+        
+<script src="https://npm.webcache.cn/svg-pan-zoom@3.6.2/dist/svg-pan-zoom.min.js" integrity="sha384-GGX4llYprEPGp9w5caepn95YWAEflHnsA5ewt+Y+cBEb95og5cXKllnWKSELlzbx" crossorigin="anonymous"></script>
+
+      <script data-pjax>
+        if (window.mermaid) {
+          // https://github.com/mermaid-js/mermaid/issues/1945
+          const elementCode = '.mermaid'
+          const processElements = (callback) => {
+            const els = _$$(elementCode);
+            if (!els.length) return Promise.resolve();
+            
+            return new Promise((resolve, reject) => {
+              try {
+                els.forEach(callback);
+                resolve();
+              } catch (error) {
+                reject(error);
+              }
+            });
+          };
+          const saveOriginalData = () => processElements(el => {
+            if (!el.getAttribute('data-original-code')) {
+              el.setAttribute('data-original-code', el.innerHTML);
+            }
+          });
+
+          const resetProcessed = () => processElements(el => {
+            const originalCode = el.getAttribute('data-original-code');
+            if (originalCode) {
+              el.removeAttribute('data-processed');
+              el.innerHTML = DOMPurify.sanitize(originalCode);
+            }
+          });
+          const loadMermaid = async (theme) => {
+            window.mermaid.initialize({theme, startOnLoad: false})
+            await window.mermaid.run({querySelector: elementCode, suppressErrors: true})
+            if (window.svgPanZoom) {
+              window.__panZoomList?.forEach(panZoom => {try {panZoom.destroy()} catch {}});
+              window.__panZoomList = [];
+              _$$('.mermaid > svg').forEach(el => {
+                const bbox = el.getBBox();
+                el.setAttribute('height', Math.max(bbox.height, 80));
+                window.__panZoomList.push(window.svgPanZoom(el, {
+                  zoomEnabled: true,
+                  controlIconsEnabled: true,
+                  fit: true,
+                  center: true
+                }));
+              });
+              if (window.__resizeMermaidSvg) {
+                window.removeEventListener('resize', window.__resizeMermaidSvg);
+              }
+              window.__resizeMermaidSvg = () => {
+                try {
+                  window.__panZoomList.forEach(panZoom => {
+                    panZoom.resize();
+                    panZoom.fit();
+                    panZoom.center();
+                  });
+                } catch {
+                  window.removeEventListener('resize', window.__resizeMermaidSvg);
+                  window.__panZoomList = [];
+                }
+              }
+              window.addEventListener('resize', window.__resizeMermaidSvg);
+            }
+          }
+          const initMermaid = async (theme) => {
+            try {
+              await saveOriginalData();
+              await resetProcessed();
+              await loadMermaid(theme);
+            } catch (error) {
+              console.error(error);
+            }
+          };
+          
+          document.body.addEventListener('dark-theme-set', () => initMermaid('dark'));
+          document.body.addEventListener('light-theme-set', () => initMermaid('default'));
+
+          const mode = localStorage.getItem('dark_mode');
+          if (mode === 'auto') {
+            const osMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            initMermaid(osMode ? 'dark' : 'default');
+          } else {
+            initMermaid(mode === 'true' ? 'dark' : 'default');
+          }
+        }
+      </script>
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.4' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+    
+<script src="https://npm.webcache.cn/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6&#x2F;1Nxveei" crossorigin="anonymous" defer data-pjax></script>
+
+    <script data-pjax>
+      window.MathJax = {"tex":{"tags":"ams","useLabelIds":true,"inlineMath":[["$","$"],["\\\\(","\\\\)"]],"displayMath":[["$$","$$"],["\\\\[","\\\\]"]],"processEscapes":true,"processEnvironments":true,"autoload":{"color":[],"colorv2":["color"]},"packages":{"[+]":["noerrors"]}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"],"ignoreHtmlClass":"tex2jax_ignore","processHtmlClass":"tex2jax_process"},"loader":{"load":["input/asciimath","[tex]/noerrors"]}};
+    </script>
+
+  
+<script src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js" integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr+h5UfruuRL&#x2F;aORyw+5+HZoU6e" crossorigin="anonymous"></script>
+
+    <script>
+      if (!false || !window.matchMedia('(max-width: 768px)').matches) {
+        if (window.matchMedia('(max-width: 959px)').matches) {
+          const aplayer = _$('#aplayer');
+          if (aplayer) {
+            const aside = aplayer.parentNode?.parentNode;
+            if (aside?.tagName === 'ASIDE') {
+              aplayer.removeAttribute('data-aos');
+              aplayer.parentNode.removeChild(aplayer);
+              document.body.appendChild(aplayer);
+            }
+          }
+        }
+        // 先定义 isMobile（设备检测）
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+// 初始化 APlayer，修正 Hexo 模板渲染和逻辑错误
+const ap = new APlayer({
+  theme: "var(--color-link)",
+  container: document.getElementById('aplayer'),
+  audio: [{"name":"最初的记忆(DJ阿智Remix) - DJ阿智","artist":"DJ阿智","url":"/music/最初的记忆(DJ阿智Remix) - DJ阿智.mp3","cover":null},{"name":"Sacred Play Secret Place + 罗生门 (0.9x)","artist":"我无记忆","url":"/music/Sacred Play Secret Place + 罗生门 (0.9x) - 我无记忆.mp3","cover":null},{"name":"特别的人","artist":"方大同","url":"/music/特别的人.mp3","cover":"http://p1.music.126.net/FtAvIYLF3qwqohQhwycVDg==/109951171386379124.jpg?param=300x300"},{"name":"Ciallo~之歌(给柚子厨的礼物)","artist":"八奈见杏菜","url":"/music/Ciallo~之歌(给柚子厨的礼物).mp3","cover":"http://p1.music.126.net/77NH13roeMK4rN90CvjgGw==/109951172179482203.jpg?param=300x300"},{"name":"Ice On My Baby","artist":"Yung Bleu","url":"/music/Ice On My Baby.mp3","cover":"http://p2.music.126.net/-xXaA1-q-eMUO2_Dhqf_Ng==/109951164610273338.jpg?param=300x300"},{"name":"唯一 - G.E.M.邓紫棋","artist":"G.E.M.邓紫棋","url":"/music/唯一 - G.E.M.邓紫棋.mp3","cover":"http://p1.music.126.net/aJWtwvdYRXvKUpAE2C6NoA==/109951168919708423.jpg?param=300x300"},{"name":"IF YOU - BIGBANG","artist":"BIGBANG","url":"/music/IF YOU - BIGBANG.mp3","cover":"http://p1.music.126.net/l-TigfvwoKBUP_LDL1XgIg==/7735064302387363.jpg?param=300x300"},{"name":"One Last Kiss - 宇多田ヒカル","artist":"宇多田ヒカル","url":"/music/One Last Kiss - 宇多田ヒカル.mp3","cover":"http://p1.music.126.net/l3G4LigZnOxFE9lB4bz_LQ==/109951165791860501.jpg?param=300x300"},{"name":"Dehors - JORDANN","artist":"JORDANN","url":"/music/Dehors - JORDANN.mp3","cover":"http://p2.music.126.net/7IM_iRaCe2Pe9TU7PMTdqQ==/109951169635570073.jpg?param=300x300"},{"name":"罗生门（Follow） - 梨冻紧,Wiz_H张子豪","artist":"梨冻紧,Wiz_H张子豪","url":"/music/罗生门（Follow） - 梨冻紧,Wiz_H张子豪.mp3","cover":"http://p2.music.126.net/yN1ke1xYMJ718FiHaDWtYQ==/109951165076380471.jpg?param=300x300"},{"name":"星空叙爱曲 - 法老,阿达娃","artist":"法老,阿达娃","url":"/music/星空叙爱曲 - 法老,阿达娃.mp3","cover":"http://p2.music.126.net/cK3Rm-WaJwNw9pOWg7DX-A==/109951167750223899.jpg?param=300x300"},{"name":"李白 - 李荣浩","artist":"李荣浩","url":"/music/李白 - 李荣浩.mp3","cover":"http://p1.music.126.net/0uZ_bKtm4E188Uk9LFN1qg==/109951163187393370.jpg?param=300x300"},{"name":"可不可以 - 张紫豪","artist":"张紫豪","url":"/music/可不可以 - 张紫豪.mp3","cover":"http://p2.music.126.net/WafK2OQfEtqXitdDXJ772Q==/109951163252847249.jpg?param=300x300"},{"name":"多远都要在一起 - G.E.M.邓紫棋","artist":"G.E.M.邓紫棋","url":"/music/多远都要在一起 - G.E.M.邓紫棋.mp3","cover":"http://p2.music.126.net/kVwk6b8Qdya8oDyGDcyAVA==/1364493930777368.jpg?param=300x300"},{"name":"11 - 队长,黄礼格","artist":"队长,黄礼格","url":"/music/11 - 队长,黄礼格.mp3","cover":"http://p1.music.126.net/DMJkxcW5QbeWg_DZMASfSw==/109951169494228942.jpg?param=300x300"},{"name":"不将就 - 李荣浩","artist":"李荣浩","url":"/music/不将就 - 李荣浩.mp3","cover":"http://p2.music.126.net/e-Uc6W3Kug-HFHJ5nvCUPg==/109951166562828988.jpg?param=300x300"},{"name":"Sunflower - Post Malone,Swae Lee","artist":"Post Malone,Swae Lee","url":"/music/Sunflower.mp3","cover":"http://p2.music.126.net/NPeyzpUmXGAzsI6VUQxvrA==/109951171748635952.jpg?param=300x300"},{"name":"戒烟 - 李荣浩","artist":"李荣浩","url":"/music/戒烟 - 李荣浩.mp3","cover":"http://p2.music.126.net/yoxDYFnoCq_gFmsdwyYkiQ==/109951168205342389.jpg?param=300x300"},{"name":"才二十三 - 方大同","artist":"方大同","url":"/music/才二十三 - 方大同.mp3","cover":"http://p1.music.126.net/dlsDdLopwJrE8JlWgWbaOA==/109951170031584299.jpg?param=300x300"},{"name":"하루하루 - BIGBANG","artist":"BIGBANG","url":"/music/하루하루 - BIGBANG.mp3","cover":"http://p2.music.126.net/NhfGHQAS-f_kkwzOtIMVxg==/942281465029058.jpg?param=300x300"},{"name":"거짓말 - BIGBANG","artist":"BIGBANG","url":"/music/거짓말 - BIGBANG.mp3","cover":"http://p1.music.126.net/qH6pzSPyrmR8bzrXYWvACQ==/109951167720318437.jpg?param=300x300"},{"name":"前前前世 (movie ver.) - RADWIMPS","artist":"RADWIMPS","url":"/music/前前前世 (movie ver.) - RADWIMPS.mp3","cover":"http://p1.music.126.net/UoHin_i29CVJr4gKPEY1kQ==/109951171836647530.jpg?param=300x300"},{"name":"17 - 椎名林檎","artist":"椎名林檎","url":"/music/17 - 椎名林檎.mp3","cover":"http://p2.music.126.net/SinB-3CRcbaZCvKVW08Rew==/109951170517284289.jpg?param=300x300"},{"name":"Mr. Broken Heart - 松下優也","artist":"松下優也","url":"/music/Mr. Broken Heart - 松下優也.mp3","cover":"http://p2.music.126.net/98j3-nElbmPRe8XI0EK2bw==/109951166201753896.jpg?param=300x300"},{"name":"零距离的思念 - TINY7","artist":"TINY7","url":"/music/零距离的思念 - TINY7.mp3","cover":"http://p2.music.126.net/ClYJh1zEl6o6-9hWxhPiJw==/109951170464257454.jpg?param=300x300"},{"name":"我怀念的 - 孙燕姿","artist":"孙燕姿","url":"/music/我怀念的 - 孙燕姿.mp3","cover":"http://p1.music.126.net/hIOFATG-3vNyYHOj31Tyew==/109951169829283327.jpg?param=300x300"},{"name":"如果呢 - 郑润泽","artist":"郑润泽","url":"/music/如果呢 - 郑润泽.mp3","cover":"http://p2.music.126.net/-xMsNLpquZTmMZlIztTgHg==/109951165953469081.jpg?param=300x300"},{"name":"Maybe - mixed matches,Lukrative","artist":"mixed matches,Lukrative","url":"/music/Maybe - mixed matches,Lukrative.mp3","cover":"http://p1.music.126.net/JpPEehyuv2IMtDXGkt6pTQ==/109951168881039794.jpg?param=300x300"},{"name":"Deadman - 蔡徐坤","artist":"蔡徐坤","url":"/music/Deadman - 蔡徐坤.mp3","cover":"http://p2.music.126.net/wqyd40jQQLVTY9nynOwETg==/109951171031632866.jpg?param=300x300"},{"name":"novocaine - GenriX,CORBAL,Shiloh Dynasty","artist":"GenriX,CORBAL,Shiloh Dynasty","url":"/music/novocaine - GenriX,CORBAL,Shiloh Dynasty.mp3","cover":"http://p1.music.126.net/OjEQkRWt_RJU6ltlHNfh4w==/109951168146345169.jpg?param=300x300"},{"name":"I don't wanna see u anymore - NINEONE#乃万","artist":"NINEONE#乃万","url":"/music/I'DONT.mp3","cover":"http://p1.music.126.net/a_gJIqhD4ICAC30UttQIGg==/109951163100083686.jpg?param=300x300"},{"name":"лолита (Radio Edit) - Nuzur Zeli","artist":"Nuzur Zeli","url":"/music/лолита (Radio Edit) - Nuzur Zeli.mp3","cover":"http://p1.music.126.net/GoAVaMoeJ4us2qTQ9tGr6w==/1408474411916514.jpg?param=300x300"},{"name":"I Love You So - The Walters","artist":"The Walters","url":"/music/I Love You So - The Walters.mp3","cover":"http://p1.music.126.net/tdVjGGLeF9dnTPDySyLWXw==/109951167013803499.jpg?param=300x300"},{"name":"打火机 - Penny","artist":"Penny","url":"/music/打火机 - Penny.mp3","cover":"http://p2.music.126.net/5kY1q8Lb713AvwZpIOoI3A==/109951171264155545.jpg?param=300x300"},{"name":"你最近还好吗 - Ghost (王琳凯)","artist":"Ghost (王琳凯)","url":"/music/你最近还好吗 - Ghost (王琳凯).mp3","cover":"http://p2.music.126.net/oxBIGY-ZOZUoaZkR8m6mJQ==/109951164542290755.jpg?param=300x300"},{"name":"我看过-cici_","artist":"cici_","url":"/music/我看过-cici_.mp3","cover":"http://p2.music.126.net/RGzNDi6A2JMaJuIkStHlNQ==/109951171855765265.jpg?param=300x300"}], // 直接渲染配置的音乐列表（需确保配置非空）
+  fixed: isMobile ? true : false || false, // 直接取配置布尔值，避免 JSON 转字符串
+  autoplay: false || false, // 配置布尔值直接渲染
+  loop: 'all' || 'all', // 字符串直接渲染
+  order: 'list' || 'list',
+  preload: 'auto' || 'auto',
+  volume: 0.7 || 0.7, // 数值直接渲染
+  mutex: true || true, // 布尔值直接渲染
+  listFolded: true || false,
+  lrcType: 0 || 0,
+});
+      }
+    </script>
+
+
+
+
+<script src="/js/meteor-shower.js" defer></script>
+
+    
+    <!-- 主题配置传递给JavaScript -->
+    <script>
+      window.themeConfig = {
+        digital_clock: {"enable":true,"format":"24h","show_date":true,"show_seconds":true,"show_week":true,"theme":"auto","animation":true,"locale":"zh-CN","neon_effect":true}
+      };
+    </script>
+  </body>
+  </html>
