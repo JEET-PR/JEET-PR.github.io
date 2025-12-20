@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-11-30T04:04:41.829Z</updated>
+  <updated>2025-12-13T14:51:31.081Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,130 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>P1009 [NOIP 1998 普及组] 阶乘之和</title>
+    <link href="http://example.com/2025/12/13/P1009%20%5BNOIP%201998%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E9%98%B6%E4%B9%98%E4%B9%8B%E5%92%8C/"/>
+    <id>http://example.com/2025/12/13/P1009%20%5BNOIP%201998%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E9%98%B6%E4%B9%98%E4%B9%8B%E5%92%8C/</id>
+    <published>2025-12-13T14:51:10.000Z</published>
+    <updated>2025-12-13T14:51:31.081Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;p1009-noip-1998-普及组-阶乘之和&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#p1009-noip-1998-普及组-阶乘之和&quot;&gt;&lt;/a&gt; P1009 [NOIP 1998 普及组] 阶乘之和&lt;/h1&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="解题" scheme="http://example.com/categories/%E8%A7%A3%E9%A2%98/"/>
+    
+    
+    <category term="洛谷" scheme="http://example.com/tags/%E6%B4%9B%E8%B0%B7/"/>
+    
+    <category term="Python算法" scheme="http://example.com/tags/Python%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="高精度" scheme="http://example.com/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>P1457 [USACO2.1] 城堡 The Castle</title>
+    <link href="http://example.com/2025/12/13/P1457%20%5BUSACO2.1%5D%20%E5%9F%8E%E5%A0%A1%20The%20Castle/"/>
+    <id>http://example.com/2025/12/13/P1457%20%5BUSACO2.1%5D%20%E5%9F%8E%E5%A0%A1%20The%20Castle/</id>
+    <published>2025-12-13T04:24:53.025Z</published>
+    <updated>2025-12-20T09:48:24.931Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;p1457-usaco21-城堡-the-castle&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#p1457-usaco21-城堡-the-castle&quot;&gt;&lt;/a&gt; P1457 [USACO2.1] 城堡 The</summary>
+        
+      
+    
+    
+    
+    <category term="解题" scheme="http://example.com/categories/%E8%A7%A3%E9%A2%98/"/>
+    
+    
+    <category term="洛谷" scheme="http://example.com/tags/%E6%B4%9B%E8%B0%B7/"/>
+    
+    <category term="Python算法" scheme="http://example.com/tags/Python%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="图论" scheme="http://example.com/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+    <category term="深度优先搜索" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/"/>
+    
+    <category term="连通性" scheme="http://example.com/tags/%E8%BF%9E%E9%80%9A%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>B3701 [语言月赛202301] 避雷针</title>
+    <link href="http://example.com/2025/11/29/B3701%20%5B%E8%AF%AD%E8%A8%80%E6%9C%88%E8%B5%9B202301%5D%20%E9%81%BF%E9%9B%B7%E9%92%88/"/>
+    <id>http://example.com/2025/11/29/B3701%20%5B%E8%AF%AD%E8%A8%80%E6%9C%88%E8%B5%9B202301%5D%20%E9%81%BF%E9%9B%B7%E9%92%88/</id>
+    <published>2025-11-29T11:39:00.000Z</published>
+    <updated>2025-12-13T14:51:28.295Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;b3701-语言月赛202301-避雷针&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#b3701-语言月赛202301-避雷针&quot;&gt;&lt;/a&gt; B3701 [语言月赛202301] 避雷针&lt;/h1&gt;
+&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="解题" scheme="http://example.com/categories/%E8%A7%A3%E9%A2%98/"/>
+    
+    
+    <category term="洛谷" scheme="http://example.com/tags/%E6%B4%9B%E8%B0%B7/"/>
+    
+    <category term="Python算法" scheme="http://example.com/tags/Python%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>P1035 [NOIP 2002 普及组] 级数求和</title>
+    <link href="http://example.com/2025/11/29/P1035%20%5BNOIP%202002%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/"/>
+    <id>http://example.com/2025/11/29/P1035%20%5BNOIP%202002%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/</id>
+    <published>2025-11-29T00:59:10.000Z</published>
+    <updated>2025-11-29T08:50:14.545Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;p1035-noip-2002-普及组-级数求和-题解&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#p1035-noip-2002-普及组-级数求和-题解&quot;&gt;&lt;/a&gt; P1035 [NOIP 2002 普及组] 级数求和</summary>
+        
+      
+    
+    
+    
+    <category term="解题" scheme="http://example.com/categories/%E8%A7%A3%E9%A2%98/"/>
+    
+    
+    <category term="洛谷" scheme="http://example.com/tags/%E6%B4%9B%E8%B0%B7/"/>
+    
+    <category term="Python算法" scheme="http://example.com/tags/Python%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>P1001 A+B Problem</title>
@@ -43,38 +167,6 @@
     <category term="Python算法" scheme="http://example.com/tags/Python%E7%AE%97%E6%B3%95/"/>
     
     <category term="基础算法" scheme="http://example.com/tags/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>P1009 [NOIP 1998 普及组] 阶乘之和</title>
-    <link href="http://example.com/2025/11/29/P1009%20%5BNOIP%201998%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E9%98%B6%E4%B9%98%E4%B9%8B%E5%92%8C/"/>
-    <id>http://example.com/2025/11/29/P1009%20%5BNOIP%201998%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E9%98%B6%E4%B9%98%E4%B9%8B%E5%92%8C/</id>
-    <published>2025-11-29T00:59:10.000Z</published>
-    <updated>2025-11-29T05:24:08.694Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;p1009-noip-1998-普及组-阶乘之和&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#p1009-noip-1998-普及组-阶乘之和&quot;&gt;&lt;/a&gt; P1009 [NOIP 1998 普及组] 阶乘之和&lt;/h1&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="解题" scheme="http://example.com/categories/%E8%A7%A3%E9%A2%98/"/>
-    
-    
-    <category term="洛谷" scheme="http://example.com/tags/%E6%B4%9B%E8%B0%B7/"/>
-    
-    <category term="Python算法" scheme="http://example.com/tags/Python%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
-    
-    <category term="高精度" scheme="http://example.com/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/"/>
     
   </entry>
   
@@ -135,35 +227,6 @@
     <category term="模拟" scheme="http://example.com/tags/%E6%A8%A1%E6%8B%9F/"/>
     
     <category term="高精度，进制" scheme="http://example.com/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6%EF%BC%8C%E8%BF%9B%E5%88%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>P1035 [NOIP 2002 普及组] 级数求和</title>
-    <link href="http://example.com/2025/11/29/P1035%20%5BNOIP%202002%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/"/>
-    <id>http://example.com/2025/11/29/P1035%20%5BNOIP%202002%20%E6%99%AE%E5%8F%8A%E7%BB%84%5D%20%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/</id>
-    <published>2025-11-29T00:59:10.000Z</published>
-    <updated>2025-11-29T08:50:14.545Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;p1035-noip-2002-普及组-级数求和-题解&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#p1035-noip-2002-普及组-级数求和-题解&quot;&gt;&lt;/a&gt; P1035 [NOIP 2002 普及组] 级数求和</summary>
-        
-      
-    
-    
-    
-    <category term="解题" scheme="http://example.com/categories/%E8%A7%A3%E9%A2%98/"/>
-    
-    
-    <category term="洛谷" scheme="http://example.com/tags/%E6%B4%9B%E8%B0%B7/"/>
-    
-    <category term="Python算法" scheme="http://example.com/tags/Python%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
@@ -405,36 +468,6 @@
     <category term="Python算法" scheme="http://example.com/tags/Python%E7%AE%97%E6%B3%95/"/>
     
     <category term="搜索" scheme="http://example.com/tags/%E6%90%9C%E7%B4%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>B3701 [语言月赛202301] 避雷针</title>
-    <link href="http://example.com/2023/11/29/B3701%20%5B%E8%AF%AD%E8%A8%80%E6%9C%88%E8%B5%9B202301%5D%20%E9%81%BF%E9%9B%B7%E9%92%88/"/>
-    <id>http://example.com/2023/11/29/B3701%20%5B%E8%AF%AD%E8%A8%80%E6%9C%88%E8%B5%9B202301%5D%20%E9%81%BF%E9%9B%B7%E9%92%88/</id>
-    <published>2023-11-29T11:39:00.000Z</published>
-    <updated>2025-11-29T12:04:14.333Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;b3701-语言月赛202301-避雷针&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#b3701-语言月赛202301-避雷针&quot;&gt;&lt;/a&gt; B3701 [语言月赛202301] 避雷针&lt;/h1&gt;
-&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="解题" scheme="http://example.com/categories/%E8%A7%A3%E9%A2%98/"/>
-    
-    
-    <category term="洛谷" scheme="http://example.com/tags/%E6%B4%9B%E8%B0%B7/"/>
-    
-    <category term="Python算法" scheme="http://example.com/tags/Python%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="数组" scheme="http://example.com/tags/%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
